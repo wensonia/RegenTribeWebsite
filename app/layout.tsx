@@ -29,33 +29,44 @@ export const metadata: Metadata = {
   },
 }
 
-/* ── Regen Tribe Logo Mark SVG ── */
+/* ── Regen Tribe Logo Mark SVG ──
+   Matches the actual logo exactly:
+   - Tall isoceles triangle
+   - Square bottom-anchored at triangle base, top corners touching triangle sides
+   - Circle inscribed in square (touches all 4 sides)
+   - 4 dots in 2×2 grid inside circle
+   PNGs available at: public/images/logos/
+     logo-black-text.png  — black mark + wordmark (light backgrounds)
+     logo-black-mark.png  — black mark only (light backgrounds)
+     logo-white-mark.png  — white mark only (dark backgrounds)
+     logo-white-text.png  — white mark + wordmark (dark backgrounds)
+   ── */
 function LogoMark({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 60 60"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Outer triangle */}
+      {/* Tall isoceles triangle */}
       <polygon
-        points="30,4 56,53 4,53"
+        points="50,5 92,95 8,95"
         stroke={color}
-        strokeWidth="2"
+        strokeWidth="3.5"
         fill="none"
         strokeLinejoin="miter"
       />
-      {/* Square centered at (30, 35), side 19 */}
-      <rect x="20.5" y="25.5" width="19" height="19" stroke={color} strokeWidth="1.8" fill="none" />
-      {/* Circle centered at (30, 35), r=6.5 */}
-      <circle cx="30" cy="35" r="6.5" stroke={color} strokeWidth="1.5" fill="none" />
-      {/* 4 dots: 2×2 grid */}
-      <circle cx="27.4" cy="32.4" r="1.3" fill={color} />
-      <circle cx="32.6" cy="32.4" r="1.3" fill={color} />
-      <circle cx="27.4" cy="37.6" r="1.3" fill={color} />
-      <circle cx="32.6" cy="37.6" r="1.3" fill={color} />
+      {/* Square — bottom-anchored, top corners touching triangle sides */}
+      <rect x="29" y="53" width="42" height="42" stroke={color} strokeWidth="3" fill="none" />
+      {/* Circle — inscribed in square */}
+      <circle cx="50" cy="74" r="21" stroke={color} strokeWidth="2.5" fill="none" />
+      {/* 4 dots — 2×2 grid */}
+      <circle cx="43" cy="67" r="2.8" fill={color} />
+      <circle cx="57" cy="67" r="2.8" fill={color} />
+      <circle cx="43" cy="81" r="2.8" fill={color} />
+      <circle cx="57" cy="81" r="2.8" fill={color} />
     </svg>
   )
 }

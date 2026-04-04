@@ -3,29 +3,37 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-/* ── Regen Tribe Logo Mark ── */
-function LogoMark({ size = 34 }: { size?: number }) {
+/* ── Regen Tribe Logo Mark ──
+   Matches the actual logo: tall isoceles triangle, square at the bottom
+   with the circle inscribed (touching all 4 sides), 4 dots in 2×2 grid.
+   PNGs saved at: public/images/logos/
+   ── */
+function LogoMark({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 60 60"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      {/* Tall isoceles triangle */}
       <polygon
-        points="30,4 56,53 4,53"
-        stroke="currentColor"
-        strokeWidth="2"
+        points="50,5 92,95 8,95"
+        stroke={color}
+        strokeWidth="3.5"
         fill="none"
         strokeLinejoin="miter"
       />
-      <rect x="20.5" y="25.5" width="19" height="19" stroke="currentColor" strokeWidth="1.8" fill="none" />
-      <circle cx="30" cy="35" r="6.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <circle cx="27.4" cy="32.4" r="1.3" fill="currentColor" />
-      <circle cx="32.6" cy="32.4" r="1.3" fill="currentColor" />
-      <circle cx="27.4" cy="37.6" r="1.3" fill="currentColor" />
-      <circle cx="32.6" cy="37.6" r="1.3" fill="currentColor" />
+      {/* Square — bottom-anchored at triangle base, top corners touching triangle sides */}
+      <rect x="29" y="53" width="42" height="42" stroke={color} strokeWidth="3" fill="none" />
+      {/* Circle — inscribed in square (touches all 4 sides) */}
+      <circle cx="50" cy="74" r="21" stroke={color} strokeWidth="2.5" fill="none" />
+      {/* 4 dots — 2×2 grid inside circle */}
+      <circle cx="43" cy="67" r="2.8" fill={color} />
+      <circle cx="57" cy="67" r="2.8" fill={color} />
+      <circle cx="43" cy="81" r="2.8" fill={color} />
+      <circle cx="57" cy="81" r="2.8" fill={color} />
     </svg>
   )
 }
