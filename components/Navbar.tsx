@@ -48,7 +48,7 @@ export default function Navbar() {
             style={{
               fontSize: '13px',
               fontWeight: '800',
-              color: 'var(--green-deep)',
+              color: 'var(--primary)',
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
             }}
@@ -108,9 +108,9 @@ export default function Navbar() {
             fontWeight: '700',
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
-            color: 'var(--green-deep)',
+            color: 'var(--primary)',
             textDecoration: 'none',
-            border: '1.5px solid var(--green-deep)',
+            border: '1.5px solid var(--primary)',
             padding: '8px 16px',
           }}
         >
@@ -130,7 +130,7 @@ export default function Navbar() {
                 style={{
                   width: '4px',
                   height: '4px',
-                  backgroundColor: 'var(--green-deep)',
+                  backgroundColor: 'var(--primary)',
                 }}
               />
             ))}
@@ -200,9 +200,9 @@ export default function Navbar() {
               marginTop: '8px',
               fontSize: '13px',
               fontWeight: '700',
-              color: 'var(--green-deep)',
+              color: 'var(--primary)',
               textDecoration: 'none',
-              border: '1.5px solid var(--green-deep)',
+              border: '1.5px solid var(--primary)',
               padding: '12px 24px',
               textTransform: 'uppercase',
               letterSpacing: '0.06em',

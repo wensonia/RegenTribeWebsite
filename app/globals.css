@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #F2F0EA;
-  --bg-warm: #E8E5DC;
-  --text: #0C1810;
-  --text-muted: #5A6B61;
-  --green-deep: #1C4A35;
-  --green-mid: #2E7D52;
-  --green-light: #D8EBE0;
-  --orange: #C8601A;
-  --orange-light: #F2E4D6;
-  --border: #C4CBC5;
-  --shape-lime: #B8D976;
-  --shape-sage: #8BB89A;
-  --shape-sand: #D4C5A0;
+  --bg: #F5F3EF;
+  --text: #141414;
+  --text-muted: #6B7074;
+  --primary: #141414;
+
+  /* 4 accent colors */
+  --pink: #F2B8C6;
+  --pink-deep: #E8899D;
+  --green: #A8D9B0;
+  --green-deep: #6DBF7E;
+  --blue: #A2C8E8;
+  --blue-deep: #5EA8D4;
+  --yellow: #F5DC7A;
+  --yellow-deep: #ECC93A;
+
+  --border: #DEDAD2;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,11 +25,11 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Syne', 'Inter', -apple-system, sans-serif;
+  font-family: 'Open Sans', -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--green-light);
-  color: var(--green-deep);
+  background: var(--yellow);
+  color: var(--text);
 }

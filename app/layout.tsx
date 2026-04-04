@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Syne } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 
-const syne = Syne({
+const openSans = Open_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-syne',
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-open-sans',
 })
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={syne.variable}>
+    <html lang="en" className={openSans.variable}>
       <body>
         <Navbar />
         <main>{children}</main>
@@ -59,7 +59,7 @@ export default function RootLayout({
                   style={{
                     fontSize: '28px',
                     fontWeight: '800',
-                    color: 'var(--green-deep)',
+                    color: 'var(--primary)',
                     lineHeight: '1',
                     letterSpacing: '-0.02em',
                     marginBottom: '16px',

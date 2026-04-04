@@ -26,9 +26,9 @@ function SquareBtn({
     fontWeight: '700',
     letterSpacing: '0.07em',
     textTransform: 'uppercase',
-    color: dark ? 'white' : 'var(--green-deep)',
-    backgroundColor: dark ? 'var(--green-deep)' : 'transparent',
-    border: dark ? '1.5px solid var(--green-deep)' : '1.5px solid var(--green-deep)',
+    color: dark ? 'white' : 'var(--primary)',
+    backgroundColor: dark ? 'var(--primary)' : 'transparent',
+    border: dark ? '1.5px solid var(--primary)' : '1.5px solid var(--primary)',
     padding: '14px 22px',
     textDecoration: 'none',
     flexShrink: 0,
@@ -51,7 +51,7 @@ function SquareBtn({
           style={{
             width: '4px',
             height: '4px',
-            backgroundColor: dark ? 'white' : 'var(--green-deep)',
+            backgroundColor: dark ? 'white' : 'var(--primary)',
           }}
         />
       ))}
@@ -141,7 +141,7 @@ function ImgBlock({
       style={{
         width: w,
         height: h,
-        backgroundColor: bg ?? 'var(--green-light)',
+        backgroundColor: bg ?? 'var(--green)',
         display: 'flex',
         alignItems: 'flex-end',
         padding: '12px',
@@ -193,10 +193,10 @@ const timeline = [
 
 /* ── Projects data ────────────────────────────────── */
 const projects = [
-  { name: 'Aldea Kuyabeh', loc: 'Tulum, Mexico', tag: 'Land Development', color: 'var(--green-light)' },
-  { name: 'The Ark', loc: 'Costa Rica', tag: 'Alliance Partner', color: 'var(--orange-light)' },
-  { name: 'WildSeeds Collective', loc: 'California, USA', tag: 'Agency Support', color: '#E8E0D0' },
-  { name: 'Community Lab X', loc: 'Tulum, Mexico', tag: 'Incubator', color: '#DDE8D8' },
+  { name: 'Aldea Kuyabeh', loc: 'Tulum, Mexico', tag: 'Land Development', color: 'var(--green)' },
+  { name: 'The Ark', loc: 'Costa Rica', tag: 'Alliance Partner', color: 'var(--pink)' },
+  { name: 'WildSeeds Collective', loc: 'California, USA', tag: 'Agency Support', color: 'var(--blue)' },
+  { name: 'Community Lab X', loc: 'Tulum, Mexico', tag: 'Incubator', color: 'var(--yellow)' },
 ]
 
 /* ══════════════════════════════════════════════════
@@ -246,7 +246,7 @@ export default function Home() {
                 fontWeight: '800',
                 lineHeight: '0.95',
                 letterSpacing: '-0.03em',
-                color: 'var(--green-deep)',
+                color: 'var(--primary)',
                 marginBottom: '4px',
               }}
             >
@@ -312,7 +312,7 @@ export default function Home() {
               w={280}
               h={340}
               label="Regen Community"
-              bg="#C8D9C0"
+              bg="#B8DDBE"
               style={{ position: 'absolute', top: '20px', left: '40px' }}
             />
             {/* Smaller image */}
@@ -320,39 +320,39 @@ export default function Home() {
               w={200}
               h={200}
               label="Aldea Kuyabeh"
-              bg="#D4C5A0"
+              bg="#F5DCB8"
               style={{ position: 'absolute', bottom: '20px', right: '0px' }}
             />
             {/* Lime circle */}
             <Circle
               size={130}
-              color="var(--shape-lime)"
+              color="var(--yellow)"
               style={{ position: 'absolute', top: '10px', right: '40px' }}
             />
-            {/* Deep green circle */}
+            {/* Blue circle */}
             <Circle
               size={80}
-              color="var(--green-deep)"
+              color="var(--blue)"
               style={{ position: 'absolute', bottom: '60px', left: '20px' }}
             />
             {/* Orange rect */}
             <Rect
               w={90}
               h={90}
-              color="var(--orange)"
+              color="var(--yellow-deep)"
               style={{ position: 'absolute', bottom: '20px', left: '170px' }}
             />
             {/* Sage circle */}
             <Circle
               size={56}
-              color="var(--shape-sage)"
+              color="var(--green)"
               style={{ position: 'absolute', top: '180px', right: '10px' }}
             />
             {/* Sand small rect */}
             <Rect
               w={60}
               h={40}
-              color="var(--shape-sand)"
+              color="var(--pink)"
               style={{ position: 'absolute', top: '0px', left: '200px' }}
             />
           </div>
@@ -365,7 +365,7 @@ export default function Home() {
       <div
         style={{
           borderBottom: '1px solid var(--border)',
-          backgroundColor: 'var(--green-deep)',
+          backgroundColor: 'var(--primary)',
           padding: '14px 0',
           overflow: 'hidden',
           whiteSpace: 'nowrap',
@@ -390,7 +390,7 @@ export default function Home() {
                   color: 'rgba(255,255,255,0.7)',
                 }}
               >
-                {word} <span style={{ color: 'var(--shape-lime)', marginLeft: '-32px' }}>·</span>
+                {word} <span style={{ color: 'var(--yellow)', marginLeft: '-32px' }}>·</span>
               </span>
             ))
           )}
@@ -435,19 +435,19 @@ export default function Home() {
             {[
               {
                 tag: 'Why',
-                color: 'var(--shape-lime)',
+                color: 'var(--pink)',
                 heading: 'Improve life for humanity while caring for our planet.',
                 body: 'We focus on meeting core human needs — air, water, food, shelter, energy, connection, and self-actualization — through regenerative systems with net positive impact.',
               },
               {
                 tag: 'How',
-                color: 'var(--orange)',
+                color: 'var(--yellow)',
                 heading: 'Real estate + intentional community + self-sustaining economy.',
                 body: 'Regenerative Neighborhoods are real estate developments built around resilient resource systems, intentional community lifestyle practices, and circular economies.',
               },
               {
                 tag: 'What',
-                color: 'var(--green-mid)',
+                color: 'var(--blue-deep)',
                 heading: 'A platform, a global alliance, and real-world projects.',
                 body: 'We build the digital tools, forge the alliances, and develop the projects — starting with micro-communities in Mexico and Costa Rica and expanding globally.',
               },
@@ -512,7 +512,7 @@ export default function Home() {
       ════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: 'var(--green-deep)',
+          backgroundColor: 'var(--primary)',
           padding: '120px 0',
           borderBottom: '1px solid rgba(255,255,255,0.1)',
         }}
@@ -623,7 +623,7 @@ export default function Home() {
                         fontWeight: '700',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: 'var(--shape-lime)',
+                        color: 'var(--yellow)',
                         marginBottom: '4px',
                       }}
                     >
@@ -698,9 +698,9 @@ export default function Home() {
 
               {/* Decorative shapes */}
               <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <Circle size={40} color="var(--shape-lime)" />
-                <Circle size={28} color="var(--green-deep)" />
-                <Rect w={28} h={28} color="var(--orange)" />
+                <Circle size={40} color="var(--yellow)" />
+                <Circle size={28} color="var(--pink)" />
+                <Rect w={28} h={28} color="var(--blue)" />
               </div>
             </div>
 
@@ -727,7 +727,7 @@ export default function Home() {
                         style={{
                           fontSize: '13px',
                           fontWeight: '700',
-                          color: isFuture ? 'var(--text-muted)' : 'var(--green-mid)',
+                          color: isFuture ? 'var(--text-muted)' : 'var(--blue-deep)',
                           letterSpacing: '0.02em',
                         }}
                       >
@@ -892,7 +892,7 @@ export default function Home() {
               >
                 Become part<br />
                 of the<br />
-                <span style={{ color: 'var(--green-deep)' }}>regenerative</span><br />
+                <span style={{ color: 'var(--blue-deep)' }}>regenerative</span><br />
                 future.
               </h2>
             </div>
@@ -906,9 +906,9 @@ export default function Home() {
                 alignItems: 'flex-end',
               }}
             >
-              <Circle size={120} color="var(--shape-lime)" />
-              <Rect w={80} h={80} color="var(--green-deep)" />
-              <Circle size={56} color="var(--orange)" />
+              <Circle size={120} color="var(--yellow)" />
+              <Rect w={80} h={80} color="var(--pink)" />
+              <Circle size={56} color="var(--blue)" />
             </div>
           </div>
 
