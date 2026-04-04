@@ -3,11 +3,38 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
+/* ── Regen Tribe Logo Mark ── */
+function LogoMark({ size = 34 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 60 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="30,4 56,53 4,53"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinejoin="miter"
+      />
+      <rect x="20.5" y="25.5" width="19" height="19" stroke="currentColor" strokeWidth="1.8" fill="none" />
+      <circle cx="30" cy="35" r="6.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <circle cx="27.4" cy="32.4" r="1.3" fill="currentColor" />
+      <circle cx="32.6" cy="32.4" r="1.3" fill="currentColor" />
+      <circle cx="27.4" cy="37.6" r="1.3" fill="currentColor" />
+      <circle cx="32.6" cy="37.6" r="1.3" fill="currentColor" />
+    </svg>
+  )
+}
+
 const navLinks = [
-  { label: 'Tribes Platform', href: '/tribes-platform' },
-  { label: 'Agency', href: '/agency' },
-  { label: 'Education', href: '/education' },
-  { label: 'About Us', href: '/about' },
+  { label: 'Tribes Platform', href: '/tribes-platform', dot: 'var(--green)' },
+  { label: 'Agency', href: '/agency', dot: 'var(--pink)' },
+  { label: 'Education', href: '/education', dot: 'var(--yellow)' },
+  { label: 'About Us', href: '/about', dot: 'var(--blue)' },
 ]
 
 export default function Navbar() {
@@ -28,54 +55,60 @@ export default function Navbar() {
           maxWidth: '1280px',
           margin: '0 auto',
           padding: '0 40px',
-          height: '68px',
+          height: '72px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
-        {/* Logo */}
+        {/* Logo — mark + wordmark */}
         <Link
           href="/"
           style={{
             textDecoration: 'none',
             display: 'flex',
-            flexDirection: 'column',
-            lineHeight: '1',
+            alignItems: 'center',
+            gap: '10px',
+            color: 'var(--primary)',
           }}
         >
-          <span
-            style={{
-              fontSize: '13px',
-              fontWeight: '800',
-              color: 'var(--primary)',
-              letterSpacing: '0.04em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Regen Tribe
-          </span>
-          <span
-            style={{
-              fontSize: '10px',
-              fontWeight: '500',
-              color: 'var(--text-muted)',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginTop: '2px',
-            }}
-          >
-            RN Accelerator
-          </span>
+          <LogoMark size={34} />
+          <div style={{ lineHeight: '1' }}>
+            <span
+              style={{
+                display: 'block',
+                fontSize: '13px',
+                fontWeight: '600',
+                color: 'var(--primary)',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Regen Tribe
+            </span>
+            <span
+              style={{
+                display: 'block',
+                fontSize: '10px',
+                fontWeight: '400',
+                color: 'var(--text-muted)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                marginTop: '3px',
+              }}
+            >
+              RN Accelerator
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — centered links with colored dots */}
         <div
           className="desktop-nav"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '40px',
+            gap: '36px',
           }}
         >
           {navLinks.map((link) => (
@@ -83,57 +116,59 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '7px',
                 fontSize: '13px',
-                fontWeight: '600',
-                letterSpacing: '0.02em',
+                fontWeight: '500',
                 color: 'var(--text-muted)',
                 textDecoration: 'none',
-                textTransform: 'uppercase',
+                letterSpacing: '0.01em',
               }}
             >
+              <span
+                style={{
+                  width: '7px',
+                  height: '7px',
+                  borderRadius: '50%',
+                  backgroundColor: link.dot,
+                  flexShrink: 0,
+                }}
+              />
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* CTA — outlined square style */}
+        {/* CTA — pill button */}
         <Link
           href="/join"
           className="desktop-cta"
           style={{
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            fontSize: '12px',
-            fontWeight: '700',
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
+            fontSize: '13px',
+            fontWeight: '600',
+            letterSpacing: '0.03em',
             color: 'var(--primary)',
             textDecoration: 'none',
             border: '1.5px solid var(--primary)',
-            padding: '8px 16px',
+            borderRadius: '9999px',
+            padding: '9px 22px',
           }}
         >
           Join the Movement
           <span
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '2px',
-              width: '12px',
-              height: '12px',
+              display: 'inline-block',
+              width: '16px',
+              height: '16px',
             }}
           >
-            {[0,1,2,3].map(i => (
-              <span
-                key={i}
-                style={{
-                  width: '4px',
-                  height: '4px',
-                  backgroundColor: 'var(--primary)',
-                }}
-              />
-            ))}
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </span>
         </Link>
 
@@ -152,11 +187,11 @@ export default function Navbar() {
         >
           {open ? (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+              <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           ) : (
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+              <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           )}
         </button>
@@ -177,18 +212,27 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setOpen(false)}
               style={{
-                display: 'block',
-                fontSize: '20px',
-                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                fontSize: '18px',
+                fontWeight: '500',
                 color: 'var(--text)',
                 textDecoration: 'none',
-                paddingBottom: '16px',
+                paddingBottom: '18px',
                 borderBottom: '1px solid var(--border)',
-                marginBottom: '16px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.02em',
+                marginBottom: '18px',
               }}
             >
+              <span
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: link.dot,
+                  flexShrink: 0,
+                }}
+              />
               {link.label}
             </Link>
           ))}
@@ -196,16 +240,17 @@ export default function Navbar() {
             href="/join"
             onClick={() => setOpen(false)}
             style={{
-              display: 'inline-block',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
               marginTop: '8px',
-              fontSize: '13px',
-              fontWeight: '700',
+              fontSize: '14px',
+              fontWeight: '600',
               color: 'var(--primary)',
               textDecoration: 'none',
               border: '1.5px solid var(--primary)',
-              padding: '12px 24px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
+              borderRadius: '9999px',
+              padding: '12px 28px',
             }}
           >
             Join the Movement
@@ -214,7 +259,7 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
           .mobile-btn { display: flex !important; }

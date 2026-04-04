@@ -1,11 +1,17 @@
 import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
+import { Lora, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-lora',
+})
+
 const openSans = Open_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-open-sans',
 })
 
@@ -23,24 +29,60 @@ export const metadata: Metadata = {
   },
 }
 
+/* ── Regen Tribe Logo Mark SVG ── */
+function LogoMark({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 60 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Outer triangle */}
+      <polygon
+        points="30,4 56,53 4,53"
+        stroke={color}
+        strokeWidth="2"
+        fill="none"
+        strokeLinejoin="miter"
+      />
+      {/* Square centered at (30, 35), side 19 */}
+      <rect x="20.5" y="25.5" width="19" height="19" stroke={color} strokeWidth="1.8" fill="none" />
+      {/* Circle centered at (30, 35), r=6.5 */}
+      <circle cx="30" cy="35" r="6.5" stroke={color} strokeWidth="1.5" fill="none" />
+      {/* 4 dots: 2×2 grid */}
+      <circle cx="27.4" cy="32.4" r="1.3" fill={color} />
+      <circle cx="32.6" cy="32.4" r="1.3" fill={color} />
+      <circle cx="27.4" cy="37.6" r="1.3" fill={color} />
+      <circle cx="32.6" cy="37.6" r="1.3" fill={color} />
+    </svg>
+  )
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={openSans.variable}>
+    <html lang="en" className={`${lora.variable} ${openSans.variable}`}>
       <body>
         <Navbar />
         <main>{children}</main>
 
         {/* ── FOOTER ── */}
-        <footer style={{ borderTop: '1px solid var(--border)', marginTop: '120px' }}>
+        <footer
+          style={{
+            borderTop: '1px solid var(--border)',
+            backgroundColor: 'var(--bg)',
+          }}
+        >
           <div
             style={{
               maxWidth: '1280px',
               margin: '0 auto',
-              padding: '64px 40px 40px',
+              padding: '72px 40px 48px',
             }}
           >
             {/* Top row */}
@@ -55,27 +97,51 @@ export default function RootLayout({
             >
               {/* Brand */}
               <div>
-                <p
+                <div
                   style={{
-                    fontSize: '28px',
-                    fontWeight: '800',
-                    color: 'var(--primary)',
-                    lineHeight: '1',
-                    letterSpacing: '-0.02em',
-                    marginBottom: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '20px',
                   }}
                 >
-                  Regen<br />Tribe
-                </p>
+                  <LogoMark size={32} color="var(--primary)" />
+                  <div>
+                    <p
+                      style={{
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        color: 'var(--primary)',
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        lineHeight: '1',
+                      }}
+                    >
+                      Regen Tribe
+                    </p>
+                    <p
+                      style={{
+                        fontSize: '10px',
+                        fontWeight: '500',
+                        color: 'var(--text-muted)',
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        marginTop: '3px',
+                      }}
+                    >
+                      RN Accelerator
+                    </p>
+                  </div>
+                </div>
                 <p
                   style={{
                     fontSize: '14px',
                     color: 'var(--text-muted)',
-                    lineHeight: '1.6',
+                    lineHeight: '1.65',
                     maxWidth: '220px',
                   }}
                 >
-                  Building a global ecosystem of regenerative neighborhoods.
+                  Building a global ecosystem of regenerative neighborhoods — for people and planet.
                 </p>
               </div>
 
@@ -100,10 +166,10 @@ export default function RootLayout({
                     style={{
                       display: 'block',
                       fontSize: '15px',
-                      fontWeight: '600',
+                      fontWeight: '400',
                       color: 'var(--text)',
                       textDecoration: 'none',
-                      marginBottom: '12px',
+                      marginBottom: '14px',
                     }}
                   >
                     {item}
@@ -132,10 +198,10 @@ export default function RootLayout({
                     style={{
                       display: 'block',
                       fontSize: '15px',
-                      fontWeight: '600',
+                      fontWeight: '400',
                       color: 'var(--text)',
                       textDecoration: 'none',
-                      marginBottom: '12px',
+                      marginBottom: '14px',
                     }}
                   >
                     {item}
@@ -156,7 +222,7 @@ export default function RootLayout({
               }}
             >
               <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                © {new Date().getFullYear()} Regen Tribe
+                © {new Date().getFullYear()} Regen Tribe. All rights reserved.
               </p>
               <div style={{ display: 'flex', gap: '24px' }}>
                 {['Privacy', 'Terms'].map((item) => (

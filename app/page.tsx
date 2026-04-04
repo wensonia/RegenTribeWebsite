@@ -2,98 +2,36 @@ import Link from 'next/link'
 
 const W = '1280px'
 const PX = '40px'
-
-/* ── Shared ───────────────────────────────────────── */
 const wrap: React.CSSProperties = { maxWidth: W, margin: '0 auto', padding: `0 ${PX}` }
 
-/* ── Outlined square button ───────────────────────── */
-function SquareBtn({
-  href,
-  children,
-  dark,
-  external,
+/* ══════════════════════════════════════════════════
+   DECORATIVE SHAPES — circle, triangle, square only
+══════════════════════════════════════════════════ */
+
+function Circle({
+  size,
+  color,
+  outline,
+  style,
 }: {
-  href: string
-  children: React.ReactNode
-  dark?: boolean
-  external?: boolean
+  size: number
+  color: string
+  outline?: boolean
+  style?: React.CSSProperties
 }) {
-  const style: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '10px',
-    fontSize: '12px',
-    fontWeight: '700',
-    letterSpacing: '0.07em',
-    textTransform: 'uppercase',
-    color: dark ? 'white' : 'var(--primary)',
-    backgroundColor: dark ? 'var(--primary)' : 'transparent',
-    border: dark ? '1.5px solid var(--primary)' : '1.5px solid var(--primary)',
-    padding: '14px 22px',
-    textDecoration: 'none',
-    flexShrink: 0,
-  }
-
-  const grid = (
-    <span
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '2px',
-        width: '12px',
-        height: '12px',
-        flexShrink: 0,
-      }}
-    >
-      {[0, 1, 2, 3].map((i) => (
-        <span
-          key={i}
-          style={{
-            width: '4px',
-            height: '4px',
-            backgroundColor: dark ? 'white' : 'var(--primary)',
-          }}
-        />
-      ))}
-    </span>
-  )
-
-  if (external) {
+  if (outline) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" style={style}>
-        {children}
-        {grid}
-      </a>
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 100 100"
+        fill="none"
+        style={{ flexShrink: 0, ...style }}
+      >
+        <circle cx="50" cy="50" r="46" stroke={color} strokeWidth="3" fill="none" />
+      </svg>
     )
   }
-  return (
-    <Link href={href} style={style}>
-      {children}
-      {grid}
-    </Link>
-  )
-}
-
-/* ── Section label ────────────────────────────────── */
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <p
-      style={{
-        fontSize: '11px',
-        fontWeight: '700',
-        letterSpacing: '0.14em',
-        textTransform: 'uppercase',
-        color: 'var(--text-muted)',
-        marginBottom: '24px',
-      }}
-    >
-      {children}
-    </p>
-  )
-}
-
-/* ── Decorative shape components ──────────────────── */
-function Circle({ size, color, style }: { size: number; color: string; style?: React.CSSProperties }) {
   return (
     <div
       style={{
@@ -108,12 +46,36 @@ function Circle({ size, color, style }: { size: number; color: string; style?: R
   )
 }
 
-function Rect({ w, h, color, style }: { w: number; h: number; color: string; style?: React.CSSProperties }) {
+function Square({
+  size,
+  color,
+  outline,
+  style,
+}: {
+  size: number
+  color: string
+  outline?: boolean
+  style?: React.CSSProperties
+}) {
+  if (outline) {
+    return (
+      <div
+        style={{
+          width: size,
+          height: size,
+          border: `2.5px solid ${color}`,
+          backgroundColor: 'transparent',
+          flexShrink: 0,
+          ...style,
+        }}
+      />
+    )
+  }
   return (
     <div
       style={{
-        width: w,
-        height: h,
+        width: size,
+        height: size,
         backgroundColor: color,
         flexShrink: 0,
         ...style,
@@ -122,81 +84,152 @@ function Rect({ w, h, color, style }: { w: number; h: number; color: string; sty
   )
 }
 
-/* ── Image placeholder ────────────────────────────── */
-function ImgBlock({
-  w,
-  h,
-  label,
-  bg,
+function Triangle({
+  size,
+  color,
+  outline,
   style,
 }: {
-  w: number | string
-  h: number
-  label?: string
-  bg?: string
+  size: number
+  color: string
+  outline?: boolean
   style?: React.CSSProperties
 }) {
+  const h = Math.round(size * 0.866)
   return (
-    <div
-      style={{
-        width: w,
-        height: h,
-        backgroundColor: bg ?? 'var(--green)',
-        display: 'flex',
-        alignItems: 'flex-end',
-        padding: '12px',
-        flexShrink: 0,
-        position: 'relative',
-        overflow: 'hidden',
-        ...style,
-      }}
+    <svg
+      width={size}
+      height={h}
+      viewBox="0 0 100 86.6"
+      fill="none"
+      style={{ flexShrink: 0, ...style }}
     >
-      {/* placeholder texture lines */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage:
-            'repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(0,0,0,0.04) 28px, rgba(0,0,0,0.04) 29px)',
-        }}
+      <polygon
+        points="50,0 100,86.6 0,86.6"
+        fill={outline ? 'none' : color}
+        stroke={outline ? color : 'none'}
+        strokeWidth={outline ? '3' : '0'}
       />
-      {label && (
-        <span
-          style={{
-            fontSize: '10px',
-            fontWeight: '600',
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: 'rgba(0,0,0,0.4)',
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          {label}
-        </span>
-      )}
-    </div>
+    </svg>
   )
 }
 
-/* ── Timeline data ────────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   UI COMPONENTS
+══════════════════════════════════════════════════ */
+
+/* Pill button */
+function PillBtn({
+  href,
+  children,
+  dark,
+  external,
+}: {
+  href: string
+  children: React.ReactNode
+  dark?: boolean
+  external?: boolean
+}) {
+  const style: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontSize: '13px',
+    fontWeight: '600',
+    letterSpacing: '0.02em',
+    color: dark ? 'white' : 'var(--primary)',
+    backgroundColor: dark ? 'var(--primary)' : 'transparent',
+    border: '1.5px solid var(--primary)',
+    borderRadius: '9999px',
+    padding: '13px 28px',
+    textDecoration: 'none',
+    flexShrink: 0,
+  }
+
+  const arrow = (
+    <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke={dark ? 'white' : 'currentColor'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" style={style}>
+        {children}
+        {arrow}
+      </a>
+    )
+  }
+  return (
+    <Link href={href} style={style}>
+      {children}
+      {arrow}
+    </Link>
+  )
+}
+
+/* Section eyebrow label */
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      style={{
+        fontSize: '11px',
+        fontWeight: '600',
+        letterSpacing: '0.16em',
+        textTransform: 'uppercase',
+        color: 'var(--text-muted)',
+        marginBottom: '20px',
+      }}
+    >
+      {children}
+    </p>
+  )
+}
+
+/* ══════════════════════════════════════════════════
+   DATA
+══════════════════════════════════════════════════ */
+
 const timeline = [
   { year: '2021', title: 'Community Becomes the Goal', desc: 'First eco-hotel-to-RN consultation. Raised $150K for renewable energy. Moved to Tulum to launch the RT Incubator house.' },
-  { year: '2022', title: 'Growing the Network', desc: 'RT Incubator houses in Tulum. Identified 200+ neighborhoods worldwide. Launched Regen Tribe Discord.' },
-  { year: '2023', title: 'Building the Ecosystem', desc: 'Vitalia Longevity Startup City. First Agent Program. Tribes v1. Community Lab 1 in Ixchel, Mexico.' },
-  { year: '2024', title: 'On-Site at Communities', desc: 'Active at WildSeeds, Community Lab X, and Network School. AI-powered co-living tools developed.' },
-  { year: '2025', title: 'Digital Tools & RN Alliance', desc: 'Launching AI integrations and digital tools. RN Alliance kick-off. First permanent RT location: Aldea Kuyabeh.' },
-  { year: '2030', title: 'Kuyabeh Collective Spaces', desc: '10-flower Regenerative Neighborhood at Kuyabeh completes collective spaces near Tulum.' },
-  { year: '2040', title: 'Dozens of RNs Globally', desc: 'Kuyabeh, The Ark, Alpaca, Wild Seeds, and key European & Asian sites established on every continent.' },
-  { year: '2100', title: 'Regenerative Neighborhoods Everywhere', desc: 'A global network. 53M+ communities. Every person with access to a regenerative neighborhood.' },
+  { year: '2022', title: 'Growing the Network', desc: 'RT Incubator houses in Tulum. Identified 200+ neighborhoods worldwide. Launched Regen Tribe Discord. Developed v1 guide for RN development.' },
+  { year: '2023', title: 'Building the Ecosystem', desc: 'Vitalia Longevity Startup City. First Agent Program. Tribes v1. Community Lab 1 in Ixchel, Mexico. D.pact Istanbul, Free Cities Conference.' },
+  { year: '2024', title: 'On-Site at Communities', desc: 'Active at WildSeeds, Community Lab X, and Network School Pop-up City. AI-powered co-living tools developed in Malaysia.' },
+  { year: '2025', title: 'Digital Tools & RN Alliance', desc: 'Launching AI integrations and digital tools. RN Alliance kick-off. First permanent RT location at Aldea Kuyabeh.' },
+  { year: '2030', title: 'Kuyabeh Collective Spaces', desc: '10-flower Regenerative Neighborhood at Kuyabeh completes its collective spaces, establishing a vibrant hub near Tulum.' },
+  { year: '2040', title: 'Dozens of RNs Globally', desc: 'Kuyabeh, The Ark, Alpaca, Wild Seeds, and key European & Asian sites reach 5% of global population.' },
+  { year: '2100', title: 'Regenerative Neighborhoods Everywhere', desc: 'A global network of 53M+ communities. 80% of the world population with access to a regenerative neighborhood.' },
 ]
 
-/* ── Projects data ────────────────────────────────── */
 const projects = [
-  { name: 'Aldea Kuyabeh', loc: 'Tulum, Mexico', tag: 'Land Development', color: 'var(--green)' },
-  { name: 'The Ark', loc: 'Costa Rica', tag: 'Alliance Partner', color: 'var(--pink)' },
-  { name: 'WildSeeds Collective', loc: 'California, USA', tag: 'Agency Support', color: 'var(--blue)' },
-  { name: 'Community Lab X', loc: 'Tulum, Mexico', tag: 'Incubator', color: 'var(--yellow)' },
+  {
+    name: 'Aldea Kuyabeh',
+    loc: 'Tulum, Mexico',
+    tag: 'Land Development',
+    dot: 'var(--green)',
+    desc: '365-hectare regenerative micro-city outside Tulum. 10-flower neighborhood model, construction begins 2027.',
+  },
+  {
+    name: 'The Ark',
+    loc: 'Costa Rica',
+    tag: 'Alliance Partner',
+    dot: 'var(--pink)',
+    desc: 'Micro regenerative neighborhoods in the rainforest, focusing on ecological balance and resilient living systems.',
+  },
+  {
+    name: 'WildSeeds Collective',
+    loc: 'California, USA',
+    tag: 'Agency Support',
+    dot: 'var(--blue)',
+    desc: 'Implementing team management systems, wikis, and community agreements for an evolving urban collective.',
+  },
+  {
+    name: 'Community Lab X',
+    loc: 'Tulum, Mexico',
+    tag: 'Incubator Hub',
+    dot: 'var(--yellow-deep)',
+    desc: 'Transforming a retreat center into a thriving community hub with activated sustainable systems and programs.',
+  },
 ]
 
 /* ══════════════════════════════════════════════════
@@ -206,155 +239,94 @@ export default function Home() {
   return (
     <>
       {/* ════════════════════════════════
-          HERO — asymmetric split
+          HERO — centered editorial
       ════════════════════════════════ */}
       <section
         style={{
-          paddingTop: '80px',
-          paddingBottom: '80px',
+          paddingTop: '100px',
+          paddingBottom: '100px',
           borderBottom: '1px solid var(--border)',
+          position: 'relative',
           overflow: 'hidden',
+          textAlign: 'center',
         }}
       >
-        <div
-          style={{
-            ...wrap,
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '40px',
-            alignItems: 'center',
-          }}
-        >
-          {/* Left — headline */}
-          <div>
-            <p
-              style={{
-                fontSize: '11px',
-                fontWeight: '700',
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--text-muted)',
-                marginBottom: '32px',
-              }}
-            >
-              Regenerative Neighborhood Accelerator
-            </p>
+        {/* Floating decorative shapes */}
+        <Circle
+          size={96}
+          color="var(--yellow)"
+          style={{ position: 'absolute', top: '40px', left: '6%', opacity: 0.7 }}
+        />
+        <Triangle
+          size={80}
+          color="var(--green)"
+          style={{ position: 'absolute', top: '60px', right: '8%', opacity: 0.65 }}
+        />
+        <Square
+          size={56}
+          color="var(--pink)"
+          style={{ position: 'absolute', bottom: '60px', left: '10%', opacity: 0.6 }}
+        />
+        <Circle
+          size={44}
+          color="var(--blue)"
+          style={{ position: 'absolute', bottom: '80px', right: '12%', opacity: 0.7 }}
+        />
+        <Triangle
+          size={44}
+          color="var(--pink-deep)"
+          outline
+          style={{ position: 'absolute', top: '100px', left: '22%', opacity: 0.3 }}
+        />
+        <Square
+          size={32}
+          color="var(--blue-deep)"
+          outline
+          style={{ position: 'absolute', bottom: '100px', right: '24%', opacity: 0.3 }}
+        />
 
-            <h1
-              style={{
-                fontSize: 'clamp(56px, 6.5vw, 88px)',
-                fontWeight: '800',
-                lineHeight: '0.95',
-                letterSpacing: '-0.03em',
-                color: 'var(--primary)',
-                marginBottom: '4px',
-              }}
-            >
-              create,
-            </h1>
-            <h1
-              style={{
-                fontSize: 'clamp(56px, 6.5vw, 88px)',
-                fontWeight: '800',
-                lineHeight: '0.95',
-                letterSpacing: '-0.03em',
-                color: 'var(--text)',
-                marginBottom: '4px',
-              }}
-            >
-              grow &amp;
-            </h1>
-            <h1
-              style={{
-                fontSize: 'clamp(56px, 6.5vw, 88px)',
-                fontWeight: '800',
-                lineHeight: '0.95',
-                letterSpacing: '-0.03em',
-                color: 'var(--text)',
-                marginBottom: '32px',
-              }}
-            >
-              find
-            </h1>
+        <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
+          <Label>Regenerative Neighborhood Accelerator</Label>
 
-            <p
-              style={{
-                fontSize: '17px',
-                fontWeight: '400',
-                color: 'var(--text-muted)',
-                lineHeight: '1.6',
-                maxWidth: '420px',
-                marginBottom: '40px',
-              }}
-            >
-              The Regen Tribe ecosystem connects people, projects &amp; solutions
-              so we can create more regenerative neighborhoods around the world.
-            </p>
-
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <SquareBtn href="/join" dark>Join the Movement</SquareBtn>
-              <SquareBtn href="https://tribesplatform.app" external>Tribes Platform</SquareBtn>
-            </div>
-          </div>
-
-          {/* Right — collage of shapes + image blocks */}
-          <div
+          <h1
             style={{
-              position: 'relative',
-              height: '480px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              fontSize: 'clamp(60px, 8vw, 110px)',
+              fontWeight: '400',
+              lineHeight: '1.0',
+              color: 'var(--primary)',
+              marginBottom: '40px',
+              letterSpacing: '-0.02em',
             }}
           >
-            {/* Main large image */}
-            <ImgBlock
-              w={280}
-              h={340}
-              label="Regen Community"
-              bg="#B8DDBE"
-              style={{ position: 'absolute', top: '20px', left: '40px' }}
-            />
-            {/* Smaller image */}
-            <ImgBlock
-              w={200}
-              h={200}
-              label="Aldea Kuyabeh"
-              bg="#F5DCB8"
-              style={{ position: 'absolute', bottom: '20px', right: '0px' }}
-            />
-            {/* Lime circle */}
-            <Circle
-              size={130}
-              color="var(--yellow)"
-              style={{ position: 'absolute', top: '10px', right: '40px' }}
-            />
-            {/* Blue circle */}
-            <Circle
-              size={80}
-              color="var(--blue)"
-              style={{ position: 'absolute', bottom: '60px', left: '20px' }}
-            />
-            {/* Orange rect */}
-            <Rect
-              w={90}
-              h={90}
-              color="var(--yellow-deep)"
-              style={{ position: 'absolute', bottom: '20px', left: '170px' }}
-            />
-            {/* Sage circle */}
-            <Circle
-              size={56}
-              color="var(--green)"
-              style={{ position: 'absolute', top: '180px', right: '10px' }}
-            />
-            {/* Sand small rect */}
-            <Rect
-              w={60}
-              h={40}
-              color="var(--pink)"
-              style={{ position: 'absolute', top: '0px', left: '200px' }}
-            />
+            Create, grow<br />
+            &amp; find your<br />
+            community.
+          </h1>
+
+          <p
+            style={{
+              fontSize: '18px',
+              fontWeight: '400',
+              color: 'var(--text-muted)',
+              lineHeight: '1.65',
+              maxWidth: '520px',
+              margin: '0 auto 48px',
+            }}
+          >
+            The Regen Tribe ecosystem connects people, projects &amp; solutions
+            to accelerate regenerative neighborhood development worldwide.
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              gap: '14px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}
+          >
+            <PillBtn href="/join" dark>Join the Movement</PillBtn>
+            <PillBtn href="https://tribesplatform.app" external>Tribes Platform</PillBtn>
           </div>
         </div>
       </section>
@@ -366,7 +338,7 @@ export default function Home() {
         style={{
           borderBottom: '1px solid var(--border)',
           backgroundColor: 'var(--primary)',
-          padding: '14px 0',
+          padding: '15px 0',
           overflow: 'hidden',
           whiteSpace: 'nowrap',
         }}
@@ -374,23 +346,36 @@ export default function Home() {
         <div
           style={{
             display: 'inline-flex',
-            gap: '48px',
-            animation: 'marquee 30s linear infinite',
+            gap: '56px',
+            animation: 'marquee 32s linear infinite',
           }}
         >
           {Array(3).fill(null).map((_, i) =>
-            ['People', 'Projects', 'Solutions', 'Neighborhoods', 'Ecosystem', 'Community', 'Regeneration', 'Movement'].map((word) => (
+            ['People', 'Projects', 'Solutions', 'Neighborhoods', 'Ecosystem', 'Community', 'Regeneration', 'Land', 'Alliance'].map((word) => (
               <span
                 key={`${i}-${word}`}
                 style={{
-                  fontSize: '12px',
-                  fontWeight: '700',
-                  letterSpacing: '0.12em',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  letterSpacing: '0.14em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.7)',
+                  color: 'rgba(255,255,255,0.55)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '56px',
                 }}
               >
-                {word} <span style={{ color: 'var(--yellow)', marginLeft: '-32px' }}>·</span>
+                {word}
+                <span
+                  style={{
+                    display: 'inline-block',
+                    width: '5px',
+                    height: '5px',
+                    borderRadius: '50%',
+                    backgroundColor: 'var(--yellow)',
+                    marginLeft: '-48px',
+                  }}
+                />
               </span>
             ))
           )}
@@ -404,90 +389,99 @@ export default function Home() {
       </div>
 
       {/* ════════════════════════════════
-          WHY / HOW / WHAT — editorial
+          WHY / HOW / WHAT
       ════════════════════════════════ */}
       <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div style={wrap}>
-          {/* Full-width heading */}
+          {/* Full-width serif heading */}
           <h2
             style={{
-              fontSize: 'clamp(48px, 6vw, 80px)',
-              fontWeight: '800',
-              lineHeight: '0.95',
-              letterSpacing: '-0.03em',
+              fontSize: 'clamp(40px, 5.5vw, 72px)',
+              fontWeight: '400',
+              lineHeight: '1.1',
               color: 'var(--text)',
-              marginBottom: '64px',
-              maxWidth: '900px',
+              marginBottom: '72px',
+              maxWidth: '820px',
+              letterSpacing: '-0.01em',
             }}
           >
-            Re-developing society through regenerative neighborhoods.
+            Re-developing society through regenerative neighborhoods — for people and planet.
           </h2>
 
-          {/* Three columns */}
+          {/* Three columns with dashed borders */}
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '1px',
-              backgroundColor: 'var(--border)',
+              gap: '0',
             }}
           >
             {[
               {
                 tag: 'Why',
-                color: 'var(--pink)',
-                heading: 'Improve life for humanity while caring for our planet.',
-                body: 'We focus on meeting core human needs — air, water, food, shelter, energy, connection, and self-actualization — through regenerative systems with net positive impact.',
+                dot: 'var(--pink)',
+                heading: 'Improve life for humanity while healing our planet.',
+                body: 'We focus on meeting core human needs — air, water, food, shelter, energy, connection, and self-actualization — through regenerative circular systems with net positive impact.',
               },
               {
                 tag: 'How',
-                color: 'var(--yellow)',
-                heading: 'Real estate + intentional community + self-sustaining economy.',
-                body: 'Regenerative Neighborhoods are real estate developments built around resilient resource systems, intentional community lifestyle practices, and circular economies.',
+                dot: 'var(--yellow)',
+                heading: 'Real estate, intentional community, circular economy.',
+                body: 'Regenerative Neighborhoods are real estate developments built around resilient resource systems, intentional community practices, and self-sustaining local economies.',
               },
               {
                 tag: 'What',
-                color: 'var(--blue-deep)',
+                dot: 'var(--blue)',
                 heading: 'A platform, a global alliance, and real-world projects.',
-                body: 'We build the digital tools, forge the alliances, and develop the projects — starting with micro-communities in Mexico and Costa Rica and expanding globally.',
+                body: 'We build digital tools, forge international alliances, and develop land projects — starting with micro-communities in Mexico and Costa Rica, expanding globally.',
               },
-            ].map((card) => (
+            ].map((card, i) => (
               <div
                 key={card.tag}
                 style={{
-                  backgroundColor: 'var(--bg)',
-                  padding: '40px 36px',
+                  padding: '40px 40px',
+                  borderTop: '1.5px dashed var(--border-dashed)',
+                  borderRight: i < 2 ? '1.5px dashed var(--border-dashed)' : 'none',
+                  borderLeft: 'none',
+                  borderBottom: 'none',
                 }}
               >
                 <div
                   style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    backgroundColor: card.color,
-                    marginBottom: '24px',
-                  }}
-                />
-                <p
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: '700',
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    color: 'var(--text-muted)',
-                    marginBottom: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    marginBottom: '28px',
                   }}
                 >
-                  {card.tag}
-                </p>
+                  <div
+                    style={{
+                      width: '10px',
+                      height: '10px',
+                      borderRadius: '50%',
+                      backgroundColor: card.dot,
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '11px',
+                      fontWeight: '600',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-muted)',
+                    }}
+                  >
+                    {card.tag}
+                  </p>
+                </div>
                 <h3
                   style={{
                     fontSize: '20px',
-                    fontWeight: '700',
-                    lineHeight: '1.2',
-                    letterSpacing: '-0.01em',
+                    fontWeight: '400',
+                    lineHeight: '1.3',
                     color: 'var(--text)',
                     marginBottom: '16px',
+                    fontFamily: 'var(--font-lora), Georgia, serif',
                   }}
                 >
                   {card.heading}
@@ -496,7 +490,7 @@ export default function Home() {
                   style={{
                     fontSize: '14px',
                     color: 'var(--text-muted)',
-                    lineHeight: '1.65',
+                    lineHeight: '1.7',
                   }}
                 >
                   {card.body}
@@ -514,7 +508,6 @@ export default function Home() {
         style={{
           backgroundColor: 'var(--primary)',
           padding: '120px 0',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
         }}
       >
         <div style={wrap}>
@@ -522,7 +515,7 @@ export default function Home() {
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: '80px',
+              gap: '100px',
               alignItems: 'start',
             }}
           >
@@ -531,23 +524,23 @@ export default function Home() {
               <p
                 style={{
                   fontSize: '11px',
-                  fontWeight: '700',
-                  letterSpacing: '0.14em',
+                  fontWeight: '600',
+                  letterSpacing: '0.16em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.45)',
-                  marginBottom: '24px',
+                  color: 'rgba(255,255,255,0.4)',
+                  marginBottom: '28px',
                 }}
               >
                 The Platform
               </p>
               <h2
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 64px)',
-                  fontWeight: '800',
-                  lineHeight: '0.95',
-                  letterSpacing: '-0.03em',
+                  fontSize: 'clamp(40px, 5vw, 66px)',
+                  fontWeight: '400',
+                  lineHeight: '1.05',
                   color: 'white',
                   marginBottom: '32px',
+                  letterSpacing: '-0.01em',
                 }}
               >
                 Tribes<br />Platform
@@ -555,50 +548,79 @@ export default function Home() {
               <p
                 style={{
                   fontSize: '16px',
-                  color: 'rgba(255,255,255,0.55)',
-                  lineHeight: '1.65',
-                  marginBottom: '40px',
-                  maxWidth: '380px',
+                  color: 'rgba(255,255,255,0.5)',
+                  lineHeight: '1.7',
+                  marginBottom: '44px',
+                  maxWidth: '360px',
                 }}
               >
                 The people, neighborhoods &amp; solutions of the Regenerative Neighborhood
-                Movement — all in one place.
+                Movement — all in one digital ecosystem.
               </p>
-              <SquareBtn
+
+              {/* Shape trio decoration */}
+              <div style={{ display: 'flex', gap: '12px', alignItems: 'center', marginBottom: '44px' }}>
+                <Circle size={28} color="rgba(245,220,122,0.7)" />
+                <Triangle size={26} color="rgba(168,217,176,0.7)" />
+                <Square size={22} color="rgba(162,200,232,0.7)" />
+              </div>
+
+              <a
                 href="https://tribesplatform.app"
-                external
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  letterSpacing: '0.02em',
+                  color: 'white',
+                  textDecoration: 'none',
+                  border: '1.5px solid rgba(255,255,255,0.5)',
+                  borderRadius: '9999px',
+                  padding: '12px 28px',
+                }}
               >
-                <span style={{ color: 'white' }}>Visit tribesplatform.app</span>
-              </SquareBtn>
+                Visit tribesplatform.app
+                <svg viewBox="0 0 16 16" fill="none" width="13" height="13">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
             </div>
 
-            {/* Right — three pillars stacked */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', backgroundColor: 'rgba(255,255,255,0.1)' }}>
+            {/* Right — three pillars with dashed borders */}
+            <div>
               {[
                 {
                   num: '01',
-                  title: 'Global Network',
                   sub: 'The Movement',
+                  title: 'Global Network',
                   desc: 'Connect with community creators, service providers, and resource holders building RNs worldwide.',
+                  dot: 'var(--green)',
                 },
                 {
                   num: '02',
-                  title: 'Education & Tools',
                   sub: 'The Catalyzer',
+                  title: 'Education & Tools',
                   desc: 'Access the 11-step Alchemy Guide, resource database, Agent Program vocational training, and assessment rubrics.',
+                  dot: 'var(--yellow)',
                 },
                 {
                   num: '03',
-                  title: 'Direct Support',
                   sub: 'RT Agency',
-                  desc: 'Hands-on consulting from our core team, or self-guided tools to plan and build your own RN.',
+                  title: 'Direct Support',
+                  desc: 'Hands-on consulting from our core team, or self-guided tools to plan and build your own Regenerative Neighborhood.',
+                  dot: 'var(--pink)',
                 },
-              ].map((p) => (
+              ].map((p, i) => (
                 <div
                   key={p.num}
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    padding: '28px 32px',
+                    padding: '32px 0',
+                    borderTop: i === 0 ? '1.5px dashed rgba(255,255,255,0.15)' : 'none',
+                    borderBottom: '1.5px dashed rgba(255,255,255,0.15)',
                     display: 'flex',
                     gap: '20px',
                     alignItems: 'flex-start',
@@ -607,43 +629,55 @@ export default function Home() {
                   <span
                     style={{
                       fontSize: '11px',
-                      fontWeight: '700',
-                      color: 'rgba(255,255,255,0.3)',
-                      letterSpacing: '0.08em',
-                      marginTop: '3px',
+                      fontWeight: '600',
+                      color: 'rgba(255,255,255,0.25)',
+                      letterSpacing: '0.06em',
+                      marginTop: '4px',
                       flexShrink: 0,
+                      width: '24px',
                     }}
                   >
                     {p.num}
                   </span>
                   <div>
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        fontWeight: '700',
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: 'var(--yellow)',
-                        marginBottom: '4px',
-                      }}
-                    >
-                      {p.sub}
-                    </p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '6px' }}>
+                      <span
+                        style={{
+                          width: '7px',
+                          height: '7px',
+                          borderRadius: '50%',
+                          backgroundColor: p.dot,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <p
+                        style={{
+                          fontSize: '10px',
+                          fontWeight: '600',
+                          letterSpacing: '0.14em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(255,255,255,0.4)',
+                        }}
+                      >
+                        {p.sub}
+                      </p>
+                    </div>
                     <h3
                       style={{
-                        fontSize: '17px',
-                        fontWeight: '700',
+                        fontSize: '18px',
+                        fontWeight: '400',
                         color: 'white',
-                        marginBottom: '8px',
+                        marginBottom: '10px',
+                        fontFamily: 'var(--font-lora), Georgia, serif',
                       }}
                     >
                       {p.title}
                     </h3>
                     <p
                       style={{
-                        fontSize: '13px',
-                        color: 'rgba(255,255,255,0.5)',
-                        lineHeight: '1.55',
+                        fontSize: '14px',
+                        color: 'rgba(255,255,255,0.45)',
+                        lineHeight: '1.6',
                       }}
                     >
                       {p.desc}
@@ -664,7 +698,7 @@ export default function Home() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 2fr',
+              gridTemplateColumns: '280px 1fr',
               gap: '80px',
               alignItems: 'start',
             }}
@@ -674,12 +708,12 @@ export default function Home() {
               <Label>The Journey</Label>
               <h2
                 style={{
-                  fontSize: 'clamp(40px, 4vw, 56px)',
-                  fontWeight: '800',
-                  lineHeight: '0.95',
-                  letterSpacing: '-0.03em',
+                  fontSize: 'clamp(44px, 4vw, 60px)',
+                  fontWeight: '400',
+                  lineHeight: '1.1',
                   color: 'var(--text)',
                   marginBottom: '24px',
+                  letterSpacing: '-0.01em',
                 }}
               >
                 2021<br />→<br />2100
@@ -688,19 +722,19 @@ export default function Home() {
                 style={{
                   fontSize: '14px',
                   color: 'var(--text-muted)',
-                  lineHeight: '1.6',
-                  marginBottom: '32px',
-                  maxWidth: '240px',
+                  lineHeight: '1.65',
+                  marginBottom: '40px',
+                  maxWidth: '220px',
                 }}
               >
                 From a Tulum incubator house to a planet of regenerative neighborhoods.
               </p>
 
-              {/* Decorative shapes */}
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                <Circle size={40} color="var(--yellow)" />
-                <Circle size={28} color="var(--pink)" />
-                <Rect w={28} h={28} color="var(--blue)" />
+              {/* Shape trio */}
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-end' }}>
+                <Circle size={36} color="var(--yellow)" />
+                <Triangle size={36} color="var(--green)" />
+                <Square size={30} color="var(--blue)" />
               </div>
             </div>
 
@@ -713,22 +747,22 @@ export default function Home() {
                     key={item.year}
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: '72px 1fr',
-                      gap: '24px',
-                      paddingBottom: '40px',
-                      marginBottom: '0',
-                      borderBottom: i < timeline.length - 1 ? '1px solid var(--border)' : 'none',
-                      paddingTop: i > 0 ? '40px' : '0',
-                      opacity: isFuture ? 0.45 : 1,
+                      gridTemplateColumns: '80px 1fr',
+                      gap: '28px',
+                      paddingBottom: '44px',
+                      borderBottom: i < timeline.length - 1 ? '1.5px dashed var(--border-dashed)' : 'none',
+                      paddingTop: i > 0 ? '44px' : '0',
+                      opacity: isFuture ? 0.4 : 1,
                     }}
                   >
                     <div>
                       <span
                         style={{
-                          fontSize: '13px',
-                          fontWeight: '700',
+                          fontSize: '14px',
+                          fontWeight: '600',
                           color: isFuture ? 'var(--text-muted)' : 'var(--blue-deep)',
-                          letterSpacing: '0.02em',
+                          letterSpacing: '0.01em',
+                          fontFamily: 'var(--font-open-sans), sans-serif',
                         }}
                       >
                         {item.year}
@@ -738,10 +772,11 @@ export default function Home() {
                       <h3
                         style={{
                           fontSize: '18px',
-                          fontWeight: '700',
-                          letterSpacing: '-0.01em',
+                          fontWeight: '400',
+                          lineHeight: '1.3',
                           color: 'var(--text)',
-                          marginBottom: '8px',
+                          marginBottom: '10px',
+                          fontFamily: 'var(--font-lora), Georgia, serif',
                         }}
                       >
                         {item.title}
@@ -750,7 +785,7 @@ export default function Home() {
                         style={{
                           fontSize: '14px',
                           color: 'var(--text-muted)',
-                          lineHeight: '1.6',
+                          lineHeight: '1.65',
                         }}
                       >
                         {item.desc}
@@ -783,81 +818,96 @@ export default function Home() {
               <Label>Active Collaborations</Label>
               <h2
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 64px)',
-                  fontWeight: '800',
-                  lineHeight: '0.95',
-                  letterSpacing: '-0.03em',
+                  fontSize: 'clamp(36px, 5vw, 62px)',
+                  fontWeight: '400',
+                  lineHeight: '1.05',
                   color: 'var(--text)',
+                  letterSpacing: '-0.01em',
                 }}
               >
                 Projects<br />in Motion
               </h2>
             </div>
-            <SquareBtn href="/projects">See All Projects</SquareBtn>
+            <PillBtn href="/projects">See All Projects</PillBtn>
           </div>
 
+          {/* Dashed border project cards */}
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1px',
-              backgroundColor: 'var(--border)',
+              gap: '0',
             }}
           >
             {projects.map((p, i) => (
               <div
                 key={p.name}
-                style={{ backgroundColor: 'var(--bg)' }}
+                style={{
+                  borderTop: '1.5px dashed var(--border-dashed)',
+                  borderRight: i < projects.length - 1 ? '1.5px dashed var(--border-dashed)' : 'none',
+                  borderBottom: '1.5px dashed var(--border-dashed)',
+                  borderLeft: 'none',
+                  padding: '32px 28px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0',
+                }}
               >
-                {/* Color block top */}
-                <div
-                  style={{
-                    height: '180px',
-                    backgroundColor: p.color,
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
-                >
-                  {/* Decorative shape inside */}
+                {/* Top: colored shape accent */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
                   <div
                     style={{
-                      position: 'absolute',
-                      bottom: '-20px',
-                      right: '-20px',
-                      width: '100px',
-                      height: '100px',
-                      borderRadius: i % 2 === 0 ? '50%' : '0',
-                      backgroundColor: 'rgba(0,0,0,0.07)',
+                      width: '10px',
+                      height: '10px',
+                      borderRadius: '50%',
+                      backgroundColor: p.dot,
                     }}
                   />
-                </div>
-                <div style={{ padding: '24px' }}>
                   <span
                     style={{
                       fontSize: '10px',
-                      fontWeight: '700',
-                      letterSpacing: '0.1em',
+                      fontWeight: '600',
+                      letterSpacing: '0.12em',
                       textTransform: 'uppercase',
                       color: 'var(--text-muted)',
-                      display: 'block',
-                      marginBottom: '8px',
                     }}
                   >
                     {p.tag}
                   </span>
-                  <h3
-                    style={{
-                      fontSize: '17px',
-                      fontWeight: '700',
-                      color: 'var(--text)',
-                      letterSpacing: '-0.01em',
-                      marginBottom: '4px',
-                    }}
-                  >
-                    {p.name}
-                  </h3>
-                  <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>{p.loc}</p>
                 </div>
+
+                <h3
+                  style={{
+                    fontSize: '19px',
+                    fontWeight: '400',
+                    color: 'var(--text)',
+                    marginBottom: '6px',
+                    fontFamily: 'var(--font-lora), Georgia, serif',
+                    lineHeight: '1.2',
+                  }}
+                >
+                  {p.name}
+                </h3>
+                <p
+                  style={{
+                    fontSize: '12px',
+                    color: 'var(--text-muted)',
+                    marginBottom: '16px',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {p.loc}
+                </p>
+                <p
+                  style={{
+                    fontSize: '13px',
+                    color: 'var(--text-muted)',
+                    lineHeight: '1.6',
+                    flexGrow: 1,
+                  }}
+                >
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -865,121 +915,129 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════
-          JOIN THE MOVEMENT — statement
+          JOIN — centered editorial statement
       ════════════════════════════════ */}
-      <section style={{ padding: '140px 0' }}>
-        <div style={wrap}>
-          {/* Big statement */}
-          <div
+      <section style={{ padding: '140px 0', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        {/* Background shapes */}
+        <Circle
+          size={140}
+          color="var(--yellow)"
+          style={{ position: 'absolute', top: '-40px', right: '5%', opacity: 0.35 }}
+        />
+        <Triangle
+          size={100}
+          color="var(--green)"
+          style={{ position: 'absolute', bottom: '-20px', left: '4%', opacity: 0.3 }}
+        />
+        <Square
+          size={64}
+          color="var(--pink)"
+          style={{ position: 'absolute', bottom: '60px', right: '15%', opacity: 0.35 }}
+        />
+        <Circle
+          size={44}
+          color="var(--blue)"
+          outline
+          style={{ position: 'absolute', top: '80px', left: '18%', opacity: 0.3 }}
+        />
+
+        <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
+          <Label>Get Involved</Label>
+
+          <h2
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              gap: '60px',
-              alignItems: 'end',
-              marginBottom: '80px',
+              fontSize: 'clamp(48px, 7vw, 96px)',
+              fontWeight: '400',
+              lineHeight: '1.05',
+              color: 'var(--text)',
+              marginBottom: '40px',
+              letterSpacing: '-0.02em',
+              maxWidth: '900px',
+              margin: '0 auto 40px',
             }}
           >
-            <div>
-              <Label>Get Involved</Label>
-              <h2
-                style={{
-                  fontSize: 'clamp(48px, 6.5vw, 96px)',
-                  fontWeight: '800',
-                  lineHeight: '0.92',
-                  letterSpacing: '-0.04em',
-                  color: 'var(--text)',
-                }}
-              >
-                Become part<br />
-                of the<br />
-                <span style={{ color: 'var(--blue-deep)' }}>regenerative</span><br />
-                future.
-              </h2>
-            </div>
+            Become part of<br />
+            the regenerative<br />
+            future.
+          </h2>
 
-            {/* Decorative cluster */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-                alignItems: 'flex-end',
-              }}
-            >
-              <Circle size={120} color="var(--yellow)" />
-              <Rect w={80} h={80} color="var(--pink)" />
-              <Circle size={56} color="var(--blue)" />
-            </div>
+          <p
+            style={{
+              fontSize: '18px',
+              color: 'var(--text-muted)',
+              lineHeight: '1.65',
+              maxWidth: '480px',
+              margin: '0 auto 48px',
+            }}
+          >
+            Whether you have land to develop, skills to contribute, or are simply
+            seeking community — there is a vital role for you in the Regen Tribe.
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              gap: '14px',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              marginBottom: '72px',
+            }}
+          >
+            <PillBtn href="/join" dark>Connect with Regen Tribe</PillBtn>
+            <PillBtn href="/about">Learn About Us</PillBtn>
           </div>
 
-          {/* Sub-copy + CTAs */}
+          {/* 4-way pill grid */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '80px',
-              alignItems: 'end',
-              paddingTop: '48px',
-              borderTop: '1px solid var(--border)',
+              display: 'inline-grid',
+              gridTemplateColumns: 'repeat(4, auto)',
+              gap: '10px',
             }}
           >
-            <p
-              style={{
-                fontSize: '18px',
-                color: 'var(--text-muted)',
-                lineHeight: '1.6',
-                maxWidth: '440px',
-              }}
-            >
-              Whether you&apos;re seeking community, have land to develop, skills to contribute,
-              or capital to invest — there&apos;s a vital role for you in the Regen Tribe.
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
-              <SquareBtn href="/join" dark>Join the Movement</SquareBtn>
-              <SquareBtn href="/about">Learn About Us</SquareBtn>
-
-              {/* 4-way grid */}
+            {[
+              { label: 'Explore', desc: 'Find RNs worldwide', dot: 'var(--green)' },
+              { label: 'Learn', desc: 'Guides & training', dot: 'var(--yellow)' },
+              { label: 'Connect', desc: 'Join the network', dot: 'var(--blue)' },
+              { label: 'Build', desc: 'Partner on land', dot: 'var(--pink)' },
+            ].map((item) => (
               <div
+                key={item.label}
                 style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1px',
-                  backgroundColor: 'var(--border)',
-                  marginTop: '12px',
-                  width: '100%',
+                  border: '1.5px dashed var(--border-dashed)',
+                  borderRadius: '9999px',
+                  padding: '14px 24px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '4px',
+                  minWidth: '130px',
                 }}
               >
-                {[
-                  { label: 'Explore', desc: 'Find RNs worldwide' },
-                  { label: 'Learn', desc: 'Guides & training' },
-                  { label: 'Connect', desc: 'Join the network' },
-                  { label: 'Build', desc: 'Partner on land' },
-                ].map((item) => (
-                  <div
-                    key={item.label}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                  <span
                     style={{
-                      backgroundColor: 'var(--bg)',
-                      padding: '16px 20px',
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '50%',
+                      backgroundColor: item.dot,
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: '600',
+                      color: 'var(--text)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
                     }}
                   >
-                    <p
-                      style={{
-                        fontSize: '13px',
-                        fontWeight: '700',
-                        color: 'var(--text)',
-                        marginBottom: '2px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                      }}
-                    >
-                      {item.label}
-                    </p>
-                    <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{item.desc}</p>
-                  </div>
-                ))}
+                    {item.label}
+                  </p>
+                </div>
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{item.desc}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
