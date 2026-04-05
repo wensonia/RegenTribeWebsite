@@ -29,48 +29,6 @@ export const metadata: Metadata = {
   },
 }
 
-/* ── Regen Tribe Logo Mark SVG ──
-   Matches the actual logo exactly:
-   - Tall isoceles triangle
-   - Square bottom-anchored at triangle base, top corners touching triangle sides
-   - Circle inscribed in square (touches all 4 sides)
-   - 4 dots in 2×2 grid inside circle
-   PNGs available at: public/images/logos/
-     logo-black-text.png  — black mark + wordmark (light backgrounds)
-     logo-black-mark.png  — black mark only (light backgrounds)
-     logo-white-mark.png  — white mark only (dark backgrounds)
-     logo-white-text.png  — white mark + wordmark (dark backgrounds)
-   ── */
-function LogoMark({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Tall isoceles triangle */}
-      <polygon
-        points="50,5 92,95 8,95"
-        stroke={color}
-        strokeWidth="3.5"
-        fill="none"
-        strokeLinejoin="miter"
-      />
-      {/* Square — bottom-anchored, top corners touching triangle sides */}
-      <rect x="29" y="53" width="42" height="42" stroke={color} strokeWidth="3" fill="none" />
-      {/* Circle — inscribed in square */}
-      <circle cx="50" cy="74" r="21" stroke={color} strokeWidth="2.5" fill="none" />
-      {/* 4 dots — 2×2 grid */}
-      <circle cx="43" cy="67" r="2.8" fill={color} />
-      <circle cx="57" cy="67" r="2.8" fill={color} />
-      <circle cx="43" cy="81" r="2.8" fill={color} />
-      <circle cx="57" cy="81" r="2.8" fill={color} />
-    </svg>
-  )
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -82,7 +40,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
 
-        {/* ── FOOTER ── */}
+        {/* FOOTER */}
         <footer
           style={{
             borderTop: '1px solid var(--border)',
@@ -108,41 +66,13 @@ export default function RootLayout({
             >
               {/* Brand */}
               <div>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  <LogoMark size={32} color="var(--primary)" />
-                  <div>
-                    <p
-                      style={{
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        color: 'var(--primary)',
-                        letterSpacing: '0.06em',
-                        textTransform: 'uppercase',
-                        lineHeight: '1',
-                      }}
-                    >
-                      Regen Tribe
-                    </p>
-                    <p
-                      style={{
-                        fontSize: '10px',
-                        fontWeight: '500',
-                        color: 'var(--text-muted)',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        marginTop: '3px',
-                      }}
-                    >
-                      RN Accelerator
-                    </p>
-                  </div>
+                <div style={{ marginBottom: '20px' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/logos/logo-black-text.png"
+                    alt="Regen Tribe"
+                    style={{ height: '36px', width: 'auto' }}
+                  />
                 </div>
                 <p
                   style={{
@@ -233,7 +163,7 @@ export default function RootLayout({
               }}
             >
               <p style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                © {new Date().getFullYear()} Regen Tribe. All rights reserved.
+                &copy; {new Date().getFullYear()} Regen Tribe. All rights reserved.
               </p>
               <div style={{ display: 'flex', gap: '24px' }}>
                 {['Privacy', 'Terms'].map((item) => (

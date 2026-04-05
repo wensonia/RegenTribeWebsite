@@ -3,41 +3,6 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-/* ── Regen Tribe Logo Mark ──
-   Matches the actual logo: tall isoceles triangle, square at the bottom
-   with the circle inscribed (touching all 4 sides), 4 dots in 2×2 grid.
-   PNGs saved at: public/images/logos/
-   ── */
-function LogoMark({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Tall isoceles triangle */}
-      <polygon
-        points="50,5 92,95 8,95"
-        stroke={color}
-        strokeWidth="3.5"
-        fill="none"
-        strokeLinejoin="miter"
-      />
-      {/* Square — bottom-anchored at triangle base, top corners touching triangle sides */}
-      <rect x="29" y="53" width="42" height="42" stroke={color} strokeWidth="3" fill="none" />
-      {/* Circle — inscribed in square (touches all 4 sides) */}
-      <circle cx="50" cy="74" r="21" stroke={color} strokeWidth="2.5" fill="none" />
-      {/* 4 dots — 2×2 grid inside circle */}
-      <circle cx="43" cy="67" r="2.8" fill={color} />
-      <circle cx="57" cy="67" r="2.8" fill={color} />
-      <circle cx="43" cy="81" r="2.8" fill={color} />
-      <circle cx="57" cy="81" r="2.8" fill={color} />
-    </svg>
-  )
-}
-
 const navLinks = [
   { label: 'Tribes Platform', href: '/tribes-platform', dot: 'var(--green)' },
   { label: 'Agency', href: '/agency', dot: 'var(--pink)' },
@@ -69,45 +34,14 @@ export default function Navbar() {
           justifyContent: 'space-between',
         }}
       >
-        {/* Logo — mark + wordmark */}
-        <Link
-          href="/"
-          style={{
-            textDecoration: 'none',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            color: 'var(--primary)',
-          }}
-        >
-          <LogoMark size={34} />
-          <div style={{ lineHeight: '1' }}>
-            <span
-              style={{
-                display: 'block',
-                fontSize: '13px',
-                fontWeight: '600',
-                color: 'var(--primary)',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Regen Tribe
-            </span>
-            <span
-              style={{
-                display: 'block',
-                fontSize: '10px',
-                fontWeight: '400',
-                color: 'var(--text-muted)',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                marginTop: '3px',
-              }}
-            >
-              RN Accelerator
-            </span>
-          </div>
+        {/* Logo — real PNG */}
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logos/logo-black-text.png"
+            alt="Regen Tribe"
+            style={{ height: '38px', width: 'auto' }}
+          />
         </Link>
 
         {/* Desktop nav — centered links with colored dots */}
