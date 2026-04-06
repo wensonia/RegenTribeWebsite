@@ -45,6 +45,34 @@ The website is the **marketing hub** — introduce the mission, explain the ecos
 - **Body font:** Open Sans via Google Fonts
 - **Style:** editorial, PSV-inspired — dashed borders, pill buttons, colored dots on nav links, ○△□ shapes as decorative elements
 
+## Animation — Framer Motion
+- Import: `import { motion } from 'framer-motion'`
+- **Scroll animations**: use `whileInView` + `viewport={{ once: true, margin: '-80px' }}`
+- **On-mount** (above the fold, e.g. hero): use `initial` + `animate`, NOT `whileInView`
+- **Standard variants** — always use these, do not invent new ones:
+  ```ts
+  const fadeUp = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] } },
+  }
+  const stagger = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } },
+  }
+  ```
+- **Hover/tap on buttons**: `whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}`
+- **Hover on nav links**: `whileHover={{ y: -1 }} transition={{ duration: 0.15 }}`
+- Keep it subtle — NO parallax, NO dramatic effects, NO page transitions
+- The ticker/marquee strip does NOT get Framer Motion (it has its own CSS animation)
+- Client components only — any file using Framer Motion needs `'use client'` at the top
+
+## Icons — Lucide React
+- Import: `import { ArrowRight, Menu, X } from 'lucide-react'`
+- Use `<ArrowRight size={14} />` for all button/link arrows — never hand-code SVG arrows
+- Use `<Menu size={20} />` and `<X size={20} />` for the mobile hamburger/close
+- Keep icon sizes consistent: 14px in buttons, 20px in nav/UI controls
+- Never use Lucide icons to represent the logo or brand mark
+
 ## Logo rules
 - ALWAYS use the real PNG logo files from `public/images/logos/`
   - `logo-black-text.png` — mark + wordmark, for light backgrounds

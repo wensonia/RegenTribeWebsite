@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Tribes Platform', href: '/tribes-platform', dot: 'var(--green)' },
@@ -34,7 +36,7 @@ export default function Navbar() {
           justifyContent: 'space-between',
         }}
       >
-        {/* Logo — real PNG */}
+        {/* Logo */}
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -44,75 +46,65 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop nav — centered links with colored dots */}
-        <div
-          className="desktop-nav"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '36px',
-          }}
-        >
+        {/* Desktop nav */}
+        <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '7px',
-                fontSize: '13px',
-                fontWeight: '500',
-                color: 'var(--text-muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.01em',
-              }}
-            >
-              <span
+            <motion.div key={link.href} whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
+              <Link
+                href={link.href}
                 style={{
-                  width: '7px',
-                  height: '7px',
-                  borderRadius: '50%',
-                  backgroundColor: link.dot,
-                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '7px',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  color: 'var(--text-muted)',
+                  textDecoration: 'none',
+                  letterSpacing: '0.01em',
                 }}
-              />
-              {link.label}
-            </Link>
+              >
+                <span
+                  style={{
+                    width: '7px',
+                    height: '7px',
+                    borderRadius: '50%',
+                    backgroundColor: link.dot,
+                    flexShrink: 0,
+                  }}
+                />
+                {link.label}
+              </Link>
+            </motion.div>
           ))}
         </div>
 
-        {/* CTA — pill button */}
-        <Link
-          href="/join"
+        {/* CTA */}
+        <motion.div
           className="desktop-cta"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontSize: '13px',
-            fontWeight: '600',
-            letterSpacing: '0.03em',
-            color: 'var(--primary)',
-            textDecoration: 'none',
-            border: '1.5px solid var(--primary)',
-            borderRadius: '9999px',
-            padding: '9px 22px',
-          }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.15 }}
         >
-          Join the Movement
-          <span
+          <Link
+            href="/join"
             style={{
-              display: 'inline-block',
-              width: '16px',
-              height: '16px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '13px',
+              fontWeight: '600',
+              letterSpacing: '0.03em',
+              color: 'var(--primary)',
+              textDecoration: 'none',
+              border: '1.5px solid var(--primary)',
+              borderRadius: '9999px',
+              padding: '9px 22px',
             }}
           >
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-        </Link>
+            Join the Movement
+            <ArrowRight size={14} />
+          </Link>
+        </motion.div>
 
         {/* Mobile hamburger */}
         <button
@@ -127,21 +119,16 @@ export default function Navbar() {
             color: 'var(--text)',
           }}
         >
-          {open ? (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          ) : (
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          )}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {open && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
           style={{
             backgroundColor: 'var(--bg)',
             borderTop: '1px solid var(--border)',
@@ -196,8 +183,9 @@ export default function Navbar() {
             }}
           >
             Join the Movement
+            <ArrowRight size={14} />
           </Link>
-        </div>
+        </motion.div>
       )}
 
       <style>{`
