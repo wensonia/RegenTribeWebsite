@@ -16,7 +16,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'var(--bg)' }}>
       <nav style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
         {/* Logo */}

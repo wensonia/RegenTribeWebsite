@@ -11,7 +11,7 @@ const wrap: React.CSSProperties = { maxWidth: W, margin: '0 auto', padding: `0 $
 /* ── Animation ── */
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
 }
 const stagger = {
   hidden: {},
@@ -19,7 +19,7 @@ const stagger = {
 }
 const vp = { once: true, margin: '-80px' as const }
 
-/* ── Text link CTA — editorial style ── */
+/* ── Text link CTA ── */
 function TextLink({
   href, children, light, external,
 }: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
@@ -27,12 +27,13 @@ function TextLink({
     display: 'inline-flex',
     alignItems: 'center',
     gap: '8px',
-    fontSize: '18px',
+    fontSize: '17px',
     fontWeight: '400',
     color: light ? 'white' : 'var(--text)',
     textDecoration: 'none',
+    letterSpacing: '0.01em',
   }
-  const inner = <>{children}<ArrowRight size={16} strokeWidth={1.5} /></>
+  const inner = <>{children}<ArrowRight size={14} strokeWidth={1.5} /></>
   if (external) {
     return (
       <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style}
@@ -48,7 +49,7 @@ function TextLink({
   )
 }
 
-/* ── Pill button — primary CTA only ── */
+/* ── Pill button ── */
 function PillBtn({
   href, children, light, external,
 }: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
@@ -87,10 +88,10 @@ function PillBtn({
 function Label({ children, light }: { children: React.ReactNode; light?: boolean }) {
   return (
     <p style={{
-      fontSize: '12px', fontWeight: '500', letterSpacing: '0.14em',
+      fontSize: '11px', fontWeight: '600', letterSpacing: '0.14em',
       textTransform: 'uppercase',
-      color: light ? 'rgba(255,255,255,0.5)' : 'var(--text-muted)',
-      marginBottom: '32px',
+      color: light ? 'rgba(255,255,255,0.45)' : 'var(--text-muted)',
+      marginBottom: '28px',
     }}>
       {children}
     </p>
@@ -104,7 +105,7 @@ const timeline = [
   { year: '2023', title: 'Building the Ecosystem', desc: 'Vitalia Longevity Startup City. First Agent Program. Tribes v1. Community Lab 1 in Ixchel, Mexico. D.pact Istanbul, Free Cities Conference.' },
   { year: '2024', title: 'On-Site at Communities', desc: 'Active at WildSeeds, Community Lab X, and Network School Pop-up City. AI-powered co-living tools developed in Malaysia.' },
   { year: '2025', title: 'Digital Tools & Alliance', desc: 'Launching AI integrations and digital tools. Regenerative Neighborhood Alliance kick-off. First permanent Regen Tribe location at Aldea Kuyabeh.' },
-  { year: '2030', title: 'Kuyabeh Collective Spaces', desc: '10-flower Regenerative Neighborhood at Kuyabeh completes its collective spaces, establishing a vibrant hub near Tulum.' },
+  { year: '2030', title: 'Kuyabeh Collective Spaces', desc: '10-flower regenerative neighborhood at Kuyabeh completes its collective spaces, establishing a vibrant hub near Tulum.' },
   { year: '2040', title: 'Dozens of Regenerative Neighborhoods Globally', desc: 'Kuyabeh, The Ark, Alpaca, Wild Seeds, and key European & Asian sites reach 5% of global population.' },
   { year: '2100', title: 'Regenerative Neighborhoods Everywhere', desc: 'A global network of 53M+ communities. 80% of the world population with access to a regenerative neighborhood.' },
 ]
@@ -116,59 +117,139 @@ const projects = [
   { name: 'Community Lab X', loc: 'Tulum, Mexico', tag: 'Incubator Hub', dot: 'var(--yellow-deep)', desc: 'Transforming a retreat center into a thriving community hub with activated sustainable systems and programs.' },
 ]
 
+/* ── Hero visual panels ── */
+const heroPanels = [
+  { color: 'var(--green)', label: 'Tribes Platform', symbol: '○' },
+  { color: 'var(--pink)', label: 'Agency', symbol: '△' },
+  { color: 'var(--yellow)', label: 'Education', symbol: '□' },
+  { color: 'var(--blue)', label: 'Community', symbol: '○' },
+]
+
 /* ── Page ── */
 export default function Home() {
   return (
     <>
       {/* ════════════════════════════════
-          HERO — left-aligned, massive type
+          HERO — two-column, massive type
       ════════════════════════════════ */}
-      <section style={{ padding: '80px 0 100px', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.div variants={fadeUp}>
-              <Label>Regenerative Neighborhood Accelerator</Label>
+      <section style={{ padding: '80px 0 96px', minHeight: '88vh', display: 'flex', alignItems: 'center' }}>
+        <div style={{ ...wrap, width: '100%' }}>
+          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 0.72fr', gap: '64px', alignItems: 'center' }}>
+
+            {/* Left: text */}
+            <motion.div initial="hidden" animate="visible" variants={stagger}>
+              <motion.div variants={fadeUp}>
+                <Label>Regenerative Neighborhood Accelerator</Label>
+              </motion.div>
+
+              <motion.h1
+                variants={fadeUp}
+                style={{
+                  fontSize: 'clamp(64px, 8.5vw, 120px)',
+                  fontWeight: '400',
+                  lineHeight: '0.92',
+                  letterSpacing: '-0.03em',
+                  color: 'var(--text)',
+                  marginBottom: '56px',
+                }}
+              >
+                Create, grow &amp; find your community.
+              </motion.h1>
+
+              <motion.div
+                variants={fadeUp}
+                style={{
+                  borderTop: '1px solid var(--border)',
+                  paddingTop: '40px',
+                  display: 'flex',
+                  gap: '48px',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <TextLink href="/join">Join the Movement</TextLink>
+                <TextLink href="https://tribesplatform.app" external>Explore Tribes Platform</TextLink>
+              </motion.div>
             </motion.div>
 
-            <motion.h1
-              variants={fadeUp}
-              style={{
-                fontSize: 'clamp(64px, 9vw, 128px)',
-                fontWeight: '400',
-                lineHeight: '0.92',
-                letterSpacing: '-0.03em',
-                color: 'var(--text)',
-                marginBottom: '64px',
-                maxWidth: '960px',
-              }}
-            >
-              Create, grow &amp; find your community.
-            </motion.h1>
-
+            {/* Right: color panel grid */}
             <motion.div
-              variants={fadeUp}
-              style={{
-                borderTop: '1px solid var(--border)',
-                paddingTop: '40px',
-                display: 'flex',
-                gap: '48px',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-              }}
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="hero-panels"
+              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}
             >
-              <TextLink href="/join">Join the Movement</TextLink>
-              <TextLink href="https://tribesplatform.app" external>Explore Tribes Platform</TextLink>
+              {heroPanels.map((panel) => (
+                <motion.div
+                  key={panel.label}
+                  variants={fadeUp}
+                  style={{
+                    backgroundColor: panel.color,
+                    borderRadius: '6px',
+                    padding: '28px 24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    aspectRatio: '1 / 1',
+                  }}
+                >
+                  <span style={{
+                    fontSize: '44px',
+                    lineHeight: 1,
+                    color: 'var(--text)',
+                    opacity: 0.45,
+                    fontFamily: 'var(--font-lora), Georgia, serif',
+                    fontWeight: '400',
+                  }}>
+                    {panel.symbol}
+                  </span>
+                  <span style={{
+                    fontSize: '11px',
+                    fontWeight: '700',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--text)',
+                  }}>
+                    {panel.label}
+                  </span>
+                </motion.div>
+              ))}
             </motion.div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════
+          TICKER STRIP
+      ════════════════════════════════ */}
+      <div style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', overflow: 'hidden', padding: '16px 0' }}>
+        <div className="ticker-track" style={{ display: 'flex', gap: '64px', width: 'max-content' }}>
+          {[...Array(3)].flatMap(() => [
+            'Tribes Platform', '○', 'Regen Tribe Agency', '△', 'Education', '□',
+            'Regenerative Neighborhoods', '○', 'Global Movement', '△', 'Circular Economy', '□',
+          ]).map((item, i) => (
+            <span key={i} style={{
+              fontSize: '13px',
+              fontWeight: item.length === 1 ? '400' : '500',
+              letterSpacing: item.length === 1 ? '0' : '0.1em',
+              textTransform: 'uppercase',
+              color: item.length === 1 ? 'var(--text-muted)' : 'var(--text)',
+              whiteSpace: 'nowrap',
+            }}>
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* ════════════════════════════════
           ABOUT — 2-column editorial
       ════════════════════════════════ */}
       <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+          <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
 
             {/* Left: big heading */}
             <motion.h2
@@ -196,7 +277,7 @@ export default function Home() {
             >
               <motion.p
                 variants={fadeUp}
-                style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '48px' }}
+                style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '48px' }}
               >
                 We focus on meeting core human needs — air, water, food, shelter, energy, connection — through regenerative circular systems with net positive impact on people and planet.
               </motion.p>
@@ -294,16 +375,17 @@ export default function Home() {
                   paddingLeft: i > 0 ? '32px' : '0',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: p.dot }} />
-                  <span style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)' }}>
+                {/* Color bar */}
+                <div style={{ width: '32px', height: '3px', backgroundColor: p.dot, marginBottom: '24px', borderRadius: '2px' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                  <span style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.5 }}>
                     {p.tag}
                   </span>
                 </div>
                 <h3 style={{
                   fontSize: 'clamp(20px, 2vw, 28px)',
                   fontWeight: '400',
-                  lineHeight: '1.2',
+                  lineHeight: '1.15',
                   letterSpacing: '-0.01em',
                   color: 'var(--text)',
                   marginBottom: '8px',
@@ -311,10 +393,10 @@ export default function Home() {
                 }}>
                   {p.name}
                 </h3>
-                <p style={{ fontSize: '13px', color: 'var(--text)', opacity: 0.5, marginBottom: '16px', letterSpacing: '0.02em' }}>
+                <p style={{ fontSize: '13px', color: 'var(--text)', opacity: 0.45, marginBottom: '20px', letterSpacing: '0.02em' }}>
                   {p.loc}
                 </p>
-                <p style={{ fontSize: '15px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.6', opacity: 0.75 }}>
+                <p style={{ fontSize: '15px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.65', opacity: 0.7 }}>
                   {p.desc}
                 </p>
               </motion.div>
@@ -328,7 +410,7 @@ export default function Home() {
       ════════════════════════════════ */}
       <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
         <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'start' }}>
+          <div className="platform-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'start' }}>
 
             {/* Left */}
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
@@ -350,7 +432,7 @@ export default function Home() {
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                style={{ fontSize: '20px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.6', marginBottom: '48px', maxWidth: '380px' }}
+                style={{ fontSize: '20px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '48px', maxWidth: '380px' }}
               >
                 The people, neighborhoods &amp; solutions of the Regenerative Neighborhood
                 Movement — all in one digital ecosystem.
@@ -365,7 +447,7 @@ export default function Home() {
               {[
                 { num: '01', sub: 'The Movement', title: 'Global Network', desc: 'Connect with community creators, service providers, and resource holders building regenerative neighborhoods worldwide.', dot: 'var(--green)' },
                 { num: '02', sub: 'The Catalyzer', title: 'Education & Tools', desc: 'Access the 11-step Alchemy Guide, resource database, Agent Program vocational training, and assessment rubrics.', dot: 'var(--yellow)' },
-                { num: '03', sub: 'Regen Tribe Agency', title: 'Direct Support', desc: 'Hands-on consulting from our core team, or self-guided tools to plan and build your own Regenerative Neighborhood.', dot: 'var(--pink)' },
+                { num: '03', sub: 'Regen Tribe Agency', title: 'Direct Support', desc: 'Hands-on consulting from our core team, or self-guided tools to plan and build your own regenerative neighborhood.', dot: 'var(--pink)' },
               ].map((p, i) => (
                 <motion.div
                   key={p.num}
@@ -391,7 +473,7 @@ export default function Home() {
                     <h3 style={{ fontSize: '20px', fontWeight: '400', color: 'white', marginBottom: '10px', fontFamily: 'var(--font-lora), Georgia, serif' }}>
                       {p.title}
                     </h3>
-                    <p style={{ fontSize: '15px', fontWeight: '300', color: 'rgba(255,255,255,0.45)', lineHeight: '1.6' }}>
+                    <p style={{ fontSize: '15px', fontWeight: '300', color: 'rgba(255,255,255,0.45)', lineHeight: '1.65' }}>
                       {p.desc}
                     </p>
                   </div>
@@ -407,7 +489,7 @@ export default function Home() {
       ════════════════════════════════ */}
       <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div style={wrap}>
-          <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
+          <div className="timeline-grid" style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
 
             {/* Sticky left */}
             <motion.div
@@ -524,7 +606,7 @@ export default function Home() {
 
             <motion.p
               variants={fadeUp}
-              style={{ fontSize: '20px', fontWeight: '300', color: 'var(--text)', opacity: 0.7, lineHeight: '1.6', maxWidth: '520px', marginBottom: '56px' }}
+              style={{ fontSize: '20px', fontWeight: '300', color: 'var(--text)', opacity: 0.7, lineHeight: '1.65', maxWidth: '520px', marginBottom: '56px' }}
             >
               Whether you have land to develop, skills to contribute, or are simply
               seeking community — there is a vital role for you in Regen Tribe.
@@ -540,6 +622,23 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <style>{`
+        .ticker-track {
+          animation: ticker 32s linear infinite;
+        }
+        @keyframes ticker {
+          from { transform: translateX(0); }
+          to { transform: translateX(-33.33%); }
+        }
+        @media (max-width: 900px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-panels { display: none !important; }
+          .about-grid { grid-template-columns: 1fr !important; }
+          .platform-grid { grid-template-columns: 1fr !important; }
+          .timeline-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   )
 }

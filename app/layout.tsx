@@ -100,10 +100,15 @@ export default function RootLayout({
                 >
                   Platform
                 </p>
-                {['Tribes Platform', 'Agency', 'Education', 'About Us'].map((item) => (
+                {[
+                  { label: 'Tribes Platform', href: '/tribes-platform' },
+                  { label: 'Agency', href: '/agency' },
+                  { label: 'Education', href: '/education' },
+                  { label: 'About Us', href: '/about' },
+                ].map((item) => (
                   <a
-                    key={item}
-                    href="#"
+                    key={item.label}
+                    href={item.href}
                     style={{
                       display: 'block',
                       fontSize: '15px',
@@ -113,7 +118,7 @@ export default function RootLayout({
                       marginBottom: '14px',
                     }}
                   >
-                    {item}
+                    {item.label}
                   </a>
                 ))}
               </div>
