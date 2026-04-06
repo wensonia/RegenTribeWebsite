@@ -22,6 +22,7 @@ The website is the **marketing hub** — introduce the mission, explain the ecos
 
 ## Language rules
 - NEVER abbreviate "Regenerative Neighborhoods" as "RN" — always write it in full
+- NEVER abbreviate "Regen Tribe" as "RT" — always write "Regen Tribe" in full unless Sonia specifies otherwise
 - The accelerator is called "Regen Tribe" (not "Regenerative Tribe")
 - The platform is "Tribes Platform" (not "Tribe Platform")
 
