@@ -282,33 +282,40 @@ export default function Home() {
                 We focus on meeting core human needs — air, water, food, shelter, energy, connection — through regenerative circular systems with net positive impact on people and planet.
               </motion.p>
 
-              {[
-                { tag: 'Why', dot: 'var(--pink)', text: 'Improve life for humanity while healing our planet.' },
-                { tag: 'How', dot: 'var(--yellow-deep)', text: 'Real estate, intentional community, circular economy.' },
-                { tag: 'What', dot: 'var(--blue)', text: 'A platform, a global alliance, and real-world projects.' },
-              ].map((item) => (
-                <motion.div
-                  key={item.tag}
-                  variants={fadeUp}
-                  style={{
-                    borderTop: '1px solid var(--border)',
-                    padding: '20px 0',
-                    display: 'flex',
-                    gap: '16px',
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: item.dot, marginTop: '8px', flexShrink: 0 }} />
-                  <div>
-                    <span style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
-                      {item.tag}
-                    </span>
-                    <p style={{ fontSize: '17px', fontWeight: '400', color: 'var(--text)', lineHeight: '1.4', fontFamily: 'var(--font-lora), Georgia, serif' }}>
+              <motion.div
+                variants={fadeUp}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr 1fr',
+                  borderTop: '1px solid var(--border)',
+                  marginBottom: '40px',
+                }}
+              >
+                {[
+                  { tag: 'Why', dot: 'var(--pink)', text: 'Improve life for humanity while healing our planet.' },
+                  { tag: 'How', dot: 'var(--yellow-deep)', text: 'Real estate, intentional community, circular economy.' },
+                  { tag: 'What', dot: 'var(--blue)', text: 'A platform, a global alliance, and real-world projects.' },
+                ].map((item, i) => (
+                  <div
+                    key={item.tag}
+                    style={{
+                      padding: '24px 20px 24px 0',
+                      borderRight: i < 2 ? '1px solid var(--border)' : 'none',
+                      paddingLeft: i > 0 ? '20px' : '0',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                      <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: item.dot, flexShrink: 0 }} />
+                      <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                        {item.tag}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: '15px', fontWeight: '400', color: 'var(--text)', lineHeight: '1.5', fontFamily: 'var(--font-lora), Georgia, serif' }}>
                       {item.text}
                     </p>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </motion.div>
 
               <motion.div variants={fadeUp} style={{ borderTop: '1px solid var(--border)', paddingTop: '32px', marginTop: '8px' }}>
                 <TextLink href="/about">About Regen Tribe</TextLink>
