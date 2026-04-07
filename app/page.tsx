@@ -142,8 +142,7 @@ export default function Home() {
                 <Label>Regenerative Neighborhood Accelerator</Label>
               </motion.div>
 
-              <motion.h1
-                variants={fadeUp}
+              <h1
                 style={{
                   fontSize: 'clamp(64px, 8.5vw, 120px)',
                   fontWeight: '400',
@@ -153,8 +152,19 @@ export default function Home() {
                   marginBottom: '56px',
                 }}
               >
-                Create, grow &amp; find your community.
-              </motion.h1>
+                {['Create,', 'grow', '&', 'find', 'your', 'community.'].map((word, i) => (
+                  <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
+                    <motion.span
+                      initial={{ y: '110%' }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 + i * 0.07 }}
+                      style={{ display: 'inline-block' }}
+                    >
+                      {word === '&' ? '\u0026' : word}
+                    </motion.span>
+                  </span>
+                ))}
+              </h1>
 
               <motion.div
                 variants={fadeUp}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Lora, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const lora = Lora({
   subsets: ['latin'],
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lora.variable} ${openSans.variable}`}>
       <body>
+        <SmoothScroll>
         <Navbar />
         <main>{children}</main>
 
@@ -184,6 +186,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        </SmoothScroll>
       </body>
     </html>
   )
