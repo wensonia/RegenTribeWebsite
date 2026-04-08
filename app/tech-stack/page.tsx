@@ -198,7 +198,7 @@ export default function TechStack() {
       {/* ════════════════════════════════
           HERO
       ════════════════════════════════ */}
-      <section style={{ padding: '56px 0 64px', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <section className="ts-hero-section" style={{ padding: '56px 0 64px', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ ...wrap, width: '100%' }}>
           <div className="ts-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 0.72fr', gap: '64px', alignItems: 'center' }}>
 
@@ -639,7 +639,7 @@ export default function TechStack() {
                     paddingRight: col < 3 ? '28px' : '0',
                     opacity: isBuilding ? 1 : 0.5,
                   }}>
-                    <div style={{
+                    <div className="ts-module-header" style={{
                       display: 'flex', justifyContent: 'space-between',
                       alignItems: 'flex-start', marginBottom: '16px',
                     }}>
@@ -707,7 +707,7 @@ export default function TechStack() {
               </div>
 
               {/* Right: people-type cards */}
-              <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
+              <motion.div variants={stagger} className="ts-collective-types" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
                 {[
                   { dot: 'var(--green)',  title: 'Vision Holders',     desc: 'Landowners and developers turning land into living communities.' },
                   { dot: 'var(--blue)',   title: 'Community Members',   desc: 'People seeking and building regenerative lives day to day.' },
@@ -751,7 +751,7 @@ export default function TechStack() {
       {/* ════════════════════════════════
           CTA — green full-bleed
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--green)', padding: '140px 0' }}>
+      <section className="ts-cta-section" style={{ backgroundColor: 'var(--green)', padding: '140px 0' }}>
         <div style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label dark>Get Involved</Label></motion.div>
@@ -800,27 +800,81 @@ export default function TechStack() {
           to   { transform: translateX(-33.33%); }
         }
 
+        /* ── TABLET (max 900px) ── */
         @media (max-width: 900px) {
-          .ts-hero-grid     { grid-template-columns: 1fr !important; }
+          /* Grids → single column */
+          .ts-hero-grid     { grid-template-columns: 1fr !important; gap: 40px !important; }
           .ts-hero-panels   { display: none !important; }
-          .ts-two-col       { grid-template-columns: 1fr !important; }
-          .ts-tribes-header { grid-template-columns: 1fr !important; }
-          .ts-modules-grid  { grid-template-columns: 1fr 1fr !important; }
+          .ts-two-col       { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .ts-tribes-header { grid-template-columns: 1fr !important; gap: 40px !important; }
           .ts-tools-grid    { grid-template-columns: 1fr !important; }
-          .ts-pillars-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .ts-pillars-grid > div { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; border-bottom: 1px solid rgba(237,237,237,0.1) !important; padding-bottom: 40px !important; }
-          .ts-pillars-grid > div:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
-          .ts-tools-grid > div {
+          .ts-pillars-grid  { grid-template-columns: 1fr !important; gap: 0 !important; }
+          .ts-collective-types { grid-template-columns: 1fr !important; }
+
+          /* Modules → 2 col but with stacked header to prevent clipping */
+          .ts-modules-grid  { grid-template-columns: 1fr 1fr !important; }
+          .ts-module-header { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; }
+
+          /* Pillars */
+          .ts-pillars-grid > div {
             border-right: none !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
+            padding-left: 0 !important; padding-right: 0 !important;
             border-bottom: 1px solid rgba(237,237,237,0.1) !important;
-            padding-bottom: 48px !important;
+            padding-top: 32px !important; padding-bottom: 32px !important;
           }
-          .ts-tools-grid > div:last-child {
-            border-bottom: none !important;
-            padding-bottom: 0 !important;
+          .ts-pillars-grid > div:first-child { padding-top: 0 !important; }
+          .ts-pillars-grid > div:last-child  { border-bottom: none !important; padding-bottom: 0 !important; }
+
+          /* Tools cards */
+          .ts-tools-grid > div {
+            border-right: none !important; border-bottom: 1px solid rgba(237,237,237,0.1) !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+            padding-top: 0 !important; padding-bottom: 48px !important;
           }
+          .ts-tools-grid > div:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
+
+          /* Collective people types */
+          .ts-collective-types > div {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(237,237,237,0.1) !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+          }
+          .ts-collective-types > div:last-child { border-bottom: none !important; }
+        }
+
+        /* ── MOBILE (max 600px) ── */
+        @media (max-width: 600px) {
+          /* Side padding: 40px → 20px */
+          .ts-hero-grid,
+          .ts-two-col,
+          .ts-tools-grid,
+          .ts-pillars-grid,
+          .ts-tribes-header,
+          .ts-modules-grid,
+          .ts-collective-types { padding-left: 0 !important; padding-right: 0 !important; }
+
+          /* Wrap containers — override inline padding */
+          section > div, .ts-card-wrap { padding-left: 20px !important; padding-right: 20px !important; }
+
+          /* Section vertical padding */
+          section { padding-top: 64px !important; padding-bottom: 64px !important; }
+
+          /* Hero: shorter, tighter */
+          .ts-hero-section { padding-top: 40px !important; padding-bottom: 48px !important; min-height: auto !important; }
+
+          /* Modules → 1 column on small phones */
+          .ts-modules-grid { grid-template-columns: 1fr !important; }
+          .ts-modules-grid > div {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(237,237,237,0.1) !important;
+            padding-left: 0 !important; padding-right: 0 !important;
+            padding-top: 24px !important; padding-bottom: 24px !important;
+          }
+          .ts-modules-grid > div:first-child { padding-top: 0 !important; }
+          .ts-modules-grid > div:last-child  { border-bottom: none !important; padding-bottom: 0 !important; }
+
+          /* CTA section */
+          .ts-cta-section { padding-top: 80px !important; padding-bottom: 80px !important; }
         }
       `}</style>
 
