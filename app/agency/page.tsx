@@ -103,6 +103,7 @@ type Project = {
   description?: string
   services?: string[]
   website?: string
+  instagram?: string
 }
 
 const primaryProjects: Project[] = [
@@ -122,6 +123,7 @@ const primaryProjects: Project[] = [
       'Business model development for hospitality, events, kitchen, and community enterprises',
     ],
     website: 'https://www.regentribe.org/comlabx',
+    instagram: 'https://www.instagram.com/yura.tulum/',
   },
   {
     name: 'Ekumal',
@@ -138,6 +140,7 @@ const primaryProjects: Project[] = [
       'Project management',
     ],
     website: 'https://www.ekumal.com/',
+    instagram: 'https://www.instagram.com/ekumal_retreat_center/',
   },
   {
     name: 'Kuyabeh',
@@ -164,6 +167,7 @@ const primaryProjects: Project[] = [
       'Event hosting support',
     ],
     website: 'https://www.wildseedsranch.com/',
+    instagram: 'https://www.instagram.com/wildseedsranch',
   },
   {
     name: 'Ixchel',
@@ -189,6 +193,7 @@ const primaryProjects: Project[] = [
       'Coliving systems',
     ],
     website: 'https://www.alpacaplayhouse.com',
+    instagram: 'https://www.instagram.com/alpaca.playhouse/',
   },
   {
     name: 'Moos Space',
@@ -1148,11 +1153,21 @@ export default function Agency() {
                   </ul>
                 </>
               )}
-              {selectedProject.website && (
-                <a href={selectedProject.website} target="_blank" rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', textDecoration: 'none', borderBottom: '1.5px solid var(--text)', paddingBottom: '2px' }}>
-                  Visit {selectedProject.name} <ArrowRight size={12} />
-                </a>
+              {(selectedProject.website || selectedProject.instagram) && (
+                <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+                  {selectedProject.website && (
+                    <a href={selectedProject.website} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', textDecoration: 'none', borderBottom: '1.5px solid var(--text)', paddingBottom: '2px' }}>
+                      Website <ArrowRight size={12} />
+                    </a>
+                  )}
+                  {selectedProject.instagram && (
+                    <a href={selectedProject.instagram} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--pink)', textDecoration: 'none', borderBottom: '1.5px solid var(--pink)', paddingBottom: '2px' }}>
+                      Instagram <ArrowRight size={12} />
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </motion.div>
