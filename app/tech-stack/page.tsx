@@ -127,12 +127,12 @@ const tools = [
     dot:      'var(--pink)',
     symbol:   '○',
     name:     'Regen Neighborhood Framework',
-    tagline:  'Community Development Playbook',
+    tagline:  'Neighborhood Development Playbook',
     desc:     'A comprehensive open playbook for designing, funding, and building regenerative micro-communities. Synthesizes the Community Alchemy Guide, the 5-Spiral development model, and field insights from Regen Tribe\'s global call series into a unified map for neighborhood builders worldwide.',
     skills:   [],
     status:   'In Development',
-    builders:     '',
-    contributors: '',
+    builders:     'Regen Tribe',
+    contributors: 'collective',
     github:   'https://github.com/regentribes/regen-neighborhood-framework',
     repo:     'regen-neighborhood-framework',
   },
@@ -290,11 +290,8 @@ export default function TechStack() {
       ════════════════════════════════ */}
       <div style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, overflow: 'hidden', padding: '16px 0' }}>
         <div className="ticker-track" style={{ display: 'flex', gap: '64px', width: 'max-content' }}>
-          {[...Array(3)].flatMap(() => [
-            'Open Source', '○', 'Community Built', '△', 'Regen Tribe', '□',
-            'Regenerative Neighborhoods', '○', 'RN Framework', '△', 'Knowledge Graph', '□',
-            'Genesis', '○', 'Regen Vision', '△', 'Mythogen AME', '□',
-            'Tribes Platform', '○', 'Open to Collaborators', '△', 'Affinity Mapping', '□',
+          {[...Array(6)].flatMap(() => [
+            'People', '○', 'Neighborhoods', '△', 'Resources', '□',
           ]).map((item, i) => (
             <span key={i} style={{
               fontSize: '13px',
@@ -805,7 +802,7 @@ export default function TechStack() {
       {/* ── Responsive + Ticker CSS ── */}
       <style>{`
         .ticker-track {
-          animation: ticker 36s linear infinite;
+          animation: ticker 70s linear infinite;
         }
         @keyframes ticker {
           from { transform: translateX(0); }
