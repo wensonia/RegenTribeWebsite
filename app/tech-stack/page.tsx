@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
@@ -202,6 +203,65 @@ const modules = [
 ]
 
 /* ─────────────────────────────────────────
+   Flip card — hero definition widget
+───────────────────────────────────────── */
+function FlipCard({ top, left }: { top: string; left: string }) {
+  const [flipped, setFlipped] = useState(false)
+  return (
+    <motion.div
+      onHoverStart={() => setFlipped(true)}
+      onHoverEnd={() => setFlipped(false)}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 1, scale: 1, y: [0, -16, 0] }}
+      transition={{
+        opacity: { duration: 0.6, delay: 0.5 },
+        scale:   { duration: 0.6, delay: 0.5 },
+        y:       { duration: 5.3, delay: 0.6, repeat: Infinity, ease: 'easeInOut' },
+      }}
+      style={{ position: 'absolute', top, left, perspective: '900px', cursor: 'pointer', zIndex: 2 }}
+    >
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
+        style={{ width: 158, height: 158, position: 'relative', transformStyle: 'preserve-3d' }}
+      >
+        {/* Front */}
+        <div style={{
+          position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+          backgroundColor: 'var(--yellow)',
+          display: 'flex', flexDirection: 'column', alignItems: 'center',
+          justifyContent: 'center', padding: '18px', textAlign: 'center', gap: '10px',
+        }}>
+          <span style={{ fontSize: '22px', lineHeight: 1 }}>○</span>
+          <p style={{ fontSize: '12px', fontWeight: '700', color: BG, lineHeight: 1.45 }}>
+            What is a regenerative neighborhood?
+          </p>
+        </div>
+        {/* Back */}
+        <div style={{
+          position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+          transform: 'rotateY(180deg)',
+          backgroundColor: 'var(--yellow)',
+          display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          padding: '16px', overflow: 'hidden',
+        }}>
+          <p style={{
+            fontSize: '9px', fontWeight: '800', letterSpacing: '0.12em',
+            textTransform: 'uppercase', color: BG, marginBottom: '8px',
+          }}>
+            /noun/
+          </p>
+          <p style={{ fontSize: '10.5px', fontWeight: '500', color: BG, lineHeight: 1.5 }}>
+            Wellness real estate with resilient systems for water, food, shelter, energy,
+            waste management, nature & human connection.
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+/* ─────────────────────────────────────────
    Page
 ───────────────────────────────────────── */
 export default function TechStack() {
@@ -254,40 +314,40 @@ export default function TechStack() {
             </motion.div>
 
             {/* Right: floating shape installation */}
-            <div className="ts-hero-panels" style={{ position: 'relative', height: '440px' }}>
+            <div className="ts-hero-panels" style={{ position: 'relative', height: '460px' }}>
+
+              {/* Flip card — definition widget */}
+              <FlipCard top="27%" left="28%" />
+
+              {/* Regular floating shapes (110px) */}
               {([
-                { shape: 'circle',   color: 'var(--green)',  top: '4%',  left: '6%',  dur: 5.2, delay: 0,    rot: 0  },
-                { shape: 'triangle', color: 'var(--blue)',   top: '2%',  left: '58%', dur: 6.0, delay: 0.7,  rot: 8  },
-                { shape: 'square',   color: 'var(--pink)',   top: '33%', left: '29%', dur: 4.6, delay: 0.3,  rot: -6 },
-                { shape: 'circle',   color: 'var(--yellow)', top: '60%', left: '3%',  dur: 5.8, delay: 1.1,  rot: 0  },
-                { shape: 'triangle', color: 'var(--green)',  top: '74%', left: '31%', dur: 4.2, delay: 0.9,  rot: -8 },
-                { shape: 'square',   color: 'var(--blue)',   top: '57%', left: '61%', dur: 6.4, delay: 0.5,  rot: 6  },
+                { shape: 'circle',   color: 'var(--green)',  top: '5%',  left: '5%',  dur: 5.2, delay: 0,    rot: 0  },
+                { shape: 'triangle', color: 'var(--blue)',   top: '3%',  left: '60%', dur: 6.0, delay: 0.7,  rot: 8  },
+                { shape: 'circle',   color: 'var(--pink)',   top: '64%', left: '2%',  dur: 5.8, delay: 1.1,  rot: 0  },
+                { shape: 'triangle', color: 'var(--green)',  top: '72%', left: '33%', dur: 4.2, delay: 0.9,  rot: -8 },
+                { shape: 'square',   color: 'var(--blue)',   top: '57%', left: '62%', dur: 6.4, delay: 0.5,  rot: 6  },
               ] as { shape: string; color: string; top: string; left: string; dur: number; delay: number; rot: number }[]).map((s, i) => (
                 <motion.div
                   key={i}
-                  style={{ position: 'absolute', top: s.top, left: s.left, cursor: 'default' }}
+                  style={{ position: 'absolute', top: s.top, left: s.left }}
                   initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{
-                    opacity: 1, scale: 1,
-                    y: [0, -20, 0],
-                    rotate: [0, s.rot, 0],
-                  }}
+                  animate={{ opacity: 1, scale: 1, y: [0, -20, 0], rotate: [0, s.rot, 0] }}
                   transition={{
                     opacity: { duration: 0.6, delay: 0.2 + i * 0.1 },
                     scale:   { duration: 0.6, delay: 0.2 + i * 0.1 },
                     y:       { duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
                     rotate:  { duration: s.dur * 1.3, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
                   }}
-                  whileHover={{ scale: 1.14, transition: { duration: 0.2 } }}
+                  whileHover={{ scale: 1.12, transition: { duration: 0.2 } }}
                 >
                   {s.shape === 'circle' && (
-                    <div style={{ width: 88, height: 88, borderRadius: '50%', backgroundColor: s.color }} />
+                    <div style={{ width: 110, height: 110, borderRadius: '50%', backgroundColor: s.color }} />
                   )}
                   {s.shape === 'square' && (
-                    <div style={{ width: 88, height: 88, backgroundColor: s.color }} />
+                    <div style={{ width: 110, height: 110, backgroundColor: s.color }} />
                   )}
                   {s.shape === 'triangle' && (
-                    <svg width={88} height={88} viewBox="0 0 100 100" overflow="visible">
+                    <svg width={110} height={110} viewBox="0 0 100 100" overflow="visible">
                       <polygon points="50,6 97,91 3,91" fill={s.color} />
                     </svg>
                   )}
