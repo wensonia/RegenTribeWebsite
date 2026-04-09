@@ -94,14 +94,114 @@ function OutlinePill({
 }
 
 /* ── Data ── */
-const primaryProjects = [
-  { name: 'Community Lab X', loc: 'Tulum, Mexico', img: '/images/agency/portfolio/community-lab-x.png', highlight: true },
-  { name: 'Ekumal', loc: 'Akumal, Mexico', img: '/images/agency/portfolio/ekumal.png' },
-  { name: 'Kuyabeh', loc: 'Tulum, Mexico', img: '/images/agency/portfolio/kuyabeh.png' },
-  { name: 'WildSeeds Ranch', loc: 'California, USA', img: '/images/agency/portfolio/wildseeds-ranch.png' },
-  { name: 'Ixchel', loc: 'Tulum, Mexico', img: '/images/agency/portfolio/ixchel.png' },
-  { name: 'Alpaca Playhouse', loc: 'Austin, TX, USA', img: '/images/agency/portfolio/alpaca-playhouse.jpg' },
-  { name: 'Moos Space', loc: 'Berlin, Germany', img: '/images/agency/portfolio/moos-space.png' },
+type Project = {
+  name: string
+  loc: string
+  img: string
+  highlight?: boolean
+  tagline?: string
+  description?: string
+  services?: string[]
+  website?: string
+}
+
+const primaryProjects: Project[] = [
+  {
+    name: 'Community Lab X',
+    loc: 'Tulum, Mexico',
+    img: '/images/agency/portfolio/community-lab-x.png',
+    highlight: true,
+    tagline: 'Live-in community and retreat space',
+    description: 'A Regen Tribe direct project — Community Lab X served as a living laboratory for regenerative neighbourhood design, operations, and community activation.',
+    services: [
+      'Infrastructure and community design',
+      'Operations management',
+      'Volunteer programs',
+      'Event programming',
+      'Sustainable systems — waste management, fruit garden, manufactured wetland',
+      'Business model development for hospitality, events, kitchen, and community enterprises',
+    ],
+    website: 'https://www.regentribe.org/comlabx',
+  },
+  {
+    name: 'Ekumal',
+    loc: 'Akumal, Mexico',
+    img: '/images/agency/portfolio/ekumal.png',
+    tagline: 'Live-in community, environmental impact hub and retreat center',
+    description: 'We supported Ekumal from its community launch through a significant infrastructure expansion, embedding regenerative systems at every stage.',
+    services: [
+      'Community launch and operations management',
+      'Volunteer program setup',
+      'Sustainable systems — organic waste, vertical garden',
+      'Managed €150k expansion — housing, solar, water systems',
+      'Branding, social media, and events marketing',
+      'Project management',
+    ],
+    website: 'https://www.ekumal.com/',
+  },
+  {
+    name: 'Kuyabeh',
+    loc: 'Tulum, Mexico',
+    img: '/images/agency/portfolio/kuyabeh.png',
+    tagline: 'Regenerative neighbourhood project',
+    description: 'We worked with the Kuyabeh team to shape their regenerative neighbourhood vision and support early-stage planning and community strategy.',
+    services: [
+      'Neighbourhood planning support',
+      'Community strategy',
+      'Regenerative systems guidance',
+    ],
+  },
+  {
+    name: 'WildSeeds Ranch',
+    loc: 'California, USA',
+    img: '/images/agency/portfolio/wildseeds-ranch.png',
+    tagline: 'Conscious coliving ranch for creatives and entrepreneurs',
+    description: 'Regen Tribe supported WildSeeds Ranch in building its operational foundation and community programming infrastructure.',
+    services: [
+      'Project planning',
+      'Internal systems setup',
+      'Roles and responsibilities definition',
+      'Event hosting support',
+    ],
+    website: 'https://www.wildseedsranch.com/',
+  },
+  {
+    name: 'Ixchel',
+    loc: 'Tulum, Mexico',
+    img: '/images/agency/portfolio/ixchel.png',
+    tagline: 'Regenerative community in the jungle',
+    description: 'We supported Ixchel in developing their community vision and regenerative operations framework.',
+    services: [
+      'Community design consultation',
+      'Regenerative systems planning',
+      'Operations strategy',
+    ],
+  },
+  {
+    name: 'Alpaca Playhouse',
+    loc: 'Austin, TX, USA',
+    img: '/images/agency/portfolio/alpaca-playhouse.jpg',
+    tagline: 'Coliving and event ranch',
+    description: 'Regen Tribe partnered with Alpaca Playhouse as a sister community, bringing our community operations knowledge to this coliving and event space.',
+    services: [
+      'Community operations support',
+      'Programming and events',
+      'Coliving systems',
+    ],
+    website: 'https://www.alpacaplayhouse.com',
+  },
+  {
+    name: 'Moos Space',
+    loc: 'Berlin, Germany',
+    img: '/images/agency/portfolio/moos-space.png',
+    tagline: 'Urban regenerative coworking and coliving',
+    description: 'We supported Moos Space in amplifying their reach and connecting them to the global regenerative neighbourhood network.',
+    services: [
+      'Network introduction and visibility',
+      'Marketing support',
+      'Community connection to the Regen Tribe ecosystem',
+    ],
+  },
 ]
 
 const secondaryProjects = [
@@ -158,6 +258,7 @@ export default function Agency() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [interests, setInterests] = useState<string[]>([])
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   function toggleInterest(val: string) {
     setInterests(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val])
@@ -486,9 +587,11 @@ export default function Agency() {
                   {p.name}
                 </p>
                 <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '10px' }}>{p.loc}</p>
-                <a href="#" style={{ fontSize: '12px', fontWeight: '500', color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <button
+                  onClick={() => setSelectedProject(p)}
+                  style={{ fontSize: '12px', fontWeight: '600', color: 'var(--text)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, letterSpacing: '0.04em' }}>
                   + Read More
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -972,6 +1075,76 @@ export default function Agency() {
           .portfolio-grid-sm { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
+
+      {/* ── Project detail modal ── */}
+      {selectedProject && (
+        <div
+          onClick={() => setSelectedProject(null)}
+          style={{ position: 'fixed', inset: 0, zIndex: 200, backgroundColor: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            onClick={(e) => e.stopPropagation()}
+            style={{ backgroundColor: '#ededed', borderRadius: '8px', maxWidth: '640px', width: '100%', maxHeight: '85vh', overflowY: 'auto', position: 'relative' }}>
+            {/* Image */}
+            {selectedProject.img && (
+              <div style={{ width: '100%', aspectRatio: '16 / 7', overflow: 'hidden', borderRadius: '8px 8px 0 0' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={selectedProject.img} alt={selectedProject.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+            )}
+            <div style={{ padding: '40px 44px 48px' }}>
+              {/* Close */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                style={{ position: 'absolute', top: '16px', right: '20px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '22px', color: selectedProject.img ? 'white' : 'var(--text)', lineHeight: 1, fontWeight: '300' }}>
+                ✕
+              </button>
+              {selectedProject.highlight && (
+                <span style={{ display: 'inline-block', backgroundColor: 'var(--green)', borderRadius: '9999px', padding: '3px 12px', fontSize: '10px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '16px' }}>
+                  Regen Tribe Direct Project
+                </span>
+              )}
+              <h3 style={{ fontSize: '28px', fontWeight: '400', letterSpacing: '-0.02em', fontFamily: 'var(--font-lora), Georgia, serif', color: 'var(--text)', marginBottom: '4px' }}>
+                {selectedProject.name}
+              </h3>
+              <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '20px' }}>{selectedProject.loc}</p>
+              {selectedProject.tagline && (
+                <p style={{ fontSize: '15px', fontStyle: 'italic', color: 'var(--text)', marginBottom: '16px', fontFamily: 'var(--font-lora), Georgia, serif' }}>
+                  {selectedProject.tagline}
+                </p>
+              )}
+              {selectedProject.description && (
+                <p style={{ fontSize: '15px', lineHeight: '1.7', color: 'var(--text)', marginBottom: '28px' }}>
+                  {selectedProject.description}
+                </p>
+              )}
+              {selectedProject.services && selectedProject.services.length > 0 && (
+                <>
+                  <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '12px' }}>
+                    How we worked together
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {selectedProject.services.map((s) => (
+                      <li key={s} style={{ fontSize: '14px', color: 'var(--text)', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                        <span style={{ color: 'var(--green-deep)', fontWeight: '700', flexShrink: 0 }}>—</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {selectedProject.website && (
+                <a href={selectedProject.website} target="_blank" rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--text)', textDecoration: 'none', borderBottom: '1.5px solid var(--text)', paddingBottom: '2px' }}>
+                  Visit {selectedProject.name} <ArrowRight size={12} />
+                </a>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </>
   )
 }
