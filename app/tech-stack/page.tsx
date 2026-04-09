@@ -206,16 +206,16 @@ function FlipCard({ flipped }: { flipped: boolean }) {
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number] }}
-        style={{ width: 158, height: 158, position: 'relative', transformStyle: 'preserve-3d' }}
+        style={{ width: 220, height: 220, position: 'relative', transformStyle: 'preserve-3d' }}
       >
         <div style={{
           position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
           backgroundColor: 'var(--yellow)',
           display: 'flex', flexDirection: 'column', alignItems: 'center',
-          justifyContent: 'center', padding: '18px', textAlign: 'center', gap: '10px',
+          justifyContent: 'center', padding: '24px', textAlign: 'center', gap: '12px',
         }}>
-          <span style={{ fontSize: '22px', lineHeight: 1, color: 'rgba(40,42,41,0.4)' }}>○</span>
-          <p style={{ fontSize: '11px', fontWeight: '600', lineHeight: 1.5, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(40,42,41,0.62)' }}>
+          <span style={{ fontSize: '26px', lineHeight: 1, color: 'rgba(40,42,41,0.35)' }}>○</span>
+          <p style={{ fontSize: '13px', fontWeight: '600', lineHeight: 1.5, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(40,42,41,0.65)' }}>
             What is a regenerative neighborhood?
           </p>
         </div>
@@ -223,10 +223,10 @@ function FlipCard({ flipped }: { flipped: boolean }) {
           position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
           transform: 'rotateY(180deg)', backgroundColor: 'var(--yellow)',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          padding: '16px', overflow: 'hidden',
+          padding: '22px', overflow: 'hidden',
         }}>
-          <p style={{ fontSize: '9px', fontWeight: '800', letterSpacing: '0.12em', textTransform: 'uppercase', color: BG, marginBottom: '8px' }}>/noun/</p>
-          <p style={{ fontSize: '10.5px', fontWeight: '500', color: BG, lineHeight: 1.5 }}>
+          <p style={{ fontSize: '10px', fontWeight: '800', letterSpacing: '0.14em', textTransform: 'uppercase', color: BG, marginBottom: '10px' }}>/noun/</p>
+          <p style={{ fontSize: '13px', fontWeight: '500', color: BG, lineHeight: 1.6 }}>
             Wellness real estate with resilient systems for water, food, shelter, energy,
             waste management, nature & human connection.
           </p>
@@ -304,38 +304,38 @@ function HeroScene() {
     ix: number; iy: number; sdx: number; sdy: number
     sscale: number; sopacity: number; floatCls: string
   }> = [
-    { id:'sq1', shape:'square',   color:'var(--green)',  size:112, ix:12,  iy:18,  sdx:112,  sdy:220, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
-    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:110, ix:300, iy:10,  sdx:-191, sdy:138, sscale:1.18, sopacity:1, floatCls:'hero-fl-b' },
-    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:90,  ix:12,  iy:258, sdx:-2,   sdy:-68, sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
-    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:80,  ix:298, iy:262, sdx:-13,  sdy:-27, sscale:0.55, sopacity:1, floatCls:'hero-fl-d' },
-    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:62,  ix:172, iy:18,  sdx:178,  sdy:217, sscale:0.71, sopacity:1, floatCls:'hero-fl-e' },
+    { id:'sq1', shape:'square',   color:'var(--green)',  size:112, ix:12,  iy:18,  sdx:112,  sdy:300, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
+    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:110, ix:300, iy:10,  sdx:-191, sdy:218, sscale:1.18, sopacity:1, floatCls:'hero-fl-b' },
+    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:90,  ix:12,  iy:258, sdx:-2,   sdy:12,  sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
+    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:80,  ix:298, iy:262, sdx:-13,  sdy:53,  sscale:0.55, sopacity:1, floatCls:'hero-fl-d' },
+    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:62,  ix:172, iy:18,  sdx:178,  sdy:297, sscale:0.71, sopacity:1, floatCls:'hero-fl-e' },
     { id:'tr2', shape:'triangle', color:'var(--green)',  size:70,  ix:188, iy:372, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
   ]
 
   // Scene-only details that fade in (tree trunk, house door, person bodies)
   const extras: Array<{ id: string; top: number; left: number; w: number; h: number; col: string; r: number; op: number }> = [
-    { id:'trunk', top:278, left:41,  w:20, h:65, col:'var(--green)',        r:2, op:0.82 },
-    { id:'door',  top:306, left:172, w:26, h:46, col:'rgba(40,42,41,0.45)', r:0, op:1    },
-    { id:'p1b',   top:277, left:291, w:24, h:64, col:'var(--pink)',          r:3, op:0.85 },
-    { id:'p2b',   top:277, left:357, w:24, h:64, col:'var(--blue)',          r:3, op:0.85 },
+    { id:'trunk', top:358, left:41,  w:20, h:65, col:'var(--green)',        r:2, op:0.82 },
+    { id:'door',  top:386, left:172, w:26, h:46, col:'rgba(40,42,41,0.45)', r:0, op:1    },
+    { id:'p1b',   top:357, left:291, w:24, h:64, col:'var(--pink)',          r:3, op:0.85 },
+    { id:'p2b',   top:357, left:357, w:24, h:64, col:'var(--blue)',          r:3, op:0.85 },
   ]
 
   return (
-    <div className="ts-hero-panels" style={{ position: 'relative', height: '480px' }}>
+    <div className="ts-hero-panels" style={{ position: 'relative', height: '530px' }}>
 
-      {/* Fixed hover zone — doesn't move, so no glitch when card animates away */}
+      {/* Fixed hover zone — sized to match 220px card */}
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ position: 'absolute', top: 108, left: 118, width: 184, height: 184, zIndex: 10, cursor: 'pointer' }}
+        style={{ position: 'absolute', top: 80, left: 90, width: 240, height: 240, zIndex: 10, cursor: 'pointer' }}
       />
 
-      {/* Flip card — pointer-events:none, hover captured by fixed zone above */}
+      {/* Flip card — stays in place (no scale-down) so definition is readable */}
       <motion.div
         initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, y: hovered ? -109 : 0, scale: hovered ? 0.72 : 1 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number], opacity: { duration: 0.6, delay: 0.5 } }}
-        style={{ position: 'absolute', top: 124, left: 134, zIndex: 5, pointerEvents: 'none' }}
+        style={{ position: 'absolute', top: 90, left: 100, zIndex: 5, pointerEvents: 'none' }}
       >
         <FlipCard flipped={hovered} />
       </motion.div>
