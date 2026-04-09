@@ -701,7 +701,7 @@ export default function TechStack() {
 
               {/* Left: heading + intro */}
               <div>
-                <motion.div variants={fadeUp}><Label>The Collective</Label></motion.div>
+                <motion.div variants={fadeUp}><Label>Who&apos;s Building It</Label></motion.div>
                 <motion.h2 variants={fadeUp} style={{
                   fontFamily: 'var(--font-lora), Georgia, serif',
                   fontSize: 'clamp(44px, 5.5vw, 88px)',
