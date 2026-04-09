@@ -13,7 +13,7 @@ const wrap: React.CSSProperties = { maxWidth: W, margin: '0 auto', padding: `0 $
 /* ─────────────────────────────────────────
    Dark palette (same accent tokens, dark bg)
 ───────────────────────────────────────── */
-const BG       = '#363636'
+const BG       = '#282a29'
 const BG_CARD  = '#2a2a2a'
 const TEXT      = '#ededed'
 const MUTED     = 'rgba(237,237,237,0.45)'
@@ -124,45 +124,6 @@ const heroPanels = [
 
 const tools = [
   {
-    dot:      'var(--green)',
-    symbol:   '○',
-    name:     'Genesis',
-    tagline:  'Community AI Agent',
-    desc:     'An AI agent living inside the RegenTribes Telegram. Guides vision holders through the Community Alchemy Playbook, captures ideas and turns them into development specs, answers knowledge queries using a live semantic knowledge graph, and archives community conversations for future retrieval.',
-    skills:   ['alchemy', 'dreamcatcher', 'genesis-brain', 'telegram-history', 'deep-research'],
-    status:   'Active',
-    builders:     'Ian Tarrea · Vitali',
-    contributors: 'collective',
-    github:   'https://github.com/regentribes/genesis-zero-bot',
-    repo:     'genesis-zero-bot',
-  },
-  {
-    dot:      'var(--blue)',
-    symbol:   '△',
-    name:     'Regen Knowledge Graph',
-    tagline:  'AI Brain & Semantic Layer',
-    desc:     'Transforms any document into a typed, traversable knowledge graph using LLM extraction, vector embeddings, and epistemic truth values. Powers Genesis\'s intelligence — ingesting community docs, extracting concepts and relationships, and enabling semantic search across the entire RegenTribes knowledge base.',
-    skills:   [],
-    status:   'Active',
-    builders:     'Ian Tarrea · Vitali',
-    contributors: 'collective',
-    github:   'https://github.com/regentribes/regen-knowledge-graph',
-    repo:     'regen-knowledge-graph',
-  },
-  {
-    dot:      'var(--yellow)',
-    symbol:   '□',
-    name:     'Regen Vision',
-    tagline:  '3D Knowledge Visualization',
-    desc:     'Interactive 3D force-directed graph visualizations of RegenTribes knowledge structures. Makes the invisible visible — surfacing the ideas, people, and connections that form the regenerative ecosystem as an explorable, living graph.',
-    skills:   [],
-    status:   'In Development',
-    builders:     '',
-    contributors: '',
-    github:   'https://github.com/regentribes/regen-vision',
-    repo:     'regen-vision',
-  },
-  {
     dot:      'var(--pink)',
     symbol:   '○',
     name:     'Regen Neighborhood Framework',
@@ -175,11 +136,63 @@ const tools = [
     github:   'https://github.com/regentribes/regen-neighborhood-framework',
     repo:     'regen-neighborhood-framework',
   },
+  {
+    dot:      'var(--blue)',
+    symbol:   '△',
+    name:     'Regen Knowledge Graph',
+    tagline:  'AI Brain & Semantic Layer',
+    desc:     'Visual representation of resources collected during the Regenerative Neighborhood Framework Design Labs. Transforms any document into a typed, traversable knowledge graph using LLM extraction, vector embeddings, and epistemic truth values — ingesting community docs, extracting concepts and relationships, and enabling semantic search across the entire RegenTribes knowledge base.',
+    skills:   [],
+    status:   'Active',
+    builders:     'Ian Tarrea · Vitali',
+    contributors: 'collective',
+    github:   'https://github.com/regentribes/regen-knowledge-graph',
+    repo:     'regen-knowledge-graph',
+  },
+  {
+    dot:      'var(--green)',
+    symbol:   '○',
+    name:     'Genesis',
+    tagline:  'Community AI Agent',
+    desc:     'An AI agent living inside the Regen Tribe Telegram. Guides vision holders through the Community Alchemy Guide, captures ideas and turns them into development specs, answers knowledge queries using a live semantic knowledge graph, and archives community conversations for future retrieval.',
+    skills:   ['alchemy', 'dreamcatcher', 'genesis-brain', 'telegram-history', 'deep-research'],
+    status:   'Active',
+    builders:     'Ian Tarrea · Vitali',
+    contributors: 'collective',
+    github:   'https://github.com/regentribes/genesis-zero-bot',
+    repo:     'genesis-zero-bot',
+  },
+  {
+    dot:      'var(--yellow)',
+    symbol:   '□',
+    name:     'Regen Vision',
+    tagline:  '3D Knowledge Visualization',
+    desc:     'Interactive 3D force-directed graph visualizations of RegenTribes knowledge structures. Makes the invisible visible — surfacing the ideas, people, and connections that form the regenerative ecosystem as an explorable, living graph.',
+    skills:   [],
+    status:   'In Development',
+    builders:     'Vitali',
+    contributors: '',
+    github:   'https://github.com/regentribes/regen-vision',
+    repo:     'regen-vision',
+  },
+  {
+    dot:      'var(--blue)',
+    symbol:   '△',
+    name:     'Mythogen AME',
+    tagline:  'Affinity Mapping Engine & Field of Trust',
+    desc:     'A TypeScript engine for community design — surfacing Living Seed Patterns, detecting Fields of Trust, and mapping relationships through a Tri-Layered System (BODY / FIELD / SEED). Makes the invisible dynamics of community legible and workable.',
+    skills:   [],
+    status:   'In Development',
+    builders:     'Vic D. · Vitali',
+    contributors: '',
+    github:   'https://github.com/regentribes/mythogen-ame',
+    repo:     'mythogen-ame',
+  },
 ]
 
 const modules = [
   { id: 'MyCo0', name: 'Myconet',             purpose: 'People networking & community matching',              status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo1', name: 'RN Catalyzer',        purpose: 'Guided neighborhood creation via Community Alchemy',  status: 'Building', color: 'var(--green)' },
+  { id: 'MyCo1', name: 'Educational Resources', purpose: 'Guided neighborhood creation via Community Alchemy Guide', status: 'Building', color: 'var(--green)' },
   { id: 'MyCo2', name: 'Resources',           purpose: 'Searchable community resource library',               status: 'Building', color: 'var(--green)' },
   { id: 'MyCo3', name: 'Alpacatron',          purpose: 'AI onboarding & digital agreement signing',           status: 'Building', color: 'var(--green)' },
   { id: 'MyCo4', name: 'Project Collab',      purpose: 'Project agreements & compensation tools',             status: 'Planned',  color: 'var(--blue)'  },
@@ -205,7 +218,7 @@ export default function TechStack() {
             {/* Left: text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp}>
-                <Label>Open Source · Community Built · Regen Tribe</Label>
+                <Label>Open Source · By the collective for the collective</Label>
               </motion.div>
 
               <h1 style={{
@@ -322,10 +335,10 @@ export default function TechStack() {
               borderBottom: `1px solid ${BORDER}`, paddingBottom: '72px', marginBottom: '72px',
             }}>
               <p style={{ fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7' }}>
-                The failure rate for community land projects remains high. The vision and people are
-                there. What&apos;s needed is the shared infrastructure — systems for connecting community
-                builders, managing operations, onboarding residents, and running governance in a way
-                that actually holds.
+                The vision and people are there, but the movement is fragmented. The failure rate
+                for community land projects remains high. What&apos;s needed is the shared infrastructure —
+                systems for connecting community builders, managing operations, onboarding residents,
+                and running governance in a way that actually holds.
               </p>
               <p style={{ fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7' }}>
                 The knowledge exists — earned across hundreds of projects and thousands of builders
@@ -345,7 +358,7 @@ export default function TechStack() {
                   symbol: '○',
                   dot: 'var(--green)',
                   title: 'Software built for this work',
-                  desc: 'Purpose-built for the full lifecycle of regenerative neighborhood development — from first vision to daily operations. Not adapted from corporate tools.',
+                  desc: 'Purpose-built for the full lifecycle of regenerative neighborhood development — from first vision to daily operations.',
                 },
                 {
                   symbol: '△',
@@ -425,21 +438,21 @@ export default function TechStack() {
             </motion.div>
           </motion.div>
 
-          {/* Tool cards — 2×2 grid */}
+          {/* Tool cards — 3-col grid (5 tools: row 1 = 3, row 2 = 2) */}
           <motion.div
             initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             className="ts-tools-grid"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0' }}
           >
             {tools.map((tool, i) => {
-              const col = i % 2
-              const row = Math.floor(i / 2)
+              const col = i % 3
+              const row = Math.floor(i / 3)
               return (
               <motion.div key={tool.name} variants={fadeUp} style={{
-                borderRight:  col === 0 ? `1px solid ${BORDER}` : 'none',
+                borderRight:  col < 2 ? `1px solid ${BORDER}` : 'none',
                 borderBottom: row === 0 ? `1px solid ${BORDER}` : 'none',
-                paddingRight: col === 0 ? '56px' : '0',
-                paddingLeft:  col === 1 ? '56px' : '0',
+                paddingRight: col < 2 ? '48px' : '0',
+                paddingLeft:  col > 0 ? '48px' : '0',
                 paddingBottom: row === 0 ? '72px' : '0',
                 paddingTop:    row === 1 ? '72px' : '0',
                 display: 'flex', flexDirection: 'column',
@@ -700,28 +713,26 @@ export default function TechStack() {
                 <motion.p variants={fadeUp} style={{
                   fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7',
                 }}>
-                  This stack isn&apos;t owned by any one organization. It&apos;s contributed to and used
-                  by everyone in the regenerative neighborhood movement — people from all walks
-                  of life who believe this way of living matters and are doing something about it.
+                  This stack isn&apos;t owned by any one organization. It can be contributed to and
+                  used by everyone in the regenerative neighborhood movement — people from all
+                  walks of life who believe this way of living matters and are doing something about it.
                 </motion.p>
               </div>
 
               {/* Right: people-type cards */}
               <motion.div variants={stagger} className="ts-collective-types" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0' }}>
                 {[
-                  { dot: 'var(--green)',  title: 'Vision Holders',     desc: 'Landowners and developers turning land into living communities.' },
-                  { dot: 'var(--blue)',   title: 'Community Members',   desc: 'People seeking and building regenerative lives day to day.' },
-                  { dot: 'var(--yellow)', title: 'Service Providers',   desc: 'Builders, architects, and systems designers who serve communities.' },
-                  { dot: 'var(--pink)',   title: 'Developers',          desc: 'Engineers and coders contributing tools to the open stack.' },
-                  { dot: 'var(--green)',  title: 'Practitioners',       desc: 'Those who have lived inside intentional communities and know what works.' },
-                  { dot: 'var(--blue)',   title: 'Advocates',           desc: 'People who believe this way of living matters and help spread it.' },
+                  { dot: 'var(--green)',  title: 'Vision Holders',    desc: 'Landowners and developers turning land into living communities.' },
+                  { dot: 'var(--blue)',   title: 'Community Members',  desc: 'People seeking and building regenerative lives day to day.' },
+                  { dot: 'var(--yellow)', title: 'Service Providers',  desc: 'Builders, skilled practitioners, and systems designers who serve neighborhoods.' },
+                  { dot: 'var(--pink)',   title: 'Regen Activists',    desc: 'Everyone that believes in a future where everyone has their basic needs met and we live in connection to each other and nature.' },
                 ].map((type, i) => {
                   const col = i % 2
-                  const row = Math.floor(i / 3)
                   return (
+
                     <motion.div key={type.title} variants={fadeUp} style={{
                       borderRight:  col === 0 ? `1px solid ${BORDER}` : 'none',
-                      borderBottom: i < 4 ? `1px solid ${BORDER}` : 'none',
+                      borderBottom: i < 2 ? `1px solid ${BORDER}` : 'none',
                       padding: '28px 0',
                       paddingRight: col === 0 ? '28px' : '0',
                       paddingLeft:  col === 1 ? '28px' : '0',
