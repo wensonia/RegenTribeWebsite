@@ -203,22 +203,15 @@ const modules = [
 ]
 
 /* ─────────────────────────────────────────
-   Flip card — hero definition widget
+   Flip card inner (position managed by HeroScene)
 ───────────────────────────────────────── */
-function FlipCard({ top, left }: { top: string; left: string }) {
+function FlipCardInner({ onHoverChange }: { onHoverChange: (v: boolean) => void }) {
   const [flipped, setFlipped] = useState(false)
   return (
     <motion.div
-      onHoverStart={() => setFlipped(true)}
-      onHoverEnd={() => setFlipped(false)}
-      initial={{ opacity: 0, scale: 0.6 }}
-      animate={{ opacity: 1, scale: 1, y: [0, -16, 0] }}
-      transition={{
-        opacity: { duration: 0.6, delay: 0.5 },
-        scale:   { duration: 0.6, delay: 0.5 },
-        y:       { duration: 5.3, delay: 0.6, repeat: Infinity, ease: 'easeInOut' },
-      }}
-      style={{ position: 'absolute', top, left, perspective: '900px', cursor: 'pointer', zIndex: 2 }}
+      onHoverStart={() => { setFlipped(true);  onHoverChange(true)  }}
+      onHoverEnd  ={() => { setFlipped(false); onHoverChange(false) }}
+      style={{ perspective: '900px', cursor: 'pointer' }}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
@@ -262,6 +255,114 @@ function FlipCard({ top, left }: { top: string; left: string }) {
         </div>
       </motion.div>
     </motion.div>
+  )
+}
+
+/* ─────────────────────────────────────────
+   Hero shape installation — float + scene
+───────────────────────────────────────── */
+function HeroScene() {
+  const [scene, setScene] = useState(false)
+
+  // base top/left (px) | scene delta x/y | scene scale | scene opacity
+  const shapes: {
+    id: string; shape: string; col: string
+    bt: number; bl: number
+    rot: number; dur: number; fd: number; initD: number
+    sx: number; sy: number; ss: number; so: number
+  }[] = [
+    { id:'cg', shape:'circle',   col:'var(--green)',  bt:22,  bl:22,  rot:0,  dur:5.2, fd:0,   initD:0.2, sx:-22,  sy:153,  ss:0.77, so:1 },
+    { id:'tb', shape:'triangle', col:'var(--blue)',   bt:14,  bl:285, rot:8,  dur:6.0, fd:0.7, initD:0.3, sx:-177, sy:214,  ss:1.1,  so:1 },
+    { id:'cp', shape:'circle',   col:'var(--pink)',   bt:294, bl:9,   rot:0,  dur:5.8, fd:1.1, initD:0.4, sx:231,  sy:-87,  ss:0.4,  so:1 },
+    { id:'tg', shape:'triangle', col:'var(--green)',  bt:331, bl:152, rot:-8, dur:4.2, fd:0.9, initD:0.5, sx:160,  sy:-290, ss:0.25, so:0 },
+    { id:'sb', shape:'square',   col:'var(--blue)',   bt:262, bl:295, rot:6,  dur:6.4, fd:0.5, initD:0.6, sx:-183, sy:46,   ss:0.96, so:1 },
+  ]
+
+  // extra shapes that only appear in scene mode
+  const extras: { id: string; top: number; left: number; w: number; h: number; col: string; radius: number; op: number }[] = [
+    { id:'trunk',  top:272, left:36,  w:18,  h:65, col:'var(--green)',         radius:2,   op:0.75 },
+    { id:'door',   top:355, left:148, w:26,  h:53, col:'rgba(40,42,41,0.22)',  radius:0,   op:1    },
+    { id:'p1body', top:284, left:281, w:30,  h:80, col:'var(--pink)',          radius:4,   op:0.82 },
+    { id:'p2head', top:243, left:328, w:44,  h:44, col:'var(--yellow)',        radius:999, op:1    },
+    { id:'p2body', top:287, left:338, w:30,  h:76, col:'var(--yellow)',        radius:4,   op:0.82 },
+    { id:'ground', top:376, left:0,   w:440, h:1,  col:'rgba(237,237,237,0.1)',radius:0,   op:1    },
+  ]
+
+  return (
+    <div className="ts-hero-panels" style={{ position: 'relative', height: '460px' }}>
+
+      {/* Flip card — lifts to top when scene activates */}
+      <motion.div
+        style={{ position: 'absolute', top: 124, left: 134, zIndex: 3 }}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{
+          opacity: 1, scale: scene ? 0.72 : 1,
+          y: scene ? -109 : [0, -16, 0],
+        }}
+        transition={scene ? {
+          duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number],
+        } : {
+          opacity: { duration: 0.6, delay: 0.5 },
+          scale:   { duration: 0.55, ease: [0.25,0.1,0.25,1] as [number,number,number,number] },
+          y:       { duration: 5.3, delay: 0.6, repeat: Infinity, ease: 'easeInOut' },
+        }}
+      >
+        <FlipCardInner onHoverChange={setScene} />
+      </motion.div>
+
+      {/* Floating shapes — animate to scene positions on hover */}
+      {shapes.map((s) => (
+        <motion.div
+          key={s.id}
+          style={{ position: 'absolute', top: s.bt, left: s.bl }}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={scene ? {
+            x: s.sx, y: s.sy, scale: s.ss, rotate: 0, opacity: s.so,
+          } : {
+            x: 0, y: [0, -20, 0], scale: 1, rotate: [0, s.rot, 0], opacity: 1,
+          }}
+          transition={scene ? {
+            duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number],
+          } : {
+            opacity: { duration: 0.6, delay: s.initD },
+            scale:   { duration: 0.6, delay: s.initD },
+            x:       { duration: 0.65, ease: [0.25,0.1,0.25,1] as [number,number,number,number] },
+            y:       { duration: s.dur, delay: s.fd, repeat: Infinity, ease: 'easeInOut' },
+            rotate:  { duration: s.dur * 1.3, delay: s.fd, repeat: Infinity, ease: 'easeInOut' },
+          }}
+          whileHover={scene ? undefined : { scale: 1.12, transition: { duration: 0.2 } }}
+        >
+          {s.shape === 'circle' && (
+            <div style={{ width:110, height:110, borderRadius:'50%', backgroundColor:s.col }} />
+          )}
+          {s.shape === 'square' && (
+            <div style={{ width:110, height:110, backgroundColor:s.col }} />
+          )}
+          {s.shape === 'triangle' && (
+            <svg width={110} height={110} viewBox="0 0 100 100" overflow="visible">
+              <polygon points="50,6 97,91 3,91" fill={s.col} />
+            </svg>
+          )}
+        </motion.div>
+      ))}
+
+      {/* Scene-only extras — fade in when hovering flip card */}
+      {extras.map(e => (
+        <motion.div
+          key={e.id}
+          style={{
+            position: 'absolute', top: e.top, left: e.left,
+            width: e.w, height: e.h,
+            backgroundColor: e.col,
+            borderRadius: e.radius,
+            pointerEvents: 'none',
+          }}
+          animate={{ opacity: scene ? e.op : 0 }}
+          transition={{ duration: 0.45, delay: scene ? 0.3 : 0 }}
+        />
+      ))}
+
+    </div>
   )
 }
 
@@ -317,47 +418,8 @@ export default function TechStack() {
               </motion.div>
             </motion.div>
 
-            {/* Right: floating shape installation */}
-            <div className="ts-hero-panels" style={{ position: 'relative', height: '460px' }}>
-
-              {/* Flip card — definition widget */}
-              <FlipCard top="27%" left="28%" />
-
-              {/* Regular floating shapes (110px) */}
-              {([
-                { shape: 'circle',   color: 'var(--green)',  top: '5%',  left: '5%',  dur: 5.2, delay: 0,    rot: 0  },
-                { shape: 'triangle', color: 'var(--blue)',   top: '3%',  left: '60%', dur: 6.0, delay: 0.7,  rot: 8  },
-                { shape: 'circle',   color: 'var(--pink)',   top: '64%', left: '2%',  dur: 5.8, delay: 1.1,  rot: 0  },
-                { shape: 'triangle', color: 'var(--green)',  top: '72%', left: '33%', dur: 4.2, delay: 0.9,  rot: -8 },
-                { shape: 'square',   color: 'var(--blue)',   top: '57%', left: '62%', dur: 6.4, delay: 0.5,  rot: 6  },
-              ] as { shape: string; color: string; top: string; left: string; dur: number; delay: number; rot: number }[]).map((s, i) => (
-                <motion.div
-                  key={i}
-                  style={{ position: 'absolute', top: s.top, left: s.left }}
-                  initial={{ opacity: 0, scale: 0.6 }}
-                  animate={{ opacity: 1, scale: 1, y: [0, -20, 0], rotate: [0, s.rot, 0] }}
-                  transition={{
-                    opacity: { duration: 0.6, delay: 0.2 + i * 0.1 },
-                    scale:   { duration: 0.6, delay: 0.2 + i * 0.1 },
-                    y:       { duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
-                    rotate:  { duration: s.dur * 1.3, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
-                  }}
-                  whileHover={{ scale: 1.12, transition: { duration: 0.2 } }}
-                >
-                  {s.shape === 'circle' && (
-                    <div style={{ width: 110, height: 110, borderRadius: '50%', backgroundColor: s.color }} />
-                  )}
-                  {s.shape === 'square' && (
-                    <div style={{ width: 110, height: 110, backgroundColor: s.color }} />
-                  )}
-                  {s.shape === 'triangle' && (
-                    <svg width={110} height={110} viewBox="0 0 100 100" overflow="visible">
-                      <polygon points="50,6 97,91 3,91" fill={s.color} />
-                    </svg>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+            {/* Right: floating shape installation + scene on hover */}
+            <HeroScene />
 
           </div>
         </div>
