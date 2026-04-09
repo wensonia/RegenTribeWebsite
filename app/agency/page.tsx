@@ -730,7 +730,7 @@ export default function Agency() {
           PARTNER WITH US
       ════════════════════════════════ */}
       <section style={{ position: 'relative', padding: '120px 0', borderBottom: '1px solid var(--border)', overflow: 'hidden' }}>
-        {/* Image: absolutely fills the right 55% of the section, bleeds off right + bottom */}
+        {/* Image: anchored to right edge, fills full section height, bleeds off right */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -738,22 +738,19 @@ export default function Agency() {
           viewport={vp}
           style={{
             position: 'absolute',
-            right: '-5%',
-            top: '-10%',
-            bottom: '-10%',
-            width: '52%',
+            right: 0,
+            top: 0,
+            bottom: 0,
             pointerEvents: 'none',
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/agency/partner.png"
+            src="/images/agency/partner-new.png"
             alt="Partnership — handshake and seedling"
             style={{
-              width: '100%',
               height: '100%',
-              objectFit: 'contain',
-              objectPosition: 'right center',
+              width: 'auto',
               display: 'block',
             }}
           />
@@ -761,7 +758,7 @@ export default function Agency() {
 
         {/* Left: copy — constrained to left half */}
         <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '480px' }}>
+          <div style={{ maxWidth: '520px' }}>
             <motion.div
               initial="hidden"
               whileInView="visible"
