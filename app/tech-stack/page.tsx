@@ -116,10 +116,10 @@ function StatusBadge({ status }: { status: string }) {
    Data
 ───────────────────────────────────────── */
 const heroPanels = [
-  { color: 'var(--green)',  symbol: '○', label: 'Genesis'         },
+  { color: 'var(--pink)',   symbol: '○', label: 'RN Framework'    },
   { color: 'var(--blue)',   symbol: '△', label: 'Knowledge Graph' },
+  { color: 'var(--green)',  symbol: '○', label: 'Genesis'         },
   { color: 'var(--yellow)', symbol: '□', label: 'Regen Vision'    },
-  { color: 'var(--pink)',   symbol: '○', label: 'Tribes Platform' },
 ]
 
 const tools = [
@@ -292,8 +292,9 @@ export default function TechStack() {
         <div className="ticker-track" style={{ display: 'flex', gap: '64px', width: 'max-content' }}>
           {[...Array(3)].flatMap(() => [
             'Open Source', '○', 'Community Built', '△', 'Regen Tribe', '□',
-            'Regenerative Neighborhoods', '○', 'Genesis', '△', 'Knowledge Graph', '□',
-            'Tribes Platform', '○', 'Open to Collaborators', '△', 'Regen Vision', '□',
+            'Regenerative Neighborhoods', '○', 'RN Framework', '△', 'Knowledge Graph', '□',
+            'Genesis', '○', 'Regen Vision', '△', 'Mythogen AME', '□',
+            'Tribes Platform', '○', 'Open to Collaborators', '△', 'Affinity Mapping', '□',
           ]).map((item, i) => (
             <span key={i} style={{
               fontSize: '13px',
