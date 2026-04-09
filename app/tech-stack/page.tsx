@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
@@ -117,12 +117,6 @@ function StatusBadge({ status }: { status: string }) {
 /* ─────────────────────────────────────────
    Data
 ───────────────────────────────────────── */
-const heroPanels = [
-  { color: 'var(--pink)',   symbol: '○', label: 'RN Framework'    },
-  { color: 'var(--blue)',   symbol: '△', label: 'Knowledge Graph' },
-  { color: 'var(--green)',  symbol: '○', label: 'Genesis'         },
-  { color: 'var(--yellow)', symbol: '□', label: 'Regen Vision'    },
-]
 
 const tools = [
   {
@@ -204,22 +198,16 @@ const modules = [
 ]
 
 /* ─────────────────────────────────────────
-   Flip card inner (position managed by HeroScene)
+   Flip card (state controlled by parent)
 ───────────────────────────────────────── */
-function FlipCardInner({ onHoverChange }: { onHoverChange: (v: boolean) => void }) {
-  const [flipped, setFlipped] = useState(false)
+function FlipCard({ flipped }: { flipped: boolean }) {
   return (
-    <motion.div
-      onHoverStart={() => { setFlipped(true);  onHoverChange(true)  }}
-      onHoverEnd  ={() => { setFlipped(false); onHoverChange(false) }}
-      style={{ perspective: '900px', cursor: 'pointer' }}
-    >
+    <div style={{ perspective: '900px' }}>
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number] }}
         style={{ width: 158, height: 158, position: 'relative', transformStyle: 'preserve-3d' }}
       >
-        {/* Front */}
         <div style={{
           position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
           backgroundColor: 'var(--yellow)',
@@ -227,139 +215,139 @@ function FlipCardInner({ onHoverChange }: { onHoverChange: (v: boolean) => void 
           justifyContent: 'center', padding: '18px', textAlign: 'center', gap: '10px',
         }}>
           <span style={{ fontSize: '22px', lineHeight: 1, color: 'rgba(40,42,41,0.4)' }}>○</span>
-          <p style={{
-            fontSize: '11px', fontWeight: '600', lineHeight: 1.5,
-            textTransform: 'uppercase', letterSpacing: '0.06em',
-            color: 'rgba(40,42,41,0.62)',
-          }}>
+          <p style={{ fontSize: '11px', fontWeight: '600', lineHeight: 1.5, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(40,42,41,0.62)' }}>
             What is a regenerative neighborhood?
           </p>
         </div>
-        {/* Back */}
         <div style={{
           position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-          transform: 'rotateY(180deg)',
-          backgroundColor: 'var(--yellow)',
+          transform: 'rotateY(180deg)', backgroundColor: 'var(--yellow)',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
           padding: '16px', overflow: 'hidden',
         }}>
-          <p style={{
-            fontSize: '9px', fontWeight: '800', letterSpacing: '0.12em',
-            textTransform: 'uppercase', color: BG, marginBottom: '8px',
-          }}>
-            /noun/
-          </p>
+          <p style={{ fontSize: '9px', fontWeight: '800', letterSpacing: '0.12em', textTransform: 'uppercase', color: BG, marginBottom: '8px' }}>/noun/</p>
           <p style={{ fontSize: '10.5px', fontWeight: '500', color: BG, lineHeight: 1.5 }}>
             Wellness real estate with resilient systems for water, food, shelter, energy,
             waste management, nature & human connection.
           </p>
         </div>
       </motion.div>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────
+   Individual floating shape
+   CSS handles the float loop — Framer Motion only handles scene transitions.
+   This avoids the glitch caused by interrupting repeat:Infinity animations.
+───────────────────────────────────────── */
+function FloatShape({ shape, color, size, ix, iy, sdx, sdy, sscale, sopacity, floatCls, scene }: {
+  shape: string; color: string; size: number
+  ix: number; iy: number; sdx: number; sdy: number
+  sscale: number; sopacity: number; floatCls: string; scene: boolean
+}) {
+  const [floating, setFloating] = useState(false)
+  const mounted = useRef(false)
+
+  useEffect(() => {
+    let t: ReturnType<typeof setTimeout>
+    if (!mounted.current) {
+      // first mount: start CSS float after a short delay
+      mounted.current = true
+      t = setTimeout(() => setFloating(true), 350)
+    } else if (scene) {
+      // entering scene: stop CSS float (deferred to avoid sync setState in effect)
+      t = setTimeout(() => setFloating(false), 0)
+    } else {
+      // returning from scene: wait for Framer Motion transition to finish, then re-float
+      t = setTimeout(() => setFloating(true), 680)
+    }
+    return () => clearTimeout(t)
+  }, [scene])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: scene ? sopacity : 1, scale: scene ? sscale : 1, x: scene ? sdx : 0, y: scene ? sdy : 0 }}
+      transition={{
+        opacity: { duration: 0.5 },
+        scale:   { duration: 0.6,  ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number] },
+        x:       { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number] },
+        y:       { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number] },
+      }}
+      style={{ position: 'absolute', top: iy, left: ix, transformOrigin: '50% 50%' }}
+    >
+      {/* Inner div carries CSS float — separate from Framer Motion transforms above */}
+      <div className={floating && !scene ? floatCls : ''}>
+        {shape === 'circle'   && <div style={{ width: size, height: size, borderRadius: '50%', backgroundColor: color }} />}
+        {shape === 'square'   && <div style={{ width: size, height: size, backgroundColor: color }} />}
+        {shape === 'triangle' && (
+          <svg width={size} height={size} viewBox="0 0 100 100" overflow="visible">
+            <polygon points="50,6 97,91 3,91" fill={color} />
+          </svg>
+        )}
+      </div>
     </motion.div>
   )
 }
 
 /* ─────────────────────────────────────────
-   Hero shape installation — float + scene
+   Hero scene — shapes float freely, hover reveals neighborhood
 ───────────────────────────────────────── */
 function HeroScene() {
-  const [scene, setScene] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
-  // base top/left (px) | scene delta x/y | scene scale | scene opacity
-  const shapes: {
-    id: string; shape: string; col: string
-    bt: number; bl: number
-    rot: number; dur: number; fd: number; initD: number
-    sx: number; sy: number; ss: number; so: number
-  }[] = [
-    { id:'cg', shape:'circle',   col:'var(--green)',  bt:22,  bl:22,  rot:0,  dur:5.2, fd:0,   initD:0.2, sx:-22,  sy:153,  ss:0.77, so:1 },
-    { id:'tb', shape:'triangle', col:'var(--blue)',   bt:14,  bl:285, rot:8,  dur:6.0, fd:0.7, initD:0.3, sx:-177, sy:214,  ss:1.1,  so:1 },
-    { id:'cp', shape:'circle',   col:'var(--pink)',   bt:294, bl:9,   rot:0,  dur:5.8, fd:1.1, initD:0.4, sx:231,  sy:-87,  ss:0.4,  so:1 },
-    { id:'tg', shape:'triangle', col:'var(--green)',  bt:331, bl:152, rot:-8, dur:4.2, fd:0.9, initD:0.5, sx:160,  sy:-290, ss:0.25, so:0 },
-    { id:'sb', shape:'square',   col:'var(--blue)',   bt:262, bl:295, rot:6,  dur:6.4, fd:0.5, initD:0.6, sx:-183, sy:46,   ss:0.96, so:1 },
+  // idle (ix, iy) → scene (ix+sdx, iy+sdy) at sscale/sopacity
+  // Scene layout: house (green sq + blue triangle) | tree (yellow circle) | 2 people (pink + blue circles)
+  const shapes: Array<{
+    id: string; shape: string; color: string; size: number
+    ix: number; iy: number; sdx: number; sdy: number
+    sscale: number; sopacity: number; floatCls: string
+  }> = [
+    { id:'sq1', shape:'square',   color:'var(--green)',  size:112, ix:12,  iy:18,  sdx:112,  sdy:220, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
+    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:110, ix:300, iy:10,  sdx:-191, sdy:138, sscale:1.18, sopacity:1, floatCls:'hero-fl-b' },
+    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:90,  ix:12,  iy:258, sdx:-2,   sdy:-68, sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
+    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:80,  ix:298, iy:262, sdx:-13,  sdy:-27, sscale:0.55, sopacity:1, floatCls:'hero-fl-d' },
+    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:62,  ix:172, iy:18,  sdx:178,  sdy:217, sscale:0.71, sopacity:1, floatCls:'hero-fl-e' },
+    { id:'tr2', shape:'triangle', color:'var(--green)',  size:70,  ix:188, iy:372, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
   ]
 
-  // extra shapes that only appear in scene mode
-  const extras: { id: string; top: number; left: number; w: number; h: number; col: string; radius: number; op: number }[] = [
-    { id:'trunk',  top:272, left:36,  w:18,  h:65, col:'var(--green)',         radius:2,   op:0.75 },
-    { id:'door',   top:355, left:148, w:26,  h:53, col:'rgba(40,42,41,0.22)',  radius:0,   op:1    },
-    { id:'p1body', top:284, left:281, w:30,  h:80, col:'var(--pink)',          radius:4,   op:0.82 },
-    { id:'p2head', top:243, left:328, w:44,  h:44, col:'var(--yellow)',        radius:999, op:1    },
-    { id:'p2body', top:287, left:338, w:30,  h:76, col:'var(--yellow)',        radius:4,   op:0.82 },
-    { id:'ground', top:376, left:0,   w:440, h:1,  col:'rgba(237,237,237,0.1)',radius:0,   op:1    },
+  // Scene-only details that fade in (tree trunk, house door, person bodies)
+  const extras: Array<{ id: string; top: number; left: number; w: number; h: number; col: string; r: number; op: number }> = [
+    { id:'trunk', top:278, left:41,  w:20, h:65, col:'var(--green)',        r:2, op:0.82 },
+    { id:'door',  top:306, left:172, w:26, h:46, col:'rgba(40,42,41,0.45)', r:0, op:1    },
+    { id:'p1b',   top:277, left:291, w:24, h:64, col:'var(--pink)',          r:3, op:0.85 },
+    { id:'p2b',   top:277, left:357, w:24, h:64, col:'var(--blue)',          r:3, op:0.85 },
   ]
 
   return (
-    <div className="ts-hero-panels" style={{ position: 'relative', height: '460px' }}>
+    <div className="ts-hero-panels" style={{ position: 'relative', height: '480px' }}>
 
-      {/* Flip card — lifts to top when scene activates */}
+      {/* Fixed hover zone — doesn't move, so no glitch when card animates away */}
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{ position: 'absolute', top: 108, left: 118, width: 184, height: 184, zIndex: 10, cursor: 'pointer' }}
+      />
+
+      {/* Flip card — pointer-events:none, hover captured by fixed zone above */}
       <motion.div
-        style={{ position: 'absolute', top: 124, left: 134, zIndex: 3 }}
         initial={{ opacity: 0, scale: 0.6 }}
-        animate={{
-          opacity: 1, scale: scene ? 0.72 : 1,
-          y: scene ? -109 : [0, -16, 0],
-        }}
-        transition={scene ? {
-          duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number],
-        } : {
-          opacity: { duration: 0.6, delay: 0.5 },
-          scale:   { duration: 0.55, ease: [0.25,0.1,0.25,1] as [number,number,number,number] },
-          y:       { duration: 5.3, delay: 0.6, repeat: Infinity, ease: 'easeInOut' },
-        }}
+        animate={{ opacity: 1, y: hovered ? -109 : 0, scale: hovered ? 0.72 : 1 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number], opacity: { duration: 0.6, delay: 0.5 } }}
+        style={{ position: 'absolute', top: 124, left: 134, zIndex: 5, pointerEvents: 'none' }}
       >
-        <FlipCardInner onHoverChange={setScene} />
+        <FlipCard flipped={hovered} />
       </motion.div>
 
-      {/* Floating shapes — animate to scene positions on hover */}
-      {shapes.map((s) => (
-        <motion.div
-          key={s.id}
-          style={{ position: 'absolute', top: s.bt, left: s.bl }}
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={scene ? {
-            x: s.sx, y: s.sy, scale: s.ss, rotate: 0, opacity: s.so,
-          } : {
-            x: 0, y: [0, -20, 0], scale: 1, rotate: [0, s.rot, 0], opacity: 1,
-          }}
-          transition={scene ? {
-            duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number],
-          } : {
-            opacity: { duration: 0.6, delay: s.initD },
-            scale:   { duration: 0.6, delay: s.initD },
-            x:       { duration: 0.65, ease: [0.25,0.1,0.25,1] as [number,number,number,number] },
-            y:       { duration: s.dur, delay: s.fd, repeat: Infinity, ease: 'easeInOut' },
-            rotate:  { duration: s.dur * 1.3, delay: s.fd, repeat: Infinity, ease: 'easeInOut' },
-          }}
-          whileHover={scene ? undefined : { scale: 1.12, transition: { duration: 0.2 } }}
-        >
-          {s.shape === 'circle' && (
-            <div style={{ width:110, height:110, borderRadius:'50%', backgroundColor:s.col }} />
-          )}
-          {s.shape === 'square' && (
-            <div style={{ width:110, height:110, backgroundColor:s.col }} />
-          )}
-          {s.shape === 'triangle' && (
-            <svg width={110} height={110} viewBox="0 0 100 100" overflow="visible">
-              <polygon points="50,6 97,91 3,91" fill={s.col} />
-            </svg>
-          )}
-        </motion.div>
-      ))}
+      {shapes.map(s => <FloatShape key={s.id} {...s} scene={hovered} />)}
 
-      {/* Scene-only extras — fade in when hovering flip card */}
       {extras.map(e => (
         <motion.div
           key={e.id}
-          style={{
-            position: 'absolute', top: e.top, left: e.left,
-            width: e.w, height: e.h,
-            backgroundColor: e.col,
-            borderRadius: e.radius,
-            pointerEvents: 'none',
-          }}
-          animate={{ opacity: scene ? e.op : 0 }}
-          transition={{ duration: 0.45, delay: scene ? 0.3 : 0 }}
+          animate={{ opacity: hovered ? e.op : 0 }}
+          transition={{ duration: 0.5, delay: hovered ? 0.28 : 0.05 }}
+          style={{ position: 'absolute', top: e.top, left: e.left, width: e.w, height: e.h, backgroundColor: e.col, borderRadius: e.r, pointerEvents: 'none' }}
         />
       ))}
 
@@ -940,6 +928,15 @@ export default function TechStack() {
 
       {/* ── Responsive + Ticker CSS ── */}
       <style>{`
+        /* Hero shape float — CSS only, no Framer Motion conflict */
+        @keyframes hero-float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-17px); } }
+        .hero-fl-a { animation: hero-float 5.2s ease-in-out 0.0s infinite; }
+        .hero-fl-b { animation: hero-float 6.0s ease-in-out 0.7s infinite; }
+        .hero-fl-c { animation: hero-float 4.8s ease-in-out 0.4s infinite; }
+        .hero-fl-d { animation: hero-float 5.8s ease-in-out 1.1s infinite; }
+        .hero-fl-e { animation: hero-float 5.5s ease-in-out 0.3s infinite; }
+        .hero-fl-f { animation: hero-float 4.2s ease-in-out 0.9s infinite; }
+
         .ticker-track {
           animation: ticker 70s linear infinite;
         }
