@@ -1091,13 +1091,15 @@ export default function Agency() {
       {selectedProject && (
         <div
           onClick={() => setSelectedProject(null)}
+          onWheel={(e) => e.stopPropagation()}
           style={{ position: 'fixed', inset: 0, zIndex: 200, backgroundColor: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             onClick={(e) => e.stopPropagation()}
-            style={{ backgroundColor: '#ededed', borderRadius: '8px', maxWidth: '640px', width: '100%', maxHeight: '85vh', overflowY: 'auto', position: 'relative' }}>
+            onWheel={(e) => e.stopPropagation()}
+            style={{ backgroundColor: '#ededed', borderRadius: '8px', maxWidth: '640px', width: '100%', maxHeight: '85vh', overflowY: 'auto', overscrollBehavior: 'contain', position: 'relative', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
             {/* Image */}
             {selectedProject.img && (
               <div style={{ width: '100%', aspectRatio: '16 / 7', overflow: 'hidden', borderRadius: '8px 8px 0 0' }}>
