@@ -304,21 +304,29 @@ function HeroScene() {
     ix: number; iy: number; sdx: number; sdy: number
     sscale: number; sopacity: number; floatCls: string
   }> = [
-    // Idle: bigger shapes. Scene: slide all shapes down to CTA level (~bottom of container)
-    { id:'sq1', shape:'square',   color:'var(--green)',  size:130, ix:14,  iy:18,  sdx:100,  sdy:390, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
-    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:130, ix:288, iy:8,   sdx:-184, sdy:280, sscale:1.15, sopacity:1, floatCls:'hero-fl-b' },
-    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:110, ix:10,  iy:250, sdx:2,    sdy:130, sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
-    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:100, ix:284, iy:248, sdx:-10,  sdy:132, sscale:0.52, sopacity:1, floatCls:'hero-fl-d' },
-    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:80,  ix:162, iy:16,  sdx:152,  sdy:364, sscale:0.65, sopacity:1, floatCls:'hero-fl-e' },
+    // All scene bottoms aligned to y=540 (CTA level). Working backwards from bottom=540.
+    // sq1 (house walls): size=130, scene top=410 → bottom=540. sdy=410-18=392
+    // tr1 (roof): scaled size≈149, scene top=261 so bottom touches house top=410. sdy=261-8=253
+    // ci1 (tree canopy): size=110, scene top=360 so bottom=470 = trunk top. sdy=360-250=110
+    // ci2 (person1 head): scaled size≈52, body top=472, head top=420. sdy=420-248=172
+    // ci3 (person2 head): scaled size≈52, body top=472, head top=420. sdy=420-16=404
+    { id:'sq1', shape:'square',   color:'var(--green)',  size:130, ix:14,  iy:18,  sdx:100,  sdy:392, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
+    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:130, ix:288, iy:8,   sdx:-184, sdy:253, sscale:1.15, sopacity:1, floatCls:'hero-fl-b' },
+    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:110, ix:10,  iy:250, sdx:2,    sdy:110, sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
+    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:100, ix:284, iy:248, sdx:-10,  sdy:172, sscale:0.52, sopacity:1, floatCls:'hero-fl-d' },
+    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:80,  ix:162, iy:16,  sdx:152,  sdy:404, sscale:0.65, sopacity:1, floatCls:'hero-fl-e' },
     { id:'tr2', shape:'triangle', color:'var(--green)',  size:80,  ix:182, iy:360, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
   ]
 
-  // Scene-only details: trunk, door, person bodies
+  // Scene-only details — all bottoms at y=540
+  // trunk: top=470, h=70 → bottom=540
+  // door: top=488, h=52 → bottom=540
+  // p1b/p2b: top=472, h=68 → bottom=540
   const extras: Array<{ id: string; top: number; left: number; w: number; h: number; col: string; r: number; op: number }> = [
-    { id:'trunk', top:490, left:55,  w:22, h:70, col:'var(--green)',        r:2, op:0.82 },
-    { id:'door',  top:468, left:160, w:28, h:50, col:'rgba(40,42,41,0.45)', r:0, op:1    },
-    { id:'p1b',   top:432, left:276, w:26, h:68, col:'var(--pink)',          r:3, op:0.85 },
-    { id:'p2b',   top:432, left:318, w:26, h:68, col:'var(--blue)',          r:3, op:0.85 },
+    { id:'trunk', top:470, left:55,  w:22, h:70, col:'var(--green)',        r:2, op:0.82 },
+    { id:'door',  top:488, left:160, w:28, h:52, col:'rgba(40,42,41,0.45)', r:0, op:1    },
+    { id:'p1b',   top:472, left:276, w:26, h:68, col:'var(--pink)',          r:3, op:0.85 },
+    { id:'p2b',   top:472, left:318, w:26, h:68, col:'var(--blue)',          r:3, op:0.85 },
   ]
 
   return (
