@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -259,6 +259,11 @@ export default function Agency() {
   const [email, setEmail] = useState('')
   const [interests, setInterests] = useState<string[]>([])
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+  useEffect(() => {
+    document.body.style.overflow = selectedProject ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [selectedProject])
 
   function toggleInterest(val: string) {
     setInterests(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val])
@@ -572,26 +577,32 @@ export default function Agency() {
           >
             {primaryProjects.map((p) => (
               <motion.div key={p.name} variants={fadeUp}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: '4px', overflow: 'hidden', marginBottom: '14px', backgroundColor: '#c8c5c0' }}>
-                  {p.img && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
-                  )}
-                  {'highlight' in p && p.highlight && (
-                    <div style={{ position: 'absolute', top: '10px', left: '10px', backgroundColor: 'var(--green)', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)' }}>
-                      Regen Tribe
-                    </div>
-                  )}
-                </div>
-                <p style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'highlight' in p && p.highlight ? 'var(--green-deep)' : 'var(--text)', marginBottom: '4px' }}>
-                  {p.name}
-                </p>
-                <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '10px' }}>{p.loc}</p>
-                <button
+                <div
                   onClick={() => setSelectedProject(p)}
-                  style={{ fontSize: '12px', fontWeight: '600', color: 'var(--text)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'none', border: 'none', cursor: 'pointer', padding: 0, letterSpacing: '0.04em' }}>
-                  + Read More
-                </button>
+                  style={{ cursor: 'pointer' }}
+                >
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: '4px', overflow: 'hidden', marginBottom: '14px', backgroundColor: '#c8c5c0' }}>
+                    {p.img && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
+                        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
+                        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                      />
+                    )}
+                    {'highlight' in p && p.highlight && (
+                      <div style={{ position: 'absolute', top: '10px', left: '10px', backgroundColor: 'var(--green)', borderRadius: '9999px', padding: '3px 10px', fontSize: '10px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)' }}>
+                        Regen Tribe
+                      </div>
+                    )}
+                  </div>
+                  <p style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'highlight' in p && p.highlight ? 'var(--green-deep)' : 'var(--text)', marginBottom: '4px' }}>
+                    {p.name}
+                  </p>
+                  <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '10px' }}>{p.loc}</p>
+                  <span style={{ fontSize: '12px', fontWeight: '600', color: 'var(--text)', display: 'inline-flex', alignItems: 'center', gap: '4px', letterSpacing: '0.04em' }}>
+                    + Read More
+                  </span>
+                </div>
               </motion.div>
             ))}
           </motion.div>
