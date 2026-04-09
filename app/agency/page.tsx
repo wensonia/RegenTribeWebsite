@@ -739,7 +739,6 @@ export default function Agency() {
           style={{
             position: 'absolute',
             right: 0,
-            top: 0,
             bottom: 0,
             pointerEvents: 'none',
           }}
@@ -749,7 +748,7 @@ export default function Agency() {
             src="/images/agency/partner-new.png"
             alt="Partnership — handshake and seedling"
             style={{
-              height: '100%',
+              height: '75vh',
               width: 'auto',
               display: 'block',
             }}
@@ -768,11 +767,12 @@ export default function Agency() {
               <motion.h2
                 variants={fadeUp}
                 style={{
-                  fontSize: 'clamp(40px, 5vw, 80px)',
+                  fontSize: 'clamp(36px, 4vw, 64px)',
                   fontWeight: '400',
                   letterSpacing: '-0.025em',
                   color: 'var(--text)',
                   marginBottom: '36px',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 partner with us
