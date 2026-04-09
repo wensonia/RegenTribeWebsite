@@ -304,38 +304,39 @@ function HeroScene() {
     ix: number; iy: number; sdx: number; sdy: number
     sscale: number; sopacity: number; floatCls: string
   }> = [
-    { id:'sq1', shape:'square',   color:'var(--green)',  size:112, ix:12,  iy:18,  sdx:112,  sdy:300, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
-    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:110, ix:300, iy:10,  sdx:-191, sdy:218, sscale:1.18, sopacity:1, floatCls:'hero-fl-b' },
-    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:90,  ix:12,  iy:258, sdx:-2,   sdy:12,  sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
-    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:80,  ix:298, iy:262, sdx:-13,  sdy:53,  sscale:0.55, sopacity:1, floatCls:'hero-fl-d' },
-    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:62,  ix:172, iy:18,  sdx:178,  sdy:297, sscale:0.71, sopacity:1, floatCls:'hero-fl-e' },
-    { id:'tr2', shape:'triangle', color:'var(--green)',  size:70,  ix:188, iy:372, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
+    // Idle: bigger shapes. Scene: slide all shapes down to CTA level (~bottom of container)
+    { id:'sq1', shape:'square',   color:'var(--green)',  size:130, ix:14,  iy:18,  sdx:100,  sdy:390, sscale:1,    sopacity:1, floatCls:'hero-fl-a' },
+    { id:'tr1', shape:'triangle', color:'var(--blue)',   size:130, ix:288, iy:8,   sdx:-184, sdy:280, sscale:1.15, sopacity:1, floatCls:'hero-fl-b' },
+    { id:'ci1', shape:'circle',   color:'var(--yellow)', size:110, ix:10,  iy:250, sdx:2,    sdy:130, sscale:1,    sopacity:1, floatCls:'hero-fl-c' },
+    { id:'ci2', shape:'circle',   color:'var(--pink)',   size:100, ix:284, iy:248, sdx:-10,  sdy:132, sscale:0.52, sopacity:1, floatCls:'hero-fl-d' },
+    { id:'ci3', shape:'circle',   color:'var(--blue)',   size:80,  ix:162, iy:16,  sdx:152,  sdy:364, sscale:0.65, sopacity:1, floatCls:'hero-fl-e' },
+    { id:'tr2', shape:'triangle', color:'var(--green)',  size:80,  ix:182, iy:360, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
   ]
 
-  // Scene-only details that fade in (tree trunk, house door, person bodies)
+  // Scene-only details: trunk, door, person bodies
   const extras: Array<{ id: string; top: number; left: number; w: number; h: number; col: string; r: number; op: number }> = [
-    { id:'trunk', top:358, left:41,  w:20, h:65, col:'var(--green)',        r:2, op:0.82 },
-    { id:'door',  top:386, left:172, w:26, h:46, col:'rgba(40,42,41,0.45)', r:0, op:1    },
-    { id:'p1b',   top:357, left:291, w:24, h:64, col:'var(--pink)',          r:3, op:0.85 },
-    { id:'p2b',   top:357, left:357, w:24, h:64, col:'var(--blue)',          r:3, op:0.85 },
+    { id:'trunk', top:490, left:55,  w:22, h:70, col:'var(--green)',        r:2, op:0.82 },
+    { id:'door',  top:468, left:160, w:28, h:50, col:'rgba(40,42,41,0.45)', r:0, op:1    },
+    { id:'p1b',   top:432, left:276, w:26, h:68, col:'var(--pink)',          r:3, op:0.85 },
+    { id:'p2b',   top:432, left:318, w:26, h:68, col:'var(--blue)',          r:3, op:0.85 },
   ]
 
   return (
-    <div className="ts-hero-panels" style={{ position: 'relative', height: '530px' }}>
+    <div className="ts-hero-panels" style={{ position: 'relative', height: '590px' }}>
 
-      {/* Fixed hover zone — sized to match 220px card */}
+      {/* Hover zone sized to idle card (~110px effective) */}
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        style={{ position: 'absolute', top: 80, left: 90, width: 240, height: 240, zIndex: 10, cursor: 'pointer' }}
+        style={{ position: 'absolute', top: 82, left: 92, width: 130, height: 130, zIndex: 10, cursor: 'pointer' }}
       />
 
-      {/* Flip card — stays in place (no scale-down) so definition is readable */}
+      {/* Flip card: small idle (scale 0.5 ≈ 110px) → full size on hover (220px) */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number], opacity: { duration: 0.6, delay: 0.5 } }}
-        style={{ position: 'absolute', top: 90, left: 100, zIndex: 5, pointerEvents: 'none' }}
+        initial={{ opacity: 0, scale: 0.3 }}
+        animate={{ opacity: 1, y: 0, scale: hovered ? 1 : 0.5 }}
+        transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number,number,number,number], opacity: { duration: 0.6, delay: 0.5 } }}
+        style={{ position: 'absolute', top: 90, left: 100, zIndex: 5, pointerEvents: 'none', transformOrigin: 'top left' }}
       >
         <FlipCard flipped={hovered} />
       </motion.div>
