@@ -107,6 +107,7 @@ function StatusBadge({ status }: { status: string }) {
       fontSize: '10px', fontWeight: '700', letterSpacing: '0.12em',
       textTransform: 'uppercase', color: s.color,
       backgroundColor: s.bg, borderRadius: '9999px', padding: '4px 12px',
+      opacity: 0.5,
     }}>
       {status}
     </span>
@@ -576,23 +577,18 @@ export default function TechStack() {
             </motion.div>
           </motion.div>
 
-          {/* Tool cards — 3-col grid (5 tools: row 1 = 3, row 2 = 2) */}
+          {/* Tool cards — 3-col floating grid */}
           <motion.div
             initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             className="ts-tools-grid"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}
           >
-            {tools.map((tool, i) => {
-              const col = i % 3
-              const row = Math.floor(i / 3)
-              return (
+            {tools.map((tool) => (
               <motion.div key={tool.name} variants={fadeUp} style={{
-                borderRight:  col < 2 ? `1px solid ${BORDER}` : 'none',
-                borderBottom: row === 0 ? `1px solid ${BORDER}` : 'none',
-                paddingRight: col < 2 ? '48px' : '0',
-                paddingLeft:  col > 0 ? '48px' : '0',
-                paddingBottom: row === 0 ? '72px' : '0',
-                paddingTop:    row === 1 ? '72px' : '0',
+                backgroundColor: '#323432',
+                border: `1px solid rgba(237,237,237,0.07)`,
+                borderRadius: '10px',
+                padding: '36px',
                 display: 'flex', flexDirection: 'column',
               }}>
 
@@ -685,16 +681,19 @@ export default function TechStack() {
                   href={tool.github} target="_blank" rel="noopener noreferrer"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    fontSize: '13px', fontWeight: '500', color: MUTED,
-                    textDecoration: 'none', letterSpacing: '0.02em',
+                    fontSize: '13px', fontWeight: '600', letterSpacing: '0.04em',
+                    color: tool.dot, textDecoration: 'none',
+                    borderTop: `1px solid rgba(237,237,237,0.07)`,
+                    paddingTop: '20px', marginTop: 'auto',
                   }}
-                  whileHover={{ x: 4 }} transition={{ duration: 0.15 }}
+                  whileHover={{ x: 5, opacity: 0.8 }} transition={{ duration: 0.15 }}
                 >
-                  ↗ {tool.repo}
+                  <ArrowRight size={13} strokeWidth={2} />
+                  github/{tool.repo}
                 </motion.a>
 
               </motion.div>
-            )})}
+            ))}
           </motion.div>
         </div>
       </section>
@@ -974,13 +973,9 @@ export default function TechStack() {
           .ts-pillars-grid > div:first-child { padding-top: 0 !important; }
           .ts-pillars-grid > div:last-child  { border-bottom: none !important; padding-bottom: 0 !important; }
 
-          /* Tools cards */
-          .ts-tools-grid > div {
-            border-right: none !important; border-bottom: 1px solid rgba(237,237,237,0.1) !important;
-            padding-left: 0 !important; padding-right: 0 !important;
-            padding-top: 0 !important; padding-bottom: 48px !important;
-          }
-          .ts-tools-grid > div:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
+          /* Tool cards — stack to 1-col, keep card box */
+          .ts-tools-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .ts-tools-grid > div { padding: 28px !important; }
 
           /* Collective people types */
           .ts-collective-types > div {
