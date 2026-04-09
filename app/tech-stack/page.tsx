@@ -229,7 +229,7 @@ export default function TechStack() {
                 marginBottom: '40px',
               }}>
                 {['Open-source tools', 'for the regenerative', 'neighborhood', 'movement.'].map((line, i) => (
-                  <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
+                  <span key={i} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.12em', marginBottom: '-0.12em' }}>
                     <motion.span
                       initial={{ y: '110%' }}
                       animate={{ y: 0 }}
@@ -253,33 +253,47 @@ export default function TechStack() {
               </motion.div>
             </motion.div>
 
-            {/* Right: 2×2 color panels */}
-            <motion.div
-              initial="hidden" animate="visible" variants={stagger}
-              className="ts-hero-panels"
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}
-            >
-              {heroPanels.map((p) => (
-                <motion.div key={p.label} variants={fadeUp} style={{
-                  backgroundColor: p.color, borderRadius: '6px', padding: '28px 24px',
-                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                  aspectRatio: '1 / 1',
-                }}>
-                  <span style={{
-                    fontSize: '44px', lineHeight: 1, opacity: 0.4,
-                    fontFamily: 'var(--font-lora), Georgia, serif', fontWeight: '400', color: BG,
-                  }}>
-                    {p.symbol}
-                  </span>
-                  <span style={{
-                    fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em',
-                    textTransform: 'uppercase', color: BG,
-                  }}>
-                    {p.label}
-                  </span>
+            {/* Right: floating shape installation */}
+            <div className="ts-hero-panels" style={{ position: 'relative', height: '440px' }}>
+              {([
+                { shape: 'circle',   color: 'var(--green)',  top: '4%',  left: '6%',  dur: 5.2, delay: 0,    rot: 0  },
+                { shape: 'triangle', color: 'var(--blue)',   top: '2%',  left: '58%', dur: 6.0, delay: 0.7,  rot: 8  },
+                { shape: 'square',   color: 'var(--pink)',   top: '33%', left: '29%', dur: 4.6, delay: 0.3,  rot: -6 },
+                { shape: 'circle',   color: 'var(--yellow)', top: '60%', left: '3%',  dur: 5.8, delay: 1.1,  rot: 0  },
+                { shape: 'triangle', color: 'var(--green)',  top: '74%', left: '31%', dur: 4.2, delay: 0.9,  rot: -8 },
+                { shape: 'square',   color: 'var(--blue)',   top: '57%', left: '61%', dur: 6.4, delay: 0.5,  rot: 6  },
+              ] as { shape: string; color: string; top: string; left: string; dur: number; delay: number; rot: number }[]).map((s, i) => (
+                <motion.div
+                  key={i}
+                  style={{ position: 'absolute', top: s.top, left: s.left, cursor: 'default' }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{
+                    opacity: 1, scale: 1,
+                    y: [0, -20, 0],
+                    rotate: [0, s.rot, 0],
+                  }}
+                  transition={{
+                    opacity: { duration: 0.6, delay: 0.2 + i * 0.1 },
+                    scale:   { duration: 0.6, delay: 0.2 + i * 0.1 },
+                    y:       { duration: s.dur, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
+                    rotate:  { duration: s.dur * 1.3, delay: s.delay, repeat: Infinity, ease: 'easeInOut' },
+                  }}
+                  whileHover={{ scale: 1.14, transition: { duration: 0.2 } }}
+                >
+                  {s.shape === 'circle' && (
+                    <div style={{ width: 88, height: 88, borderRadius: '50%', backgroundColor: s.color }} />
+                  )}
+                  {s.shape === 'square' && (
+                    <div style={{ width: 88, height: 88, backgroundColor: s.color }} />
+                  )}
+                  {s.shape === 'triangle' && (
+                    <svg width={88} height={88} viewBox="0 0 100 100" overflow="visible">
+                      <polygon points="50,6 97,91 3,91" fill={s.color} />
+                    </svg>
+                  )}
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
 
           </div>
         </div>
