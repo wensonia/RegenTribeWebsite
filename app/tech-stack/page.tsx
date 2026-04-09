@@ -232,8 +232,12 @@ function FlipCard({ top, left }: { top: string; left: string }) {
           display: 'flex', flexDirection: 'column', alignItems: 'center',
           justifyContent: 'center', padding: '18px', textAlign: 'center', gap: '10px',
         }}>
-          <span style={{ fontSize: '22px', lineHeight: 1 }}>○</span>
-          <p style={{ fontSize: '12px', fontWeight: '700', color: BG, lineHeight: 1.45 }}>
+          <span style={{ fontSize: '22px', lineHeight: 1, color: 'rgba(40,42,41,0.4)' }}>○</span>
+          <p style={{
+            fontSize: '11px', fontWeight: '600', lineHeight: 1.5,
+            textTransform: 'uppercase', letterSpacing: '0.06em',
+            color: 'rgba(40,42,41,0.62)',
+          }}>
             What is a regenerative neighborhood?
           </p>
         </div>
