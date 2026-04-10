@@ -1,47 +1,33 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Plus, Minus } from 'lucide-react'
+import { useState } from 'react'
 
 const W = '1280px'
 const PX = '40px'
 const wrap: React.CSSProperties = { maxWidth: W, margin: '0 auto', padding: `0 ${PX}` }
 
-/* ── Animation ── */
+/* ── Animations ── */
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
 }
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }
 const vp = { once: true, margin: '-80px' as const }
 
 /* ── Text link CTA ── */
-function TextLink({
-  href, children, light, external,
-}: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
+function TextLink({ href, children, light, external }: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
   const style: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '17px',
-    fontWeight: '400',
-    color: light ? 'white' : 'var(--text)',
-    textDecoration: 'none',
-    letterSpacing: '0.01em',
+    display: 'inline-flex', alignItems: 'center', gap: '8px',
+    fontSize: '17px', fontWeight: '400', color: light ? 'white' : 'var(--text)',
+    textDecoration: 'none', letterSpacing: '0.01em',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={1.5} /></>
-  if (external) {
-    return (
-      <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style}
-        whileHover={{ x: 5 }} transition={{ duration: 0.15 }}>
-        {inner}
-      </motion.a>
-    )
-  }
+  if (external) return (
+    <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style} whileHover={{ x: 5 }} transition={{ duration: 0.15 }}>{inner}</motion.a>
+  )
   return (
     <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.15 }} style={{ display: 'inline-flex' }}>
       <Link href={href} style={style}>{inner}</Link>
@@ -50,35 +36,20 @@ function TextLink({
 }
 
 /* ── Pill button ── */
-function PillBtn({
-  href, children, light, external,
-}: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
+function PillBtn({ href, children, light, external }: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
   const style: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '14px',
-    fontWeight: '600',
-    letterSpacing: '0.02em',
+    display: 'inline-flex', alignItems: 'center', gap: '8px',
+    fontSize: '14px', fontWeight: '600', letterSpacing: '0.02em',
     color: light ? 'var(--text)' : 'white',
     backgroundColor: light ? 'white' : 'var(--text)',
-    border: 'none',
-    borderRadius: '9999px',
-    padding: '14px 32px',
-    textDecoration: 'none',
+    border: 'none', borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
-  if (external) {
-    return (
-      <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style}
-        whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-        {inner}
-      </motion.a>
-    )
-  }
+  if (external) return (
+    <motion.a href={href} target="_blank" rel="noopener noreferrer" style={style} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>{inner}</motion.a>
+  )
   return (
-    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-      transition={{ duration: 0.15 }} style={{ display: 'inline-flex' }}>
+    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} style={{ display: 'inline-flex' }}>
       <Link href={href} style={style}>{inner}</Link>
     </motion.div>
   )
@@ -88,49 +59,71 @@ function PillBtn({
 function Label({ children, light }: { children: React.ReactNode; light?: boolean }) {
   return (
     <p style={{
-      fontSize: '11px', fontWeight: '600', letterSpacing: '0.14em',
-      textTransform: 'uppercase',
-      color: light ? 'rgba(255,255,255,0.45)' : 'var(--text-muted)',
-      marginBottom: '28px',
-    }}>
-      {children}
-    </p>
+      fontSize: '11px', fontWeight: '600', letterSpacing: '0.14em', textTransform: 'uppercase',
+      color: light ? 'rgba(255,255,255,0.45)' : 'var(--text-muted)', marginBottom: '28px',
+    }}>{children}</p>
   )
 }
 
 /* ── Data ── */
-const timeline = [
-  { year: '2021', title: 'Community Becomes the Goal', desc: 'First eco-hotel-to-regenerative neighborhood consultation. Raised $150K for renewable energy. Moved to Tulum to launch the Regen Tribe Incubator house.' },
-  { year: '2022', title: 'Growing the Network', desc: 'Regen Tribe Incubator houses in Tulum. Identified 200+ neighborhoods worldwide. Launched Regen Tribe Discord. Developed v1 guide for regenerative neighborhood development.' },
-  { year: '2023', title: 'Building the Ecosystem', desc: 'Vitalia Longevity Startup City. First Agent Program. Tribes v1. Community Lab 1 in Ixchel, Mexico. D.pact Istanbul, Free Cities Conference.' },
-  { year: '2024', title: 'On-Site at Communities', desc: 'Active at WildSeeds, Community Lab X, and Network School Pop-up City. AI-powered co-living tools developed in Malaysia.' },
-  { year: '2025', title: 'Digital Tools & Alliance', desc: 'Launching AI integrations and digital tools. Regenerative Neighborhood Alliance kick-off. First permanent Regen Tribe location at Aldea Kuyabeh.' },
-  { year: '2030', title: 'Kuyabeh Collective Spaces', desc: '10-flower regenerative neighborhood at Kuyabeh completes its collective spaces, establishing a vibrant hub near Tulum.' },
-  { year: '2040', title: 'Dozens of Regenerative Neighborhoods Globally', desc: 'Kuyabeh, The Ark, Alpaca, Wild Seeds, and key European & Asian sites reach 5% of global population.' },
-  { year: '2100', title: 'Regenerative Neighborhoods Everywhere', desc: 'A global network of 53M+ communities. 80% of the world population with access to a regenerative neighborhood.' },
+const heroPanels = [
+  { color: 'var(--green)', label: 'Global Network', symbol: '○' },
+  { color: 'var(--pink)', label: 'Agency', symbol: '△' },
+  { color: 'var(--yellow)', label: 'Education', symbol: '□' },
+  { color: 'var(--blue)', label: 'Land Development', symbol: '○' },
+]
+
+const coreNeeds = ['WATER', 'FOOD', 'ENERGY', 'WASTE', 'HUMAN CONNECTION', 'NATURE', 'CLEAN AIR']
+
+const offerings = [
+  { label: 'global network', dot: 'var(--green)', desc: 'connect to a growing network of people, neighborhoods and solutions around the world.', cta: 'Connect', href: 'https://tribesplatform.app', external: true },
+  { label: 'education', dot: 'var(--yellow-deep)', desc: 'get open source educational materials, guides, vocational programs, and tools.', cta: 'Learn More', href: '/agency' },
+  { label: 'agency', dot: 'var(--pink)', desc: 'get support for your existing or new neighborhood with regenerative goals through our consultancy service.', cta: 'Get Support', href: '/agency' },
+  { label: 'land development', dot: 'var(--blue)', desc: 'work with us to build a global network of microcommunities at partner projects & 150 person Regenerative Neighborhoods.', cta: 'Collaborate', href: '/join' },
 ]
 
 const projects = [
-  { name: 'Aldea Kuyabeh', loc: 'Tulum, Mexico', tag: 'Land Development', dot: 'var(--green)', desc: '365-hectare regenerative micro-city outside Tulum. 10-flower neighborhood model, construction begins 2027.' },
-  { name: 'The Ark', loc: 'Costa Rica', tag: 'Alliance Partner', dot: 'var(--pink)', desc: 'Micro regenerative neighborhoods in the rainforest, focusing on ecological balance and resilient living systems.' },
-  { name: 'WildSeeds Collective', loc: 'California, USA', tag: 'Agency Support', dot: 'var(--blue)', desc: 'Implementing team management systems, wikis, and community agreements for an evolving urban collective.' },
-  { name: 'Community Lab X', loc: 'Tulum, Mexico', tag: 'Incubator Hub', dot: 'var(--yellow-deep)', desc: 'Transforming a retreat center into a thriving community hub with activated sustainable systems and programs.' },
+  { name: 'Kuyabeh', loc: 'Tulum, Mexico', desc: '375 hectares sustainable micro city in Mexico', dot: 'var(--green)' },
+  { name: 'La Ecovilla', loc: 'Costa Rica', desc: 'neighborhood in Costa Rica housing 43 families', dot: 'var(--pink)' },
+  { name: 'MOOS Space', loc: 'Berlin, Germany', desc: 'urban community in the heart of Berlin', dot: 'var(--blue)' },
+  { name: 'La Reserva', loc: 'Tulum, Mexico', desc: 'sustainable neighborhood in Tulum, Mexico', dot: 'var(--yellow-deep)' },
+  { name: 'WildSeeds Ranch', loc: 'San Diego, California', desc: 'coliving community in San Diego, California', dot: 'var(--green)' },
 ]
 
-/* ── Hero visual panels ── */
-const heroPanels = [
-  { color: 'var(--green)', label: 'Tribes Platform', symbol: '○' },
-  { color: 'var(--pink)', label: 'Agency', symbol: '△' },
-  { color: 'var(--yellow)', label: 'Education', symbol: '□' },
-  { color: 'var(--blue)', label: 'Community', symbol: '○' },
+const testimonials = [
+  {
+    name: 'Jordan Hammond', role: 'Vision holder of WildSeeds Ranch', about: 'Agency',
+    quote: 'I\'m glad to have found you. We are a large family who have just purchased a chunk of forest and I\'m happy to see how other groups have formed intentional neighborhoods through the resources on Tribes.',
+  },
+  {
+    name: 'Laurence Ion', role: 'Co-founder of Vitalia (current Viva City)', about: 'Agency',
+    quote: 'Grateful to have come across Regen Tribes and the digital club house. Really loving all of the awesome projects and inspiration that is emerging through this container – grateful and honored to be here.',
+  },
+  {
+    name: 'Vivo Zerbe', role: 'Agent In-Practice', about: 'Agent Program',
+    quote: 'The Agent Program was really helpful in understanding and internalizing the steps necessary in the community creation process. The program was super well organized, and as informative as it was interactive.',
+  },
 ]
+
+const faqs = [
+  { q: 'What is a regenerative neighborhood?', a: 'A regenerative neighborhood is a community land development with resilient systems for water, food, energy, waste management, nature & human connection — designed to have a net positive effect on people and the planet.' },
+  { q: 'Where are you building neighborhoods?', a: 'We are actively collaborating with projects in Mexico (Aldea Kuyabeh, La Reserva), Costa Rica (La Ecovilla), Germany (MOOS Space), and California (WildSeeds Ranch), with more alliance partner sites globally.' },
+  { q: 'Can I buy a home in a regenerative neighborhood?', a: 'Yes — we are developing land and real estate opportunities. Reach out to us to learn more about current openings at our partner sites and upcoming developments.' },
+  { q: 'Can I join Regen Tribe?', a: 'Absolutely. We are always looking for ambassadors, collaborators, and core team members. Visit the Tribes Platform or reach out to hello@regentribe.co to find your role.' },
+  { q: 'Where can I see the list of regenerative neighborhoods?', a: 'The full global database of regenerative neighborhoods is on the Tribes Platform at tribesplatform.app.' },
+  { q: 'How do I start my own community project?', a: 'Start with our 11-step Alchemy Guide on the Tribes Platform. You can also reach out to the Regen Tribe Agency for direct consulting support.' },
+]
+
+const partners = ['Free Cities Foundation', 'REGENS', '#TEAM PLASTIC POSITIVE', 'cohere', 'ECOLECTA']
 
 /* ── Page ── */
 export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+
   return (
     <>
       {/* ════════════════════════════════
-          HERO — two-column, massive type
+          HERO
       ════════════════════════════════ */}
       <section style={{ padding: '80px 0 96px', minHeight: '88vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ ...wrap, width: '100%' }}>
@@ -142,280 +135,269 @@ export default function Home() {
                 <Label>Regenerative Neighborhood Accelerator</Label>
               </motion.div>
 
-              <h1
-                style={{
-                  fontSize: 'clamp(64px, 8.5vw, 120px)',
-                  fontWeight: '400',
-                  lineHeight: '0.92',
-                  letterSpacing: '-0.03em',
-                  color: 'var(--text)',
-                  marginBottom: '56px',
-                }}
-              >
-                {['Create,', 'grow', '&', 'find', 'your', 'community.'].map((word, i) => (
+              <h1 style={{
+                fontSize: 'clamp(56px, 7.5vw, 112px)', fontWeight: '400',
+                lineHeight: '0.92', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '32px',
+              }}>
+                {['create,', 'grow', '&', 'find'].map((word, i) => (
                   <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
-                    <motion.span
-                      initial={{ y: '110%' }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 + i * 0.07 }}
-                      style={{ display: 'inline-block' }}
-                    >
-                      {word === '&' ? '\u0026' : word}
+                    <motion.span initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 + i * 0.07 }} style={{ display: 'inline-block' }}>
+                      {word}
                     </motion.span>
                   </span>
                 ))}
+                <br />
+                <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
+                  <motion.span initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.43 }} style={{ display: 'inline-block', fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
+                    Regenerative Neighborhoods
+                  </motion.span>
+                </span>
               </h1>
 
-              <motion.div
-                variants={fadeUp}
-                style={{
-                  borderTop: '1px solid var(--border)',
-                  paddingTop: '40px',
-                  display: 'flex',
-                  gap: '48px',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <TextLink href="/join">Join the Movement</TextLink>
-                <TextLink href="https://tribesplatform.app" external>Explore Tribes Platform</TextLink>
+              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '480px' }}>
+                The Regen Tribe ecosystem connects people, projects, &amp; solutions to accelerate regenerative neighborhood development.
+              </motion.p>
+
+              <motion.div variants={fadeUp} style={{
+                display: 'inline-block', borderLeft: '2px solid var(--border)', paddingLeft: '16px',
+                marginBottom: '40px',
+              }}>
+                <p style={{ fontSize: '13px', fontWeight: '400', color: 'var(--text-muted)', lineHeight: '1.6', fontStyle: 'italic' }}>
+                  regenerative neighborhood <span style={{ fontStyle: 'normal', opacity: 0.5 }}>/noun/</span> — community land development with resilient systems for water, food, shelter, energy, waste management, nature &amp; human connection.
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeUp} style={{
+                borderTop: '1px solid var(--border)', paddingTop: '40px',
+                display: 'flex', gap: '48px', alignItems: 'center', flexWrap: 'wrap',
+              }}>
+                <PillBtn href="https://tribesplatform.app" external>Join the Tribes Platform</PillBtn>
+                <TextLink href="#ecosystem">About our ecosystem</TextLink>
               </motion.div>
             </motion.div>
 
-            {/* Right: color panel grid */}
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-              className="hero-panels"
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}
-            >
+            {/* Right: color panels */}
+            <motion.div initial="hidden" animate="visible" variants={stagger} className="hero-panels"
+              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               {heroPanels.map((panel) => (
-                <motion.div
-                  key={panel.label}
-                  variants={fadeUp}
-                  style={{
-                    backgroundColor: panel.color,
-                    borderRadius: '6px',
-                    padding: '28px 24px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    aspectRatio: '1 / 1',
-                  }}
-                >
-                  <span style={{
-                    fontSize: '44px',
-                    lineHeight: 1,
-                    color: 'var(--text)',
-                    opacity: 0.45,
-                    fontFamily: 'var(--font-lora), Georgia, serif',
-                    fontWeight: '400',
-                  }}>
+                <motion.div key={panel.label} variants={fadeUp} style={{
+                  backgroundColor: panel.color, borderRadius: '6px', padding: '28px 24px',
+                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between', aspectRatio: '1 / 1',
+                }}>
+                  <span style={{ fontSize: '44px', lineHeight: 1, color: 'var(--text)', opacity: 0.45, fontFamily: 'var(--font-lora), Georgia, serif', fontWeight: '400' }}>
                     {panel.symbol}
                   </span>
-                  <span style={{
-                    fontSize: '11px',
-                    fontWeight: '700',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: 'var(--text)',
-                  }}>
+                  <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)' }}>
                     {panel.label}
                   </span>
                 </motion.div>
               ))}
             </motion.div>
-
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════
-          TICKER STRIP
+          OUR WHY — Challenge + Solution
       ════════════════════════════════ */}
-      <div style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', overflow: 'hidden', padding: '16px 0' }}>
-        <div className="ticker-track" style={{ display: 'flex', gap: '64px', width: 'max-content' }}>
-          {[...Array(3)].flatMap(() => [
-            'Tribes Platform', '○', 'Regen Tribe Agency', '△', 'Education', '□',
-            'Regenerative Neighborhoods', '○', 'Global Movement', '△', 'Circular Economy', '□',
-          ]).map((item, i) => (
-            <span key={i} style={{
-              fontSize: '13px',
-              fontWeight: item.length === 1 ? '400' : '500',
-              letterSpacing: item.length === 1 ? '0' : '0.1em',
-              textTransform: 'uppercase',
-              color: item.length === 1 ? 'var(--text-muted)' : 'var(--text)',
-              whiteSpace: 'nowrap',
-            }}>
-              {item}
-            </span>
-          ))}
+      <section style={{ padding: '120px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div style={wrap}>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+            <motion.div variants={fadeUp}><Label>our why</Label></motion.div>
+
+            <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+              {/* Challenge */}
+              <motion.div variants={fadeUp}>
+                <h2 style={{
+                  fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: '400', lineHeight: '1.0',
+                  letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: '40px',
+                }}>
+                  The challenge.
+                </h2>
+                <p style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                  We face urgent global challenges — resource scarcity, climate change, social inequality, and loneliness — demanding collective action to reshape our systems.
+                </p>
+                <p style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '40px' }}>
+                  Society&apos;s flawed development is making essential resources scarce — and the change starts in our neighborhood.
+                </p>
+                <TextLink href="https://tribesplatform.app" external>Read our documentation</TextLink>
+              </motion.div>
+
+              {/* Solution */}
+              <motion.div variants={fadeUp}>
+                <h2 style={{
+                  fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: '400', lineHeight: '1.0',
+                  letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: '40px',
+                }}>
+                  The solution.
+                </h2>
+                <p style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '36px' }}>
+                  Community land developments with resilient systems provide our core needs:
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
+                  {coreNeeds.map((need) => (
+                    <span key={need} style={{
+                      fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em',
+                      textTransform: 'uppercase', border: '1px solid var(--border)',
+                      borderRadius: '9999px', padding: '8px 16px', color: 'var(--text)',
+                    }}>{need}</span>
+                  ))}
+                </div>
+                <p style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
+                  We call these places <em>regenerative neighborhoods</em> — because they have a positive effect on humans, the environment, &amp; can adapt to change. Let&apos;s build more.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* ════════════════════════════════
-          ABOUT — 2-column editorial
+          WHAT ARE REGENERATIVE NEIGHBORHOODS?
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
         <div style={wrap}>
-          <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
-
-            {/* Left: big heading */}
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeUp}
-              viewport={vp}
-              style={{
-                fontSize: 'clamp(44px, 5.5vw, 88px)',
-                fontWeight: '400',
-                lineHeight: '0.95',
-                letterSpacing: '-0.025em',
-                color: 'var(--text)',
-              }}
-            >
-              Re-developing society through regenerative neighborhoods.
-            </motion.h2>
-
-            {/* Right: body + why/how/what */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={stagger}
-              viewport={vp}
-            >
-              <motion.p
-                variants={fadeUp}
-                style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '48px' }}
-              >
-                We focus on meeting core human needs — air, water, food, shelter, energy, connection — through regenerative circular systems with net positive impact on people and planet.
-              </motion.p>
-
-              <motion.div
-                variants={fadeUp}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  borderTop: '1px solid var(--border)',
-                  marginBottom: '40px',
-                }}
-              >
-                {[
-                  { tag: 'Why', dot: 'var(--pink)', text: 'Improve life for humanity while healing our planet.' },
-                  { tag: 'How', dot: 'var(--yellow-deep)', text: 'Real estate, intentional community, circular economy.' },
-                  { tag: 'What', dot: 'var(--blue)', text: 'A platform, a global alliance, and real-world projects.' },
-                ].map((item, i) => (
-                  <div
-                    key={item.tag}
-                    style={{
-                      padding: '24px 20px 24px 0',
-                      borderRight: i < 2 ? '1px solid var(--border)' : 'none',
-                      paddingLeft: i > 0 ? '20px' : '0',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-                      <div style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: item.dot, flexShrink: 0 }} />
-                      <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                        {item.tag}
-                      </span>
-                    </div>
-                    <p style={{ fontSize: '15px', fontWeight: '400', color: 'var(--text)', lineHeight: '1.5', fontFamily: 'var(--font-lora), Georgia, serif' }}>
-                      {item.text}
-                    </p>
-                  </div>
-                ))}
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+            <motion.div variants={fadeUp}><Label light>what are regenerative neighborhoods?</Label></motion.div>
+            <div className="rn-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+              <motion.div variants={fadeUp}>
+                <h2 style={{
+                  fontSize: 'clamp(44px, 5.5vw, 88px)', fontWeight: '400', lineHeight: '0.95',
+                  letterSpacing: '-0.025em', color: 'white', marginBottom: '40px',
+                }}>
+                  What are regenerative neighborhoods?
+                </h2>
               </motion.div>
-
-              <motion.div variants={fadeUp} style={{ borderTop: '1px solid var(--border)', paddingTop: '32px', marginTop: '8px' }}>
-                <TextLink href="/about">About Regen Tribe</TextLink>
+              <motion.div variants={fadeUp}>
+                <p style={{ fontSize: '22px', fontWeight: '300', color: 'rgba(255,255,255,0.75)', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Regenerative Neighborhoods are resource resilient &amp; intentional community land developments.
+                </p>
+                <p style={{ fontSize: '18px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '24px' }}>
+                  And provide true sovereignty when created and run well. They provide resilient solutions for the important things:
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '56px' }}>
+                  {['WATER', 'FOOD', 'ENERGY', 'WASTE', 'HUMAN CONNECTION', 'NATURE'].map((need) => (
+                    <span key={need} style={{
+                      fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em',
+                      textTransform: 'uppercase', border: '1px solid rgba(255,255,255,0.2)',
+                      borderRadius: '9999px', padding: '8px 16px', color: 'rgba(255,255,255,0.75)',
+                    }}>{need}</span>
+                  ))}
+                </div>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '40px' }}>
+                  <p style={{ fontSize: '13px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '12px' }}>Our vision</p>
+                  <p style={{ fontSize: '28px', fontWeight: '400', color: 'white', lineHeight: '1.3', fontFamily: 'var(--font-lora), Georgia, serif' }}>
+                    To create 53 million regenerative neighborhoods around the world collectively.
+                  </p>
+                  <p style={{ fontSize: '16px', fontWeight: '300', color: 'rgba(255,255,255,0.45)', lineHeight: '1.65', marginTop: '16px' }}>
+                    Enough for each person (8 billion people) on the planet to have their core needs met &amp; feel the sense of community.
+                  </p>
+                </div>
               </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════
+          WHAT WE OFFER
+      ════════════════════════════════ */}
+      <section id="ecosystem" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div style={wrap}>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+            <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid var(--border)', paddingBottom: '40px', marginBottom: '72px', flexWrap: 'wrap', gap: '24px' }}>
+              <div>
+                <Label>what we offer</Label>
+                <h2 style={{ fontSize: 'clamp(48px, 6vw, 96px)', fontWeight: '400', lineHeight: '0.92', letterSpacing: '-0.025em', color: 'var(--text)' }}>
+                  What we<br />offer.
+                </h2>
+              </div>
+              <TextLink href="https://tribesplatform.app" external>Find all of the above on Tribes Platform</TextLink>
             </motion.div>
-          </div>
+
+            {/* 4 offerings grid */}
+            <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', marginBottom: '80px' }}>
+              {offerings.map((o, i) => (
+                <motion.div key={o.label} variants={fadeUp} style={{
+                  borderRight: i < offerings.length - 1 ? '1px solid var(--border)' : 'none',
+                  paddingRight: i < offerings.length - 1 ? '32px' : '0',
+                  paddingLeft: i > 0 ? '32px' : '0',
+                }}>
+                  <div style={{ width: '32px', height: '3px', backgroundColor: o.dot, marginBottom: '24px', borderRadius: '2px' }} />
+                  <h3 style={{ fontSize: '18px', fontWeight: '400', color: 'var(--text)', marginBottom: '14px', fontFamily: 'var(--font-lora), Georgia, serif', textTransform: 'lowercase' }}>
+                    {o.label}
+                  </h3>
+                  <p style={{ fontSize: '15px', fontWeight: '300', color: 'var(--text-muted)', lineHeight: '1.65', marginBottom: '24px' }}>
+                    {o.desc}
+                  </p>
+                  {o.external ? (
+                    <motion.a href={o.href} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', textDecoration: 'none' }}
+                      whileHover={{ x: 4 }} transition={{ duration: 0.15 }}>
+                      {o.cta} <ArrowRight size={12} strokeWidth={2} />
+                    </motion.a>
+                  ) : (
+                    <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.15 }} style={{ display: 'inline-flex' }}>
+                      <Link href={o.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', textDecoration: 'none' }}>
+                        {o.cta} <ArrowRight size={12} strokeWidth={2} />
+                      </Link>
+                    </motion.div>
+                  )}
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Tribes Platform hub */}
+            <motion.div variants={fadeUp} style={{ backgroundColor: 'var(--yellow)', borderRadius: '8px', padding: '56px 64px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
+              <div>
+                <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.5, marginBottom: '12px' }}>Find it all here</p>
+                <h3 style={{ fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: '400', letterSpacing: '-0.02em', color: 'var(--text)', marginBottom: '12px', fontFamily: 'var(--font-lora), Georgia, serif' }}>
+                  Tribes Platform
+                </h3>
+                <p style={{ fontSize: '18px', fontWeight: '300', color: 'var(--text)', opacity: 0.65, maxWidth: '420px', lineHeight: '1.55' }}>
+                  join the networking &amp; education hub to develop regenerative neighborhoods.
+                </p>
+              </div>
+              <PillBtn href="https://tribesplatform.app" external>Join Tribes</PillBtn>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* ════════════════════════════════
-          PROJECTS — yellow full-bleed
+          ACTIVE PROJECTS
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--yellow)', padding: '120px 0' }}>
+      <section style={{ backgroundColor: 'var(--green)', padding: '120px 0' }}>
         <div style={wrap}>
-          {/* Header row */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={stagger}
-            viewport={vp}
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-              borderBottom: '1px solid rgba(54,54,54,0.2)',
-              paddingBottom: '40px',
-              marginBottom: '72px',
-              flexWrap: 'wrap',
-              gap: '24px',
-            }}
-          >
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
+            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid rgba(54,54,54,0.2)', paddingBottom: '40px', marginBottom: '72px', flexWrap: 'wrap', gap: '24px' }}>
             <motion.div variants={fadeUp}>
-              <Label>Active Collaborations</Label>
-              <h2 style={{
-                fontSize: 'clamp(48px, 6vw, 96px)',
-                fontWeight: '400',
-                lineHeight: '0.92',
-                letterSpacing: '-0.025em',
-                color: 'var(--text)',
-              }}>
-                Projects<br />in Motion
+              <Label>active projects</Label>
+              <h2 style={{ fontSize: 'clamp(48px, 6vw, 96px)', fontWeight: '400', lineHeight: '0.92', letterSpacing: '-0.025em', color: 'var(--text)' }}>
+                Projects<br />in motion.
               </h2>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <TextLink href="/projects">See all projects</TextLink>
+              <TextLink href="/agency">See all projects</TextLink>
             </motion.div>
           </motion.div>
 
-          {/* Project cards */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={stagger}
-            viewport={vp}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}
-          >
-            {projects.map((p, i) => (
-              <motion.div
-                key={p.name}
-                variants={fadeUp}
-                style={{
-                  borderRight: i < projects.length - 1 ? '1px solid rgba(54,54,54,0.2)' : 'none',
-                  paddingRight: i < projects.length - 1 ? '32px' : '0',
-                  paddingLeft: i > 0 ? '32px' : '0',
-                }}
-              >
-                {/* Color bar */}
-                <div style={{ width: '32px', height: '3px', backgroundColor: p.dot, marginBottom: '24px', borderRadius: '2px' }} />
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.5 }}>
-                    {p.tag}
-                  </span>
-                </div>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0' }}>
+            {projects.map((p, idx) => (
+              <motion.div key={p.name} variants={fadeUp} style={{
+                borderRight: idx < projects.length - 1 ? '1px solid rgba(54,54,54,0.2)' : 'none',
+                paddingRight: idx < projects.length - 1 ? '24px' : '0',
+                paddingLeft: idx > 0 ? '24px' : '0',
+              }}>
+                <div style={{ width: '28px', height: '3px', backgroundColor: p.dot, marginBottom: '20px', borderRadius: '2px' }} />
                 <h3 style={{
-                  fontSize: 'clamp(20px, 2vw, 28px)',
-                  fontWeight: '400',
-                  lineHeight: '1.15',
-                  letterSpacing: '-0.01em',
-                  color: 'var(--text)',
-                  marginBottom: '8px',
+                  fontSize: 'clamp(16px, 1.6vw, 22px)', fontWeight: '400', lineHeight: '1.2',
+                  letterSpacing: '-0.01em', color: 'var(--text)', marginBottom: '6px',
                   fontFamily: 'var(--font-lora), Georgia, serif',
-                }}>
-                  {p.name}
-                </h3>
-                <p style={{ fontSize: '13px', color: 'var(--text)', opacity: 0.45, marginBottom: '20px', letterSpacing: '0.02em' }}>
-                  {p.loc}
-                </p>
-                <p style={{ fontSize: '15px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.65', opacity: 0.7 }}>
-                  {p.desc}
-                </p>
+                }}>{p.name}</h3>
+                <p style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.45, marginBottom: '16px', letterSpacing: '0.02em' }}>{p.loc}</p>
+                <p style={{ fontSize: '14px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.6', opacity: 0.7 }}>{p.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -423,77 +405,141 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════
-          TRIBES PLATFORM — dark full-bleed
+          WHO WE ARE
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div style={wrap}>
-          <div className="platform-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'start' }}>
-
-            {/* Left */}
+          <div className="who-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
-              <motion.div variants={fadeUp}>
-                <Label light>The Platform</Label>
-              </motion.div>
-              <motion.h2
-                variants={fadeUp}
-                style={{
-                  fontSize: 'clamp(48px, 6vw, 96px)',
-                  fontWeight: '400',
-                  lineHeight: '0.92',
-                  letterSpacing: '-0.025em',
-                  color: 'white',
-                  marginBottom: '32px',
-                }}
-              >
-                Tribes<br />Platform
+              <motion.div variants={fadeUp}><Label>who we are</Label></motion.div>
+              <motion.h2 variants={fadeUp} style={{
+                fontSize: 'clamp(44px, 5.5vw, 88px)', fontWeight: '400', lineHeight: '0.95',
+                letterSpacing: '-0.025em', color: 'var(--text)',
+              }}>
+                Who we are.
               </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                style={{ fontSize: '20px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '48px', maxWidth: '380px' }}
-              >
-                The people, neighborhoods &amp; solutions of the Regenerative Neighborhood
-                Movement — all in one digital ecosystem.
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+              <motion.p variants={fadeUp} style={{ fontSize: '22px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '24px' }}>
+                we are an open collective of community builders.
               </motion.p>
-              <motion.div variants={fadeUp}>
-                <TextLink href="https://tribesplatform.app" external light>Visit tribesplatform.app</TextLink>
+              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                Our team has been researching, documenting and studying community land developments of various sizes and structures since 2022.
+              </motion.p>
+              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                We are a collective of social entrepreneurs from different walks of life, coming together to co.create the world we want to live in.
+              </motion.p>
+              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '48px' }}>
+                We are always looking for new ambassadors, collaborators and core team members to enhance our operational power and help develop more neighborhoods faster.
+              </motion.p>
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '32px' }}>
+                <TextLink href="/join">Choose your level of involvement</TextLink>
+                <TextLink href="/about">More about us</TextLink>
               </motion.div>
             </motion.div>
+          </div>
+        </div>
+      </section>
 
-            {/* Right */}
-            <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
-              {[
-                { num: '01', sub: 'The Movement', title: 'Global Network', desc: 'Connect with community creators, service providers, and resource holders building regenerative neighborhoods worldwide.', dot: 'var(--green)' },
-                { num: '02', sub: 'The Catalyzer', title: 'Education & Tools', desc: 'Access the 11-step Alchemy Guide, resource database, Agent Program vocational training, and assessment rubrics.', dot: 'var(--yellow)' },
-                { num: '03', sub: 'Regen Tribe Agency', title: 'Direct Support', desc: 'Hands-on consulting from our core team, or self-guided tools to plan and build your own regenerative neighborhood.', dot: 'var(--pink)' },
-              ].map((p, i) => (
-                <motion.div
-                  key={p.num}
-                  variants={fadeUp}
-                  style={{
-                    borderTop: i === 0 ? '1px solid rgba(255,255,255,0.12)' : 'none',
-                    borderBottom: '1px solid rgba(255,255,255,0.12)',
-                    padding: '32px 0',
-                    display: 'flex',
-                    gap: '20px',
-                  }}
-                >
-                  <span style={{ fontSize: '11px', fontWeight: '500', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.06em', marginTop: '4px', flexShrink: 0, width: '24px' }}>
-                    {p.num}
-                  </span>
+      {/* ════════════════════════════════
+          PARTNERS
+      ════════════════════════════════ */}
+      <section style={{ padding: '64px 0', borderBottom: '1px solid var(--border)' }}>
+        <div style={wrap}>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
+            style={{ display: 'flex', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
+            <motion.p variants={fadeUp} style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', flexShrink: 0 }}>
+              Partners in our ecosystem
+            </motion.p>
+            <div style={{ flex: 1, display: 'flex', gap: '40px', flexWrap: 'wrap', alignItems: 'center' }}>
+              {partners.map((p) => (
+                <motion.span key={p} variants={fadeUp} style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text)', opacity: 0.5, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+                  {p}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════
+          TESTIMONIALS
+      ════════════════════════════════ */}
+      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div style={wrap}>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+            <motion.div variants={fadeUp}><Label>what the community says</Label></motion.div>
+            <motion.h2 variants={fadeUp} style={{
+              fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: '400', lineHeight: '0.95',
+              letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: '72px',
+            }}>
+              What the community<br />says about us.
+            </motion.h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
+              {testimonials.map((t, i) => (
+                <motion.div key={t.name} variants={fadeUp} style={{
+                  borderTop: '2px solid var(--border)', paddingTop: '32px',
+                }}>
+                  <p style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '20px' }}>
+                    about {t.about}
+                  </p>
+                  <p style={{ fontSize: '17px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.7', marginBottom: '32px', fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                      <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: p.dot, flexShrink: 0 }} />
-                      <p style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>
-                        {p.sub}
-                      </p>
-                    </div>
-                    <h3 style={{ fontSize: '20px', fontWeight: '400', color: 'white', marginBottom: '10px', fontFamily: 'var(--font-lora), Georgia, serif' }}>
-                      {p.title}
-                    </h3>
-                    <p style={{ fontSize: '15px', fontWeight: '300', color: 'rgba(255,255,255,0.45)', lineHeight: '1.65' }}>
-                      {p.desc}
-                    </p>
+                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'var(--text)', marginBottom: '4px' }}>{t.name}</p>
+                    <p style={{ fontSize: '13px', fontWeight: '300', color: 'var(--text-muted)' }}>{t.role}</p>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════
+          FAQs
+      ════════════════════════════════ */}
+      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div style={wrap}>
+          <div className="faq-grid" style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
+            <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+              <motion.div variants={fadeUp}><Label>FAQs</Label></motion.div>
+              <motion.h2 variants={fadeUp} style={{
+                fontSize: 'clamp(40px, 5vw, 72px)', fontWeight: '400', lineHeight: '0.95',
+                letterSpacing: '-0.025em', color: 'var(--text)',
+              }}>
+                Common questions.
+              </motion.h2>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+              {faqs.map((faq, i) => (
+                <motion.div key={i} variants={fadeUp} style={{ borderBottom: '1px solid var(--border)' }}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    style={{
+                      width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      padding: '28px 0', background: 'none', border: 'none', cursor: 'pointer',
+                      fontSize: '18px', fontWeight: '400', color: 'var(--text)', textAlign: 'left',
+                      fontFamily: 'var(--font-lora), Georgia, serif',
+                    }}
+                  >
+                    {faq.q}
+                    {openFaq === i ? <Minus size={16} strokeWidth={1.5} /> : <Plus size={16} strokeWidth={1.5} />}
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <p style={{ fontSize: '16px', fontWeight: '300', color: 'var(--text-muted)', lineHeight: '1.65', paddingBottom: '28px' }}>
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
             </motion.div>
@@ -502,158 +548,49 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════
-          TIMELINE — light bg
+          LET'S CONNECT
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+      <section style={{ backgroundColor: 'var(--yellow)', padding: '140px 0' }}>
         <div style={wrap}>
-          <div className="timeline-grid" style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
-
-            {/* Sticky left */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={stagger}
-              viewport={vp}
-              style={{ position: 'sticky', top: '100px' }}
-            >
-              <motion.div variants={fadeUp}><Label>The Journey</Label></motion.div>
-              <motion.h2
-                variants={fadeUp}
-                style={{
-                  fontSize: 'clamp(48px, 5vw, 80px)',
-                  fontWeight: '400',
-                  lineHeight: '0.95',
-                  letterSpacing: '-0.025em',
-                  color: 'var(--text)',
-                  marginBottom: '28px',
-                }}
-              >
-                2021<br />→<br />2100
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                style={{ fontSize: '16px', fontWeight: '300', color: 'var(--text-muted)', lineHeight: '1.65', marginBottom: '40px', maxWidth: '220px' }}
-              >
-                From a Tulum incubator house to a planet of regenerative neighborhoods.
-              </motion.p>
-            </motion.div>
-
-            {/* Timeline items */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={stagger}
-              viewport={vp}
-            >
-              {timeline.map((item, i) => {
-                const isFuture = parseInt(item.year) > 2025
-                return (
-                  <motion.div
-                    key={item.year}
-                    variants={fadeUp}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: '80px 1fr',
-                      gap: '32px',
-                      padding: '40px 0',
-                      borderBottom: i < timeline.length - 1 ? '1px solid var(--border)' : 'none',
-                      opacity: isFuture ? 0.4 : 1,
-                    }}
-                  >
-                    <span style={{
-                      fontSize: '14px',
-                      fontWeight: '500',
-                      color: isFuture ? 'var(--text-muted)' : 'var(--blue-deep)',
-                      letterSpacing: '0.01em',
-                      paddingTop: '4px',
-                    }}>
-                      {item.year}
-                    </span>
-                    <div>
-                      <h3 style={{
-                        fontSize: 'clamp(18px, 1.8vw, 24px)',
-                        fontWeight: '400',
-                        lineHeight: '1.25',
-                        letterSpacing: '-0.01em',
-                        color: 'var(--text)',
-                        marginBottom: '12px',
-                        fontFamily: 'var(--font-lora), Georgia, serif',
-                      }}>
-                        {item.title}
-                      </h3>
-                      <p style={{ fontSize: '15px', fontWeight: '300', color: 'var(--text-muted)', lineHeight: '1.65' }}>
-                        {item.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════
-          JOIN — green full-bleed
-      ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--green)', padding: '140px 0' }}>
-        <div style={wrap}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={stagger}
-            viewport={vp}
-          >
-            <motion.div variants={fadeUp}><Label>Get Involved</Label></motion.div>
-
-            <motion.h2
-              variants={fadeUp}
-              style={{
-                fontSize: 'clamp(56px, 7.5vw, 120px)',
-                fontWeight: '400',
-                lineHeight: '0.92',
-                letterSpacing: '-0.03em',
-                color: 'var(--text)',
-                marginBottom: '48px',
-                maxWidth: '900px',
-              }}
-            >
-              Become part of the regenerative future.
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+            <motion.div variants={fadeUp}><Label>get involved</Label></motion.div>
+            <motion.h2 variants={fadeUp} style={{
+              fontSize: 'clamp(56px, 7.5vw, 120px)', fontWeight: '400', lineHeight: '0.92',
+              letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '32px', maxWidth: '900px',
+            }}>
+              Let&apos;s connect.
             </motion.h2>
-
-            <motion.p
-              variants={fadeUp}
-              style={{ fontSize: '20px', fontWeight: '300', color: 'var(--text)', opacity: 0.7, lineHeight: '1.65', maxWidth: '520px', marginBottom: '56px' }}
-            >
-              Whether you have land to develop, skills to contribute, or are simply
-              seeking community — there is a vital role for you in Regen Tribe.
+            <motion.p variants={fadeUp} style={{
+              fontSize: '20px', fontWeight: '300', color: 'var(--text)', opacity: 0.7,
+              lineHeight: '1.65', maxWidth: '520px', marginBottom: '16px',
+            }}>
+              Whether you&apos;re an individual seeking community, a visionary with land, a skilled professional, or an impact investor — there is a vital role for you within Regen Tribe.
             </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              style={{ display: 'flex', gap: '48px', flexWrap: 'wrap', alignItems: 'center', borderTop: '1px solid rgba(54,54,54,0.2)', paddingTop: '40px' }}
-            >
-              <PillBtn href="/join">Connect with Regen Tribe</PillBtn>
-              <TextLink href="/about">Learn About Us</TextLink>
+            <motion.p variants={fadeUp} style={{ fontSize: '16px', fontWeight: '400', color: 'var(--text)', opacity: 0.5, marginBottom: '56px' }}>
+              hello@regentribe.co
+            </motion.p>
+            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '48px', flexWrap: 'wrap', alignItems: 'center', borderTop: '1px solid rgba(54,54,54,0.2)', paddingTop: '40px' }}>
+              <PillBtn href="/join">Choose your level of involvement</PillBtn>
+              <TextLink href="/about">More about us</TextLink>
             </motion.div>
+            <motion.p variants={fadeUp} style={{ marginTop: '56px', fontSize: '13px', fontWeight: '400', letterSpacing: '0.05em', color: 'var(--text)', opacity: 0.35 }}>
+              Regen Tribe — let&apos;s re.develop the society
+            </motion.p>
           </motion.div>
         </div>
       </section>
 
       <style>{`
-        .ticker-track {
-          animation: ticker 32s linear infinite;
-        }
-        @keyframes ticker {
-          from { transform: translateX(0); }
-          to { transform: translateX(-33.33%); }
-        }
         @media (max-width: 900px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .hero-panels { display: none !important; }
-          .about-grid { grid-template-columns: 1fr !important; }
-          .platform-grid { grid-template-columns: 1fr !important; }
-          .timeline-grid { grid-template-columns: 1fr !important; }
+          .why-grid { grid-template-columns: 1fr !important; }
+          .rn-grid { grid-template-columns: 1fr !important; }
+          .who-grid { grid-template-columns: 1fr !important; }
+          .faq-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 1100px) {
+          .offerings-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </>
