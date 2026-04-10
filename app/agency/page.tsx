@@ -438,94 +438,95 @@ export default function Agency() {
             variants={stagger}
             viewport={vp}
           >
-            <motion.h2
-              variants={fadeUp}
-              style={{
-                fontSize: 'clamp(36px, 4vw, 64px)',
-                fontWeight: '400',
-                letterSpacing: '-0.025em',
-                color: 'white',
-                marginBottom: '72px',
-              }}
-            >
-              How we do it
-            </motion.h2>
+            {/* Centered column */}
+            <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+              <motion.h2
+                variants={fadeUp}
+                style={{
+                  fontSize: 'clamp(36px, 4vw, 64px)',
+                  fontWeight: '400',
+                  letterSpacing: '-0.025em',
+                  color: 'white',
+                  marginBottom: '72px',
+                }}
+              >
+                How we do it
+              </motion.h2>
 
-            {/* Cycles */}
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-              {cycles.map((cycle, i) => (
-                <motion.div
-                  key={cycle.num}
-                  variants={fadeUp}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '200px 1px 1fr',
-                    gap: '0',
-                    padding: '56px 0',
-                    borderBottom: '1px solid rgba(255,255,255,0.1)',
-                  }}
-                >
-                  {/* Cycle label */}
-                  <div style={{ paddingRight: '48px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
-                    <p style={{
-                      fontSize: '11px',
-                      fontWeight: '500',
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.2)',
-                      marginBottom: '8px',
-                    }}>
-                      cycle {cycle.num}
-                    </p>
-                    <p style={{
-                      fontSize: 'clamp(24px, 2.5vw, 36px)',
-                      fontWeight: '400',
-                      color: i === 0 ? 'var(--green)' : i === 1 ? 'var(--pink)' : 'var(--blue)',
-                      fontFamily: 'var(--font-lora), Georgia, serif',
-                      lineHeight: '1.1',
-                    }}>
-                      {cycle.name}
-                    </p>
-                  </div>
-
-                  {/* Vertical timeline line */}
-                  <div style={{ width: '1px', backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'stretch' }} />
-
-                  {/* Cycle content */}
-                  <div style={{ paddingLeft: '48px' }}>
-                    <p style={{
-                      fontSize: '17px',
-                      fontWeight: '300',
-                      color: 'rgba(255,255,255,0.55)',
-                      lineHeight: '1.65',
-                      marginBottom: '28px',
-                      maxWidth: '560px',
-                    }}>
-                      {cycle.desc}
-                    </p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      {cycle.bullets.map((b) => (
-                        <div key={b.label} style={{ display: 'flex', gap: '10px', alignItems: 'baseline' }}>
-                          <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: i === 0 ? 'var(--green)' : i === 1 ? 'var(--pink)' : 'var(--blue)', flexShrink: 0, marginTop: '7px' }} />
-                          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.5' }}>
-                            <strong style={{ fontWeight: '600', color: 'white' }}>{b.label}</strong>
-                            {' '}— {b.detail}
-                          </p>
-                        </div>
-                      ))}
+              {/* Cycles */}
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                {cycles.map((cycle, i) => (
+                  <motion.div
+                    key={cycle.num}
+                    variants={fadeUp}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1px 2fr',
+                      gap: '0',
+                      padding: '64px 0',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    {/* Cycle label */}
+                    <div style={{ paddingRight: '56px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                      <p style={{
+                        fontSize: '11px',
+                        fontWeight: '500',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(255,255,255,0.2)',
+                        marginBottom: '12px',
+                      }}>
+                        cycle {cycle.num}
+                      </p>
+                      <p style={{
+                        fontSize: 'clamp(28px, 3vw, 42px)',
+                        fontWeight: '400',
+                        color: i === 0 ? 'var(--green)' : i === 1 ? 'var(--pink)' : 'var(--blue)',
+                        fontFamily: 'var(--font-lora), Georgia, serif',
+                        lineHeight: '1.1',
+                      }}>
+                        {cycle.name}
+                      </p>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
 
-            {/* CTA */}
-            <motion.div variants={fadeUp} style={{ paddingTop: '56px' }}>
-              {/* SEE THE DETAILED BREAKDOWN — links to pricing subpage (coming soon) */}
-              <OutlinePill href="#" light>
-                See the Detailed Breakdown
-              </OutlinePill>
-            </motion.div>
+                    {/* Vertical timeline line */}
+                    <div style={{ width: '1px', backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'stretch' }} />
+
+                    {/* Cycle content */}
+                    <div style={{ paddingLeft: '56px' }}>
+                      <p style={{
+                        fontSize: '17px',
+                        fontWeight: '300',
+                        color: 'rgba(255,255,255,0.55)',
+                        lineHeight: '1.7',
+                        marginBottom: '32px',
+                      }}>
+                        {cycle.desc}
+                      </p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                        {cycle.bullets.map((b) => (
+                          <div key={b.label} style={{ display: 'flex', gap: '12px', alignItems: 'baseline' }}>
+                            <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: i === 0 ? 'var(--green)' : i === 1 ? 'var(--pink)' : 'var(--blue)', flexShrink: 0, marginTop: '8px' }} />
+                            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.6' }}>
+                              <strong style={{ fontWeight: '600', color: 'white' }}>{b.label}</strong>
+                              {' '}— {b.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <motion.div variants={fadeUp} style={{ paddingTop: '56px' }}>
+                <OutlinePill href="#" light>
+                  See the Detailed Breakdown
+                </OutlinePill>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
