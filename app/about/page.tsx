@@ -364,10 +364,10 @@ export default function AboutPage() {
                   <p style={{ fontSize: '15px', lineHeight: '1.65', margin: 0, opacity: 0.85 }}>{a.description}</p>
                 </motion.div>
               ))}
-              {/* Quote fills the remaining slot beside Regen Curious */}
+              {/* Quote — pinned to last column, right-aligned */}
               <motion.div variants={fadeUp}
-                style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end', padding: '36px 8px' }}>
-                <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: '400', fontStyle: 'italic', color: 'var(--text)', opacity: 0.35, margin: 0, textAlign: 'right', lineHeight: '1.25' }}>
+                style={{ display: 'flex', alignItems: 'flex-end', padding: '36px 0', gridColumn: '-2 / -1' }}>
+                <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: '400', fontStyle: 'italic', color: 'var(--text)', opacity: 0.35, margin: 0, textAlign: 'right', lineHeight: '1.25', width: '100%' }}>
                   it takes a village.
                 </p>
               </motion.div>
