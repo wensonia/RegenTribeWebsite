@@ -136,8 +136,8 @@ export default function Home() {
               </motion.div>
 
               <h1 style={{
-                fontSize: 'clamp(56px, 7.5vw, 112px)', fontWeight: '400',
-                lineHeight: '0.92', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '32px',
+                fontSize: 'clamp(48px, 6vw, 96px)', fontWeight: '400',
+                lineHeight: '0.95', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '32px',
               }}>
                 {['create,', 'grow', '&', 'find'].map((word, i) => (
                   <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
@@ -146,7 +146,6 @@ export default function Home() {
                     </motion.span>
                   </span>
                 ))}
-                <br />
                 <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
                   <motion.span initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.43 }} style={{ display: 'inline-block', fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
                     Regenerative Neighborhoods
