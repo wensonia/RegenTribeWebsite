@@ -67,10 +67,10 @@ function Label({ children, light }: { children: React.ReactNode; light?: boolean
 
 /* ── Data ── */
 const heroPanels = [
-  { color: 'var(--green)', label: 'Global Network', symbol: '○' },
-  { color: 'var(--pink)', label: 'Agency', symbol: '△' },
-  { color: 'var(--yellow)', label: 'Education', symbol: '□' },
-  { color: 'var(--blue)', label: 'Land Development', symbol: '○' },
+  { color: 'var(--green)', label: 'Global Network', symbol: '○', href: 'https://tribesplatform.app', external: true },
+  { color: 'var(--pink)', label: 'Agency', symbol: '△', href: '/agency', external: false },
+  { color: 'var(--yellow)', label: 'Education', symbol: '□', href: 'https://tribesplatform.app', external: true },
+  { color: 'var(--blue)', label: 'Land Development', symbol: '○', href: '/agency', external: false },
 ]
 
 const coreNeeds = ['WATER', 'FOOD', 'ENERGY', 'WASTE', 'HUMAN CONNECTION', 'NATURE', 'CLEAN AIR']
@@ -136,8 +136,8 @@ export default function Home() {
               </motion.div>
 
               <h1 style={{
-                fontSize: 'clamp(48px, 6vw, 96px)', fontWeight: '400',
-                lineHeight: '0.95', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '32px',
+                fontSize: 'clamp(32px, 4.2vw, 64px)', fontWeight: '400',
+                lineHeight: '1.08', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '28px',
               }}>
                 {['create,', 'grow', '&', 'find'].map((word, i) => (
                   <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
@@ -175,22 +175,42 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right: color panels */}
+            {/* Right: color panels — hover expands, click navigates */}
             <motion.div initial="hidden" animate="visible" variants={stagger} className="hero-panels"
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-              {heroPanels.map((panel) => (
-                <motion.div key={panel.label} variants={fadeUp} style={{
+              {heroPanels.map((panel) => {
+                const inner = (
+                  <>
+                    <span style={{ fontSize: '40px', lineHeight: 1, color: 'var(--text)', opacity: 0.45, fontFamily: 'var(--font-lora), Georgia, serif', fontWeight: '400' }}>
+                      {panel.symbol}
+                    </span>
+                    <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)' }}>
+                      {panel.label}
+                    </span>
+                  </>
+                )
+                const panelStyle: React.CSSProperties = {
                   backgroundColor: panel.color, borderRadius: '6px', padding: '28px 24px',
-                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between', aspectRatio: '1 / 1',
-                }}>
-                  <span style={{ fontSize: '44px', lineHeight: 1, color: 'var(--text)', opacity: 0.45, fontFamily: 'var(--font-lora), Georgia, serif', fontWeight: '400' }}>
-                    {panel.symbol}
-                  </span>
-                  <span style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text)' }}>
-                    {panel.label}
-                  </span>
-                </motion.div>
-              ))}
+                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                  aspectRatio: '1 / 1', textDecoration: 'none', width: '100%',
+                }
+                return (
+                  <motion.div
+                    key={panel.label}
+                    variants={fadeUp}
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {panel.external ? (
+                      <a href={panel.href} target="_blank" rel="noopener noreferrer" style={panelStyle}>{inner}</a>
+                    ) : (
+                      <Link href={panel.href} style={panelStyle}>{inner}</Link>
+                    )}
+                  </motion.div>
+                )
+              })}
             </motion.div>
           </div>
         </div>
@@ -383,11 +403,11 @@ export default function Home() {
 
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0' }}>
-            {projects.map((p, idx) => (
+            {projects.map((p, pi) => (
               <motion.div key={p.name} variants={fadeUp} style={{
-                borderRight: idx < projects.length - 1 ? '1px solid rgba(54,54,54,0.2)' : 'none',
-                paddingRight: idx < projects.length - 1 ? '24px' : '0',
-                paddingLeft: idx > 0 ? '24px' : '0',
+                borderRight: pi < projects.length - 1 ? '1px solid rgba(54,54,54,0.2)' : 'none',
+                paddingRight: pi < projects.length - 1 ? '24px' : '0',
+                paddingLeft: pi > 0 ? '24px' : '0',
               }}>
                 <div style={{ width: '28px', height: '3px', backgroundColor: p.dot, marginBottom: '20px', borderRadius: '2px' }} />
                 <h3 style={{
