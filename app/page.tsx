@@ -69,7 +69,7 @@ function Label({ children, light }: { children: React.ReactNode; light?: boolean
 const heroPanels = [
   { color: 'var(--green)', label: 'Global Network', symbol: '○', href: 'https://tribesplatform.app', external: true },
   { color: 'var(--pink)', label: 'Agency', symbol: '△', href: '/agency', external: false },
-  { color: 'var(--yellow)', label: 'Education', symbol: '□', href: 'https://tribesplatform.app', external: true },
+  { color: 'var(--yellow)', label: 'Education', symbol: '□', href: '/education', external: false },
   { color: 'var(--blue)', label: 'Land Development', symbol: '○', href: '/agency', external: false },
 ]
 
