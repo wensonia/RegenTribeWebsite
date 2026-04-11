@@ -192,16 +192,6 @@ const tools = [
   },
 ]
 
-const modules = [
-  { id: 'MyCo0', name: 'Myconet',             purpose: 'People networking & community matching',              status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo1', name: 'Educational Resources', purpose: 'Guided neighborhood creation via Community Alchemy Guide', status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo2', name: 'Resources',           purpose: 'Searchable community resource library',               status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo3', name: 'Alpacatron',          purpose: 'AI onboarding & digital agreement signing',           status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo4', name: 'Project Collab',      purpose: 'Project agreements & compensation tools',             status: 'Planned',  color: 'var(--blue)'  },
-  { id: 'MyCo5', name: 'Ops Logistics',       purpose: 'Task boards, accounting & community management',      status: 'Building', color: 'var(--green)' },
-  { id: 'MyCo6', name: 'Governance',          purpose: 'Configurable voting & decision tools',                status: 'Planned',  color: 'var(--blue)'  },
-  { id: 'MyCo7', name: 'Accountability Buddy', purpose: 'Personal goal tracker',                              status: 'Planned',  color: 'var(--blue)'  },
-]
 
 const modulesV2 = [
   { id: '01', name: 'Community Network',      purpose: 'Profile-based discovery for community builders, vision holders, and service providers. Search, swipe, and connect with the people building regenerative neighborhoods worldwide.',                                  status: 'Building', color: 'var(--green)'  },
@@ -803,60 +793,6 @@ export default function TechStack() {
                   </TextLink>
                 </div>
               </motion.div>
-            </div>
-          </motion.div>
-
-          {/* MYCONET module grid */}
-          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
-              <Label>MYCONET — Module Roadmap</Label>
-            </motion.div>
-
-            <div className="ts-modules-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
-              {modules.map((mod, i) => {
-                const col = i % 4
-                const row = Math.floor(i / 4)
-                const isBuilding = mod.status === 'Building'
-                return (
-                  <motion.div key={mod.id} variants={fadeUp} style={{
-                    borderRight:  col < 3 ? `1px solid ${BORDER}` : 'none',
-                    borderBottom: row === 0 ? `1px solid ${BORDER}` : 'none',
-                    padding: '32px 0',
-                    paddingLeft:  col > 0 ? '28px' : '0',
-                    paddingRight: col < 3 ? '28px' : '0',
-                    opacity: isBuilding ? 1 : 0.5,
-                  }}>
-                    <div className="ts-module-header" style={{
-                      display: 'flex', justifyContent: 'space-between',
-                      alignItems: 'flex-start', marginBottom: '16px',
-                    }}>
-                      <span style={{
-                        fontSize: '10px', fontWeight: '700', letterSpacing: '0.1em',
-                        textTransform: 'uppercase', color: MUTED,
-                      }}>
-                        {mod.id}
-                      </span>
-                      <StatusBadge status={mod.status} />
-                    </div>
-
-                    <div style={{
-                      width: '24px', height: '2px',
-                      backgroundColor: mod.color, borderRadius: '2px', marginBottom: '16px',
-                    }} />
-
-                    <h4 style={{
-                      fontFamily: 'var(--font-lora), Georgia, serif',
-                      fontSize: '18px', fontWeight: '400',
-                      color: TEXT, lineHeight: '1.2', marginBottom: '10px',
-                    }}>
-                      {mod.name}
-                    </h4>
-                    <p style={{ fontSize: '13px', fontWeight: '300', color: MUTED, lineHeight: '1.6' }}>
-                      {mod.purpose}
-                    </p>
-                  </motion.div>
-                )
-              })}
             </div>
           </motion.div>
 
