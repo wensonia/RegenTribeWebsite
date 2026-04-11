@@ -203,6 +203,22 @@ const modules = [
   { id: 'MyCo7', name: 'Accountability Buddy', purpose: 'Personal goal tracker',                              status: 'Planned',  color: 'var(--blue)'  },
 ]
 
+const modulesV2 = [
+  { id: '01', name: 'Connect',   purpose: 'Profile-based discovery for community builders, vision holders, and service providers. Search, swipe, and connect with the people building regenerative neighborhoods worldwide.',                                              status: 'Building', color: 'var(--green)'  },
+  { id: '02', name: 'Network',   purpose: 'Explore regenerative neighborhoods on a live map. Check in as a visitor, leave a guest book entry, and find the communities that match your values and way of life.',                                                          status: 'Building', color: 'var(--green)'  },
+  { id: '03', name: 'Blueprint', purpose: 'The Regenerative Neighborhood Wizard — a guided, step-by-step design framework for planning your community. Built on the 5-Spiral model and Community Alchemy Guide.',                                                          status: 'Building', color: 'var(--green)'  },
+  { id: '04', name: 'Hub',       purpose: 'A curated, community-powered archive of regenerative resources — articles, tools, case studies, guides, and templates. Searchable and filterable, continuously growing.',                                                       status: 'Building', color: 'var(--green)'  },
+  { id: '05', name: 'Feed',      purpose: 'A living timeline of the movement. Share updates, celebrate milestones, follow the communities and people you care about — the pulse of regenerative neighborhood life.',                                                        status: 'Building', color: 'var(--green)'  },
+  { id: '06', name: 'Join',      purpose: 'Apply to live in or collaborate with a regenerative neighborhood. Manages the full onboarding flow from initial inquiry to welcome — applications, screening, and orientation.',                                                 status: 'Building', color: 'var(--green)'  },
+  { id: '07', name: 'Pacts',     purpose: 'Digital agreements and payment rails for community participation. Sign living agreements, set up recurring contributions, and manage financial commitments transparently via Stripe.',                                            status: 'Planned',  color: 'var(--blue)'   },
+  { id: '08', name: 'Ops',       purpose: 'Internal operations for community teams — project boards, task assignment, budget tracking, and reporting. Everything a neighborhood needs to function as a living, self-organizing system.',                                    status: 'Planned',  color: 'var(--blue)'   },
+  { id: '09', name: 'Match',     purpose: 'AI-powered pairing of people to communities, collaborators to projects, and skills to needs. The intelligence layer that puts the right people in the right places at the right time.',                                         status: 'Planned',  color: 'var(--blue)'   },
+  { id: '10', name: 'Council',   purpose: 'An AI-facilitated governance layer for community decision-making. Mediates conflicts, surfaces proposals, and guides neighborhoods through transparent, values-aligned decisions.',                                              status: 'Planned',  color: 'var(--blue)'   },
+  { id: '11', name: 'Earn',      purpose: 'Contribution tracking, reputation points, and badges that recognize participation across the ecosystem. Makes regenerative action visible, rewarding, and portable across communities.',                                         status: 'Planned',  color: 'var(--blue)'   },
+  { id: '12', name: 'Quinn',     purpose: 'Your personal AI guide through the Regen Tribe ecosystem. Answers questions, surfaces opportunities, tracks your journey, and helps you navigate toward the life you are building.',                                             status: 'Planned',  color: 'var(--pink)'   },
+  { id: '13', name: 'Hive',      purpose: 'The inter-community layer — connecting individual neighborhoods into a living network. Share resources, knowledge, surplus, and people across the full ecosystem of regenerative communities.',                                   status: 'Planned',  color: 'var(--blue)'   },
+]
+
 /* ─────────────────────────────────────────
    Flip card (state controlled by parent)
 ───────────────────────────────────────── */
@@ -844,6 +860,94 @@ export default function TechStack() {
             </div>
           </motion.div>
 
+        </div>
+      </section>
+
+      {/* ════════════════════════════════
+          MYCONET V2 MODULE ROADMAP
+      ════════════════════════════════ */}
+      <section style={{ backgroundColor: BG_CARD, padding: '120px 0', borderTop: `1px solid ${BORDER}` }}>
+        <div style={wrap}>
+          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
+
+            {/* Header */}
+            <motion.div variants={fadeUp} style={{ marginBottom: '16px' }}>
+              <Label>Myconet v2 — Module Roadmap</Label>
+            </motion.div>
+            <motion.div variants={fadeUp} style={{
+              display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+              borderBottom: `1px solid ${BORDER}`, paddingBottom: '48px', marginBottom: '64px',
+              flexWrap: 'wrap', gap: '24px',
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-lora), Georgia, serif',
+                fontSize: 'clamp(36px, 4.5vw, 72px)',
+                fontWeight: '400', lineHeight: '0.95',
+                letterSpacing: '-0.025em', color: TEXT,
+              }}>
+                13 modules.<br />One living platform.
+              </h2>
+              <p style={{
+                fontSize: '16px', fontWeight: '300', color: MUTED,
+                lineHeight: '1.7', maxWidth: '380px',
+              }}>
+                The full vision for Tribes Platform v2 — a modular, open-source operating
+                system for regenerative neighborhoods. Each module works standalone
+                or as part of the complete stack.
+              </p>
+            </motion.div>
+
+            {/* Module grid — 4 columns */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }} className="ts-modules-grid">
+              {modulesV2.map((mod, i) => {
+                const totalCols = 4
+                const col = i % totalCols
+                const totalRows = Math.ceil(modulesV2.length / totalCols)
+                const row = Math.floor(i / totalCols)
+                const isBuilding = mod.status === 'Building'
+                return (
+                  <motion.div key={mod.id} variants={fadeUp} style={{
+                    borderRight:  col < totalCols - 1 ? `1px solid ${BORDER}` : 'none',
+                    borderBottom: row < totalRows - 1 ? `1px solid ${BORDER}` : 'none',
+                    padding: '32px 0',
+                    paddingLeft:  col > 0 ? '28px' : '0',
+                    paddingRight: col < totalCols - 1 ? '28px' : '0',
+                    opacity: isBuilding ? 1 : 0.55,
+                  }}>
+                    <div style={{
+                      display: 'flex', justifyContent: 'space-between',
+                      alignItems: 'flex-start', marginBottom: '16px',
+                    }}>
+                      <span style={{
+                        fontSize: '10px', fontWeight: '700', letterSpacing: '0.1em',
+                        textTransform: 'uppercase', color: MUTED,
+                      }}>
+                        {mod.id}
+                      </span>
+                      <StatusBadge status={mod.status} />
+                    </div>
+
+                    <div style={{
+                      width: '24px', height: '2px',
+                      backgroundColor: mod.color, borderRadius: '2px', marginBottom: '16px',
+                    }} />
+
+                    <h4 style={{
+                      fontFamily: 'var(--font-lora), Georgia, serif',
+                      fontSize: '18px', fontWeight: '400',
+                      color: TEXT, lineHeight: '1.2', marginBottom: '10px',
+                    }}>
+                      {mod.name}
+                    </h4>
+                    <p style={{ fontSize: '13px', fontWeight: '300', color: MUTED, lineHeight: '1.6' }}>
+                      {mod.purpose}
+                    </p>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+          </motion.div>
         </div>
       </section>
 
