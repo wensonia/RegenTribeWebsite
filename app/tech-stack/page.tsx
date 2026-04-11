@@ -800,20 +800,20 @@ export default function TechStack() {
       </section>
 
       {/* ════════════════════════════════
-          MYCONET V2 MODULE ROADMAP
+          MYCONET MODULE ROADMAP
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: BG_CARD, padding: '120px 0', borderTop: `1px solid ${BORDER}` }}>
+      <section style={{ backgroundColor: BG, padding: '120px 0', borderTop: `1px solid ${BORDER}` }}>
         <div style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             {/* Header */}
             <motion.div variants={fadeUp} style={{ marginBottom: '16px' }}>
-              <Label>Myconet v2 — Module Roadmap</Label>
+              <Label>Myconet · In Development</Label>
             </motion.div>
             <motion.div variants={fadeUp} style={{
               display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
               borderBottom: `1px solid ${BORDER}`, paddingBottom: '48px', marginBottom: '64px',
-              flexWrap: 'wrap', gap: '24px',
+              flexWrap: 'wrap', gap: '40px',
             }}>
               <h2 style={{
                 fontFamily: 'var(--font-lora), Georgia, serif',
@@ -821,15 +821,16 @@ export default function TechStack() {
                 fontWeight: '400', lineHeight: '0.95',
                 letterSpacing: '-0.025em', color: TEXT,
               }}>
-                13 modules.<br />One living platform.
+                Myconet.
               </h2>
               <p style={{
-                fontSize: '16px', fontWeight: '300', color: MUTED,
-                lineHeight: '1.7', maxWidth: '380px',
+                fontSize: '18px', fontWeight: '300', color: MUTED,
+                lineHeight: '1.75', maxWidth: '520px',
               }}>
-                The full vision for Tribes Platform v2 — a modular, open-source operating
-                system for regenerative neighborhoods. Each module works standalone
-                or as part of the complete stack.
+                A modular internet and intranet stack for regenerative neighborhoods —
+                currently in development. Each module can be used independently or
+                as part of the full connected network, giving neighborhoods the digital
+                infrastructure they need to form, grow, and thrive.
               </p>
             </motion.div>
 
