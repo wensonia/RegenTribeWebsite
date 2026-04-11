@@ -144,6 +144,8 @@ const tools = [
     contributors: 'collective',
     github:   'https://github.com/regentribes/regen-knowledge-graph',
     repo:     'regen-knowledge-graph',
+    demoLink:  'https://graph.regentribe.org/graph-chain-stories.html',
+    demoLabel: 'Play around',
   },
   {
     dot:      'var(--green)',
@@ -157,6 +159,8 @@ const tools = [
     contributors: 'collective',
     github:   'https://github.com/regentribes/genesis-zero-bot',
     repo:     'genesis-zero-bot',
+    demoLink:  'https://t.me/+fsFL1jIIGM9jOWFh',
+    demoLabel: 'Test out Genesis',
   },
   {
     dot:      'var(--yellow)',
@@ -688,6 +692,24 @@ export default function TechStack() {
                   <ArrowRight size={13} strokeWidth={2} />
                   github/{tool.repo}
                 </motion.a>
+
+                {/* Demo link (optional) */}
+                {'demoLink' in tool && tool.demoLink && (
+                  <motion.a
+                    href={tool.demoLink} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '8px',
+                      fontSize: '13px', fontWeight: '600', letterSpacing: '0.04em',
+                      color: TEXT, textDecoration: 'none',
+                      borderTop: `1px solid rgba(237,237,237,0.07)`,
+                      paddingTop: '16px', marginTop: '8px',
+                    }}
+                    whileHover={{ x: 5, opacity: 0.8 }} transition={{ duration: 0.15 }}
+                  >
+                    <ArrowRight size={13} strokeWidth={2} />
+                    {tool.demoLabel}
+                  </motion.a>
+                )}
 
               </motion.div>
             ))}
