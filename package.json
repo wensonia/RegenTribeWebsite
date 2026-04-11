@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build:rnf && next build",
+    "build:rnf": "cd rnf-site && npm install && npm run build",
     "start": "next start",
     "lint": "eslint"
   },

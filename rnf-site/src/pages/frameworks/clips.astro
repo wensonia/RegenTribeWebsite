@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { marked } from 'marked';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const filePath = path.join(process.cwd(), 'src/content/CLIPS.md');
+const raw = fs.readFileSync(filePath, 'utf-8');
+const content = marked(raw);
+
+const layers = [
+  { name: 'Practice', question: 'How do we actually operate?', color: '#9b7eb8', ring: 1, size: 280 },
+  { name: 'Structure', question: 'How are we organized?', color: '#7a9ab8', ring: 2, size: 220 },
+  { name: 'Intention', question: 'Why do we exist and where are we heading?', color: '#5a8a6a', ring: 3, size: 160 },
+  { name: 'Community', question: 'Are relationships and shared culture thriving?', color: '#3d5a3e', ring: 4, size: 105 },
+  { name: 'Individual', question: 'Are people healthy and growing?', color: '#8b6b4a', ring: 5, size: 55 },
+];
+---
+
+<Layout title="CLIPS — The Health Check" description="Community Learning Incubator Programme for Sustainability: a 5-layer wellness diagnostic for intentional communities.">
+
+  <div style="background: linear-gradient(135deg, #3d2d5c, #6b4a8a); color: #f5f0e8; padding: 3rem 1.5rem 2.5rem;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <a href="/" style="color: #d0b8e8; font-size: 0.875rem; text-decoration: none;">← Home</a>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
+        <span style="font-size: 3rem;">💚</span>
+        <div>
+          <p style="font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: #c8a8e8; margin-bottom: 0.25rem;">Framework 4 of 4</p>
+          <h1 style="font-size: 2.25rem; font-weight: bold; margin: 0;">CLIPS — The Health Check</h1>
+          <p style="color: #e0c8f8; margin-top: 0.5rem;">Community Learning Incubator Programme for Sustainability</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Concentric circles visual -->
+  <section style="max-width: 900px; margin: 3rem auto; padding: 0 1.5rem;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; color: #6b4a8a; margin-bottom: 0.5rem;">The 5-Layer Model</h2>
+    <p style="color: #44403c; margin-bottom: 2rem; line-height: 1.6;">A concentric circles diagnostic. Individual and Community form the dual core — everything else rests on them.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+      <!-- Concentric circles SVG -->
+      <div style="display: flex; justify-content: center;">
+        <svg viewBox="0 0 300 300" width="280" height="280" style="overflow: visible;">
+          <!-- Practice (outermost) -->
+          <circle cx="150" cy="150" r="140" fill="#f3eeff" stroke="#9b7eb8" stroke-width="2"/>
+          <!-- Structure -->
+          <circle cx="150" cy="150" r="110" fill="#e8f0f7" stroke="#7a9ab8" stroke-width="2"/>
+          <!-- Intention -->
+          <circle cx="150" cy="150" r="80" fill="#f0f7ec" stroke="#5a8a6a" stroke-width="2"/>
+          <!-- Community -->
+          <circle cx="150" cy="150" r="52" fill="#e8f0eb" stroke="#3d5a3e" stroke-width="2"/>
+          <!-- Individual (innermost) -->
+          <circle cx="150" cy="150" r="28" fill="#f0e8df" stroke="#8b6b4a" stroke-width="2"/>
+
+          <!-- Labels -->
+          <text x="150" y="20" text-anchor="middle" font-size="11" fill="#9b7eb8" font-family="Georgia" font-weight="600">Practice</text>
+          <text x="150" y="50" text-anchor="middle" font-size="10" fill="#7a9ab8" font-family="Georgia" font-weight="600">Structure</text>
+          <text x="150" y="80" text-anchor="middle" font-size="10" fill="#5a8a6a" font-family="Georgia" font-weight="600">Intention</text>
+          <text x="150" y="135" text-anchor="middle" font-size="9" fill="#3d5a3e" font-family="Georgia" font-weight="600">Community</text>
+          <text x="150" y="155" text-anchor="middle" font-size="8" fill="#8b6b4a" font-family="Georgia" font-weight="600">Individual</text>
+        </svg>
+      </div>
+
+      <!-- Layer list -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        {layers.map(layer => (
+          <div style={`border-left: 4px solid ${layer.color}; padding: 0.75rem 1rem; background: white; border-radius: 0 0.5rem 0.5rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.06);`}>
+            <div style={`font-weight: bold; color: ${layer.color}; font-size: 0.9rem;`}>{layer.name}</div>
+            <div style="font-size: 0.8rem; color: #78716c; margin-top: 0.125rem; font-style: italic;">{layer.question}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div style="background: #f3eeff; border: 1px solid #c8a8e8; border-radius: 0.75rem; padding: 1.25rem 1.5rem; margin-top: 2rem;">
+      <p style="color: #3d2d5c; font-style: italic; margin: 0; line-height: 1.6; font-size: 0.95rem;">
+        <strong>Critical insight:</strong> The Individual ↔ Community duality forms the foundation. Thriving communities require thriving individuals, and strong communities support individual flourishing. Neglecting either creates instability throughout all upper layers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Full content -->
+  <section style="max-width: 900px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; color: #6b4a8a; margin-bottom: 1.5rem;">Full Framework Documentation</h2>
+    <div style="background: white; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
+      <div class="md-content" set:html={content} />
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.md-content h1 { font-size: 1.75rem; font-weight: bold; color: #6b4a8a; margin-top: 2rem; margin-bottom: 1rem; }
+.md-content h2 { font-size: 1.35rem; font-weight: bold; color: #6b4a8a; margin-top: 2rem; margin-bottom: 0.75rem; padding-bottom: 0.375rem; border-bottom: 2px solid #e0c8f8; }
+.md-content h3 { font-size: 1.1rem; font-weight: 600; color: #7a5a9a; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.md-content p { margin-bottom: 1rem; line-height: 1.75; }
+.md-content ul, .md-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+.md-content li { margin-bottom: 0.375rem; line-height: 1.6; }
+.md-content ul { list-style-type: disc; }
+.md-content ol { list-style-type: decimal; }
+.md-content blockquote { border-left: 4px solid #9b7eb8; padding: 0.75rem 1.25rem; margin: 1.5rem 0; background: #f3eeff; font-style: italic; color: #6b4a8a; border-radius: 0 0.375rem 0.375rem 0; }
+.md-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.875rem; display: block; overflow-x: auto; }
+.md-content th { background-color: #6b4a8a; color: #f5f0e8; padding: 0.625rem 1rem; text-align: left; }
+.md-content td { border: 1px solid #e0c8f8; padding: 0.625rem 1rem; }
+.md-content tr:nth-child(even) td { background-color: #faf6ff; }
+.md-content strong { font-weight: bold; }
+.md-content hr { border: none; border-top: 1px solid #e0c8f8; margin: 2rem 0; }
+.md-content code { background: #f3eeff; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.85rem; font-family: monospace; }
+</style>

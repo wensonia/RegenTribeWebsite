@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { marked } from 'marked';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const filePath = path.join(process.cwd(), 'src/content/execution-plan-rnf-v2.md');
+const raw = fs.readFileSync(filePath, 'utf-8');
+const content = marked(raw);
+
+const phases = [
+  {
+    num: 1,
+    name: 'Spark',
+    subtitle: 'From Idea to Core Team',
+    timeline: 'Months 0–6',
+    color: '#3d5a3e',
+    light: '#f0f7ec',
+    rcos: ['L0', 'L1', 'L2', 'L4'],
+    clips: ['Individual', 'Community', 'Intention', 'Structure'],
+    alchemy: ['1. Vision', '2. Recruit', '3. Governance'],
+    rnf: ['Social', 'Governance'],
+    gate: 'Min 7/10 on readiness, trust, and clarity',
+  },
+  {
+    num: 2,
+    name: 'Prove',
+    subtitle: 'Feasibility & Planning',
+    timeline: 'Months 6–12',
+    color: '#8b6b4a',
+    light: '#faf0e0',
+    rcos: ['L0', 'L1', 'L2', 'L3', 'L4'],
+    clips: ['Intention', 'Structure', 'Community'],
+    alchemy: ['4. Business Models', '5. Land', '6. Funding', '7. Marketing'],
+    rnf: ['All 5 (planning)'],
+    gate: 'Economic model viable, land shortlist ready',
+  },
+  {
+    num: 3,
+    name: 'Build',
+    subtitle: 'Construction & Infrastructure',
+    timeline: 'Months 12–24',
+    color: '#6b9ab8',
+    light: '#e8f0f7',
+    rcos: ['L3', 'L4', 'L5'],
+    clips: ['Structure', 'Practice', 'Community'],
+    alchemy: ['6. Funding', '7. Marketing', '8. Master Plan', '9. Construction', '10. Culture'],
+    rnf: ['All 5 (full)'],
+    gate: 'Infrastructure operational, culture active',
+  },
+  {
+    num: 4,
+    name: 'Live',
+    subtitle: 'Inhabitation & Evolution',
+    timeline: 'Month 24+',
+    color: '#9b7eb8',
+    light: '#f3eeff',
+    rcos: ['L4', 'L5', 'L6'],
+    clips: ['All 5 layers (ongoing)'],
+    alchemy: ['10. Culture', '11. Ecosystems'],
+    rnf: ['All 5 (operations)'],
+    gate: 'Continuous — ongoing learning and adaptation',
+  },
+];
+---
+
+<Layout title="The Journey" description="A phase-by-phase guide through building a regenerative neighborhood — from spark to living community.">
+
+  <div style="background: linear-gradient(135deg, #2e4430, #3d5a3e); color: #f5f0e8; padding: 3rem 1.5rem 2.5rem;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <a href="/" style="color: #b8d4a8; font-size: 0.875rem; text-decoration: none;">← Home</a>
+      <div style="margin-top: 1rem;">
+        <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.75rem;">The Journey</h1>
+        <p style="font-size: 1.1rem; color: #d4e8c8; line-height: 1.6; max-width: 640px;">
+          Four phases. Four frameworks working together. Each phase shows which elements from RNF, Community Alchemy, RCOS, and CLIPS are active — and what the gate looks like before you move on.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase cards -->
+  <section style="max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem;">
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      {phases.map(phase => (
+        <div style={`background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.1); border-top: 6px solid ${phase.color};`}>
+          <!-- Phase header -->
+          <div style={`background: ${phase.light}; padding: 1.5rem 2rem; border-bottom: 1px solid ${phase.color}22;`}>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style={`background: ${phase.color}; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; flex-shrink: 0;`}>
+                  {phase.num}
+                </div>
+                <div>
+                  <h2 style={`font-size: 1.5rem; font-weight: bold; color: ${phase.color}; margin: 0;`}>
+                    Phase {phase.num}: {phase.name}
+                  </h2>
+                  <p style="color: #78716c; font-size: 0.9rem; margin: 0.125rem 0 0;">{phase.subtitle}</p>
+                </div>
+              </div>
+              <span style={`background: ${phase.color}; color: white; padding: 0.375rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600;`}>
+                {phase.timeline}
+              </span>
+            </div>
+          </div>
+
+          <!-- Framework grid -->
+          <div style="padding: 1.5rem 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem;">
+
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin-bottom: 0.5rem;">🏗️ RNF Pillars</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {phase.rnf.map(item => (
+                  <span style={`background: ${phase.color}18; color: ${phase.color}; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem;`}>{item}</span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin-bottom: 0.5rem;">🧭 Community Alchemy</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {phase.alchemy.map(item => (
+                  <span style="background: #f5ede0; color: #8b6b4a; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem;">{item}</span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin-bottom: 0.5rem;">⚙️ RCOS Layers</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {phase.rcos.map(item => (
+                  <span style="background: #e8f0f7; color: #2d6a8a; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem; font-family: monospace;">{item}</span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin-bottom: 0.5rem;">💚 CLIPS Layers</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.375rem;">
+                {phase.clips.map(item => (
+                  <span style="background: #f3eeff; color: #6b4a8a; padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem;">{item}</span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Gate -->
+          <div style={`background: ${phase.color}10; border-top: 1px solid ${phase.color}30; padding: 1rem 2rem; display: flex; align-items: center; gap: 0.75rem;`}>
+            <span style="font-size: 1.1rem;">🚦</span>
+            <div>
+              <span style={`font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: ${phase.color};`}>Gate before advancing: </span>
+              <span style="font-size: 0.875rem; color: #44403c;">{phase.gate}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Full execution plan -->
+  <section style="max-width: 1000px; margin: 3rem auto 4rem; padding: 0 1.5rem;">
+    <h2 style="font-size: 1.5rem; font-weight: bold; color: #3d5a3e; margin-bottom: 1.5rem;">Full Execution Plan (v2)</h2>
+    <div style="background: white; border-radius: 1rem; padding: 2.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
+      <div class="md-content" set:html={content} />
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+.md-content h1 { font-size: 1.75rem; font-weight: bold; color: #3d5a3e; margin-top: 2rem; margin-bottom: 1rem; }
+.md-content h2 { font-size: 1.35rem; font-weight: bold; color: #3d5a3e; margin-top: 2rem; margin-bottom: 0.75rem; padding-bottom: 0.375rem; border-bottom: 2px solid #d4e8c8; }
+.md-content h3 { font-size: 1.1rem; font-weight: 600; color: #5a7a4a; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.md-content h4 { font-size: 1rem; font-weight: 600; color: #8b6b4a; margin-top: 1.25rem; margin-bottom: 0.375rem; }
+.md-content p { margin-bottom: 1rem; line-height: 1.75; }
+.md-content ul, .md-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+.md-content li { margin-bottom: 0.375rem; line-height: 1.6; }
+.md-content ul { list-style-type: disc; }
+.md-content ol { list-style-type: decimal; }
+.md-content blockquote { border-left: 4px solid #8fba7a; padding: 0.75rem 1.25rem; margin: 1.5rem 0; background: #f0f7ec; font-style: italic; color: #3d5a3e; border-radius: 0 0.375rem 0.375rem 0; }
+.md-content table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.875rem; display: block; overflow-x: auto; }
+.md-content th { background-color: #3d5a3e; color: #f5f0e8; padding: 0.625rem 1rem; text-align: left; }
+.md-content td { border: 1px solid #e8dcc8; padding: 0.625rem 1rem; }
+.md-content tr:nth-child(even) td { background-color: #faf8f4; }
+.md-content strong { font-weight: bold; }
+.md-content hr { border: none; border-top: 1px solid #e8dcc8; margin: 2rem 0; }
+.md-content code { background: #e8dcc8; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.85rem; font-family: monospace; }
+</style>

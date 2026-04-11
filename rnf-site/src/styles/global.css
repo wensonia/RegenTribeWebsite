@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #f5f0e8;
+    color: #1c1917;
+  }
+
+  body {
+    font-family: 'Georgia', serif;
+    background-color: #f5f0e8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+  }
+}

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# rnf sub-site build artifacts
+/public/rnf/
+/rnf-site/node_modules/
+/rnf-site/dist/
+/rnf-site/.astro/

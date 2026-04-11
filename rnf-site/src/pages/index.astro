@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home">
+
+  <!-- Hero -->
+  <section style="background: linear-gradient(135deg, #2e4430 0%, #3d5a3e 50%, #4a6b4a 100%); color: #f5f0e8; padding: 5rem 1.5rem 4rem; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p style="font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase; color: #b8d4a8; margin-bottom: 1rem;">Open Source · Community-led</p>
+      <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: bold; line-height: 1.2; margin-bottom: 1.5rem;">
+        Regenerative Neighborhood<br/>Framework
+      </h1>
+      <p style="font-size: 1.25rem; color: #d4e8c8; line-height: 1.6; margin-bottom: 0.75rem;">
+        A practical guide for building thriving, self-sustaining communities — from first idea to living neighborhood.
+      </p>
+      <p style="font-size: 1rem; font-style: italic; color: #8fba7a; margin-bottom: 2.5rem;">
+        "Ecology is the operating system — everything else is an application."
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/journey" style="background-color: #8fba7a; color: #1c1917; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem;">
+          Start the Journey →
+        </a>
+        <a href="https://github.com/regentribes/regen-neighborhood-framework" target="_blank" style="border: 1px solid #8fba7a; color: #d4e8c8; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem;">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is this -->
+  <section style="max-width: 900px; margin: 4rem auto; padding: 0 1.5rem; text-align: center;">
+    <h2 style="font-size: 1.75rem; font-weight: bold; color: #3d5a3e; margin-bottom: 1rem;">Four frameworks. One journey.</h2>
+    <p style="font-size: 1.1rem; color: #44403c; line-height: 1.7; max-width: 680px; margin: 0 auto;">
+      The RNF integrates four complementary methodologies into a single cohesive system — each answering a different question about how to build and sustain a regenerative neighborhood.
+    </p>
+  </section>
+
+  <!-- 4 Framework Cards -->
+  <section style="max-width: 1100px; margin: 0 auto 4rem; padding: 0 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+
+      <!-- RNF -->
+      <a href="/frameworks/rnf" style="text-decoration: none;">
+        <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #3d5a3e; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏗️</div>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: #3d5a3e; margin-bottom: 0.5rem;">RNF</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; color: #5a7a4a; margin-bottom: 0.75rem;">The Architecture</p>
+          <p style="color: #44403c; font-size: 0.9rem; line-height: 1.6;">
+            5 foundational pillars (Ecology, Social, Economy, Hardware, Governance) and a 5-phase development timeline with quality gates.
+          </p>
+          <p style="margin-top: 1rem; color: #3d5a3e; font-size: 0.875rem; font-weight: bold;">Explore RNF →</p>
+        </div>
+      </a>
+
+      <!-- Community Alchemy -->
+      <a href="/frameworks/alchemy" style="text-decoration: none;">
+        <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #8b6b4a; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧭</div>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: #8b6b4a; margin-bottom: 0.5rem;">Community Alchemy</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; color: #a0825a; margin-bottom: 0.75rem;">The Journey Map</p>
+          <p style="color: #44403c; font-size: 0.9rem; line-height: 1.6;">
+            11 sequential domains guiding you from initial vision through land acquisition, governance, and long-term ecosystem management.
+          </p>
+          <p style="margin-top: 1rem; color: #8b6b4a; font-size: 0.875rem; font-weight: bold;">Explore Alchemy →</p>
+        </div>
+      </a>
+
+      <!-- RCOS -->
+      <a href="/frameworks/rcos" style="text-decoration: none;">
+        <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #6b9ab8; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: #6b9ab8; margin-bottom: 0.5rem;">RCOS</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; color: #7aabb8; margin-bottom: 0.75rem;">The Governance OS</p>
+          <p style="color: #44403c; font-size: 0.9rem; line-height: 1.6;">
+            7 modular governance layers that make hidden social structures visible so your community can design them intentionally.
+          </p>
+          <p style="margin-top: 1rem; color: #6b9ab8; font-size: 0.875rem; font-weight: bold;">Explore RCOS →</p>
+        </div>
+      </a>
+
+      <!-- CLIPS -->
+      <a href="/frameworks/clips" style="text-decoration: none;">
+        <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #9b7eb8; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">💚</div>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: #9b7eb8; margin-bottom: 0.5rem;">CLIPS</h3>
+          <p style="font-size: 0.875rem; font-weight: 600; color: #a98ec8; margin-bottom: 0.75rem;">The Health Check</p>
+          <p style="color: #44403c; font-size: 0.9rem; line-height: 1.6;">
+            A 5-layer concentric diagnostic model tracking alignment between Individual, Community, Intention, Structure, and Practice.
+          </p>
+          <p style="margin-top: 1rem; color: #9b7eb8; font-size: 0.875rem; font-weight: bold;">Explore CLIPS →</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- How they fit together -->
+  <section style="background-color: #e8dcc8; padding: 4rem 1.5rem;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <h2 style="font-size: 1.75rem; font-weight: bold; color: #3d5a3e; margin-bottom: 0.5rem; text-align: center;">How the frameworks fit together</h2>
+      <p style="text-align: center; color: #44403c; margin-bottom: 2.5rem; font-size: 0.95rem;">Each framework answers a different question — together they form a complete system.</p>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+          <thead>
+            <tr style="background-color: #3d5a3e; color: #f5f0e8;">
+              <th style="padding: 1rem; text-align: left; font-size: 0.9rem;">Framework</th>
+              <th style="padding: 1rem; text-align: left; font-size: 0.9rem;">Core Question</th>
+              <th style="padding: 1rem; text-align: left; font-size: 0.9rem;">Key Elements</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #e8dcc8;">
+              <td style="padding: 1rem; font-weight: bold; color: #3d5a3e;">RNF</td>
+              <td style="padding: 1rem; color: #44403c;">What do we need to build?</td>
+              <td style="padding: 1rem; color: #78716c; font-size: 0.875rem;">5 Pillars + 5 Phases + Gate System</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e8dcc8; background-color: #faf8f4;">
+              <td style="padding: 1rem; font-weight: bold; color: #8b6b4a;">Community Alchemy</td>
+              <td style="padding: 1rem; color: #44403c;">In what order do we do it?</td>
+              <td style="padding: 1rem; color: #78716c; font-size: 0.875rem;">11 sequential domains</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e8dcc8;">
+              <td style="padding: 1rem; font-weight: bold; color: #6b9ab8;">RCOS</td>
+              <td style="padding: 1rem; color: #44403c;">How do we govern ourselves?</td>
+              <td style="padding: 1rem; color: #78716c; font-size: 0.875rem;">7 governance layers</td>
+            </tr>
+            <tr>
+              <td style="padding: 1rem; font-weight: bold; color: #9b7eb8;">CLIPS</td>
+              <td style="padding: 1rem; color: #44403c;">Are we well as a community?</td>
+              <td style="padding: 1rem; color: #78716c; font-size: 0.875rem;">5-layer health diagnostic</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="/journey" style="background-color: #3d5a3e; color: #f5f0e8; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem; display: inline-block;">
+          See them all in action: The Journey →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unifying principle -->
+  <section style="max-width: 700px; margin: 4rem auto; padding: 0 1.5rem; text-align: center;">
+    <blockquote style="border-left: 4px solid #8fba7a; padding: 1.5rem 2rem; background: white; border-radius: 0.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+      <p style="font-size: 1.2rem; font-style: italic; color: #3d5a3e; line-height: 1.7; margin-bottom: 0.75rem;">
+        "Coherence between Intention, Structure, and Practice — and the balance between Individual and Community — are under constant challenge."
+      </p>
+      <cite style="font-size: 0.875rem; color: #78716c;">— The unifying principle of the RNF</cite>
+    </blockquote>
+  </section>
+
+</Layout>
