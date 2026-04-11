@@ -4,6 +4,8 @@ import { marked } from 'marked';
 import fs from 'node:fs';
 import path from 'node:path';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const filePath = path.join(process.cwd(), 'src/content/community-alchemy-playbook.md');
 const raw = fs.readFileSync(filePath, 'utf-8');
 const content = marked(raw);
@@ -36,7 +38,7 @@ const phaseColors: Record<string, string> = {
 
   <div style="background: linear-gradient(135deg, #4a3020, #8b6b4a); color: #f5f0e8; padding: 3rem 1.5rem 2.5rem;">
     <div style="max-width: 900px; margin: 0 auto;">
-      <a href="/" style="color: #e0c8b0; font-size: 0.875rem; text-decoration: none;">← Home</a>
+      <a href={`${base}/`} style="color: #e0c8b0; font-size: 0.875rem; text-decoration: none;">← Home</a>
       <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem;">
         <span style="font-size: 3rem;">🧭</span>
         <div>

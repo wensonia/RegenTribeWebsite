@@ -8,13 +8,15 @@ interface Props {
 
 const { title, description = 'A visual guide to building regenerative neighborhoods.' } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // e.g. '' or '/rnf'
+
 const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/journey', label: 'The Journey' },
-  { href: '/frameworks/rnf', label: 'RNF' },
-  { href: '/frameworks/alchemy', label: 'Community Alchemy' },
-  { href: '/frameworks/rcos', label: 'RCOS' },
-  { href: '/frameworks/clips', label: 'CLIPS' },
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/journey`, label: 'The Journey' },
+  { href: `${base}/frameworks/rnf`, label: 'RNF' },
+  { href: `${base}/frameworks/alchemy`, label: 'Community Alchemy' },
+  { href: `${base}/frameworks/rcos`, label: 'RCOS' },
+  { href: `${base}/frameworks/clips`, label: 'CLIPS' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -33,7 +35,7 @@ const currentPath = Astro.url.pathname;
     <!-- Nav -->
     <nav style="background-color: #3d5a3e; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
       <div style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 3.5rem;">
-        <a href="/" style="color: #f5f0e8; font-weight: bold; font-size: 1rem; text-decoration: none; letter-spacing: 0.02em;">
+        <a href={`${base}/`} style="color: #f5f0e8; font-weight: bold; font-size: 1rem; text-decoration: none; letter-spacing: 0.02em;">
           🌿 Regen Neighborhood Framework
         </a>
         <div style="display: flex; gap: 0.25rem; flex-wrap: wrap;">

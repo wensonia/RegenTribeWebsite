@@ -4,6 +4,8 @@ import { marked } from 'marked';
 import fs from 'node:fs';
 import path from 'node:path';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const filePath = path.join(process.cwd(), 'src/content/execution-plan-rnf-v2.md');
 const raw = fs.readFileSync(filePath, 'utf-8');
 const content = marked(raw);
@@ -68,7 +70,7 @@ const phases = [
 
   <div style="background: linear-gradient(135deg, #2e4430, #3d5a3e); color: #f5f0e8; padding: 3rem 1.5rem 2.5rem;">
     <div style="max-width: 1000px; margin: 0 auto;">
-      <a href="/" style="color: #b8d4a8; font-size: 0.875rem; text-decoration: none;">← Home</a>
+      <a href={`${base}/`} style="color: #b8d4a8; font-size: 0.875rem; text-decoration: none;">← Home</a>
       <div style="margin-top: 1rem;">
         <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.75rem;">The Journey</h1>
         <p style="font-size: 1.1rem; color: #d4e8c8; line-height: 1.6; max-width: 640px;">

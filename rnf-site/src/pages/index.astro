@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Home">
@@ -18,7 +20,7 @@ import Layout from '../layouts/Layout.astro';
         "Ecology is the operating system — everything else is an application."
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="/journey" style="background-color: #8fba7a; color: #1c1917; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem;">
+        <a href={`${base}/journey`} style="background-color: #8fba7a; color: #1c1917; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem;">
           Start the Journey →
         </a>
         <a href="https://github.com/regentribes/regen-neighborhood-framework" target="_blank" style="border: 1px solid #8fba7a; color: #d4e8c8; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem;">
@@ -41,7 +43,7 @@ import Layout from '../layouts/Layout.astro';
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
 
       <!-- RNF -->
-      <a href="/frameworks/rnf" style="text-decoration: none;">
+      <a href={`${base}/frameworks/rnf`} style="text-decoration: none;">
         <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #3d5a3e; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏗️</div>
           <h3 style="font-size: 1.25rem; font-weight: bold; color: #3d5a3e; margin-bottom: 0.5rem;">RNF</h3>
@@ -54,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
       </a>
 
       <!-- Community Alchemy -->
-      <a href="/frameworks/alchemy" style="text-decoration: none;">
+      <a href={`${base}/frameworks/alchemy`} style="text-decoration: none;">
         <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #8b6b4a; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧭</div>
           <h3 style="font-size: 1.25rem; font-weight: bold; color: #8b6b4a; margin-bottom: 0.5rem;">Community Alchemy</h3>
@@ -67,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
       </a>
 
       <!-- RCOS -->
-      <a href="/frameworks/rcos" style="text-decoration: none;">
+      <a href={`${base}/frameworks/rcos`} style="text-decoration: none;">
         <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #6b9ab8; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
           <h3 style="font-size: 1.25rem; font-weight: bold; color: #6b9ab8; margin-bottom: 0.5rem;">RCOS</h3>
@@ -80,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
       </a>
 
       <!-- CLIPS -->
-      <a href="/frameworks/clips" style="text-decoration: none;">
+      <a href={`${base}/frameworks/clips`} style="text-decoration: none;">
         <div style="background: white; border-radius: 1rem; padding: 2rem; border-top: 5px solid #9b7eb8; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s; height: 100%;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">💚</div>
           <h3 style="font-size: 1.25rem; font-weight: bold; color: #9b7eb8; margin-bottom: 0.5rem;">CLIPS</h3>
@@ -134,7 +136,7 @@ import Layout from '../layouts/Layout.astro';
         </table>
       </div>
       <div style="text-align: center; margin-top: 2rem;">
-        <a href="/journey" style="background-color: #3d5a3e; color: #f5f0e8; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem; display: inline-block;">
+        <a href={`${base}/journey`} style="background-color: #3d5a3e; color: #f5f0e8; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: bold; text-decoration: none; font-size: 1rem; display: inline-block;">
           See them all in action: The Journey →
         </a>
       </div>
