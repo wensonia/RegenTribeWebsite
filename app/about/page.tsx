@@ -310,9 +310,12 @@ export default function AboutPage() {
               <p style={{ fontSize: '18px', lineHeight: '1.7', marginBottom: '20px' }}>
                 We are a collective of social entrepreneurs from different walks of life, coming together to co.create the world we want to live in.
               </p>
-              <p style={{ fontSize: '18px', lineHeight: '1.7' }}>
+              <p style={{ fontSize: '18px', lineHeight: '1.7', marginBottom: '36px' }}>
                 We are always looking for new ambassadors, collaborators, and core team members to enhance our operational power and help develop more neighborhoods faster.
               </p>
+              <PillBtn href="https://t.me/+fsFL1jIIGM9jOWFh" external bg="var(--green)">
+                Join our Telegram
+              </PillBtn>
             </motion.div>
           </motion.div>
         </div>
@@ -392,9 +395,12 @@ export default function AboutPage() {
                 Whether you are building a community, offering your skills, looking for a place to call home, or simply regen curious — there is a place for you in Regen Tribe.
               </p>
             </motion.div>
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <PillBtn href="https://regentribe.notion.site/Join-Regen-Tribe-ac482cc256d4495d820010c28200698e" external bg="var(--blue)">
                 Join the Collective
+              </PillBtn>
+              <PillBtn href="https://t.me/+fsFL1jIIGM9jOWFh" external bg="var(--green)">
+                Join our Telegram
               </PillBtn>
             </motion.div>
           </motion.div>
