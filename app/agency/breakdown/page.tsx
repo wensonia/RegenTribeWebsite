@@ -224,50 +224,42 @@ const c3Programs = [
 
 /* ── Hierarchical row component for Cycle 1 ── */
 function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
-  const hasSubitemPrices = row.subitems?.some(s => s.price)
-  // Descriptive subitems (no individual prices) → render inline in outcome col, level with price
-  const descriptive = !hasSubitemPrices && row.subitems && row.subitems.length > 0
+  const subs = row.subitems ?? []
 
   return (
-    <motion.div variants={fadeUp} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0' }}>
-      {/* Single grid row: offering | outcome | price | time */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', alignItems: 'start' }}>
-        <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line' }}>{row.offering}</p>
-        {/* Outcome col: descriptive subitems inline, otherwise empty */}
-        {descriptive ? (
-          <div style={{ paddingRight: '24px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            {row.subitems!.map((sub, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: '1.55', margin: 0 }}>{sub.label}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div style={{ paddingRight: '24px' }} />
-        )}
-        <p style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px' }}>
-          {!hasSubitemPrices && row.price ? row.price : ''}
-        </p>
-        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>
-          {!hasSubitemPrices && row.time ? row.time : ''}
-        </p>
-      </div>
-      {/* Priced sub-items (e.g. Strategy essentials) — separate rows below */}
-      {hasSubitemPrices && row.subitems && row.subitems.length > 0 && (
-        <div style={{ marginTop: '8px' }}>
-          {row.subitems.map((sub, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', alignItems: 'start', padding: '5px 0' }}>
-              <div />
-              <div style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: '1.55', margin: 0 }}>{sub.label}</p>
-              </div>
-              <p style={{ fontSize: '13px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px' }}>{sub.price || ''}</p>
-              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>{sub.time || ''}</p>
-            </div>
-          ))}
+    <motion.div variants={fadeUp} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {subs.length === 0 ? (
+        // No subitems — single flat row
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
+          <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
+          <div />
+          <p style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>{row.price || ''}</p>
+          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>{row.time || ''}</p>
         </div>
+      ) : (
+        // One grid row per subitem — offering name only on first row, all columns level
+        subs.map((sub, i) => (
+          <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
+            {/* Col 1: offering label only on first row */}
+            {i === 0
+              ? <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
+              : <div />
+            }
+            {/* Col 2: outcome / subitem description */}
+            <div style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+              <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: '1.5', margin: 0 }}>{sub.label}</p>
+            </div>
+            {/* Col 3: per-subitem price, or section price on first row */}
+            <p style={{ fontSize: '13px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>
+              {sub.price || (i === 0 && row.price ? row.price : '')}
+            </p>
+            {/* Col 4: time */}
+            <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>
+              {sub.time || (i === 0 && row.time ? row.time : '')}
+            </p>
+          </div>
+        ))
       )}
     </motion.div>
   )
