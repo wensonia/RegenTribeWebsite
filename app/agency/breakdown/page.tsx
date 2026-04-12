@@ -18,34 +18,98 @@ const fadeUp = {
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }
 const vp = { once: true, margin: '-60px' as const }
 
-/* ── Cycle 1 data ── */
-const c1Strategy = [
-  { offering: 'Self assessment form', outcome: 'High level overview of your neighborhood structure and where you are on your journey', price: 'Free', time: '1–1.5 h' },
-  { offering: 'Discovery meeting / call', outcome: 'We discuss your high level intention — big why', price: '$100', time: '1–2 h' },
-  { offering: 'Community Culture Canvas Workshop', outcome: 'Assessment of your project\'s purpose and practices that reflect it', price: '$300', time: '2 h' },
-  { offering: 'Neighborhood Project Mind Map', outcome: 'Visual overview of your entire project ecosystem', price: '$200', time: '2 h' },
-  { offering: 'Strategy essentials workshop', outcome: 'Distilling your core strategy into clear, actionable direction', price: '$200', time: '2 h' },
+/* ── Cycle 1 hierarchical data ── */
+type SubItem = { label: string; price?: string; time?: string }
+type C1Row = {
+  offering: string          // section/parent name (column B)
+  subitems?: SubItem[]      // column C items with optional price/time
+  price?: string            // section-level price (when subitems share one price)
+  time?: string             // section-level time
+  accent?: string
+}
+
+const c1Strategy: C1Row[] = [
+  {
+    offering: 'Self assessment form',
+    subitems: [{ label: 'High level overview of your neighborhood structure and where you are on your journey' }],
+    price: 'Free', time: '1–1.5 h',
+  },
+  {
+    offering: 'Discovery meeting / call',
+    subitems: [{ label: 'WHY — we discuss your high level intention, big why' }],
+    price: '$100', time: '1–2 h',
+  },
+  {
+    offering: 'Community Culture Canvas Workshop\nCommunity visioning documentation review',
+    subitems: [{ label: 'HOW — community visioning review documentation. Assessment of your project\'s purpose and how you embody it — Culture canvas, Community / Business plan' }],
+    price: '$200', time: '2 h',
+  },
+  {
+    offering: 'Neighborhood Project Mind Map',
+    price: '$200', time: '2 h',
+  },
+  {
+    offering: 'Strategy essentials workshop',
+    subitems: [
+      { label: 'Organizational chart (roles & responsibilities)', price: '$100', time: '1 h' },
+      { label: 'Timeline & Milestones', price: '$100', time: '1 h' },
+      { label: 'Group Agreements & On/Off Boarding Process', price: '$100', time: '1 h' },
+    ],
+  },
 ]
 
-const c1Operations = [
-  { offering: 'Organizational chart (roles & responsibilities)', outcome: 'Clear structure of who does what in your community', price: '$100', time: '1 h' },
-  { offering: 'Timeline & Milestones', outcome: 'Phased roadmap for your project', price: '$100', time: '1 h' },
-  { offering: 'Group Agreements & On/Off Boarding Process', outcome: 'Framework for welcoming and transitioning members', price: '$100', time: '1 h' },
-  { offering: 'Kanban board creation', outcome: 'Visual project management system for your team', price: '$300', time: '4 h' },
-  { offering: 'Document Glossary', outcome: 'Shared language and definitions for your community', price: '$200', time: '2 h' },
-  { offering: 'High level Notion setup', outcome: 'Central workspace to organize all your community documentation', price: '$300', time: '3 h' },
-  { offering: 'Documentation Review & Summary', outcome: 'Audit and synthesis of your existing materials', price: '$100', time: '1 h' },
-  { offering: 'Internal team communication review', outcome: 'Assessment of how your team communicates internally', price: '$100', time: '1 h' },
-  { offering: 'Community communication channels review', outcome: 'Internal community / external communication audit', price: '$200', time: '2 h' },
+const c1Operations: C1Row[] = [
+  {
+    offering: 'Project management structure set up',
+    subitems: [{ label: 'Task management / Kanban board creation', price: '$300', time: '4 hrs' }],
+  },
+  {
+    offering: 'Documentation Review & Summary',
+    subitems: [
+      { label: 'Document Glossary', price: '$200' },
+      { label: 'High level notion', price: '$300' },
+    ],
+  },
+  {
+    offering: 'Community communication channels review',
+    subitems: [
+      { label: 'Internal team communication' },
+      { label: 'Internal community / Residents communication', price: '$100', time: '1 h' },
+      { label: 'External community communication' },
+    ],
+  },
+  {
+    offering: 'Technology review',
+    subitems: [{ label: 'Digital Tools' }],
+  },
+  {
+    offering: 'Finance review',
+    subitems: [{ label: 'Proforma / P&L', price: '$200', time: '2 h' }],
+  },
+  {
+    offering: 'Legal structure review',
+    subitems: [
+      { label: 'Land legal structure' },
+      { label: 'Resident agreements' },
+    ],
+  },
 ]
 
-const c1Marketing = [
-  { offering: 'Technology review', outcome: 'Audit of your current digital tools', price: 'TBD', time: '—' },
-  { offering: 'Finance review', outcome: 'Proforma / P&L overview', price: 'TBD', time: '—' },
-  { offering: 'Legal structure review', outcome: 'Land legal structure and resident agreements', price: 'TBD', time: '—' },
-  { offering: 'Pre-branding & Branding', outcome: 'Brand foundations for your neighborhood', price: 'TBD', time: '—' },
-  { offering: 'Deck & One Pager', outcome: 'Presentation materials for your project', price: 'TBD', time: '—' },
-  { offering: 'Initial marketing assessment', outcome: 'Raw content, website, socials, tour video, explainer videos', price: '$200', time: '2 h' },
+const c1Marketing: C1Row[] = [
+  {
+    offering: 'Existing marketing assessment\n(understanding what exists)',
+    price: '$200', time: '2 h',
+    subitems: [
+      { label: 'Pre branding & Branding' },
+      { label: 'Deck' },
+      { label: 'One Pager' },
+      { label: 'Raw content' },
+      { label: 'Website' },
+      { label: 'Socials' },
+      { label: 'Tour video' },
+      { label: 'Explainer videos' },
+    ],
+  },
 ]
 
 /* ── Cycle 2 data (11 steps) ── */
@@ -158,21 +222,43 @@ const c3Programs = [
   { title: 'Local Community Relations Program', desc: 'Assessment of your local area and a campaign to connect with neighbors, identify needs & offerings, and form win-win relationships' },
 ]
 
-/* ── Row component for Cycle 1 tables ── */
-function OfferingRow({ offering, outcome, price, time, accent }: { offering: string; outcome: string; price: string; time: string; accent: string }) {
+/* ── Hierarchical row component for Cycle 1 ── */
+function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
+  const hasSubitemPrices = row.subitems?.some(s => s.price)
   return (
-    <motion.div variants={fadeUp} style={{
-      display: 'grid',
-      gridTemplateColumns: '2fr 2fr 100px 80px',
-      gap: '0',
-      borderBottom: '1px solid rgba(255,255,255,0.08)',
-      padding: '20px 0',
-      alignItems: 'start',
-    }}>
-      <p style={{ fontSize: '14px', fontWeight: '500', color: 'white', paddingRight: '24px', lineHeight: '1.5' }}>{offering}</p>
-      <p style={{ fontSize: '13px', fontWeight: '300', color: 'rgba(255,255,255,0.5)', paddingRight: '24px', lineHeight: '1.5' }}>{outcome}</p>
-      <p style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px' }}>{price}</p>
-      <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>{time}</p>
+    <motion.div variants={fadeUp} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0' }}>
+      {/* Parent row */}
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', alignItems: 'start' }}>
+        <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line' }}>{row.offering}</p>
+        {/* If no subitems or subitems have no individual prices, show price in the parent row */}
+        <div style={{ paddingRight: '24px' }} />
+        <p style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px' }}>
+          {!hasSubitemPrices && row.price ? row.price : ''}
+        </p>
+        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>
+          {!hasSubitemPrices && row.time ? row.time : ''}
+        </p>
+      </div>
+      {/* Sub-items — in the outcome (2nd) column */}
+      {row.subitems && row.subitems.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0', marginTop: '4px' }}>
+          {row.subitems.map((sub, i) => (
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', alignItems: 'start', padding: '5px 0' }}>
+              {/* Empty first col to keep alignment */}
+              <div />
+              {/* Sub-item text in outcome col */}
+              <div style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
+                <p style={{ fontSize: '13px', fontWeight: '400', color: 'rgba(255,255,255,0.65)', lineHeight: '1.55' }}>{sub.label}</p>
+              </div>
+              <p style={{ fontSize: '13px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px' }}>{sub.price || ''}</p>
+              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }}>{sub.time || ''}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      {/* Section-level price when subitems exist but price is on parent */}
+      {row.subitems && !hasSubitemPrices && !row.price && null}
     </motion.div>
   )
 }
@@ -258,13 +344,13 @@ export default function BreakdownPage() {
             </motion.div>
 
             <SectionLabel label="Strategy" color="var(--green)" />
-            {c1Strategy.map((row) => <OfferingRow key={row.offering} {...row} accent="var(--green)" />)}
+            {c1Strategy.map((row) => <OfferingRow key={row.offering} row={row} accent="var(--green)" />)}
 
             <SectionLabel label="Operations" color="var(--green)" />
-            {c1Operations.map((row) => <OfferingRow key={row.offering} {...row} accent="var(--green)" />)}
+            {c1Operations.map((row) => <OfferingRow key={row.offering} row={row} accent="var(--green)" />)}
 
             <SectionLabel label="Marketing" color="var(--green)" />
-            {c1Marketing.map((row) => <OfferingRow key={row.offering} {...row} accent="var(--green)" />)}
+            {c1Marketing.map((row) => <OfferingRow key={row.offering} row={row} accent="var(--green)" />)}
 
             {/* Total */}
             <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '24px', borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '28px', marginTop: '12px' }}>
