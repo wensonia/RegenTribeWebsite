@@ -40,15 +40,15 @@ const c1Operations = [
 ]
 
 const c1Marketing = [
-  { offering: 'Technology review', outcome: 'Audit of your current digital tools', price: 'Included', time: '—' },
-  { offering: 'Finance review', outcome: 'Proforma / P&L overview', price: 'Included', time: '—' },
-  { offering: 'Legal structure review', outcome: 'Land legal structure and resident agreements', price: 'Included', time: '—' },
-  { offering: 'Pre-branding & Branding', outcome: 'Brand foundations for your neighborhood', price: 'Included', time: '—' },
-  { offering: 'Deck & One Pager', outcome: 'Presentation materials for your project', price: 'Included', time: '—' },
-  { offering: 'Initial marketing assessment', outcome: 'Raw content, website, socials, tour video, explainer videos', price: 'Included', time: '—' },
+  { offering: 'Technology review', outcome: 'Audit of your current digital tools', price: 'TBD', time: '—' },
+  { offering: 'Finance review', outcome: 'Proforma / P&L overview', price: 'TBD', time: '—' },
+  { offering: 'Legal structure review', outcome: 'Land legal structure and resident agreements', price: 'TBD', time: '—' },
+  { offering: 'Pre-branding & Branding', outcome: 'Brand foundations for your neighborhood', price: 'TBD', time: '—' },
+  { offering: 'Deck & One Pager', outcome: 'Presentation materials for your project', price: 'TBD', time: '—' },
+  { offering: 'Initial marketing assessment', outcome: 'Raw content, website, socials, tour video, explainer videos', price: '$200', time: '2 h' },
 ]
 
-/* ── Cycle 2 data (10 steps) ── */
+/* ── Cycle 2 data (11 steps) ── */
 const c2Steps = [
   {
     num: '#1',
@@ -87,38 +87,45 @@ const c2Steps = [
   },
   {
     num: '#6',
-    title: 'Strategize Your Marketing & Funding',
+    title: 'Strategize Your Funding',
     phase: 'Design',
     color: 'var(--pink)',
-    items: ['Brand building exercises', 'Financial needs assessment', 'Strategies to raise & track capital', 'Marketing strategies'],
+    items: ['Brand building exercises', 'Financial needs assessment', 'Strategies to raise & track capital', 'Update funding needs'],
   },
   {
     num: '#7',
-    title: 'Master Plan Your Sustainable Systems',
-    phase: 'Building',
-    color: 'var(--blue)',
-    items: ['Water system', 'Food system', 'Energy system', 'Waste management', 'Housing', 'Transport', 'Plan of your sustainable systems'],
+    title: 'Strategize Your Marketing',
+    phase: 'Design',
+    color: 'var(--pink)',
+    items: ['Strategies to raise & track capital', 'Marketing strategies', 'Recruit ideal members'],
   },
   {
     num: '#8',
-    title: 'Construct Your Physical Neighborhoods',
+    title: 'Master Plan Your Neighborhoods & City: Sustainable Systems, Housing, Roads, Structures',
     phase: 'Building',
     color: 'var(--blue)',
-    items: ['Phases of building', 'Service providers', 'Design & materials', 'Construction methods', 'Plan of your physical infrastructure'],
+    items: ['Water system', 'Food system', 'Energy system', 'Air', 'Waste management', 'Housing', 'Transport', 'Update funding needs', 'Plan of your sustainable systems'],
   },
   {
     num: '#9',
-    title: 'Live In & Curate Community Culture',
+    title: 'Construct Your Physical Neighborhoods',
+    phase: 'Building',
+    color: 'var(--blue)',
+    items: ['Phases of building', 'Service providers', 'Design', 'Materials', 'Construction methods', 'Plan of your physical infrastructure'],
+  },
+  {
+    num: '#10',
+    title: 'Live In Your Dream Community & Curate Community Culture',
     phase: 'Operations',
     color: 'var(--yellow)',
     items: ['Community org chart', 'Recommended trainings', 'Community culture programming', 'Assessment tools'],
   },
   {
-    num: '#10',
-    title: 'Holistic Community Leadership & Management',
+    num: '#11',
+    title: 'Create, Manage, and Review Holistic Community Ecosystems',
     phase: 'Operations',
     color: 'var(--yellow)',
-    items: ['Operations & logistics', 'Local relationship building', 'Management ecosystems review'],
+    items: ['Leadership & Management', 'Operations & Logistics', 'Local relationship building'],
   },
 ]
 
@@ -138,12 +145,12 @@ const c3Marketing = [
   { title: 'Community hacking', desc: 'Pitch exercise, documentation, and potential community member funnel building' },
 ]
 const c3Workshops = [
-  { cat: 'Collaboration', items: ['Mycelium Activations — strategic connection', 'Community request & offer board', 'Myconet software'] },
-  { cat: 'Vitality', items: ['Animal flow class', 'Stretching / partner stretching', 'Community gym time'] },
-  { cat: 'Entrepreneurship', items: ['Pitch forum', 'Co-working sessions', 'Networking sessions', 'Hackathon for community initiative'] },
-  { cat: 'Conscious Connection', items: ['Community sharing circles', 'Authentic relating workshops'] },
-  { cat: 'Operational Meetings', items: ['Community morning check-ins', 'Weekly community operational meeting'] },
-  { cat: 'Co-Creation Workshops', items: ['Community ideation', 'Community design', 'Community building', 'Community activation'] },
+  { cat: 'Mycelium Activations', items: ['Community Request & Offer board', 'Myconet software'] },
+  { cat: 'Vitality / physical health programming', items: ['Animal flow class', 'Stretching / Partner stretching', 'Community Gym Time'] },
+  { cat: 'Entrepreneurship Activations', items: ['Pitch forum', 'Co.working sessions', 'Networking sessions', 'Hackathon for your community initiative'] },
+  { cat: 'Conscious Connection Programming', items: ['Community sharing circles', 'Authentic Relating Workshops'] },
+  { cat: 'Operational Meetings', items: ['Community Morning Check-Ins', 'Weekly community operational meeting'] },
+  { cat: 'Community Co.Creation Workshops', items: ['Community Ideation', 'Community Design', 'Community Building', 'Community Activation'] },
 ]
 const c3Programs = [
   { title: 'Energy Exchange Program', desc: 'We activate an energy exchange program — recruiting key roles and creating structure for volunteer members to contribute to the community' },
@@ -283,7 +290,7 @@ export default function BreakdownPage() {
               optimize.
             </motion.h2>
             <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', color: 'rgba(255,255,255,0.5)', lineHeight: '1.7', maxWidth: '680px', marginBottom: '16px' }}>
-              We design and optimize your Regenerative Neighborhood plan based on the 10-step Community Alchemy Guide ©. Every project has different parts done at different levels of completion — we ask the questions that are crucial for success, share proven solutions, and connect you with verified service providers.
+              We design and optimize your Regenerative Neighborhood plan based on the 11-step Community Alchemy Guide ©. Every project has different parts done at different levels of completion — we ask the questions that are crucial for success, share proven solutions, and connect you with verified service providers.
             </motion.p>
             <motion.p variants={fadeUp} style={{ fontSize: '14px', fontWeight: '500', color: 'rgba(255,255,255,0.35)', marginBottom: '64px', fontStyle: 'italic' }}>
               Pricing and time vary based on the size of your project, needs, and current status.
@@ -343,8 +350,8 @@ export default function BreakdownPage() {
               <SectionLabel label="Project Management" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3PM.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', minWidth: '220px', flexShrink: 0 }}>{item.title}</p>
+                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
                 ))}
@@ -353,8 +360,8 @@ export default function BreakdownPage() {
               <SectionLabel label="Regen Alchemists" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3Alchemists.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', minWidth: '220px', flexShrink: 0 }}>{item.title}</p>
+                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
                 ))}
@@ -363,8 +370,8 @@ export default function BreakdownPage() {
               <SectionLabel label="Marketing" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3Marketing.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
-                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', minWidth: '220px', flexShrink: 0 }}>{item.title}</p>
+                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
                 ))}
@@ -411,8 +418,8 @@ export default function BreakdownPage() {
               <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: '20px' }}>Programs</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 {c3Programs.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '28px 32px', borderRadius: '4px', display: 'flex', gap: '32px', alignItems: 'flex-start' }}>
-                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', minWidth: '240px', flexShrink: 0, lineHeight: '1.4' }}>{item.title}</p>
+                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '28px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '240px 1fr', gap: '32px', alignItems: 'start' }}>
+                    <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', lineHeight: '1.4' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.6' }}>{item.desc}</p>
                   </div>
                 ))}
