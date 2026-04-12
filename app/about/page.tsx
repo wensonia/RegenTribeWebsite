@@ -52,6 +52,7 @@ const members: Member[] = [
   { name: 'Dr Bryan von Herzen',      status: 'Collaborator', roles: ['Climate Scientist'],                                 desc: 'Climate Scientist at Climate Foundation.',                                           img: `${P}/Dr. Brian Von Herzen.png` },
   { name: 'Kevin Howard',             status: 'Collaborator', roles: ['Climate consultant'],                                desc: 'Principal Consultant for Climate Changes Everything, LLC.',                          img: `${P}/Kevin Howard.jpg` },
   { name: 'Justin Lofton',            status: 'Collaborator', roles: ['Food systems'],                                      desc: 'Co-founder and Chief Marketing Officer at Thrive Garden.',                          img: `${P}/justin lofton (1).jpg` },
+  { name: 'Ian Tarrea',               status: 'Collaborator', roles: [],                                                    img: `${P}/Ian Tarrea.jpeg` },
   // Advisor
   { name: 'Rahul Sonnad',             status: 'Advisor',      roles: ['Technology strategist'],                             img: `${P}/rahul-sonnad.jpg` },
   // Ambassadors
