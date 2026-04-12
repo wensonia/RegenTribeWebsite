@@ -28,7 +28,7 @@ const statusColor: Record<string, { bg: string; text: string; accent: string }> 
 /* ── Collective members ── */
 type Member = { name: string; status: string; roles: string[]; desc?: string; img: string | null }
 
-const P = '/images/collective member directory'
+const P = '/images/collective-members'
 
 const members: Member[] = [
   // Core Team
@@ -47,12 +47,12 @@ const members: Member[] = [
   { name: 'Gabriela',                 status: 'Collaborator', roles: [],                                                    img: `${P}/gabriela.jpg` },
   // RNF Design Lab Collaborators
   { name: 'Camara Cassin',            status: 'Collaborator', roles: ['Environmental scientist', 'Systems designer'],       desc: 'Founder of Masterminding EDEN.',                                                    img: `${P}/camara-cassin.png` },
-  { name: 'Thomas Poetter',           status: 'Collaborator', roles: ['Potentialism founder'],                              desc: 'Founder of Potentialism – socio-economic model for regenerative future.',             img: `${P}/thomas poetter (1).jpg` },
-  { name: 'Steven Streetman',         status: 'Collaborator', roles: ['Real Estate', 'ReFi'],                              desc: 'Crypto Currency & Real Estate | Jevity City Project | Streetsmart Investments LLC.', img: `${P}/stevenstreetman (1).jpg` },
-  { name: 'Dr Bryan von Herzen',      status: 'Collaborator', roles: ['Climate Scientist'],                                 desc: 'Climate Scientist at Climate Foundation.',                                           img: `${P}/Dr. Brian Von Herzen.png` },
-  { name: 'Kevin Howard',             status: 'Collaborator', roles: ['Climate consultant'],                                desc: 'Principal Consultant for Climate Changes Everything, LLC.',                          img: `${P}/Kevin Howard.jpg` },
-  { name: 'Justin Lofton',            status: 'Collaborator', roles: ['Food systems'],                                      desc: 'Co-founder and Chief Marketing Officer at Thrive Garden.',                          img: `${P}/justin lofton (1).jpg` },
-  { name: 'Ian Tarrea',               status: 'Collaborator', roles: [],                                                    img: `${P}/Ian Tarrea.jpeg` },
+  { name: 'Thomas Poetter',           status: 'Collaborator', roles: ['Potentialism founder'],                              desc: 'Founder of Potentialism – socio-economic model for regenerative future.',             img: `${P}/thomas-poetter.jpg` },
+  { name: 'Steven Streetman',         status: 'Collaborator', roles: ['Real Estate', 'ReFi'],                              desc: 'Crypto Currency & Real Estate | Jevity City Project | Streetsmart Investments LLC.', img: `${P}/steven-streetman.jpg` },
+  { name: 'Dr Bryan von Herzen',      status: 'Collaborator', roles: ['Climate Scientist'],                                 desc: 'Climate Scientist at Climate Foundation.',                                           img: `${P}/dr-bryan-von-herzen.png` },
+  { name: 'Kevin Howard',             status: 'Collaborator', roles: ['Climate consultant'],                                desc: 'Principal Consultant for Climate Changes Everything, LLC.',                          img: `${P}/kevin-howard.jpg` },
+  { name: 'Justin Lofton',            status: 'Collaborator', roles: ['Food systems'],                                      desc: 'Co-founder and Chief Marketing Officer at Thrive Garden.',                          img: `${P}/justin-lofton.jpg` },
+  { name: 'Ian Tarrea',               status: 'Collaborator', roles: [],                                                    img: `${P}/ian-tarrea.jpeg` },
   // Advisor
   { name: 'Rahul Sonnad',             status: 'Advisor',      roles: ['Technology strategist'],                             img: `${P}/rahul-sonnad.jpg` },
   // Ambassadors
