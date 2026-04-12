@@ -45,12 +45,9 @@ const c1Strategy: C1Row[] = [
     price: '$200', time: '2 h',
   },
   {
-    offering: 'Neighborhood Project Mind Map',
-    price: '$200', time: '2 h',
-  },
-  {
     offering: 'Strategy essentials workshop',
     subitems: [
+      { label: 'Neighborhood Project Mind Map', price: '$200', time: '2 h' },
       { label: 'Organizational chart (roles & responsibilities)', price: '$100', time: '1 h' },
       { label: 'Timeline & Milestones', price: '$100', time: '1 h' },
       { label: 'Group Agreements & On/Off Boarding Process', price: '$100', time: '1 h' },
