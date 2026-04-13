@@ -435,7 +435,7 @@ export default function BreakdownPage() {
               <SectionLabel label="Project Management" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3PM.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                  <div key={item.title} className="c3-card" style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
                     <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
@@ -445,7 +445,7 @@ export default function BreakdownPage() {
               <SectionLabel label="Regen Alchemists" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3Alchemists.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                  <div key={item.title} className="c3-card" style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
                     <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
@@ -455,7 +455,7 @@ export default function BreakdownPage() {
               <SectionLabel label="Marketing" color="var(--blue)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginBottom: '4px' }}>
                 {c3Marketing.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
+                  <div key={item.title} className="c3-card" style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '24px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '220px 1fr', gap: '24px', alignItems: 'start' }}>
                     <p style={{ fontSize: '15px', fontWeight: '500', color: 'white' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.5' }}>{item.desc}</p>
                   </div>
@@ -503,7 +503,7 @@ export default function BreakdownPage() {
               <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: '20px' }}>Programs</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 {c3Programs.map((item) => (
-                  <div key={item.title} style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '28px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '240px 1fr', gap: '32px', alignItems: 'start' }}>
+                  <div key={item.title} className="c3-card" style={{ backgroundColor: 'rgba(255,255,255,0.04)', padding: '28px 32px', borderRadius: '4px', display: 'grid', gridTemplateColumns: '240px 1fr', gap: '32px', alignItems: 'start' }}>
                     <p style={{ fontSize: '15px', fontWeight: '500', color: 'white', lineHeight: '1.4' }}>{item.title}</p>
                     <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: '1.6' }}>{item.desc}</p>
                   </div>
@@ -607,6 +607,12 @@ export default function BreakdownPage() {
           .offering-row-grid .col-empty { display: none !important; }
           /* hide duplicate offering label on sub-rows (i > 0) */
           .offering-row-grid .col-offering-empty { display: none !important; }
+          /* Cycle 3 cards: stack title + desc vertically */
+          .c3-card {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
         }
       `}</style>
     </>
