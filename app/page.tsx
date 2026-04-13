@@ -69,7 +69,7 @@ function Label({ children, light }: { children: React.ReactNode; light?: boolean
 const heroPanels = [
   { color: 'var(--green)', label: 'Global Network', symbol: '○', href: 'https://tribesplatform.app', external: true },
   { color: 'var(--pink)', label: 'Agency', symbol: '△', href: '/agency', external: false },
-  { color: 'var(--yellow)', label: 'Education', symbol: '□', href: '/education', external: false },
+  { color: 'var(--yellow)', label: 'Education', symbol: '□', href: '/tools', external: false },
   { color: 'var(--blue)', label: 'Land Development', symbol: '○', href: '/agency', external: false },
 ]
 
@@ -83,11 +83,11 @@ const offerings = [
 ]
 
 const projects = [
-  { name: 'Kuyabeh', loc: 'Tulum, Mexico', desc: '375 hectares sustainable micro city in Mexico', dot: 'var(--green)' },
-  { name: 'La Ecovilla', loc: 'Costa Rica', desc: 'neighborhood in Costa Rica housing 43 families', dot: 'var(--pink)' },
-  { name: 'MOOS Space', loc: 'Berlin, Germany', desc: 'urban community in the heart of Berlin', dot: 'var(--blue)' },
-  { name: 'La Reserva', loc: 'Tulum, Mexico', desc: 'sustainable neighborhood in Tulum, Mexico', dot: 'var(--yellow-deep)' },
-  { name: 'WildSeeds Ranch', loc: 'San Diego, California', desc: 'coliving community in San Diego, California', dot: 'var(--green)' },
+  { name: 'Community Lab X', loc: 'Tulum, Mexico', desc: 'Live-in community and retreat space', dot: 'var(--green)' },
+  { name: 'Ekumal', loc: 'Akumal, Mexico', desc: 'Live-in community, environmental impact hub and retreat center', dot: 'var(--pink)' },
+  { name: 'Kuyabeh', loc: 'Tulum, Mexico', desc: 'Regenerative neighbourhood project', dot: 'var(--blue)' },
+  { name: 'WildSeeds Ranch', loc: 'California, USA', desc: 'Conscious coliving ranch for creatives and entrepreneurs', dot: 'var(--yellow-deep)' },
+  { name: 'Ixchel', loc: 'Tulum, Mexico', desc: 'Regenerative community in the jungle', dot: 'var(--green)' },
 ]
 
 const testimonials = [
@@ -136,8 +136,8 @@ export default function Home() {
               </motion.div>
 
               <h1 style={{
-                fontSize: 'clamp(36px, 4.5vw, 72px)', fontWeight: '400',
-                lineHeight: '1.05', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '28px',
+                fontSize: 'clamp(28px, 3.5vw, 58px)', fontWeight: '400',
+                lineHeight: '1.1', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '28px',
               }}>
                 {['create,', 'grow', '&', 'find', 'Regenerative', 'Neighborhoods'].map((word, i) => (
                   <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
@@ -222,8 +222,8 @@ export default function Home() {
       {/* ════════════════════════════════
           OUR WHY — Challenge + Solution
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label>our why</Label></motion.div>
 
@@ -277,8 +277,8 @@ export default function Home() {
       {/* ════════════════════════════════
           WHAT ARE REGENERATIVE NEIGHBORHOODS?
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label light>what are regenerative neighborhoods?</Label></motion.div>
             <div className="rn-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
@@ -295,7 +295,7 @@ export default function Home() {
                   Regenerative Neighborhoods are resource resilient &amp; intentional community land developments.
                 </p>
                 <p style={{ fontSize: '18px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '24px' }}>
-                  And provide true sovereignty when created and run well. They provide resilient solutions for the important things:
+                  And provide true sovereignty when created and run well.
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '56px' }}>
                   {['WATER', 'FOOD', 'ENERGY', 'WASTE', 'HUMAN CONNECTION', 'NATURE'].map((need) => (
@@ -325,7 +325,7 @@ export default function Home() {
           WHAT WE OFFER
       ════════════════════════════════ */}
       <section id="ecosystem" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid var(--border)', paddingBottom: '40px', marginBottom: '72px', flexWrap: 'wrap', gap: '24px' }}>
               <div>
@@ -338,12 +338,13 @@ export default function Home() {
             </motion.div>
 
             {/* 4 offerings grid */}
-            <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0', marginBottom: '80px' }}>
-              {offerings.map((o, i) => (
+            <motion.div className="offerings-grid" variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '80px' }}>
+              {offerings.map((o) => (
                 <motion.div key={o.label} variants={fadeUp} style={{
-                  borderRight: i < offerings.length - 1 ? '1px solid var(--border)' : 'none',
-                  paddingRight: i < offerings.length - 1 ? '32px' : '0',
-                  paddingLeft: i > 0 ? '32px' : '0',
+                  border: '1px solid var(--border)',
+                  borderRadius: '8px',
+                  padding: '32px',
+                  backgroundColor: 'white',
                 }}>
                   <div style={{ width: '32px', height: '3px', backgroundColor: o.dot, marginBottom: '24px', borderRadius: '2px' }} />
                   <h3 style={{ fontSize: '18px', fontWeight: '400', color: 'var(--text)', marginBottom: '14px', fontFamily: 'var(--font-lora), Georgia, serif', textTransform: 'lowercase' }}>
@@ -389,8 +390,8 @@ export default function Home() {
       {/* ════════════════════════════════
           ACTIVE PROJECTS
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--green)', padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--green)', padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '1px solid rgba(54,54,54,0.2)', paddingBottom: '40px', marginBottom: '72px', flexWrap: 'wrap', gap: '24px' }}>
             <motion.div variants={fadeUp}>
@@ -404,7 +405,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
+          <motion.div className="projects-grid" initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0' }}>
             {projects.map((p, pi) => (
               <motion.div key={p.name} variants={fadeUp} style={{
@@ -429,8 +430,8 @@ export default function Home() {
       {/* ════════════════════════════════
           WHO WE ARE
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <div className="who-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
               <motion.div variants={fadeUp}><Label>who we are</Label></motion.div>
@@ -467,7 +468,7 @@ export default function Home() {
           PARTNERS
       ════════════════════════════════ */}
       <section style={{ padding: '64px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             style={{ display: 'flex', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
             <motion.p variants={fadeUp} style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-muted)', flexShrink: 0 }}>
@@ -487,8 +488,8 @@ export default function Home() {
       {/* ════════════════════════════════
           TESTIMONIALS
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label>what the community says</Label></motion.div>
             <motion.h2 variants={fadeUp} style={{
@@ -497,8 +498,8 @@ export default function Home() {
             }}>
               What the community<br />says about us.
             </motion.h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
-              {testimonials.map((t, i) => (
+            <div className="testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
+              {testimonials.map((t) => (
                 <motion.div key={t.name} variants={fadeUp} style={{
                   borderTop: '2px solid var(--border)', paddingTop: '32px',
                 }}>
@@ -522,8 +523,8 @@ export default function Home() {
       {/* ════════════════════════════════
           FAQs
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <div className="faq-grid" style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: '80px', alignItems: 'start' }}>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
               <motion.div variants={fadeUp}><Label>FAQs</Label></motion.div>
@@ -572,8 +573,8 @@ export default function Home() {
       {/* ════════════════════════════════
           LET'S CONNECT
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--yellow)', padding: '140px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--yellow)', padding: '140px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label>get involved</Label></motion.div>
             <motion.h2 variants={fadeUp} style={{
@@ -610,9 +611,13 @@ export default function Home() {
           .rn-grid { grid-template-columns: 1fr !important; }
           .who-grid { grid-template-columns: 1fr !important; }
           .faq-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 1100px) {
           .offerings-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+          .testimonials-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+        @media (max-width: 540px) {
+          .offerings-grid { grid-template-columns: 1fr !important; }
+          .projects-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>
