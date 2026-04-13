@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 /* ── Layout constants ── */
@@ -94,13 +95,38 @@ function OutlinePill({
   )
 }
 
+/* ── CountUp component ── */
+function CountUp({ target, duration = 2 }: { target: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-80px' })
+
+  useEffect(() => {
+    if (!inView) return
+    let start = 0
+    const step = target / (duration * 60) // ~60fps
+    const timer = setInterval(() => {
+      start += step
+      if (start >= target) {
+        setCount(target)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(start))
+      }
+    }, 1000 / 60)
+    return () => clearInterval(timer)
+  }, [inView, target, duration])
+
+  return <span ref={ref}>{count.toLocaleString()}</span>
+}
+
 /* ── Data ── */
 const stats = [
-  { label: 'Registered Members', value: '1,379' },
-  { label: 'Public Forums', value: '191' },
-  { label: 'Discussions', value: '247' },
-  { label: 'Replies', value: '417' },
-  { label: 'Discussion Tags', value: '68' },
+  { label: 'Registered Members', value: 1379 },
+  { label: 'Public Forums', value: 191 },
+  { label: 'Discussions', value: 247 },
+  { label: 'Replies', value: 417 },
+  { label: 'Discussion Tags', value: 68 },
 ]
 
 const features = [
@@ -638,7 +664,7 @@ export default function TribesPlatformPage() {
                     lineHeight: '1',
                     marginBottom: '12px',
                   }}>
-                    {s.value}
+                    <CountUp target={s.value} />
                   </p>
                   <p style={{
                     fontSize: '12px',

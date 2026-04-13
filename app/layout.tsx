@@ -106,7 +106,7 @@ export default function RootLayout({
                     marginBottom: '20px',
                   }}
                 >
-                  Platform
+                  Our Ecosystem
                 </p>
                 {[
                   { label: 'Tribes Platform', href: '/tribes-platform' },
@@ -146,10 +146,49 @@ export default function RootLayout({
                 >
                   Community
                 </p>
+                {/* Social icons row */}
+                <div style={{ display: 'flex', gap: '16px', marginBottom: '20px' }}>
+                  <a
+                    href="https://t.me/+fsFL1jIIGM9jOWFh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Telegram"
+                    style={{ color: 'var(--text)', display: 'flex', alignItems: 'center' }}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21.2 4.6 2.5 11.1c-.6.2-.6.6 0 .8l4.7 1.5 1.8 5.8c.1.4.6.5.9.3l2.6-2.1 5.1 3.7c.4.3 1 .1 1.1-.4L22.3 5.5c.2-.6-.4-1.1-1.1-.9z" />
+                      <path d="m9.2 13.4 8.3-6.3" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/regen.tribe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    style={{ color: 'var(--text)', display: 'flex', alignItems: 'center' }}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <circle cx="12" cy="12" r="5" />
+                      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/regen-tribe/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    style={{ color: 'var(--text)', display: 'flex', alignItems: 'center' }}
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  </a>
+                </div>
+                {/* Text links */}
                 {[
-                  { label: 'Telegram', href: 'https://t.me/+fsFL1jIIGM9jOWFh', external: true },
-                  { label: 'Instagram', href: 'https://www.instagram.com/regen.tribe', external: true },
-                  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/regen-tribe/', external: true },
                   { label: 'Contact', href: 'mailto:hello@regentribe.co', external: true },
                   { label: 'Join the Movement', href: '/join', external: false },
                 ].map((item) => (

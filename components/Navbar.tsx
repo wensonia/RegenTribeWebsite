@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
           {navLinks.map((link) => (
             <motion.div key={link.href} whileHover={{ y: -1 }} transition={{ duration: 0.15 }}>
-              <Link href={link.href} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '14px', fontWeight: '400', color: 'var(--text)', textDecoration: 'none', letterSpacing: '0.01em' }}>
+              <Link href={link.href} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '13px', fontWeight: '400', color: 'var(--text)', textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>
                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: link.dot, flexShrink: 0 }} />
                 {link.label}
               </Link>
@@ -39,12 +39,12 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <motion.div className="desktop-cta" whileHover={{ x: 4 }} transition={{ duration: 0.15 }}>
-          <Link href="/join" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontWeight: '500', color: 'var(--text)', textDecoration: 'none' }}>
+        <div className="desktop-cta">
+          <Link href="/join" className="cta-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '500', color: 'var(--text)', textDecoration: 'none', borderRadius: '9999px', padding: '8px 20px', transition: 'all 0.25s ease', textTransform: 'uppercase' as const, letterSpacing: '0.08em' }}>
             Join the Movement
-            <ArrowRight size={14} strokeWidth={1.5} />
+            <ArrowRight size={15} strokeWidth={1.5} />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Mobile hamburger */}
         <button onClick={() => setOpen(!open)} className="mobile-btn" style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: '4px', color: 'var(--text)' }}>

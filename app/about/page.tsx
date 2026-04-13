@@ -350,7 +350,7 @@ export default function AboutPage() {
         .carousel-track {
           display: flex;
           width: max-content;
-          animation: carousel-scroll 70s linear infinite;
+          animation: carousel-scroll 100s linear infinite;
         }
         .carousel-viewport:hover .carousel-track {
           animation-play-state: paused;
