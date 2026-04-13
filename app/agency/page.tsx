@@ -260,25 +260,12 @@ const cycles = [
 
 /* ── Page ── */
 export default function Agency() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [interests, setInterests] = useState<string[]>([])
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   useEffect(() => {
     document.body.style.overflow = selectedProject ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [selectedProject])
-
-  function toggleInterest(val: string) {
-    setInterests(prev => prev.includes(val) ? prev.filter(v => v !== val) : [...prev, val])
-  }
-
-  function handleSubscribe(e: React.FormEvent) {
-    e.preventDefault()
-    // TODO: wire to Supabase newsletter table
-    console.log({ name, email, interests })
-  }
 
   return (
     <>
@@ -930,147 +917,6 @@ export default function Agency() {
         </div>
       </section>
 
-      {/* ════════════════════════════════
-          LET'S CONNECT — dark, newsletter
-      ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
-        <div style={{ ...wrap, maxWidth: '720px' }}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={stagger}
-            viewport={vp}
-          >
-            <motion.h2
-              variants={fadeUp}
-              style={{
-                fontSize: 'clamp(48px, 6vw, 96px)',
-                fontWeight: '400',
-                letterSpacing: '-0.03em',
-                color: 'white',
-                marginBottom: '56px',
-                textAlign: 'center',
-              }}
-            >
-              Let&apos;s connect.
-            </motion.h2>
-
-            <motion.div
-              variants={fadeUp}
-              style={{
-                border: '1px solid rgba(255,255,255,0.12)',
-                borderRadius: '8px',
-                padding: '48px',
-              }}
-            >
-              <p style={{
-                fontSize: '13px',
-                fontWeight: '700',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--green)',
-                marginBottom: '28px',
-                textAlign: 'center',
-              }}>
-                Subscribe to our newsletter
-              </p>
-
-              <form onSubmit={handleSubscribe}>
-                {/* Name + Email row */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
-                  {[
-                    { placeholder: 'your name', value: name, setter: setName },
-                    { placeholder: 'your email address', value: email, setter: setEmail },
-                  ].map((field) => (
-                    <input
-                      key={field.placeholder}
-                      type={field.placeholder.includes('email') ? 'email' : 'text'}
-                      placeholder={field.placeholder}
-                      value={field.value}
-                      onChange={e => field.setter(e.target.value)}
-                      required={field.placeholder.includes('email')}
-                      style={{
-                        width: '100%',
-                        padding: '14px 18px',
-                        backgroundColor: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.15)',
-                        borderRadius: '6px',
-                        color: 'white',
-                        fontSize: '15px',
-                        fontFamily: 'inherit',
-                        outline: 'none',
-                      }}
-                    />
-                  ))}
-                </div>
-
-                {/* Interests */}
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textAlign: 'center' }}>
-                  Apart from the general newsletter I want to receive special updates about:
-                </p>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 24px', marginBottom: '32px' }}>
-                  {[
-                    'Regen Tribe Agency',
-                    'Real Estate opportunities',
-                    'Agent Program',
-                    'land development',
-                    'Recruitment',
-                    'events invites',
-                  ].map((item) => (
-                    <label
-                      key={item}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '10px',
-                        cursor: 'pointer',
-                        fontSize: '14px',
-                        color: 'rgba(255,255,255,0.6)',
-                      }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={interests.includes(item)}
-                        onChange={() => toggleInterest(item)}
-                        style={{ accentColor: 'var(--green)', width: '15px', height: '15px', cursor: 'pointer' }}
-                      />
-                      {item}
-                    </label>
-                  ))}
-                </div>
-
-                {/* Submit */}
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.15 }}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '14px 40px',
-                      backgroundColor: 'var(--green)',
-                      color: 'var(--text)',
-                      border: 'none',
-                      borderRadius: '9999px',
-                      fontSize: '13px',
-                      fontWeight: '700',
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                    }}
-                  >
-                    Subscribe
-                  </motion.button>
-                </div>
-              </form>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ── Responsive styles ── */}
       <style>{`

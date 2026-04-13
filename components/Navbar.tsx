@@ -8,7 +8,8 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 const navLinks = [
   { label: 'Tribes Platform', href: '/tribes-platform', dot: 'var(--green)' },
   { label: 'Agency', href: '/agency', dot: 'var(--pink)' },
-  { label: 'Education', href: '/education', dot: 'var(--yellow-deep)' },
+  { label: 'Tools', href: '/tools', dot: 'var(--yellow-deep)' },
+  { label: 'Blog', href: '/blog', dot: 'var(--green)' },
   { label: 'About Us', href: '/about', dot: 'var(--blue)' },
 ]
 

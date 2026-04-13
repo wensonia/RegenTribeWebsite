@@ -179,7 +179,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ── WHO WE ARE ── */}
-      <section style={{ padding: '100px 0 80px', borderBottom: '1px dashed var(--border)' }}>
+      <section style={{ padding: '120px 0 80px', borderBottom: '1px dashed var(--border)' }}>
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" animate="visible"
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
@@ -210,7 +210,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── COLLECTIVE DIRECTORY ── */}
-      <section style={{ padding: '100px 0', borderBottom: '1px dashed var(--border)' }}>
+      <section style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
@@ -232,7 +232,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── ARCHETYPES ── */}
-      <section style={{ padding: '100px 0', borderBottom: '1px dashed var(--border)' }}>
+      <section style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
@@ -246,7 +246,7 @@ export default function AboutPage() {
                 The Regen Tribe collective is made up of all the people it takes to design, build, and grow Regenerative Neighborhoods and their communities.
               </p>
             </motion.div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
               {archetypes.map((a) => (
                 <motion.div key={a.name} variants={fadeUp}
                   style={{ backgroundColor: a.color, borderRadius: '16px', padding: '36px 28px', color: a.textLight ? 'white' : '#363636' }}>
@@ -255,20 +255,19 @@ export default function AboutPage() {
                   <p style={{ fontSize: '15px', lineHeight: '1.65', margin: 0, opacity: 0.85 }}>{a.description}</p>
                 </motion.div>
               ))}
-              {/* Quote — pinned to last column, right-aligned */}
-              <motion.div variants={fadeUp}
-                style={{ display: 'flex', alignItems: 'flex-end', padding: '36px 0', gridColumn: '-2 / -1' }}>
-                <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: '400', fontStyle: 'italic', color: 'var(--text)', opacity: 0.35, margin: 0, textAlign: 'right', lineHeight: '1.25', width: '100%' }}>
-                  it takes a village.
-                </p>
-              </motion.div>
             </div>
+            {/* Quote — right-aligned below cards */}
+            <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '32px' }}>
+              <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: '400', fontStyle: 'italic', color: 'var(--text)', opacity: 0.35, margin: 0, textAlign: 'right', lineHeight: '1.25' }}>
+                it takes a village.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ── HOW TO JOIN ── */}
-      <section style={{ padding: '100px 0' }}>
+      <section style={{ padding: '120px 0' }}>
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
             style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '32px' }}>

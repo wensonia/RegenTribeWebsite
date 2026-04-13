@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Lora, Open_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import NewsletterCTA from '@/components/NewsletterCTA'
 import SmoothScroll from '@/components/SmoothScroll'
 
 const lora = Lora({
@@ -41,6 +42,9 @@ export default function RootLayout({
         <SmoothScroll>
         <Navbar />
         <main>{children}</main>
+
+        {/* NEWSLETTER CTA — appears on every page above footer */}
+        <NewsletterCTA />
 
         {/* FOOTER */}
         <footer
@@ -105,7 +109,8 @@ export default function RootLayout({
                 {[
                   { label: 'Tribes Platform', href: '/tribes-platform' },
                   { label: 'Agency', href: '/agency' },
-                  { label: 'Education', href: '/education' },
+                  { label: 'Tools', href: '/tools' },
+                  { label: 'Blog', href: '/blog' },
                   { label: 'About Us', href: '/about' },
                 ].map((item) => (
                   <a
@@ -139,10 +144,17 @@ export default function RootLayout({
                 >
                   Community
                 </p>
-                {['Telegram', 'Discord', 'Contact', 'Join the Movement'].map((item) => (
+                {[
+                  { label: 'Telegram', href: 'https://t.me/+fsFL1jIIGM9jOWFh', external: true },
+                  { label: 'Instagram', href: 'https://www.instagram.com/regen.tribe', external: true },
+                  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/regen-tribe/', external: true },
+                  { label: 'Contact', href: 'mailto:hello@regentribe.co', external: true },
+                  { label: 'Join the Movement', href: '/join', external: false },
+                ].map((item) => (
                   <a
-                    key={item}
-                    href="#"
+                    key={item.label}
+                    href={item.href}
+                    {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     style={{
                       display: 'block',
                       fontSize: '15px',
@@ -152,7 +164,7 @@ export default function RootLayout({
                       marginBottom: '14px',
                     }}
                   >
-                    {item}
+                    {item.label}
                   </a>
                 ))}
               </div>

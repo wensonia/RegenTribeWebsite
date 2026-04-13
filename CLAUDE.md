@@ -1,5 +1,12 @@
 # Regen Tribe Website — Project Instructions
 
+## Obsidian sync rule
+**Always update the matching Obsidian write-up after making any changes to a page.**
+- Obsidian vault: `/Users/soniawendorff/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsid-mycolive/Regen Tribe/RT website/`
+- Each page has a corresponding `.md` file there (e.g. `EDU TOOLS regentribe.co page.md`, `AGENCY regentribe.co subpage outline.md`, etc.)
+- When content, copy, structure, or links change on a page → update the relevant Obsidian file to reflect what was built
+- When a new page is created → create a new `.md` file in that folder documenting its structure
+
 ## What this project is
 The marketing website for **Regen Tribe**, a Regenerative Neighborhood Accelerator.
 Live at: **regentribe.co** — hosted on Cloudflare Pages, built with Next.js 15 static export.
