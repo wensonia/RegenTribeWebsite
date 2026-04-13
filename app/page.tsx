@@ -415,7 +415,7 @@ export default function Home() {
       ════════════════════════════════ */}
       <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
-          <div className="who-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+          <div className="who-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
               <motion.div variants={fadeUp}><Label>who we are</Label></motion.div>
               <motion.h2 variants={fadeUp} style={{
@@ -434,21 +434,21 @@ export default function Home() {
               </motion.div>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
-              <motion.p variants={fadeUp} style={{ fontSize: '22px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '24px' }}>
+              <motion.p variants={fadeUp} style={{ fontSize: '22px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '28px' }}>
                 we are an open collective of community builders.
               </motion.p>
-              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
+              <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '18px' }}>
                 Our team has been researching, documenting and studying community land developments of various sizes and structures since 2022.
               </motion.p>
-              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
+              <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '18px' }}>
                 We are a collective of social entrepreneurs from different walks of life, coming together to co.create the world we want to live in.
               </motion.p>
-              <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '48px' }}>
+              <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '40px' }}>
                 We are always looking for new ambassadors, collaborators and core team members to enhance our operational power and help develop more neighborhoods faster.
               </motion.p>
-              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '32px', flexWrap: 'wrap', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '32px' }}>
-                <TextLink href="/join">Choose your level of involvement</TextLink>
-                <TextLink href="/about">More about us</TextLink>
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '32px' }}>
+                <PillBtn href="/join">Choose your level of involvement</PillBtn>
+                <PillBtn href="/about" light>More about us</PillBtn>
               </motion.div>
             </motion.div>
           </div>
