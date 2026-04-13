@@ -294,18 +294,9 @@ export default function Home() {
                 <p style={{ fontSize: '22px', fontWeight: '300', color: 'rgba(255,255,255,0.75)', lineHeight: '1.6', marginBottom: '24px' }}>
                   Regenerative Neighborhoods are resource resilient &amp; intentional community land developments.
                 </p>
-                <p style={{ fontSize: '18px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '24px' }}>
+                <p style={{ fontSize: '18px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.65', marginBottom: '48px' }}>
                   And provide true sovereignty when created and run well.
                 </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '56px' }}>
-                  {['WATER', 'FOOD', 'ENERGY', 'WASTE', 'HUMAN CONNECTION', 'NATURE'].map((need) => (
-                    <span key={need} style={{
-                      fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em',
-                      textTransform: 'uppercase', border: '1px solid rgba(255,255,255,0.2)',
-                      borderRadius: '9999px', padding: '8px 16px', color: 'rgba(255,255,255,0.75)',
-                    }}>{need}</span>
-                  ))}
-                </div>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '40px' }}>
                   <p style={{ fontSize: '13px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '12px' }}>Our vision</p>
                   <p style={{ fontSize: '28px', fontWeight: '400', color: 'white', lineHeight: '1.3', fontFamily: 'var(--font-lora), Georgia, serif' }}>
