@@ -227,32 +227,32 @@ function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
     <motion.div variants={fadeUp} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {subs.length === 0 ? (
         // No subitems — single flat row
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
-          <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
-          <div />
-          <p style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>{row.price || ''}</p>
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>{row.time || ''}</p>
+        <div className="offering-row-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
+          <p className="col-offering" style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
+          <div className="col-empty" />
+          <p className="col-price" style={{ fontSize: '14px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>{row.price || ''}</p>
+          <p className="col-time" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>{row.time || ''}</p>
         </div>
       ) : (
         // One grid row per subitem — offering name only on first row, all columns level
         subs.map((sub, i) => (
-          <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
+          <div key={i} className="offering-row-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
             {/* Col 1: offering label only on first row */}
             {i === 0
-              ? <p style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
-              : <div />
+              ? <p className="col-offering" style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
+              : <div className="col-offering-empty" />
             }
             {/* Col 2: outcome / subitem description */}
-            <div style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+            <div className="col-outcome" style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
               <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: '1.5', margin: 0 }}>{sub.label}</p>
             </div>
             {/* Col 3: per-subitem price, or section price on first row */}
-            <p style={{ fontSize: '13px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>
+            <p className="col-price" style={{ fontSize: '13px', fontWeight: '600', color: accent, textAlign: 'right', paddingRight: '24px', margin: 0 }}>
               {sub.price || (i === 0 && row.price ? row.price : '')}
             </p>
             {/* Col 4: time */}
-            <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>
+            <p className="col-time" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>
               {sub.time || (i === 0 && row.time ? row.time : '')}
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function BreakdownPage() {
             </motion.p>
 
             {/* Table header */}
-            <motion.div variants={fadeUp} style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: '12px', marginBottom: '4px' }}>
+            <motion.div variants={fadeUp} className="table-header" style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', gap: '0', borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: '12px', marginBottom: '4px' }}>
               <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Offering</p>
               <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', paddingRight: '24px' }}>Outcome</p>
               <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', textAlign: 'right', paddingRight: '24px' }}>Price</p>
@@ -559,8 +559,54 @@ export default function BreakdownPage() {
           .breakdown-grid { grid-template-columns: 1fr !important; }
           .breakdown-grid-3 { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 540px) {
-          .offering-row { grid-template-columns: 1fr !important; }
+        /* ── Mobile table: stack columns into labeled cards ── */
+        @media (max-width: 640px) {
+          .table-header { display: none !important; }
+          .offering-row-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0 !important;
+          }
+          .offering-row-grid .col-offering {
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            color: white !important;
+            padding-right: 0 !important;
+            padding-bottom: 6px !important;
+          }
+          .offering-row-grid .col-outcome {
+            padding-right: 0 !important;
+            padding-bottom: 4px !important;
+          }
+          .offering-row-grid .col-price::before {
+            content: 'Price: ';
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            font-weight: 700;
+          }
+          .offering-row-grid .col-price {
+            text-align: left !important;
+            padding-right: 0 !important;
+            padding-top: 6px !important;
+          }
+          .offering-row-grid .col-time::before {
+            content: 'Time: ';
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            font-weight: 700;
+          }
+          .offering-row-grid .col-time {
+            text-align: left !important;
+            padding-bottom: 2px !important;
+          }
+          /* hide empty spacer divs on mobile */
+          .offering-row-grid .col-empty { display: none !important; }
+          /* hide duplicate offering label on sub-rows (i > 0) */
+          .offering-row-grid .col-offering-empty { display: none !important; }
         }
       `}</style>
     </>
