@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"OBSIDIAN SYNC REQUIRED: You just edited a Regen Tribe website file. Before finishing, update the matching Obsidian write-up at /Users/soniawendorff/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsid-mycolive/Regen Tribe/RT website/\"}}'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

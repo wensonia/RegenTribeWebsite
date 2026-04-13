@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft, MapPin, Calendar } from 'lucide-react'
 import { posts } from '../posts'
+import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '800px'
@@ -83,10 +84,11 @@ export default function BlogPostClient({ slug }: { slug: string }) {
     <>
       {/* Cover image */}
       <div style={{ width: '100%', height: 'clamp(200px, 40vw, 400px)', overflow: 'hidden', position: 'relative' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <OptimizedImage
           src={post.coverImage}
           alt={post.title}
+          sizes="100vw"
+          loading="eager"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           onError={(e) => {
             const el = e.target as HTMLImageElement
@@ -168,8 +170,10 @@ export default function BlogPostClient({ slug }: { slug: string }) {
                 <div className="blog-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
                   {post.images.map((img, i) => (
                     <div key={i} style={{ borderRadius: '8px', overflow: 'hidden' }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={img.src} alt={img.alt} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                      <OptimizedImage src={img.src} alt={img.alt}
+                        sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 280px"
+                        loading="lazy"
+                        style={{ width: '100%', height: 'clamp(160px, 20vw, 240px)', objectFit: 'cover' }} />
                       {img.alt && <p style={{ fontSize: '12px', color: 'var(--text-muted)', padding: '8px 4px' }}>{img.alt}</p>}
                     </div>
                   ))}
@@ -183,7 +187,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
       <style>{`
         @media (max-width: 540px) {
           .blog-gallery { grid-template-columns: 1fr !important; }
-          .blog-gallery img { height: 180px !important; }
+          .blog-gallery img { height: clamp(140px, 30vw, 200px) !important; }
         }
       `}</style>
     </>

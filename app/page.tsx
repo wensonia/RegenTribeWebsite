@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Plus, Minus } from 'lucide-react'
 import { useState } from 'react'
+import OptimizedImage from '@/components/OptimizedImage'
 
 const W = '1280px'
 const PX = '40px'
@@ -395,10 +396,12 @@ export default function Home() {
               <motion.div key={p.name} variants={fadeUp}>
                 <Link href="/agency" style={{ textDecoration: 'none', display: 'block' }}>
                   <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: '6px', overflow: 'hidden', marginBottom: '14px', backgroundColor: 'rgba(54,54,54,0.15)' }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
-                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                    <OptimizedImage src={p.img} alt={p.name}
+                      sizes="(max-width: 900px) 50vw, 20vw"
+                      loading="lazy"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
+                      onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.04)')}
+                      onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
                     />
                   </div>
                   <p style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '4px' }}>{p.name}</p>

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -52,7 +53,7 @@ const members: Member[] = [
   { name: 'Dr Bryan von Herzen',      status: 'Collaborator', roles: ['Climate Scientist'],                                 desc: 'Climate Scientist at Climate Foundation.',                                           img: `${P}/dr-bryan-von-herzen.png` },
   { name: 'Kevin Howard',             status: 'Collaborator', roles: ['Climate consultant'],                                desc: 'Principal Consultant for Climate Changes Everything, LLC.',                          img: `${P}/kevin-howard.jpg` },
   { name: 'Justin Lofton',            status: 'Collaborator', roles: ['Food systems'],                                      desc: 'Co-founder and Chief Marketing Officer at Thrive Garden.',                          img: `${P}/justin-lofton.jpg` },
-  { name: 'Ian Tarrea',               status: 'Collaborator', roles: [],                                                    img: `${P}/ian-tarrea.jpeg` },
+  { name: 'Ian Tairea',               status: 'Collaborator', roles: [],                                                    img: `${P}/ian-tairea.jpeg` },
   // Advisor
   { name: 'Rahul Sonnad',             status: 'Advisor',      roles: ['Technology strategist'],                             img: `${P}/rahul-sonnad.jpg` },
   // Ambassadors
@@ -193,6 +194,11 @@ const carouselPhotos = [
   { src: '/images/blog/q3-2024-mexico-to-europe-4.jpg',         label: 'Sunset gathering · Europe, 2024' },
   { src: '/images/blog/q4-2022-tulum-homecoming-1.jpg',         label: 'Building on site · Tulum, 2022' },
   { src: '/images/blog/q3-2024-mexico-to-europe-5.jpg',         label: 'Collective · Berlin, 2024' },
+  { src: '/images/blog/q1-2024-vitalia-clx.jpg',               label: 'Vitalia · Roatán, 2024' },
+  { src: '/images/blog/q1-2023-new-members-tribes-1.jpg',       label: 'Regen Tribe team · Tulum, 2023' },
+  { src: '/images/blog/q1-2023-new-members-tribes-2.jpg',       label: 'Presenting · Tulum, 2023' },
+  { src: '/images/blog/q1-2023-new-members-tribes-3.jpg',       label: 'Panel · Tulum, 2023' },
+  { src: '/images/blog/q3-2022-europe-summer-1.jpg',            label: 'Exploring · Amsterdam, 2022' },
 ]
 
 function PhotoCarousel() {
@@ -205,8 +211,9 @@ function PhotoCarousel() {
         <div className="carousel-track">
           {doubled.map((photo, i) => (
             <div key={i} className="carousel-slide">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={photo.src} alt={photo.label}
+              <OptimizedImage src={photo.src} alt={photo.label}
+                sizes="(max-width: 540px) 85vw, (max-width: 900px) 50vw, 33vw"
+                loading="lazy"
                 style={{ width: '100%', height: 'clamp(220px, 30vw, 420px)', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%)', pointerEvents: 'none' }} />
@@ -331,7 +338,7 @@ export default function AboutPage() {
               </p>
             </motion.div>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <PillBtn href="https://regentribe.notion.site/Join-Regen-Tribe-ac482cc256d4495d820010c28200698e" external bg="var(--blue)">
+              <PillBtn href="/join" bg="var(--blue)">
                 Join the Collective
               </PillBtn>
               <PillBtn href="https://t.me/+fsFL1jIIGM9jOWFh" external bg="var(--green)">

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -396,8 +397,8 @@ export default function TribesPlatformPage() {
                   <div className="phone-body" style={{ borderTopColor: f.color }}>
                     <div className="phone-notch" />
                     <div className="phone-screen">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img" />
+                      <OptimizedImage src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img"
+                        sizes="220px" loading="lazy" skipOptimization />
                     </div>
                   </div>
                   <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>{f.title}</h3>
@@ -417,8 +418,8 @@ export default function TribesPlatformPage() {
                   <div className="phone-body" style={{ borderTopColor: f.color }}>
                     <div className="phone-notch" />
                     <div className="phone-screen">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img" />
+                      <OptimizedImage src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img"
+                        sizes="220px" loading="lazy" skipOptimization />
                     </div>
                   </div>
                   <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>{f.title}</h3>
@@ -532,8 +533,8 @@ export default function TribesPlatformPage() {
                 <div className="phone-body floating-phone-sm" style={{ borderTopColor: f.color, flexShrink: 0 }}>
                   <div className="phone-notch" />
                   <div className="phone-screen">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img floating-phone-img" />
+                    <OptimizedImage src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img floating-phone-img"
+                      sizes="160px" loading="lazy" skipOptimization />
                   </div>
                 </div>
 
@@ -777,6 +778,19 @@ export default function TribesPlatformPage() {
               </motion.div>
             ))}
           </div>
+
+          <div style={{ marginTop: '48px', textAlign: 'center' }}>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} style={{ display: 'inline-flex' }}>
+              <Link href="/tech-stack" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase',
+                color: 'white', backgroundColor: 'var(--text)', borderRadius: '9999px',
+                padding: '14px 32px', textDecoration: 'none',
+              }}>
+                Explore Regen Tech Stack <ArrowRight size={14} strokeWidth={2} />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -828,8 +842,8 @@ export default function TribesPlatformPage() {
       {/* ── Phone mockup styles ── */}
       <style>{`
         .phone-body {
-          width: 220px;
-          height: 450px;
+          width: clamp(180px, 18vw, 220px);
+          height: clamp(368px, 37vw, 450px);
           background: #1a1a1a;
           border-radius: 32px;
           padding: 10px;

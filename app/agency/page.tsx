@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -281,11 +282,12 @@ export default function Agency() {
         alignItems: 'center',
         overflow: 'hidden',
       }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <OptimizedImage
           src="/images/agency/hero.png"
           alt=""
           aria-hidden="true"
+          sizes="100vw"
+          loading="eager"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
         <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.52)' }} />
@@ -579,10 +581,12 @@ export default function Agency() {
                 >
                   <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: '4px', overflow: 'hidden', marginBottom: '14px', backgroundColor: '#c8c5c0' }}>
                     {p.img && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
-                        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
-                        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                      <OptimizedImage src={p.img} alt={p.name}
+                        sizes="(max-width: 900px) 50vw, 25vw"
+                        loading="lazy"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
+                        onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.03)')}
+                        onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
                       />
                     )}
                     {'highlight' in p && p.highlight && (
@@ -618,8 +622,11 @@ export default function Agency() {
                 <motion.div key={p.name} variants={fadeUp}>
                   <div style={{ width: '100%', aspectRatio: '4 / 3', borderRadius: '4px', overflow: 'hidden', marginBottom: '10px', backgroundColor: '#d5d2cd' }}>
                     {p.img && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <OptimizedImage src={p.img} alt={p.name}
+                        sizes="(max-width: 900px) 33vw, 16vw"
+                        loading="lazy"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      />
                     )}
                   </div>
                   <p style={{ fontSize: '11px', fontWeight: '600', letterSpacing: '0.07em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>{p.name}</p>

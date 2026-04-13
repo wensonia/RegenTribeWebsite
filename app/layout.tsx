@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: 'Regen Tribe — Regenerative Neighborhood Accelerator',
   description:
     'The Regen Tribe ecosystem connects people, projects & solutions so we can create more regenerative neighborhoods around the world.',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: 'Regen Tribe',
     description: 'Create, grow & find regenerative neighborhoods.',
@@ -28,6 +32,20 @@ export const metadata: Metadata = {
     siteName: 'Regen Tribe',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: 'https://regentribe.co/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Regen Tribe — Regenerative Neighborhood Accelerator',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Regen Tribe',
+    description: 'Create, grow & find regenerative neighborhoods.',
+    images: ['https://regentribe.co/images/og-image.png'],
   },
 }
 
@@ -38,6 +56,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${lora.variable} ${openSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Regen Tribe',
+              url: 'https://regentribe.co',
+              logo: 'https://regentribe.co/images/logos/logo-black-text.png',
+              sameAs: [
+                'https://www.instagram.com/regen.tribe',
+                'https://www.linkedin.com/company/regen-tribe/',
+                'https://www.facebook.com/regen.tribe',
+                'https://x.com/regentribe',
+              ],
+            }),
+          }}
+        />
+      </head>
       <body>
         <SmoothScroll>
         <Navbar />
