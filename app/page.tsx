@@ -135,26 +135,19 @@ export default function Home() {
                 <Label>Regenerative Neighborhood Accelerator</Label>
               </motion.div>
 
-              <h1 style={{
-                fontSize: 'clamp(28px, 3.5vw, 58px)', fontWeight: '400',
-                lineHeight: '1.1', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '28px',
-              }}>
-                {['create,', 'grow', '&', 'find', 'Regenerative', 'Neighborhoods'].map((word, i) => (
-                  <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
-                    <motion.span
-                      initial={{ y: '110%' }} animate={{ y: 0 }}
-                      transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 + i * 0.07 }}
-                      style={{
-                        display: 'inline-block',
-                        fontFamily: i >= 4 ? 'var(--font-lora), Georgia, serif' : 'inherit',
-                        fontStyle: i >= 4 ? 'italic' : 'normal',
-                      }}
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
-              </h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
+                style={{
+                  fontSize: 'clamp(32px, 4vw, 64px)', fontWeight: '400',
+                  lineHeight: '1.1', letterSpacing: '-0.03em', color: 'var(--text)', marginBottom: '28px',
+                }}
+              >
+                create, grow &amp; find{' '}
+                <em style={{ fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
+                  Regenerative Neighborhoods
+                </em>
+              </motion.h1>
 
               <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '24px', maxWidth: '480px' }}>
                 The Regen Tribe ecosystem connects people, projects, &amp; solutions to accelerate regenerative neighborhood development.
