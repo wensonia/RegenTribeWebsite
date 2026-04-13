@@ -479,7 +479,7 @@ export default function JoinPage() {
           .join-cta-card { padding: 48px 32px !important; }
         }
         @media (max-width: 540px) {
-          .value-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .value-grid { grid-template-columns: 1fr !important; }
           .journey-detail-grid { grid-template-columns: 1fr !important; }
           .join-cta-card { padding: 32px 20px !important; }
         }

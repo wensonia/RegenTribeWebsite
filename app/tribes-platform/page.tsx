@@ -109,7 +109,7 @@ const features = [
     href: 'https://tribesplatform.app/neighborhoods/',
     shape: '○',
     color: 'var(--green)',
-    img: '/images/tribes-platform/neighborhoods.jpg',
+    img: '/images/tribes-platform/neighborhoods-v2.jpg',
   },
   {
     title: 'User Profiles',
@@ -785,7 +785,7 @@ export default function TribesPlatformPage() {
               Connect with people, projects, and solutions accelerating regenerative neighborhood development worldwide.
             </motion.p>
 
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <motion.div className="tp-cta-btns" variants={fadeUp} style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <PillBtn href="https://tribesplatform.app/register/" bg="var(--text)" external>
                 Join the Movement
               </PillBtn>
@@ -919,6 +919,10 @@ export default function TribesPlatformPage() {
         @media (max-width: 540px) {
           .phone-scroll-img {
             filter: brightness(0.8) saturate(0.7);
+          }
+          .tp-cta-btns {
+            flex-direction: column !important;
+            align-items: center !important;
           }
         }
       `}</style>
