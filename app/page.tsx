@@ -39,7 +39,7 @@ function TextLink({ href, children, light, external }: { href: string; children:
 function PillBtn({ href, children, light, external }: { href: string; children: React.ReactNode; light?: boolean; external?: boolean }) {
   const style: React.CSSProperties = {
     display: 'inline-flex', alignItems: 'center', gap: '8px',
-    fontSize: '14px', fontWeight: '600', letterSpacing: '0.02em',
+    fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase' as const,
     color: light ? 'var(--text)' : 'white',
     backgroundColor: light ? 'white' : 'var(--text)',
     border: 'none', borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none',

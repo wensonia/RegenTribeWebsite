@@ -81,7 +81,7 @@ function PillBtn({ href, children, external, accent, textColor }: {
       rel={external ? 'noopener noreferrer' : undefined}
       style={{
         display: 'inline-flex', alignItems: 'center', gap: '8px',
-        fontSize: '14px', fontWeight: '600', letterSpacing: '0.02em',
+        fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase' as const,
         color: textColor ?? BG,
         backgroundColor: accent ?? TEXT,
         borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none',
