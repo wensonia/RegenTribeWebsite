@@ -83,11 +83,11 @@ const offerings = [
 ]
 
 const projects = [
-  { name: 'Community Lab X', loc: 'Tulum, Mexico', desc: 'Live-in community and retreat space', dot: 'var(--green)' },
-  { name: 'Ekumal', loc: 'Akumal, Mexico', desc: 'Live-in community, environmental impact hub and retreat center', dot: 'var(--pink)' },
-  { name: 'Kuyabeh', loc: 'Tulum, Mexico', desc: 'Regenerative neighbourhood project', dot: 'var(--blue)' },
-  { name: 'WildSeeds Ranch', loc: 'California, USA', desc: 'Conscious coliving ranch for creatives and entrepreneurs', dot: 'var(--yellow-deep)' },
-  { name: 'Ixchel', loc: 'Tulum, Mexico', desc: 'Regenerative community in the jungle', dot: 'var(--green)' },
+  { name: 'Community Lab X', loc: 'Tulum, Mexico', desc: 'Live-in community and retreat space', img: '/images/agency/portfolio/community-lab-x.png' },
+  { name: 'Ekumal', loc: 'Akumal, Mexico', desc: 'Live-in community, environmental impact hub and retreat center', img: '/images/agency/portfolio/ekumal.png' },
+  { name: 'Kuyabeh', loc: 'Tulum, Mexico', desc: 'Regenerative neighbourhood project', img: '/images/agency/portfolio/kuyabeh.png' },
+  { name: 'WildSeeds Ranch', loc: 'California, USA', desc: 'Conscious coliving ranch for creatives and entrepreneurs', img: '/images/agency/portfolio/wildseeds-ranch.png' },
+  { name: 'Ixchel', loc: 'Tulum, Mexico', desc: 'Regenerative community in the jungle', img: '/images/agency/portfolio/ixchel.png' },
 ]
 
 const testimonials = [
@@ -390,21 +390,20 @@ export default function Home() {
           </motion.div>
 
           <motion.div className="projects-grid" initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0' }}>
-            {projects.map((p, pi) => (
-              <motion.div key={p.name} variants={fadeUp} style={{
-                borderRight: pi < projects.length - 1 ? '1px solid rgba(54,54,54,0.2)' : 'none',
-                paddingRight: pi < projects.length - 1 ? '24px' : '0',
-                paddingLeft: pi > 0 ? '24px' : '0',
-              }}>
-                <div style={{ width: '28px', height: '3px', backgroundColor: p.dot, marginBottom: '20px', borderRadius: '2px' }} />
-                <h3 style={{
-                  fontSize: 'clamp(16px, 1.6vw, 22px)', fontWeight: '400', lineHeight: '1.2',
-                  letterSpacing: '-0.01em', color: 'var(--text)', marginBottom: '6px',
-                  fontFamily: 'var(--font-lora), Georgia, serif',
-                }}>{p.name}</h3>
-                <p style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.45, marginBottom: '16px', letterSpacing: '0.02em' }}>{p.loc}</p>
-                <p style={{ fontSize: '14px', fontWeight: '300', color: 'var(--text)', lineHeight: '1.6', opacity: 0.7 }}>{p.desc}</p>
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
+            {projects.map((p) => (
+              <motion.div key={p.name} variants={fadeUp}>
+                <Link href="/agency" style={{ textDecoration: 'none', display: 'block' }}>
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', borderRadius: '6px', overflow: 'hidden', marginBottom: '14px', backgroundColor: 'rgba(54,54,54,0.15)' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.img} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                    />
+                  </div>
+                  <p style={{ fontSize: '12px', fontWeight: '700', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', marginBottom: '4px' }}>{p.name}</p>
+                  <p style={{ fontSize: '12px', color: 'var(--text)', opacity: 0.5, letterSpacing: '0.02em' }}>{p.loc}</p>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
