@@ -36,7 +36,7 @@ function PillBtn({ href, children, bg, textColor, external }: {
     display: 'inline-flex', alignItems: 'center', gap: '8px',
     fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase',
     color: textColor ?? 'white', backgroundColor: bg ?? 'var(--text)',
-    borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none', cursor: 'pointer',
+    borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none', cursor: 'pointer', fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) return (
@@ -60,7 +60,7 @@ function OutlinePill({ href, children, light, external }: {
     fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase',
     color: light ? 'white' : 'var(--text)', backgroundColor: 'transparent',
     border: `1.5px solid ${light ? 'rgba(255,255,255,0.35)' : 'var(--text)'}`,
-    borderRadius: '9999px', padding: '12px 32px', textDecoration: 'none', cursor: 'pointer',
+    borderRadius: '9999px', padding: '12px 32px', textDecoration: 'none', cursor: 'pointer', fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) return (

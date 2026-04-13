@@ -2,8 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState, useEffect, useCallback } from 'react'
+import { ArrowRight } from 'lucide-react'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -72,8 +71,6 @@ const members: Member[] = [
   { name: 'Stephanie Ferrera',        status: 'Ambassador',   roles: ['ReFi consultant'],                                   img: `${P}/stephanie-ferrera.jpg` },
   { name: 'Konstantin Kornev',        status: 'Ambassador',   roles: ['Technology strategist'],                             img: `${P}/konstantin-kornev.jpg` },
   { name: 'Emmanuel Jaramillo',       status: 'Ambassador',   roles: ['Content Creator'],                                   img: `${P}/emmanuel-jaramillo.jpg` },
-  { name: 'Sofy',                     status: 'Ambassador',   roles: ['Technology strategist'],                             img: null },
-  { name: 'Rajad Yoda',               status: 'Ambassador',   roles: ['Biozones Ambassador'],                               img: null },
 ]
 
 /* ── Archetypes ── */
@@ -94,7 +91,7 @@ function PillBtn({ href, children, bg, light, external }: {
     fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase',
     color: light ? 'var(--text)' : 'white',
     backgroundColor: bg || 'var(--text)',
-    borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none', border: 'none', cursor: 'pointer',
+    borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) return (
@@ -176,86 +173,47 @@ function MemberCard({ member }: { member: Member }) {
   )
 }
 
-/* ── Carousel slides (3 photos each, captions below) ── */
-const carouselSlides = [
-  { photos: [
-    { src: '/images/blog/q1-2022-workshops-tulum-2.jpg',          label: 'Filming · Tulum, 2022' },
-    { src: '/images/blog/q1-2022-workshops-tulum-3.jpg',          label: 'Working session · Tulum, 2022' },
-    { src: '/images/blog/q2-2023-community-lab-2.jpg',            label: 'Rooftop garden · Mexico City, 2023' },
-  ]},
-  { photos: [
-    { src: '/images/blog/q2-2023-community-lab-5.jpg',            label: 'Regen Lounge · Tulum, 2023' },
-    { src: '/images/blog/q2-2024-clx-wildseeds-1.jpg',            label: 'Community Lab · Tulum, 2024' },
-    { src: '/images/blog/q2-2024-clx-wildseeds-3.jpg',            label: 'Planting in the jungle · Tulum, 2024' },
-  ]},
-  { photos: [
-    { src: '/images/blog/q2-2024-clx-wildseeds-4.jpg',            label: 'Team planning · California, 2024' },
-    { src: '/images/blog/q3-2023-community-lab-moos-2.jpg',       label: 'Working session · MOOS, Berlin, 2023' },
-    { src: '/images/blog/q3-2023-community-lab-moos-3.jpg',       label: 'Strategy session · MOOS, Berlin, 2023' },
-  ]},
-  { photos: [
-    { src: '/images/blog/q3-2023-community-lab-moos-1.jpg',       label: 'Community gathering · MOOS, Belgium, 2023' },
-    { src: '/images/blog/q3-2023-community-lab-moos-5.jpg',       label: 'Regen Tribe HQ · Berlin, 2023' },
-    { src: '/images/blog/q3-2022-europe-summer-3.jpg',            label: 'Community circle · Portugal, 2022' },
-  ]},
-  { photos: [
-    { src: '/images/blog/q3-2022-europe-summer-2.jpg',            label: 'Exploring · Berlin, 2022' },
-    { src: '/images/blog/q4-2021-regen-tribe-incubation-4.jpg',   label: 'Site visit · Guanajuato, Mexico, 2021' },
-    { src: '/images/blog/q4-2021-regen-tribe-incubation-3.jpg',   label: 'Community · Tulum, 2021' },
-  ]},
-  { photos: [
-    { src: '/images/blog/q3-2024-mexico-to-europe-4.jpg',         label: 'Sunset gathering · Europe, 2024' },
-    { src: '/images/blog/q4-2022-tulum-homecoming-1.jpg',         label: 'Building on site · Tulum, 2022' },
-    { src: '/images/blog/q3-2024-mexico-to-europe-5.jpg',         label: 'Collective · Berlin, 2024' },
-  ]},
+/* ── Carousel photos (1 per slide, caption overlaid at bottom) ── */
+const carouselPhotos = [
+  { src: '/images/blog/q1-2022-workshops-tulum-2.jpg',          label: 'Filming · Tulum, 2022' },
+  { src: '/images/blog/q1-2022-workshops-tulum-3.jpg',          label: 'Working session · Tulum, 2022' },
+  { src: '/images/blog/q2-2023-community-lab-2.jpg',            label: 'Rooftop garden · Mexico City, 2023' },
+  { src: '/images/blog/q2-2023-community-lab-5.jpg',            label: 'Regen Lounge · Tulum, 2023' },
+  { src: '/images/blog/q2-2024-clx-wildseeds-1.jpg',            label: 'Community Lab · Tulum, 2024' },
+  { src: '/images/blog/q2-2024-clx-wildseeds-3.jpg',            label: 'Planting in the jungle · Tulum, 2024' },
+  { src: '/images/blog/q2-2024-clx-wildseeds-4.jpg',            label: 'Team planning · California, 2024' },
+  { src: '/images/blog/q3-2023-community-lab-moos-2.jpg',       label: 'Working session · MOOS, Berlin, 2023' },
+  { src: '/images/blog/q3-2023-community-lab-moos-3.jpg',       label: 'Strategy session · MOOS, Berlin, 2023' },
+  { src: '/images/blog/q3-2023-community-lab-moos-1.jpg',       label: 'Community gathering · MOOS, Belgium, 2023' },
+  { src: '/images/blog/q3-2023-community-lab-moos-5.jpg',       label: 'Regen Tribe HQ · Berlin, 2023' },
+  { src: '/images/blog/q3-2022-europe-summer-3.jpg',            label: 'Community circle · Portugal, 2022' },
+  { src: '/images/blog/q3-2022-europe-summer-2.jpg',            label: 'Exploring · Berlin, 2022' },
+  { src: '/images/blog/q4-2021-regen-tribe-incubation-4.jpg',   label: 'Site visit · Guanajuato, Mexico, 2021' },
+  { src: '/images/blog/q4-2021-regen-tribe-incubation-3.jpg',   label: 'Community · Tulum, 2021' },
+  { src: '/images/blog/q3-2024-mexico-to-europe-4.jpg',         label: 'Sunset gathering · Europe, 2024' },
+  { src: '/images/blog/q4-2022-tulum-homecoming-1.jpg',         label: 'Building on site · Tulum, 2022' },
+  { src: '/images/blog/q3-2024-mexico-to-europe-5.jpg',         label: 'Collective · Berlin, 2024' },
 ]
 
 function PhotoCarousel() {
-  const [index, setIndex] = useState(0)
-  const total = carouselSlides.length
-
-  const prev = useCallback(() => setIndex((i) => (i - 1 + total) % total), [total])
-  const next = useCallback(() => setIndex((i) => (i + 1) % total), [total])
-
-  useEffect(() => {
-    const t = setInterval(next, 6000)
-    return () => clearInterval(t)
-  }, [next])
+  // Duplicate for seamless loop
+  const doubled = [...carouselPhotos, ...carouselPhotos]
 
   return (
-    <section style={{ borderBottom: '1px dashed var(--border)', overflow: 'hidden', backgroundColor: 'var(--bg)' }}>
-      <div style={{ position: 'relative' }}>
-        {/* Slides */}
-        {carouselSlides.map((slide, i) => (
-          <div key={i} style={{
-            display: i === index ? 'flex' : 'none',
-            gap: '3px',
-          }}>
-            {slide.photos.map((photo) => (
-              <div key={photo.src} style={{ flex: 1, minWidth: 0 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={photo.src} alt={photo.label}
-                  style={{ width: '100%', height: 'clamp(200px, 28vw, 380px)', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-                />
-                <p style={{ margin: 0, padding: '10px 14px', fontSize: '11px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.45 }}>
-                  {photo.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        ))}
-        {/* Arrows */}
-        <button onClick={prev} aria-label="Previous" style={{ position: 'absolute', left: '16px', top: 'calc(clamp(200px, 28vw, 380px) / 2)', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white' }}>
-          <ChevronLeft size={18} strokeWidth={1.5} />
-        </button>
-        <button onClick={next} aria-label="Next" style={{ position: 'absolute', right: '16px', top: 'calc(clamp(200px, 28vw, 380px) / 2)', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white' }}>
-          <ChevronRight size={18} strokeWidth={1.5} />
-        </button>
-        {/* Dots */}
-        <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', padding: '8px 0 16px' }}>
-          {carouselSlides.map((_, i) => (
-            <button key={i} onClick={() => setIndex(i)} aria-label={`Slide ${i + 1}`}
-              style={{ width: i === index ? '20px' : '6px', height: '6px', borderRadius: '9999px', background: i === index ? 'var(--text)' : 'rgba(54,54,54,0.25)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.3s ease' }} />
+    <section style={{ borderBottom: '1px dashed var(--border)', overflow: 'hidden' }}>
+      <div className="carousel-viewport" style={{ overflow: 'hidden' }}>
+        <div className="carousel-track">
+          {doubled.map((photo, i) => (
+            <div key={i} className="carousel-slide">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={photo.src} alt={photo.label}
+                style={{ width: '100%', height: 'clamp(220px, 30vw, 420px)', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%)', pointerEvents: 'none' }} />
+              <p style={{ position: 'absolute', bottom: '14px', left: '16px', right: '16px', margin: 0, color: 'rgba(255,255,255,0.92)', fontSize: '11px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                {photo.label}
+              </p>
+            </div>
           ))}
         </div>
       </div>
@@ -385,12 +343,31 @@ export default function AboutPage() {
       </section>
 
       <style>{`
+        @keyframes carousel-scroll {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .carousel-track {
+          display: flex;
+          width: max-content;
+          animation: carousel-scroll 70s linear infinite;
+        }
+        .carousel-viewport:hover .carousel-track {
+          animation-play-state: paused;
+        }
+        .carousel-slide {
+          flex: 0 0 calc(100vw / 3);
+          position: relative;
+          overflow: hidden;
+        }
         @media (max-width: 900px) {
           .about-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .archetype-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .carousel-slide { flex: 0 0 50vw; }
         }
         @media (max-width: 540px) {
           .archetype-grid { grid-template-columns: 1fr !important; }
+          .carousel-slide { flex: 0 0 85vw; }
         }
       `}</style>
     </>

@@ -40,6 +40,7 @@ function PillBtn({
     textDecoration: 'none',
     border: 'none',
     cursor: 'pointer',
+    fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) {
@@ -76,6 +77,7 @@ function OutlinePill({
     padding: '12px 32px',
     textDecoration: 'none',
     cursor: 'pointer',
+    fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) {

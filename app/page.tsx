@@ -42,7 +42,7 @@ function PillBtn({ href, children, light, external }: { href: string; children: 
     fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase' as const,
     color: light ? 'var(--text)' : 'white',
     backgroundColor: light ? 'white' : 'var(--text)',
-    border: 'none', borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none',
+    border: 'none', borderRadius: '9999px', padding: '14px 32px', textDecoration: 'none', fontFamily: 'inherit',
   }
   const inner = <>{children}<ArrowRight size={14} strokeWidth={2} /></>
   if (external) return (
