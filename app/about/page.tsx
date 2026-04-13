@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -211,9 +210,8 @@ function PhotoCarousel() {
         <div className="carousel-track">
           {doubled.map((photo, i) => (
             <div key={i} className="carousel-slide">
-              <OptimizedImage src={photo.src} alt={photo.label}
-                sizes="(max-width: 540px) 85vw, (max-width: 900px) 50vw, 33vw"
-                loading="lazy"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={photo.src} alt={photo.label} loading="lazy"
                 style={{ width: '100%', height: 'clamp(220px, 30vw, 420px)', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%)', pointerEvents: 'none' }} />

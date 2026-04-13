@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ChevronDown, Users, Compass, Wrench, Landmark } from 'lucide-react'
 import { useState } from 'react'
+import { supabase } from '@/lib/supabase'
 
 const W = '1280px'
 const PX = '40px'
@@ -104,6 +105,11 @@ const archetypes = [
       { step: 'Partner with Us', desc: 'Work with our team and Vision Holders to bring regenerative neighborhoods to life.' },
     ],
     cta: { label: 'Learn About Contributing', href: 'https://regentribe.notion.site/Resource-holder-12abfd4bcbe8806c967ce086e42d5609', external: true },
+    formOptions: [
+      'I want to invest in a land project',
+      'I have an existing community project and want to partner to grow',
+      'I have land and want to partner to create a Regenerative Neighborhood',
+    ],
   },
 ]
 
@@ -205,58 +211,166 @@ function ArchetypeCard({ arch }: { arch: typeof archetypes[number] }) {
             style={{ overflow: 'hidden' }}
           >
             <div style={{ paddingTop: '28px', paddingLeft: '64px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '24px' }}>
-                {arch.journey.map((j, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <div style={{
-                      width: '28px', height: '28px', borderRadius: '50%',
-                      border: `2px solid ${arch.color}`, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '13px', fontWeight: '600', color: arch.colorDeep, flexShrink: 0,
-                    }}>{i + 1}</div>
-                    <div>
-                      <p style={{ fontSize: '15px', fontWeight: '600', marginBottom: '2px' }}>{j.step}</p>
-                      <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.5' }}>{j.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {arch.cta.external ? (
-                <motion.a
-                  href={arch.cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    fontSize: '14px', fontWeight: '600', color: arch.colorDeep,
-                    textDecoration: 'none',
-                  }}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.15 }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {arch.cta.label} <ArrowRight size={14} strokeWidth={2} />
-                </motion.a>
+              {'formOptions' in arch && arch.formOptions ? (
+                <ResourceHolderForm arch={arch} />
               ) : (
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.15 }}
-                  style={{ display: 'inline-flex' }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Link href={arch.cta.href} style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    fontSize: '14px', fontWeight: '600', color: arch.colorDeep,
-                    textDecoration: 'none',
-                  }}>
-                    {arch.cta.label} <ArrowRight size={14} strokeWidth={2} />
-                  </Link>
-                </motion.div>
+                <>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '24px' }}>
+                    {arch.journey.map((j, i) => (
+                      <div key={i} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                        <div style={{
+                          width: '28px', height: '28px', borderRadius: '50%',
+                          border: `2px solid ${arch.color}`, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          fontSize: '13px', fontWeight: '600', color: arch.colorDeep, flexShrink: 0,
+                        }}>{i + 1}</div>
+                        <div>
+                          <p style={{ fontSize: '15px', fontWeight: '600', marginBottom: '2px' }}>{j.step}</p>
+                          <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.5' }}>{j.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {arch.cta.external ? (
+                    <motion.a
+                      href={arch.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        fontSize: '14px', fontWeight: '600', color: arch.colorDeep,
+                        textDecoration: 'none',
+                      }}
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.15 }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {arch.cta.label} <ArrowRight size={14} strokeWidth={2} />
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.15 }}
+                      style={{ display: 'inline-flex' }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Link href={arch.cta.href} style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        fontSize: '14px', fontWeight: '600', color: arch.colorDeep,
+                        textDecoration: 'none',
+                      }}>
+                        {arch.cta.label} <ArrowRight size={14} strokeWidth={2} />
+                      </Link>
+                    </motion.div>
+                  )}
+                </>
               )}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
+  )
+}
+
+/* ── Resource Holder Form ── */
+function ResourceHolderForm({ arch }: { arch: typeof archetypes[number] }) {
+  const [email, setEmail] = useState('')
+  const [selected, setSelected] = useState<string[]>([])
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+
+  const toggle = (opt: string) =>
+    setSelected(prev => prev.includes(opt) ? prev.filter(o => o !== opt) : [...prev, opt])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (!email || selected.length === 0) return
+    setStatus('sending')
+    const { error } = await supabase.from('resource_holder_signups').insert({
+      email,
+      interests: selected,
+    })
+    setStatus(error ? 'error' : 'sent')
+  }
+
+  if (status === 'sent') {
+    return (
+      <p style={{ fontSize: '15px', color: arch.colorDeep, fontWeight: '600' }}>
+        Thanks! We&apos;ll be in touch soon.
+      </p>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
+      <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px', lineHeight: '1.5' }}>
+        Tell us how you&apos;d like to get involved:
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+        {(arch as typeof archetypes[number] & { formOptions: string[] }).formOptions.map((opt) => (
+          <label
+            key={opt}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer',
+              fontSize: '14px', color: 'var(--text)', lineHeight: '1.5',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={selected.includes(opt)}
+              onChange={() => toggle(opt)}
+              style={{ accentColor: arch.color, width: '16px', height: '16px', cursor: 'pointer', flexShrink: 0 }}
+            />
+            {opt}
+          </label>
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <input
+          type="email"
+          placeholder="your email address"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          style={{
+            padding: '12px 16px',
+            border: '1px solid var(--border)',
+            borderRadius: '8px',
+            fontSize: '14px',
+            fontFamily: 'inherit',
+            outline: 'none',
+            flex: '1',
+            minWidth: '200px',
+            boxSizing: 'border-box',
+          }}
+        />
+        <motion.button
+          type="submit"
+          disabled={status === 'sending'}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ duration: 0.15 }}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '8px',
+            padding: '12px 28px',
+            backgroundColor: arch.color,
+            color: 'var(--text)',
+            border: 'none', borderRadius: '9999px',
+            fontSize: '13px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase' as const,
+            cursor: 'pointer', fontFamily: 'inherit',
+            opacity: status === 'sending' ? 0.6 : 1,
+          }}
+        >
+          {status === 'sending' ? 'Sending...' : 'Sign Up'}
+          {status !== 'sending' && <ArrowRight size={14} strokeWidth={2} />}
+        </motion.button>
+      </div>
+      {status === 'error' && (
+        <p style={{ fontSize: '13px', color: 'var(--pink)', marginTop: '8px' }}>
+          Something went wrong — please try again.
+        </p>
+      )}
+    </form>
   )
 }
 
