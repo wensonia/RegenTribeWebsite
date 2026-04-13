@@ -419,11 +419,19 @@ export default function Home() {
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
               <motion.div variants={fadeUp}><Label>who we are</Label></motion.div>
               <motion.h2 variants={fadeUp} style={{
-                fontSize: 'clamp(44px, 5.5vw, 88px)', fontWeight: '400', lineHeight: '0.95',
-                letterSpacing: '-0.025em', color: 'var(--text)',
+                fontSize: 'clamp(36px, 4vw, 64px)', fontWeight: '400', lineHeight: '1.0',
+                letterSpacing: '-0.025em', color: 'var(--text)', marginBottom: '32px',
               }}>
                 Who we are.
               </motion.h2>
+              <motion.div variants={fadeUp} style={{ borderRadius: '8px', overflow: 'hidden', width: '100%', aspectRatio: '4 / 3' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/blog/q3-2023-community-lab-moos-5.jpg"
+                  alt="Regen Tribe team — Berlin, 2023"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                />
+              </motion.div>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
               <motion.p variants={fadeUp} style={{ fontSize: '22px', fontWeight: '300', lineHeight: '1.6', color: 'var(--text-muted)', marginBottom: '24px' }}>
