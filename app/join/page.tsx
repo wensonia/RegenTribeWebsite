@@ -261,7 +261,7 @@ function ArchetypeCard({ arch }: { arch: typeof archetypes[number] }) {
 }
 
 /* ── Journey Step Card ── */
-function JourneyStep({ step, index, isLast }: { step: typeof journeySteps[number]; index: number; isLast: boolean }) {
+function JourneyStep({ step, isLast }: { step: typeof journeySteps[number]; index: number; isLast: boolean }) {
   const [open, setOpen] = useState(false)
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0' }}>
@@ -297,7 +297,7 @@ function JourneyStep({ step, index, isLast }: { step: typeof journeySteps[number
               transition={{ duration: 0.3 }}
               style={{ overflow: 'hidden' }}
             >
-              <div style={{ marginTop: '16px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div className="journey-detail-grid" style={{ marginTop: '16px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 <div style={{ padding: '16px', borderRadius: '12px', border: '1px dashed var(--border-dashed)' }}>
                   <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '10px' }}>What you do</p>
                   {step.tasks.map((t, i) => (
@@ -325,7 +325,7 @@ export default function JoinPage() {
     <main>
       {/* ─── HERO ─── */}
       <section style={{ padding: '120px 0 80px', textAlign: 'center' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.div variants={fadeUp}>
               <Label>Get Involved</Label>
@@ -354,7 +354,7 @@ export default function JoinPage() {
 
       {/* ─── ARCHETYPE CARDS ─── */}
       <section id="archetypes" style={{ padding: '60px 0 80px' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" viewport={vp} variants={stagger}>
             <motion.div variants={fadeUp}>
               <Label>Choose your path</Label>
@@ -378,7 +378,7 @@ export default function JoinPage() {
 
       {/* ─── ECOSYSTEM JOURNEY ─── */}
       <section id="ecosystem" style={{ padding: '80px 0' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" viewport={vp} variants={stagger}>
             <motion.div variants={fadeUp}>
               <Label>Build the ecosystem with us</Label>
@@ -404,7 +404,7 @@ export default function JoinPage() {
 
       {/* ─── VALUE EXCHANGE ─── */}
       <section style={{ padding: '80px 0' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" viewport={vp} variants={stagger}>
             <motion.div variants={fadeUp}>
               <Label>How we value your contributions</Label>
@@ -416,7 +416,7 @@ export default function JoinPage() {
                 We use traditional compensation alongside community models of exchange — sharing what we have in abundance for what you have in abundance.
               </p>
             </motion.div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>
+            <div className="value-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>
               {valueTypes.map(v => (
                 <motion.div
                   key={v.title}
@@ -438,8 +438,9 @@ export default function JoinPage() {
 
       {/* ─── CTA FOOTER ─── */}
       <section style={{ padding: '80px 0 120px' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div
+            className="join-cta-card"
             initial="hidden" whileInView="visible" viewport={vp} variants={stagger}
             style={{
               backgroundColor: 'var(--text)', borderRadius: '24px', padding: '64px 48px',
@@ -472,6 +473,17 @@ export default function JoinPage() {
           </motion.div>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 900px) {
+          .value-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .join-cta-card { padding: 48px 32px !important; }
+        }
+        @media (max-width: 540px) {
+          .value-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .journey-detail-grid { grid-template-columns: 1fr !important; }
+          .join-cta-card { padding: 32px 20px !important; }
+        }
+      `}</style>
     </main>
   )
 }

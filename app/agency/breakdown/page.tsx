@@ -555,11 +555,11 @@ export default function BreakdownPage() {
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; background: #ededed; color: #363636; }
-        @media (max-width: 760px) {
+        @media (max-width: 900px) {
           .breakdown-grid { grid-template-columns: 1fr !important; }
           .breakdown-grid-3 { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 540px) {
           .offering-row { grid-template-columns: 1fr !important; }
         }
       `}</style>

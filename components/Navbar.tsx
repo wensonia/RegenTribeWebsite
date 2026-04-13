@@ -17,8 +17,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'var(--bg)' }}>
-      <nav style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(237, 237, 237, 0.4)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)' }}>
+      <nav className="nav-bar" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
         {/* Logo */}
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
@@ -58,7 +58,8 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '24px 40px 32px' }}
+          className="mobile-menu"
+          style={{ backgroundColor: 'rgba(237, 237, 237, 0.85)', borderTop: '1px solid var(--border)', padding: '24px 40px 32px' }}
         >
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)}
@@ -80,6 +81,10 @@ export default function Navbar() {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
           .mobile-btn { display: flex !important; }
+        }
+        @media (max-width: 540px) {
+          .nav-bar { padding-left: 20px !important; padding-right: 20px !important; }
+          .mobile-menu { padding-left: 20px !important; padding-right: 20px !important; }
         }
       `}</style>
     </header>

@@ -54,6 +54,7 @@ export default function RootLayout({
           }}
         >
           <div
+            className="footer-wrap"
             style={{
               maxWidth: '1280px',
               margin: '0 auto',
@@ -62,6 +63,7 @@ export default function RootLayout({
           >
             {/* Top row */}
             <div
+              className="footer-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr 1fr',
@@ -198,6 +200,14 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (max-width: 900px) {
+            .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding-bottom: 40px !important; }
+          }
+          @media (max-width: 540px) {
+            .footer-wrap { padding: 48px 20px 32px !important; }
+          }
+        `}} />
         </SmoothScroll>
       </body>
     </html>

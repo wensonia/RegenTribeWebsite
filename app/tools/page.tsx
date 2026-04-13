@@ -113,7 +113,7 @@ export default function ToolsPage() {
           HERO
       ════════════════════ */}
       <section style={{ padding: '120px 0 80px', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
 
             <motion.div variants={fadeUp}>
@@ -161,7 +161,7 @@ export default function ToolsPage() {
           LEARN — The Hive
       ════════════════════ */}
       <section id="learn" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             {/* Top 2-col: text + phone */}
@@ -220,7 +220,7 @@ export default function ToolsPage() {
             </motion.div>
 
             {/* Bottom: 5 category columns */}
-            <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '2px' }}>
+            <motion.div className="hive-categories" variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '2px' }}>
               {[
                 {
                   sym: '○', col: 'var(--green)', hex: '#6fc6a2', label: 'Ecology',
@@ -267,8 +267,8 @@ export default function ToolsPage() {
       {/* ════════════════════
           APPLY — Alchemy Guide + Agent Program
       ════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             {/* Section heading */}
@@ -401,8 +401,8 @@ export default function ToolsPage() {
       {/* ════════════════════
           TRACK — RNF
       ════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div
             className="tool-grid"
             initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
@@ -454,7 +454,7 @@ export default function ToolsPage() {
                 <p style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(54,54,54,0.4)', marginBottom: '16px' }}>
                   5 Pillars
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px' }}>
+                <div className="pillars-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px' }}>
                   {[
                     ['○', 'var(--green)',  '#6fc6a2', 'Ecology'],
                     ['□', 'var(--blue)',   '#808aeb', 'Hardware'],
@@ -505,8 +505,8 @@ export default function ToolsPage() {
       {/* ════════════════════
           REGEN TECH STACK
       ════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
+        <div className="wrap" style={wrap}>
           <motion.div
             className="tool-grid"
             initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
@@ -568,7 +568,7 @@ export default function ToolsPage() {
       {/* ════════════════════
           CONNECT — CTA
       ════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div style={{ ...wrap, maxWidth: '860px' }}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp} style={{ textAlign: 'center' }}>
             <motion.div variants={fadeUp}>
@@ -655,6 +655,8 @@ export default function ToolsPage() {
           .tool-grid      { grid-template-columns: 1fr !important; gap: 48px !important; }
           .apply-grid     { grid-template-columns: 1fr !important; }
           .techstack-cards { display: none !important; }
+          .hive-categories { grid-template-columns: repeat(2, 1fr) !important; }
+          .pillars-grid   { grid-template-columns: repeat(2, 1fr) !important; }
           .phone-body     { width: 180px; height: 368px; border-radius: 28px; padding: 8px; }
           .phone-screen   { border-radius: 22px; }
           .phone-notch    { width: 42px; height: 14px; border-radius: 0 0 9px 9px; top: 8px; }
@@ -662,6 +664,10 @@ export default function ToolsPage() {
           .hive-phone-card:hover .phone-scroll-img {
             transform: translateY(calc(-100% + 350px));
           }
+        }
+        @media (max-width: 540px) {
+          .hive-categories { grid-template-columns: 1fr !important; }
+          .pillars-grid   { grid-template-columns: repeat(3, 1fr) !important; }
         }
       `}</style>
 

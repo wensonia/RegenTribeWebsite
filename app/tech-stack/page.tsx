@@ -460,8 +460,8 @@ export default function TechStack() {
       {/* ════════════════════════════════
           WHY THIS MATTERS
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             {/* Heading */}
@@ -556,8 +556,8 @@ export default function TechStack() {
       {/* ════════════════════════════════
           ACTIVE TOOLS
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
+        <div className="wrap" style={wrap}>
 
           {/* Section header */}
           <motion.div
@@ -728,8 +728,8 @@ export default function TechStack() {
       {/* ════════════════════════════════
           TRIBES PLATFORM
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: BG_CARD, padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: BG_CARD, padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
 
           {/* Header */}
           <motion.div
@@ -802,8 +802,8 @@ export default function TechStack() {
       {/* ════════════════════════════════
           MYCONET MODULE ROADMAP
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: BG, padding: '120px 0', borderTop: `1px solid ${BORDER}` }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: BG, padding: '120px 0', borderTop: `1px solid ${BORDER}` }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             {/* Header */}
@@ -891,8 +891,8 @@ export default function TechStack() {
       {/* ════════════════════════════════
           THE COLLECTIVE
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: `1px solid ${BORDER}` }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
             <div className="ts-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
@@ -962,7 +962,7 @@ export default function TechStack() {
           CTA — green full-bleed
       ════════════════════════════════ */}
       <section className="ts-cta-section" style={{ backgroundColor: 'var(--green)', padding: '140px 0' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.div variants={fadeUp}><Label dark>Get Involved</Label></motion.div>
 

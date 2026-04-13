@@ -66,7 +66,7 @@ export default function BlogPage() {
     <>
       {/* ── HERO ── */}
       <section style={{ paddingTop: '120px', paddingBottom: '80px', borderBottom: '1px dashed var(--border-dashed)' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             <motion.div variants={fadeUp}>
               <Label>Blog &amp; Updates</Label>
@@ -91,7 +91,7 @@ export default function BlogPage() {
         initial="hidden" whileInView="visible" viewport={vp} variants={stagger}
         style={{ paddingTop: '120px', paddingBottom: '120px', borderBottom: '1px dashed var(--border-dashed)' }}
       >
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div variants={fadeUp}>
             <Label>Quarterly Updates</Label>
           </motion.div>
@@ -210,7 +210,7 @@ export default function BlogPage() {
         initial="hidden" whileInView="visible" viewport={vp} variants={stagger}
         style={{ paddingTop: '120px', paddingBottom: '120px', borderBottom: '1px dashed var(--border-dashed)' }}
       >
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div variants={fadeUp}>
             <Label>From the Substack</Label>
           </motion.div>
@@ -293,7 +293,7 @@ export default function BlogPage() {
       <style>{`
         input::placeholder { color: var(--text-muted); opacity: 0.6; }
         input:focus { border-color: var(--green) !important; }
-        @media (max-width: 640px) {
+        @media (max-width: 540px) {
           section { padding-left: 20px !important; padding-right: 20px !important; }
         }
       `}</style>

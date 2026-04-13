@@ -38,3 +38,12 @@ h1, h2 {
   background: var(--yellow);
   color: var(--text);
 }
+
+/* ── Global responsive ── */
+@media (max-width: 900px) {
+  .sec { padding-top: 80px !important; padding-bottom: 80px !important; }
+}
+@media (max-width: 540px) {
+  .wrap { padding-left: 20px !important; padding-right: 20px !important; }
+  .sec { padding-top: 56px !important; padding-bottom: 56px !important; }
+}

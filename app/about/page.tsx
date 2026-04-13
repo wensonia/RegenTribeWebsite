@@ -2,7 +2,8 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -175,13 +176,100 @@ function MemberCard({ member }: { member: Member }) {
   )
 }
 
+/* ── Carousel slides (3 photos each, captions below) ── */
+const carouselSlides = [
+  { photos: [
+    { src: '/images/blog/q1-2022-workshops-tulum-2.jpg',          label: 'Filming · Tulum, 2022' },
+    { src: '/images/blog/q1-2022-workshops-tulum-3.jpg',          label: 'Working session · Tulum, 2022' },
+    { src: '/images/blog/q2-2023-community-lab-2.jpg',            label: 'Rooftop garden · Mexico City, 2023' },
+  ]},
+  { photos: [
+    { src: '/images/blog/q2-2023-community-lab-5.jpg',            label: 'Regen Lounge · Tulum, 2023' },
+    { src: '/images/blog/q2-2024-clx-wildseeds-1.jpg',            label: 'Community Lab · Tulum, 2024' },
+    { src: '/images/blog/q2-2024-clx-wildseeds-3.jpg',            label: 'Planting in the jungle · Tulum, 2024' },
+  ]},
+  { photos: [
+    { src: '/images/blog/q2-2024-clx-wildseeds-4.jpg',            label: 'Team planning · California, 2024' },
+    { src: '/images/blog/q3-2023-community-lab-moos-2.jpg',       label: 'Working session · MOOS, Berlin, 2023' },
+    { src: '/images/blog/q3-2023-community-lab-moos-3.jpg',       label: 'Strategy session · MOOS, Berlin, 2023' },
+  ]},
+  { photos: [
+    { src: '/images/blog/q3-2023-community-lab-moos-1.jpg',       label: 'Community gathering · MOOS, Belgium, 2023' },
+    { src: '/images/blog/q3-2023-community-lab-moos-5.jpg',       label: 'Regen Tribe HQ · Berlin, 2023' },
+    { src: '/images/blog/q3-2022-europe-summer-3.jpg',            label: 'Community circle · Portugal, 2022' },
+  ]},
+  { photos: [
+    { src: '/images/blog/q3-2022-europe-summer-2.jpg',            label: 'Exploring · Berlin, 2022' },
+    { src: '/images/blog/q4-2021-regen-tribe-incubation-4.jpg',   label: 'Site visit · Guanajuato, Mexico, 2021' },
+    { src: '/images/blog/q4-2021-regen-tribe-incubation-3.jpg',   label: 'Community · Tulum, 2021' },
+  ]},
+  { photos: [
+    { src: '/images/blog/q3-2024-mexico-to-europe-4.jpg',         label: 'Sunset gathering · Europe, 2024' },
+    { src: '/images/blog/q4-2022-tulum-homecoming-1.jpg',         label: 'Building on site · Tulum, 2022' },
+    { src: '/images/blog/q3-2024-mexico-to-europe-5.jpg',         label: 'Collective · Berlin, 2024' },
+  ]},
+]
+
+function PhotoCarousel() {
+  const [index, setIndex] = useState(0)
+  const total = carouselSlides.length
+
+  const prev = useCallback(() => setIndex((i) => (i - 1 + total) % total), [total])
+  const next = useCallback(() => setIndex((i) => (i + 1) % total), [total])
+
+  useEffect(() => {
+    const t = setInterval(next, 6000)
+    return () => clearInterval(t)
+  }, [next])
+
+  return (
+    <section style={{ borderBottom: '1px dashed var(--border)', overflow: 'hidden', backgroundColor: 'var(--bg)' }}>
+      <div style={{ position: 'relative' }}>
+        {/* Slides */}
+        {carouselSlides.map((slide, i) => (
+          <div key={i} style={{
+            display: i === index ? 'flex' : 'none',
+            gap: '3px',
+          }}>
+            {slide.photos.map((photo) => (
+              <div key={photo.src} style={{ flex: 1, minWidth: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={photo.src} alt={photo.label}
+                  style={{ width: '100%', height: 'clamp(200px, 28vw, 380px)', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                />
+                <p style={{ margin: 0, padding: '10px 14px', fontSize: '11px', fontWeight: '600', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.45 }}>
+                  {photo.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        ))}
+        {/* Arrows */}
+        <button onClick={prev} aria-label="Previous" style={{ position: 'absolute', left: '16px', top: 'calc(clamp(200px, 28vw, 380px) / 2)', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white' }}>
+          <ChevronLeft size={18} strokeWidth={1.5} />
+        </button>
+        <button onClick={next} aria-label="Next" style={{ position: 'absolute', right: '16px', top: 'calc(clamp(200px, 28vw, 380px) / 2)', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '50%', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'white' }}>
+          <ChevronRight size={18} strokeWidth={1.5} />
+        </button>
+        {/* Dots */}
+        <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', padding: '8px 0 16px' }}>
+          {carouselSlides.map((_, i) => (
+            <button key={i} onClick={() => setIndex(i)} aria-label={`Slide ${i + 1}`}
+              style={{ width: i === index ? '20px' : '6px', height: '6px', borderRadius: '9999px', background: i === index ? 'var(--text)' : 'rgba(54,54,54,0.25)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.3s ease' }} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function AboutPage() {
   return (
     <>
       {/* ── WHO WE ARE ── */}
       <section style={{ padding: '120px 0 80px', borderBottom: '1px dashed var(--border)' }}>
-        <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" animate="visible"
+        <div className="wrap" style={wrap}>
+          <motion.div className="about-hero-grid" variants={stagger} initial="hidden" animate="visible"
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
             <motion.div variants={fadeUp}>
               <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '24px' }}>
@@ -209,9 +297,11 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <PhotoCarousel />
+
       {/* ── COLLECTIVE DIRECTORY ── */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
               <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '16px' }}>
@@ -221,7 +311,7 @@ export default function AboutPage() {
                 Meet the people.
               </h2>
               <p style={{ fontSize: '17px', lineHeight: '1.65', opacity: 0.65, maxWidth: '500px' }}>
-                {members.length} humans (and one dog) building regenerative neighborhoods around the world.
+                A growing collective of humans (and one dog) building regenerative neighborhoods around the world.
               </p>
             </motion.div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px' }}>
@@ -232,8 +322,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── ARCHETYPES ── */}
-      <section style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
               <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '16px' }}>
@@ -246,7 +336,7 @@ export default function AboutPage() {
                 The Regen Tribe collective is made up of all the people it takes to design, build, and grow Regenerative Neighborhoods and their communities.
               </p>
             </motion.div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
+            <div className="archetype-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '20px' }}>
               {archetypes.map((a) => (
                 <motion.div key={a.name} variants={fadeUp}
                   style={{ backgroundColor: a.color, borderRadius: '16px', padding: '36px 28px', color: a.textLight ? 'white' : '#363636' }}>
@@ -267,8 +357,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── HOW TO JOIN ── */}
-      <section style={{ padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
             style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '32px' }}>
             <motion.div variants={fadeUp}>
@@ -295,8 +385,12 @@ export default function AboutPage() {
       </section>
 
       <style>{`
-        @media (max-width: 768px) {
-          .who-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        @media (max-width: 900px) {
+          .about-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .archetype-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 540px) {
+          .archetype-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>

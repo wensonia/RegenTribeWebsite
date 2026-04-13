@@ -202,71 +202,85 @@ export default function TribesPlatformPage() {
       ════════════════════════════════ */}
       <section style={{ backgroundColor: 'var(--green)', minHeight: '92vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ ...wrap, paddingTop: '120px', paddingBottom: '120px', position: 'relative', zIndex: 1 }}>
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.p
-              variants={fadeUp}
-              style={{
-                fontSize: '11px',
-                fontWeight: '700',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.6)',
-                marginBottom: '24px',
-              }}
-            >
-              Global Network
-            </motion.p>
+          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }}>
+            {/* Left: text */}
+            <motion.div initial="hidden" animate="visible" variants={stagger}>
+              <motion.p
+                variants={fadeUp}
+                style={{
+                  fontSize: '11px',
+                  fontWeight: '700',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.6)',
+                  marginBottom: '24px',
+                }}
+              >
+                Global Network
+              </motion.p>
 
-            <motion.h1
-              variants={fadeUp}
-              style={{
-                fontSize: 'clamp(44px, 6vw, 88px)',
-                fontWeight: '400',
-                lineHeight: '1.05',
-                letterSpacing: '-0.03em',
-                color: 'white',
-                fontFamily: 'var(--font-lora), Georgia, serif',
-                marginBottom: '32px',
-                maxWidth: '700px',
-              }}
-            >
-              Tribes<br />Platform
-            </motion.h1>
+              <motion.h1
+                variants={fadeUp}
+                style={{
+                  fontSize: 'clamp(44px, 6vw, 80px)',
+                  fontWeight: '400',
+                  lineHeight: '1.05',
+                  letterSpacing: '-0.03em',
+                  color: 'white',
+                  fontFamily: 'var(--font-lora), Georgia, serif',
+                  marginBottom: '32px',
+                }}
+              >
+                Tribes<br />Platform
+              </motion.h1>
 
-            <motion.p
-              variants={fadeUp}
-              style={{
-                fontSize: '18px',
-                fontWeight: '300',
-                color: 'rgba(255,255,255,0.75)',
-                lineHeight: '1.6',
-                marginBottom: '48px',
-                maxWidth: '520px',
-              }}
-            >
-              The networking &amp; education platform to accelerate the development of startup societies, regenerative neighborhoods, ecovillages &amp; sustainable communities.
-            </motion.p>
+              <motion.p
+                variants={fadeUp}
+                style={{
+                  fontSize: '18px',
+                  fontWeight: '300',
+                  color: 'rgba(255,255,255,0.75)',
+                  lineHeight: '1.6',
+                  marginBottom: '48px',
+                  maxWidth: '480px',
+                }}
+              >
+                The networking &amp; education platform to accelerate the development of startup societies, regenerative neighborhoods, ecovillages &amp; sustainable communities.
+              </motion.p>
 
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <PillBtn href="https://tribesplatform.app/" bg="var(--text)" external>
-                Explore the Platform
-              </PillBtn>
-              <OutlinePill href="https://tribesplatform.app/register/" light external>
-                Join the Movement
-              </OutlinePill>
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                <PillBtn href="https://tribesplatform.app/" bg="var(--text)" external>
+                  Explore the Platform
+                </PillBtn>
+                <OutlinePill href="https://tribesplatform.app/register/" light external>
+                  Join the Movement
+                </OutlinePill>
+              </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Right: mockup image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/tribes-platform/hero-mockup.png"
+                alt="Tribes Platform — neighborhood profiles and user profiles"
+                style={{ width: '100%', maxWidth: '540px', height: 'auto', display: 'block', filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.25))' }}
+              />
+            </motion.div>
+          </div>
         </div>
-        {/* decorative shape */}
-        <div style={{ position: 'absolute', right: '-60px', bottom: '-60px', width: '340px', height: '340px', border: '1.5px solid rgba(255,255,255,0.2)', borderRadius: '50%', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', right: '60px', bottom: '60px', width: '200px', height: '200px', border: '1.5px solid rgba(255,255,255,0.12)', borderRadius: '50%', pointerEvents: 'none' }} />
       </section>
 
       {/* ════════════════════════════════
           WHO IS THIS FOR
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.p
               variants={fadeUp}
@@ -312,8 +326,8 @@ export default function TribesPlatformPage() {
       {/* ════════════════════════════════
           PLATFORM FEATURES
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.p
               variants={fadeUp}
@@ -345,98 +359,89 @@ export default function TribesPlatformPage() {
             </motion.h2>
           </motion.div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '40px' }}>
-            {features.map((f) => (
-              <motion.div
-                key={f.title}
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeUp}
-                viewport={vp}
-              >
-                <a
-                  href={f.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="phone-card"
-                  style={{ textDecoration: 'none', color: 'inherit', display: 'block', textAlign: 'center', maxWidth: '240px' }}
-                >
-                  {/* Phone frame */}
+          {/* Row 1: first 3 phone mockups */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginBottom: '48px', flexWrap: 'wrap' }}>
+            {features.slice(0, 3).map((f) => (
+              <motion.div key={f.title} initial="hidden" whileInView="visible" variants={fadeUp} viewport={vp}>
+                <a href={f.href} target="_blank" rel="noopener noreferrer" className="phone-card"
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'block', textAlign: 'center', maxWidth: '240px' }}>
                   <div className="phone-body" style={{ borderTopColor: f.color }}>
                     <div className="phone-notch" />
                     <div className="phone-screen">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={f.img}
-                        alt={`${f.title} on Tribes Platform`}
-                        className="phone-scroll-img"
-                      />
+                      <img src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img" />
                     </div>
                   </div>
-
-                  {/* Text below phone */}
-                  <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>
-                    {f.title}
-                  </h3>
-                  <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.5)', marginBottom: '14px' }}>
-                    {f.description}
-                  </p>
-                  <span className="phone-card-cta" style={{ color: f.color }}>
-                    {f.cta} <ArrowRight size={14} strokeWidth={2} />
-                  </span>
+                  <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>{f.title}</h3>
+                  <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.5)', marginBottom: '14px' }}>{f.description}</p>
+                  <span className="phone-card-cta" style={{ color: f.color }}>{f.cta} <ArrowRight size={14} strokeWidth={2} /></span>
                 </a>
               </motion.div>
             ))}
           </div>
 
-          {/* ── Also on Tribes — text-only extras ── */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={stagger}
-            viewport={vp}
-            style={{ marginTop: '80px', display: 'flex', justifyContent: 'center', gap: '32px', flexWrap: 'wrap' }}
-          >
-            {extras.map((e) => (
-              <motion.a
-                key={e.title}
-                href={e.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={fadeUp}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.15 }}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '28px 36px',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: '16px',
-                  textDecoration: 'none',
-                  color: 'white',
-                  maxWidth: '320px',
-                  textAlign: 'center',
-                }}
-              >
-                <span style={{ fontSize: '22px', color: e.color, marginBottom: '4px' }}>{e.shape}</span>
-                <span style={{ fontSize: '16px', fontWeight: '600' }}>{e.title}</span>
-                <span style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.5)' }}>{e.description}</span>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: e.color, marginTop: '8px' }}>
-                  {e.cta} <ArrowRight size={14} strokeWidth={2} />
-                </span>
-              </motion.a>
+          {/* Row 2: last 2 phone mockups + extras stacked on the right */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+            {features.slice(3).map((f) => (
+              <motion.div key={f.title} initial="hidden" whileInView="visible" variants={fadeUp} viewport={vp}>
+                <a href={f.href} target="_blank" rel="noopener noreferrer" className="phone-card"
+                  style={{ textDecoration: 'none', color: 'inherit', display: 'block', textAlign: 'center', maxWidth: '240px' }}>
+                  <div className="phone-body" style={{ borderTopColor: f.color }}>
+                    <div className="phone-notch" />
+                    <div className="phone-screen">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={f.img} alt={`${f.title} on Tribes Platform`} className="phone-scroll-img" />
+                    </div>
+                  </div>
+                  <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'white', marginBottom: '8px' }}>{f.title}</h3>
+                  <p style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(255,255,255,0.5)', marginBottom: '14px' }}>{f.description}</p>
+                  <span className="phone-card-cta" style={{ color: f.color }}>{f.cta} <ArrowRight size={14} strokeWidth={2} /></span>
+                </a>
+              </motion.div>
             ))}
-          </motion.div>
+
+            {/* Extras stacked in the remaining space */}
+            <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
+              style={{ display: 'flex', flexDirection: 'column', gap: '20px', justifyContent: 'center', maxWidth: '280px' }}>
+              {extras.map((e) => (
+                <motion.a
+                  key={e.title}
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.15 }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px',
+                    padding: '24px',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    borderRadius: '16px',
+                    textDecoration: 'none',
+                    color: 'white',
+                    textAlign: 'center',
+                  }}
+                >
+                  <span style={{ fontSize: '20px', color: e.color }}>{e.shape}</span>
+                  <span style={{ fontSize: '15px', fontWeight: '600' }}>{e.title}</span>
+                  <span style={{ fontSize: '12px', lineHeight: '1.5', color: 'rgba(255,255,255,0.45)' }}>{e.description}</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '11px', fontWeight: '600', letterSpacing: '0.06em', textTransform: 'uppercase', color: e.color, marginTop: '4px' }}>
+                    {e.cta} <ArrowRight size={12} strokeWidth={2} />
+                  </span>
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════
           PLATFORM FEATURES — ALT (floating boxes)
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--bg)', padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--bg)', padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.p
               variants={fadeUp}
@@ -588,8 +593,8 @@ export default function TribesPlatformPage() {
       {/* ════════════════════════════════
           STATS
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.p
               variants={fadeUp}
@@ -652,8 +657,8 @@ export default function TribesPlatformPage() {
       {/* ════════════════════════════════
           V2 TRIBES — MYCONET MODULES
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
             <motion.p
               variants={fadeUp}
@@ -750,8 +755,8 @@ export default function TribesPlatformPage() {
       {/* ════════════════════════════════
           CTA
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--green)', padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--green)', padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp} style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto' }}>
             <motion.h2
               variants={fadeUp}
@@ -899,6 +904,16 @@ export default function TribesPlatformPage() {
         @media (max-width: 900px) {
           .phone-card:hover .phone-scroll-img {
             transform: translateY(calc(-100% + 350px));
+          }
+        }
+        @media (max-width: 900px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            text-align: center;
+          }
+          .hero-grid img {
+            max-width: 380px !important;
+            margin: 0 auto;
           }
         }
         @media (max-width: 540px) {

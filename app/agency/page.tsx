@@ -417,8 +417,8 @@ export default function Agency() {
       {/* ════════════════════════════════
           HOW WE DO IT — dark, 3 cycles
       ════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+        <div className="wrap" style={wrap}>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -446,6 +446,7 @@ export default function Agency() {
                   <motion.div
                     key={cycle.num}
                     variants={fadeUp}
+                    className="cycle-row"
                     style={{
                       display: 'grid',
                       gridTemplateColumns: '1fr 1px 2fr',
@@ -455,7 +456,7 @@ export default function Agency() {
                     }}
                   >
                     {/* Cycle label */}
-                    <div style={{ paddingRight: '56px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                    <div className="cycle-label" style={{ paddingRight: '56px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                       <p style={{
                         fontSize: '11px',
                         fontWeight: '500',
@@ -481,7 +482,7 @@ export default function Agency() {
                     <div style={{ width: '1px', backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'stretch' }} />
 
                     {/* Cycle content */}
-                    <div style={{ paddingLeft: '56px' }}>
+                    <div className="cycle-content" style={{ paddingLeft: '56px' }}>
                       <p style={{
                         fontSize: '17px',
                         fontWeight: '300',
@@ -521,8 +522,8 @@ export default function Agency() {
       {/* ════════════════════════════════
           PORTFOLIO — 4-col grid
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           {/* Heading with dashed rules */}
           <motion.div
             initial="hidden"
@@ -761,8 +762,8 @@ export default function Agency() {
       {/* ════════════════════════════════
           OUR WORK TOGETHER
       ════════════════════════════════ */}
-      <section style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div style={wrap}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -843,6 +844,7 @@ export default function Agency() {
           whileInView="visible"
           variants={fadeUp}
           viewport={vp}
+          className="partner-img"
           style={{
             position: 'absolute',
             right: 0,
@@ -879,7 +881,7 @@ export default function Agency() {
                   letterSpacing: '-0.025em',
                   color: 'var(--text)',
                   marginBottom: '36px',
-                  whiteSpace: 'nowrap',
+                  /* whiteSpace handled by className */
                 }}
               >
                 partner with us
@@ -928,14 +930,21 @@ export default function Agency() {
           to   { transform: translateX(-25%); }
         }
         @media (max-width: 900px) {
-          .agency-2col     { grid-template-columns: 1fr !important; }
+          .agency-2col     { grid-template-columns: 1fr !important; gap: 40px !important; }
           .portfolio-grid  { grid-template-columns: repeat(2, 1fr) !important; }
           .portfolio-grid-sm { grid-template-columns: repeat(3, 1fr) !important; }
           .work-grid       { grid-template-columns: 1fr !important; }
+          .cycle-row       { grid-template-columns: 1fr !important; gap: 0 !important; }
+          .cycle-row > div:nth-child(2) { display: none !important; }
+          .cycle-label     { padding-right: 0 !important; margin-bottom: 20px !important; }
+          .cycle-content   { padding-left: 0 !important; }
+          .partner-img     { display: none !important; }
+          .modal-body      { padding: 28px 24px 32px !important; }
         }
         @media (max-width: 540px) {
           .portfolio-grid  { grid-template-columns: 1fr !important; }
           .portfolio-grid-sm { grid-template-columns: repeat(2, 1fr) !important; }
+          .modal-body      { padding: 24px 20px 28px !important; }
         }
       `}</style>
 
@@ -959,7 +968,7 @@ export default function Agency() {
                 <img src={selectedProject.img} alt={selectedProject.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
             )}
-            <div style={{ padding: '40px 44px 48px' }}>
+            <div className="modal-body" style={{ padding: '40px 44px 48px' }}>
               {/* Close */}
               <button
                 onClick={() => setSelectedProject(null)}

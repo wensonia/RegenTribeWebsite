@@ -97,7 +97,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
       </div>
 
       <article style={{ paddingTop: '56px', paddingBottom: '96px' }}>
-        <div style={wrap}>
+        <div className="wrap" style={wrap}>
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             {/* Back link */}
             <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
@@ -165,7 +165,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             {post.images && post.images.length > 0 && (
               <motion.div variants={fadeUp} style={{ marginTop: '48px' }}>
                 <h2 style={{ fontFamily: 'var(--font-lora), serif', fontSize: '22px', fontWeight: 400, color: 'var(--text)', marginBottom: '24px' }}>Photos</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+                <div className="blog-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
                   {post.images.map((img, i) => (
                     <div key={i} style={{ borderRadius: '8px', overflow: 'hidden' }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -179,6 +179,13 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           </motion.div>
         </div>
       </article>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .blog-gallery { grid-template-columns: 1fr !important; }
+          .blog-gallery img { height: 180px !important; }
+        }
+      `}</style>
     </>
   )
 }

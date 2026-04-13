@@ -26,8 +26,9 @@ export default function NewsletterCTA() {
   }
 
   return (
-    <section style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
-      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 40px' }}>
+    <>
+    <section className="newsletter-section" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+      <div className="wrap" style={{ maxWidth: '720px', margin: '0 auto', padding: '0 40px' }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -49,6 +50,7 @@ export default function NewsletterCTA() {
           </motion.h2>
 
           <motion.div
+            className="newsletter-card"
             variants={fadeUp}
             style={{
               border: '1px solid rgba(255,255,255,0.12)',
@@ -69,7 +71,7 @@ export default function NewsletterCTA() {
             </p>
 
             <form onSubmit={handleSubscribe}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+              <div className="newsletter-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
                 {[
                   { placeholder: 'your name', value: name, setter: setName },
                   { placeholder: 'your email address', value: email, setter: setEmail },
@@ -100,7 +102,7 @@ export default function NewsletterCTA() {
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textAlign: 'center' }}>
                 Apart from the general newsletter I want to receive special updates about:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 24px', marginBottom: '32px' }}>
+              <div className="newsletter-interests" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px 24px', marginBottom: '32px' }}>
                 {[
                   'Regen Tribe Agency',
                   'Real Estate opportunities',
@@ -162,5 +164,17 @@ export default function NewsletterCTA() {
         </motion.div>
       </div>
     </section>
+    <style>{`
+      @media (max-width: 900px) {
+        .newsletter-section { padding: 80px 0 !important; }
+      }
+      @media (max-width: 540px) {
+        .newsletter-section { padding: 56px 0 !important; }
+        .newsletter-card { padding: 28px 20px !important; }
+        .newsletter-fields { grid-template-columns: 1fr !important; }
+        .newsletter-interests { grid-template-columns: 1fr !important; }
+      }
+    `}</style>
+    </>
   )
 }
