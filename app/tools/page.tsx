@@ -387,7 +387,7 @@ export default function ToolsPage() {
                 </div>
 
                 <div style={{ height: '2px', width: '40px', backgroundColor: 'var(--blue)', borderRadius: '2px', marginBottom: '28px' }} />
-                <TextLink href="https://tribesplatform.app/groups/regen-tribe-agent-program/" external>
+                <TextLink href="/agentprogram">
                   Become an Agent
                 </TextLink>
                 </div>
