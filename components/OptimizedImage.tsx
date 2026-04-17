@@ -9,25 +9,29 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   loading?: 'lazy' | 'eager'
   /** Skip WebP/srcset — use raw <img> (e.g. for tiny icons) */
   skipOptimization?: boolean
+  /** Extra width variants that exist alongside the base -640w.webp (e.g. [1024, 1920]) */
+  extraWidths?: number[]
 }
 
 /**
  * Resolves WebP path and responsive srcset from an original image path.
- * Expects optimized files alongside originals:
- *   /images/blog/photo.jpg → /images/blog/photo.webp, photo-640w.webp, photo-1024w.webp, photo-1920w.webp
+ * All images are expected to have: photo.webp and photo-640w.webp
+ * Larger breakpoints (1024w, 1920w) are optional — pass them via the
+ * `extraWidths` prop so we never reference files that don't exist.
  */
-function getWebPPaths(src: string) {
+function getWebPPaths(src: string, extraWidths?: number[]) {
   const lastDot = src.lastIndexOf('.')
   if (lastDot === -1) return null
   const base = src.substring(0, lastDot)
+  const entries = [`${base}-640w.webp 640w`]
+  for (const w of extraWidths ?? []) {
+    entries.push(`${base}-${w}w.webp ${w}w`)
+  }
+  // base webp as the largest fallback
+  entries.push(`${base}.webp 2000w`)
   return {
     webp: `${base}.webp`,
-    srcSet: [
-      `${base}-640w.webp 640w`,
-      `${base}-1024w.webp 1024w`,
-      `${base}-1920w.webp 1920w`,
-      `${base}.webp`,
-    ].join(', '),
+    srcSet: entries.join(', '),
   }
 }
 
@@ -37,6 +41,7 @@ export default function OptimizedImage({
   sizes,
   loading = 'lazy',
   skipOptimization = false,
+  extraWidths,
   style,
   ...rest
 }: OptimizedImageProps) {
@@ -44,7 +49,7 @@ export default function OptimizedImage({
     return <img src={src} alt={alt} loading={loading} style={style} {...rest} />
   }
 
-  const paths = getWebPPaths(src)
+  const paths = getWebPPaths(src, extraWidths)
   if (!paths) {
     return <img src={src} alt={alt} loading={loading} style={style} {...rest} />
   }

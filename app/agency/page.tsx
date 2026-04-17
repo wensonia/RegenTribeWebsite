@@ -288,6 +288,7 @@ export default function Agency() {
           aria-hidden="true"
           sizes="100vw"
           loading="eager"
+          extraWidths={[1024, 1920]}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
         <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.52)' }} />
@@ -421,7 +422,7 @@ export default function Agency() {
       {/* ════════════════════════════════
           HOW WE DO IT — dark, 3 cycles
       ════════════════════════════════ */}
-      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+      <section id="process" className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
         <div className="wrap" style={wrap}>
           <motion.div
             initial="hidden"
@@ -526,7 +527,7 @@ export default function Agency() {
       {/* ════════════════════════════════
           PORTFOLIO — 4-col grid
       ════════════════════════════════ */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+      <section id="portfolio" className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
           {/* Heading with dashed rules */}
           <motion.div
