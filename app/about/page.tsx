@@ -263,7 +263,7 @@ export default function AboutPage() {
       <PhotoCarousel />
 
       {/* ── COLLECTIVE DIRECTORY ── */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
+      <section id="collective" className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed var(--border)' }}>
         <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>

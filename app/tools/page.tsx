@@ -148,7 +148,7 @@ export default function ToolsPage() {
               <PillBtn href="https://tribesplatform.app" external bg="var(--green)" textColor="var(--text)">
                 Join Tribes Platform
               </PillBtn>
-              <OutlinePill href="#learn">
+              <OutlinePill href="#hive">
                 Explore the Tools
               </OutlinePill>
             </motion.div>
@@ -160,7 +160,7 @@ export default function ToolsPage() {
       {/* ════════════════════
           LEARN — The Hive
       ════════════════════ */}
-      <section id="learn" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
+      <section id="hive" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
@@ -267,7 +267,7 @@ export default function ToolsPage() {
       {/* ════════════════════
           APPLY — Alchemy Guide + Agent Program
       ════════════════════ */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
+      <section id="alchemy-guide" className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
         <div className="wrap" style={wrap}>
           <motion.div initial="hidden" whileInView="visible" variants={stagger} viewport={vp}>
 
@@ -401,7 +401,7 @@ export default function ToolsPage() {
       {/* ════════════════════
           TRACK — RNF
       ════════════════════ */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
+      <section id="framework" className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div className="wrap" style={wrap}>
           <motion.div
             className="tool-grid"
