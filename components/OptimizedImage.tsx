@@ -39,7 +39,7 @@ export default function OptimizedImage({
   src,
   alt,
   sizes,
-  loading = 'lazy',
+  loading = 'eager',
   skipOptimization = false,
   extraWidths,
   style,

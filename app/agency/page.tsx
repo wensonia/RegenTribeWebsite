@@ -584,7 +584,7 @@ export default function Agency() {
                     {p.img && (
                       <OptimizedImage src={p.img} alt={p.name}
                         sizes="(max-width: 900px) 50vw, 25vw"
-                        loading="lazy"
+                        loading="eager"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.3s ease' }}
                         onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.03)')}
                         onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
@@ -625,7 +625,7 @@ export default function Agency() {
                     {p.img && (
                       <OptimizedImage src={p.img} alt={p.name}
                         sizes="(max-width: 900px) 33vw, 16vw"
-                        loading="lazy"
+                        loading="eager"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       />
                     )}
