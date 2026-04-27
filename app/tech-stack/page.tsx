@@ -21,7 +21,7 @@ const MUTED     = 'rgba(237,237,237,0.45)'
 const BORDER    = 'rgba(237,237,237,0.1)'
 
 /* ─────────────────────────────────────────
-   Animation — identical to main site
+   Animation – identical to main site
 ───────────────────────────────────────── */
 const fadeUp = {
   hidden:  { opacity: 0, y: 28 },
@@ -139,7 +139,7 @@ const tools = [
     symbol:   '△',
     name:     'Regen Knowledge Graph',
     tagline:  'AI Brain & Semantic Layer',
-    desc:     'Visual representation of resources collected during the Regenerative Neighborhood Framework Design Labs. Transforms any document into a typed, traversable knowledge graph using LLM extraction, vector embeddings, and epistemic truth values — ingesting community docs, extracting concepts and relationships, and enabling semantic search across the entire RegenTribes knowledge base.',
+    desc:     'Visual representation of resources collected during the Regenerative Neighborhood Framework Design Labs. Transforms any document into a typed, traversable knowledge graph using LLM extraction, vector embeddings, and epistemic truth values – ingesting community docs, extracting concepts and relationships, and enabling semantic search across the entire RegenTribes knowledge base.',
     skills:   [],
     status:   'Active',
     builders:     'Ian Tairea · Vitali Bohush',
@@ -169,7 +169,7 @@ const tools = [
     symbol:   '□',
     name:     'Regen Vision',
     tagline:  '3D Knowledge Visualization',
-    desc:     'Interactive 3D force-directed graph visualizations of RegenTribes knowledge structures. Makes the invisible visible — surfacing the ideas, people, and connections that form the regenerative ecosystem as an explorable, living graph.',
+    desc:     'Interactive 3D force-directed graph visualizations of RegenTribes knowledge structures. Makes the invisible visible – surfacing the ideas, people, and connections that form the regenerative ecosystem as an explorable, living graph.',
     skills:   [],
     status:   'In Development',
     builders:     'Vitali Bohush',
@@ -182,7 +182,7 @@ const tools = [
     symbol:   '△',
     name:     'Mythogen AME',
     tagline:  'Affinity Mapping Engine & Field of Trust',
-    desc:     'A TypeScript engine for community design — surfacing Living Seed Patterns, detecting Fields of Trust, and mapping relationships through a Tri-Layered System (BODY / FIELD / SEED). Makes the invisible dynamics of community legible and workable.',
+    desc:     'A TypeScript engine for community design – surfacing Living Seed Patterns, detecting Fields of Trust, and mapping relationships through a Tri-Layered System (BODY / FIELD / SEED). Makes the invisible dynamics of community legible and workable.',
     skills:   [],
     status:   'In Development',
     builders:     'Vic D. · Vitali Bohush',
@@ -195,16 +195,16 @@ const tools = [
 
 const modulesV2 = [
   { id: '01', name: 'Community Network',      purpose: 'Profile-based discovery and AI-powered matching for community members, vision holders, service providers, and resource holders of land and funding. Meet your tribe to find or create your home.',                 status: 'Building', color: 'var(--green)'  },
-  { id: '02', name: 'Neighborhood Directory', purpose: 'Explore regenerative neighborhoods on a live map. See posts, milestones, and updates from communities. Check-ins, guest book, events — and get matched with aligned communities based on your profile.',           status: 'Building', color: 'var(--green)'  },
-  { id: '03', name: 'Resources & Tools',      purpose: 'A curated, community-powered archive of regenerative resources — articles, tools, case studies, guides, and templates. Searchable and filterable, continuously growing.',                                          status: 'Building', color: 'var(--green)'  },
-  { id: '04', name: 'Blueprint',              purpose: 'The Regenerative Neighborhood Wizard — a guided design framework and journey to create a thorough plan and project management schedule for your Regenerative Neighborhood.',                                        status: 'Building', color: 'var(--green)'  },
-  { id: '05', name: 'Join',                   purpose: 'Applications and full onboarding flow — from initial inquiry to welcome. Manages screening, orientation, and everything in between.',                                                                              status: 'Building', color: 'var(--green)'  },
+  { id: '02', name: 'Neighborhood Directory', purpose: 'Explore regenerative neighborhoods on a live map. See posts, milestones, and updates from communities. Check-ins, guest book, events – and get matched with aligned communities based on your profile.',           status: 'Building', color: 'var(--green)'  },
+  { id: '03', name: 'Resources & Tools',      purpose: 'A curated, community-powered archive of regenerative resources – articles, tools, case studies, guides, and templates. Searchable and filterable, continuously growing.',                                          status: 'Building', color: 'var(--green)'  },
+  { id: '04', name: 'Blueprint',              purpose: 'The Regenerative Neighborhood Wizard – a guided design framework and journey to create a thorough plan and project management schedule for your Regenerative Neighborhood.',                                        status: 'Building', color: 'var(--green)'  },
+  { id: '05', name: 'Join',                   purpose: 'Applications and full onboarding flow – from initial inquiry to welcome. Manages screening, orientation, and everything in between.',                                                                              status: 'Building', color: 'var(--green)'  },
   { id: '06', name: 'Agreements',             purpose: 'Digital agreements and payment rails for community participation. Sign living agreements, set up recurring contributions, and manage financial commitments transparently via Stripe.',                              status: 'Planned',  color: 'var(--blue)'   },
-  { id: '07', name: 'Operations',             purpose: 'Internal operations for community teams — project boards, task assignment, budget tracking, and reporting. Everything a neighborhood needs to function as a living, self-organizing system.',                      status: 'Planned',  color: 'var(--blue)'   },
+  { id: '07', name: 'Operations',             purpose: 'Internal operations for community teams – project boards, task assignment, budget tracking, and reporting. Everything a neighborhood needs to function as a living, self-organizing system.',                      status: 'Planned',  color: 'var(--blue)'   },
   { id: '08', name: 'Contribution Tracking',  purpose: 'Points, badges, and reputation tracking that make regenerative action visible and rewarding. Portable across communities.',                                                                                       status: 'Planned',  color: 'var(--blue)'   },
-  { id: '09', name: 'Governance',             purpose: 'AI-facilitated governance — mediates conflicts, surfaces proposals, and guides communities through transparent decisions and voting.',                                                                              status: 'Planned',  color: 'var(--blue)'   },
-  { id: '10', name: 'AI Personal Assistant',  purpose: 'Personal AI guide for residents — answers questions, surfaces opportunities, and facilitates alignment with Regenerative Neighborhood happenings.',                                                                status: 'Planned',  color: 'var(--pink)'   },
-  { id: '11', name: 'Hive',                   purpose: 'The inter-community layer — connecting individual neighborhoods into a living network. Share resources, knowledge, surplus, and people across the full ecosystem of regenerative communities.',                     status: 'Planned',  color: 'var(--blue)'   },
+  { id: '09', name: 'Governance',             purpose: 'AI-facilitated governance – mediates conflicts, surfaces proposals, and guides communities through transparent decisions and voting.',                                                                              status: 'Planned',  color: 'var(--blue)'   },
+  { id: '10', name: 'AI Personal Assistant',  purpose: 'Personal AI guide for residents – answers questions, surfaces opportunities, and facilitates alignment with Regenerative Neighborhood happenings.',                                                                status: 'Planned',  color: 'var(--pink)'   },
+  { id: '11', name: 'Hive',                   purpose: 'The inter-community layer – connecting individual neighborhoods into a living network. Share resources, knowledge, surplus, and people across the full ecosystem of regenerative communities.',                     status: 'Planned',  color: 'var(--blue)'   },
 ]
 
 /* ─────────────────────────────────────────
@@ -248,7 +248,7 @@ function FlipCard({ flipped }: { flipped: boolean }) {
 
 /* ─────────────────────────────────────────
    Individual floating shape
-   CSS handles the float loop — Framer Motion only handles scene transitions.
+   CSS handles the float loop – Framer Motion only handles scene transitions.
    This avoids the glitch caused by interrupting repeat:Infinity animations.
 ───────────────────────────────────────── */
 function FloatShape({ shape, color, size, ix, iy, sdx, sdy, sscale, sopacity, floatCls, scene }: {
@@ -287,7 +287,7 @@ function FloatShape({ shape, color, size, ix, iy, sdx, sdy, sscale, sopacity, fl
       }}
       style={{ position: 'absolute', top: iy, left: ix, transformOrigin: '50% 50%' }}
     >
-      {/* Inner div carries CSS float — separate from Framer Motion transforms above */}
+      {/* Inner div carries CSS float – separate from Framer Motion transforms above */}
       <div className={floating && !scene ? floatCls : ''}>
         {shape === 'circle'   && <div style={{ width: size, height: size, borderRadius: '50%', backgroundColor: color }} />}
         {shape === 'square'   && <div style={{ width: size, height: size, backgroundColor: color }} />}
@@ -302,7 +302,7 @@ function FloatShape({ shape, color, size, ix, iy, sdx, sdy, sscale, sopacity, fl
 }
 
 /* ─────────────────────────────────────────
-   Hero scene — shapes float freely, hover reveals neighborhood
+   Hero scene – shapes float freely, hover reveals neighborhood
 ───────────────────────────────────────── */
 function HeroScene() {
   const [hovered, setHovered] = useState(false)
@@ -328,7 +328,7 @@ function HeroScene() {
     { id:'tr2', shape:'triangle', color:'var(--green)',  size:80,  ix:182, iy:360, sdx:0,    sdy:0,   sscale:1,    sopacity:0, floatCls:'hero-fl-f' },
   ]
 
-  // Scene-only details — all bottoms at y=540
+  // Scene-only details – all bottoms at y=540
   // trunk: top=470, h=70 → bottom=540
   // door: top=488, h=52 → bottom=540
   // p1b/p2b: top=472, h=68 → bottom=540
@@ -482,12 +482,12 @@ export default function TechStack() {
             }}>
               <p style={{ fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7' }}>
                 The vision and people are there, but the movement is fragmented. The failure rate
-                for community land projects remains high. What&apos;s needed is the shared infrastructure —
+                for community land projects remains high. What&apos;s needed is the shared infrastructure –
                 systems for connecting community builders, managing operations, onboarding residents,
                 and running governance in a way that actually holds.
               </p>
               <p style={{ fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7' }}>
-                The knowledge exists — earned across hundreds of projects and thousands of builders
+                The knowledge exists – earned across hundreds of projects and thousands of builders
                 worldwide. This stack makes it accessible, shared, and compounding. Open source.
                 Owned by no one. Useful to everyone in the movement.
               </p>
@@ -504,7 +504,7 @@ export default function TechStack() {
                   symbol: '○',
                   dot: 'var(--green)',
                   title: 'Software built for this work',
-                  desc: 'Purpose-built for the full lifecycle of regenerative neighborhood development — from first vision to daily operations.',
+                  desc: 'Purpose-built for the full lifecycle of regenerative neighborhood development – from first vision to daily operations.',
                 },
                 {
                   symbol: '△',
@@ -516,7 +516,7 @@ export default function TechStack() {
                   symbol: '□',
                   dot: 'var(--yellow)',
                   title: 'Builders working together',
-                  desc: 'A network of developers, practitioners, and community builders working on the same problems — sharing knowledge instead of reinventing it.',
+                  desc: 'A network of developers, practitioners, and community builders working on the same problems – sharing knowledge instead of reinventing it.',
                 },
               ].map((p, i) => (
                 <motion.div key={p.title} variants={fadeUp} style={{
@@ -584,7 +584,7 @@ export default function TechStack() {
             </motion.div>
           </motion.div>
 
-          {/* Tool cards — 3-col floating grid */}
+          {/* Tool cards – 3-col floating grid */}
           <motion.div
             initial="hidden" whileInView="visible" variants={stagger} viewport={vp}
             className="ts-tools-grid"
@@ -676,7 +676,7 @@ export default function TechStack() {
                           color: value ? TEXT : 'rgba(237,237,237,0.2)',
                           fontStyle: value ? 'normal' : 'italic',
                         }}>
-                          {value || '—'}
+                          {value || '–'}
                         </p>
                       </div>
                     ))}
@@ -754,7 +754,7 @@ export default function TechStack() {
                   lineHeight: '1.65', marginBottom: '40px',
                 }}>
                   Social-networking platform for people, projects and solutions in the
-                  Regenerative Neighborhood movement — a modular, interconnected platform
+                  Regenerative Neighborhood movement – a modular, interconnected platform
                   that brings the entire stack together. Currently 1,400 users, with v2
                   open-source in development.
                 </p>
@@ -825,14 +825,14 @@ export default function TechStack() {
                 fontSize: '18px', fontWeight: '300', color: MUTED,
                 lineHeight: '1.75', maxWidth: '520px',
               }}>
-                A modular internet and intranet stack for regenerative neighborhoods —
+                A modular internet and intranet stack for regenerative neighborhoods –
                 currently in development. Each module can be used independently or
                 as part of the full connected network, giving neighborhoods the digital
                 infrastructure they need to form, grow, and thrive.
               </p>
             </motion.div>
 
-            {/* Module grid — 4 columns */}
+            {/* Module grid – 4 columns */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }} className="ts-modules-grid">
               {modulesV2.map((mod, i) => {
                 const totalCols = 4
@@ -911,7 +911,7 @@ export default function TechStack() {
                   fontSize: '20px', fontWeight: '300', color: MUTED, lineHeight: '1.7',
                 }}>
                   This stack isn&apos;t owned by any one organization. It can be contributed to and
-                  used by everyone in the regenerative neighborhood movement — people from all
+                  used by everyone in the regenerative neighborhood movement – people from all
                   walks of life who believe this way of living matters and are doing something about it.
                 </motion.p>
               </div>
@@ -957,7 +957,7 @@ export default function TechStack() {
       </section>
 
       {/* ════════════════════════════════
-          CTA — green full-bleed
+          CTA – green full-bleed
       ════════════════════════════════ */}
       <section className="ts-cta-section" style={{ backgroundColor: 'var(--green)', padding: '140px 0' }}>
         <div className="wrap" style={wrap}>
@@ -980,7 +980,7 @@ export default function TechStack() {
               maxWidth: '520px', marginBottom: '56px',
             }}>
               All tools are open source and actively developed. Pick a module, open an issue,
-              or reach out — collaborators are welcome at every level.
+              or reach out – collaborators are welcome at every level.
             </motion.p>
 
             <motion.div variants={fadeUp} style={{
@@ -1000,7 +1000,7 @@ export default function TechStack() {
 
       {/* ── Responsive + Ticker CSS ── */}
       <style>{`
-        /* Hero shape float — CSS only, no Framer Motion conflict */
+        /* Hero shape float – CSS only, no Framer Motion conflict */
         @keyframes hero-float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-17px); } }
         .hero-fl-a { animation: hero-float 5.2s ease-in-out 0.0s infinite; }
         .hero-fl-b { animation: hero-float 6.0s ease-in-out 0.7s infinite; }
@@ -1042,7 +1042,7 @@ export default function TechStack() {
           .ts-pillars-grid > div:first-child { padding-top: 0 !important; }
           .ts-pillars-grid > div:last-child  { border-bottom: none !important; padding-bottom: 0 !important; }
 
-          /* Tool cards — stack to 1-col, keep card box */
+          /* Tool cards – stack to 1-col, keep card box */
           .ts-tools-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .ts-tools-grid > div { padding: 28px !important; }
 
@@ -1066,7 +1066,7 @@ export default function TechStack() {
           .ts-modules-grid,
           .ts-collective-types { padding-left: 0 !important; padding-right: 0 !important; }
 
-          /* Wrap containers — override inline padding */
+          /* Wrap containers – override inline padding */
           section > div, .ts-card-wrap { padding-left: 20px !important; padding-right: 20px !important; }
 
           /* Section vertical padding */

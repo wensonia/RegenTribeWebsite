@@ -36,12 +36,12 @@ const c1Strategy: C1Row[] = [
   },
   {
     offering: 'Discovery meeting / call',
-    subitems: [{ label: 'WHY — we discuss your high level intention, big why' }],
+    subitems: [{ label: 'WHY – we discuss your high level intention, big why' }],
     price: '$100', time: '1–2 h',
   },
   {
     offering: 'Community Culture Canvas Workshop\nCommunity visioning documentation review',
-    subitems: [{ label: 'HOW — community visioning review documentation. Assessment of your project\'s purpose and how you embody it — Culture canvas, Community / Business plan' }],
+    subitems: [{ label: 'HOW – community visioning review documentation. Assessment of your project\'s purpose and how you embody it – Culture canvas, Community / Business plan' }],
     price: '$200', time: '2 h',
   },
   {
@@ -214,7 +214,7 @@ const c3Workshops = [
   { cat: 'Community Co.Creation Workshops', items: ['Community Ideation', 'Community Design', 'Community Building', 'Community Activation'] },
 ]
 const c3Programs = [
-  { title: 'Energy Exchange Program', desc: 'We activate an energy exchange program — recruiting key roles and creating structure for volunteer members to contribute to the community' },
+  { title: 'Energy Exchange Program', desc: 'We activate an energy exchange program – recruiting key roles and creating structure for volunteer members to contribute to the community' },
   { title: 'Residents Recruitment', desc: 'Recruitment campaign to bring in more guests and mid & long term residents through various channels' },
   { title: 'Local Community Relations Program', desc: 'Assessment of your local area and a campaign to connect with neighbors, identify needs & offerings, and form win-win relationships' },
 ]
@@ -226,7 +226,7 @@ function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
   return (
     <motion.div variants={fadeUp} style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '20px 0', display: 'flex', flexDirection: 'column', gap: '8px' }}>
       {subs.length === 0 ? (
-        // No subitems — single flat row
+        // No subitems – single flat row
         <div className="offering-row-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
           <p className="col-offering" style={{ fontSize: '14px', fontWeight: '600', color: 'white', paddingRight: '24px', lineHeight: '1.5', whiteSpace: 'pre-line', margin: 0 }}>{row.offering}</p>
           <div className="col-empty" />
@@ -234,7 +234,7 @@ function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
           <p className="col-time" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', textAlign: 'right', margin: 0 }}>{row.time || ''}</p>
         </div>
       ) : (
-        // One grid row per subitem — offering name only on first row, all columns level
+        // One grid row per subitem – offering name only on first row, all columns level
         subs.map((sub, i) => (
           <div key={i} className="offering-row-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 100px 80px', alignItems: 'start' }}>
             {/* Col 1: offering label only on first row */}
@@ -244,7 +244,7 @@ function OfferingRow({ row, accent }: { row: C1Row; accent: string }) {
             }
             {/* Col 2: outcome / subitem description */}
             <div className="col-outcome" style={{ paddingRight: '24px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-              <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>—</span>
+              <span style={{ color: accent, fontSize: '12px', flexShrink: 0, marginTop: '3px' }}>–</span>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', lineHeight: '1.5', margin: 0 }}>{sub.label}</p>
             </div>
             {/* Col 3: per-subitem price, or section price on first row */}
@@ -299,14 +299,14 @@ export default function BreakdownPage() {
               Process breakdown.
             </motion.h1>
             <motion.p variants={fadeUp} style={{ fontSize: '18px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.7', maxWidth: '600px', marginBottom: '48px' }}>
-              A detailed look at everything we do across our three cycles — what we offer, what you get, and how long it takes.
+              A detailed look at everything we do across our three cycles – what we offer, what you get, and how long it takes.
             </motion.p>
             {/* Cycle pill nav */}
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {[
-                { label: 'Cycle 1 — Understand', color: 'var(--green)', href: '#cycle1' },
-                { label: 'Cycle 2 — Optimize', color: 'var(--pink)', href: '#cycle2' },
-                { label: 'Cycle 3 — Activate', color: 'var(--blue)', href: '#cycle3' },
+                { label: 'Cycle 1 – Understand', color: 'var(--green)', href: '#cycle1' },
+                { label: 'Cycle 2 – Optimize', color: 'var(--pink)', href: '#cycle2' },
+                { label: 'Cycle 3 – Activate', color: 'var(--blue)', href: '#cycle3' },
               ].map(({ label, color, href }) => (
                 <a key={label} href={href} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '600', letterSpacing: '0.05em', color: 'white', backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '9999px', padding: '10px 20px', textDecoration: 'none' }}>
                   <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: color }} />
@@ -375,7 +375,7 @@ export default function BreakdownPage() {
               optimize.
             </motion.h2>
             <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', color: 'rgba(255,255,255,0.5)', lineHeight: '1.7', maxWidth: '680px', marginBottom: '16px' }}>
-              We design and optimize your Regenerative Neighborhood plan based on the 11-step Community Alchemy Guide ©. Every project has different parts done at different levels of completion — we ask the questions that are crucial for success, share proven solutions, and connect you with verified service providers.
+              We design and optimize your Regenerative Neighborhood plan based on the 11-step Community Alchemy Guide ©. Every project has different parts done at different levels of completion – we ask the questions that are crucial for success, share proven solutions, and connect you with verified service providers.
             </motion.p>
             <motion.p variants={fadeUp} style={{ fontSize: '14px', fontWeight: '500', color: 'rgba(255,255,255,0.35)', marginBottom: '64px', fontStyle: 'italic' }}>
               Pricing and time vary based on the size of your project, needs, and current status.
@@ -400,7 +400,7 @@ export default function BreakdownPage() {
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '7px' }}>
                     {step.items.map((item) => (
                       <li key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                        <span style={{ color: step.color, fontWeight: '700', flexShrink: 0, fontSize: '12px', marginTop: '2px' }}>—</span>
+                        <span style={{ color: step.color, fontWeight: '700', flexShrink: 0, fontSize: '12px', marginTop: '2px' }}>–</span>
                         <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item}</span>
                       </li>
                     ))}
@@ -424,7 +424,7 @@ export default function BreakdownPage() {
               activate.
             </motion.h2>
             <motion.p variants={fadeUp} style={{ fontSize: '17px', fontWeight: '300', color: 'rgba(255,255,255,0.5)', lineHeight: '1.7', maxWidth: '620px', marginBottom: '16px' }}>
-              We come to your neighborhood to bring the plan to life — activating your community, amplifying your story, and connecting you to the right people and systems.
+              We come to your neighborhood to bring the plan to life – activating your community, amplifying your story, and connecting you to the right people and systems.
             </motion.p>
             <motion.p variants={fadeUp} style={{ fontSize: '14px', fontWeight: '500', color: 'rgba(255,255,255,0.35)', marginBottom: '64px', fontStyle: 'italic' }}>
               Pricing and time vary based on the size of your project, needs, and current status.
@@ -488,7 +488,7 @@ export default function BreakdownPage() {
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {cat.items.map((item) => (
                         <li key={item} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                          <span style={{ color: 'var(--yellow)', fontWeight: '700', flexShrink: 0, fontSize: '12px' }}>—</span>
+                          <span style={{ color: 'var(--yellow)', fontWeight: '700', flexShrink: 0, fontSize: '12px' }}>–</span>
                           <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', lineHeight: '1.5' }}>{item}</span>
                         </li>
                       ))}

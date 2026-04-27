@@ -80,7 +80,7 @@ export default function BlogPage() {
             <motion.p variants={fadeUp} style={{
               fontSize: '18px', lineHeight: 1.7, color: 'var(--text-muted)', maxWidth: '560px',
             }}>
-              Documenting the journey of regenerative neighborhood development around the world — stories, updates, and insights from the Regen Tribe collective.
+              Documenting the journey of regenerative neighborhood development around the world – stories, updates, and insights from the Regen Tribe collective.
             </motion.p>
           </motion.div>
         </div>

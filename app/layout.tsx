@@ -18,11 +18,14 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Regen Tribe — Regenerative Neighborhood Accelerator',
+  title: 'Regen Tribe – Regenerative Neighborhood Accelerator',
   description:
     'The Regen Tribe ecosystem connects people, projects & solutions so we can create more regenerative neighborhoods around the world.',
   icons: {
-    icon: '/icon.png',
+    icon: [
+      { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
     apple: '/apple-icon.png',
   },
   openGraph: {
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
         url: 'https://regentribe.co/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Regen Tribe — Regenerative Neighborhood Accelerator',
+        alt: 'Regen Tribe – Regenerative Neighborhood Accelerator',
       },
     ],
   },
@@ -81,7 +84,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
 
-        {/* NEWSLETTER CTA — appears on every page above footer */}
+        {/* NEWSLETTER CTA – appears on every page above footer */}
         <NewsletterCTA />
 
         {/* FOOTER */}
@@ -128,7 +131,7 @@ export default function RootLayout({
                     maxWidth: '220px',
                   }}
                 >
-                  Building a global ecosystem of regenerative neighborhoods — for people and planet.
+                  Building a global ecosystem of regenerative neighborhoods – for people and planet.
                 </p>
               </div>
 

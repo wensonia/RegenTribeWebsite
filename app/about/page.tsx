@@ -76,7 +76,7 @@ const members: Member[] = [
 /* ── Archetypes ── */
 const archetypes = [
   { name: 'Vision Holders',    color: '#808aeb', textLight: true,  shape: '△', description: 'Individuals and teams actively creating a Regenerative Neighborhood. You have a vision for intentional community and are building it into reality.' },
-  { name: 'Service Providers', color: '#6fc6a2', textLight: false, shape: '□', description: 'Professionals offering skills, services, and products for creating Regenerative Neighborhoods — builders, designers, systems experts, coaches, and beyond.' },
+  { name: 'Service Providers', color: '#6fc6a2', textLight: false, shape: '□', description: 'Professionals offering skills, services, and products for creating Regenerative Neighborhoods – builders, designers, systems experts, coaches, and beyond.' },
   { name: 'Community Members', color: '#f16ab0', textLight: true,  shape: '○', description: 'Individuals living in or looking for a Regenerative Neighborhood to call home. Seeking deeper connection, purpose, and a healthier way of life.' },
   { name: 'Resource Holders',  color: '#ffe682', textLight: false, shape: '◇', description: 'Those with land, capital, or resources to support Regenerative Neighborhood development. Your assets can seed the next generation of communities.' },
   { name: 'Regen Curious',     color: '#363636', textLight: true,  shape: '⬡', description: 'Drawn to the regenerative movement but still finding your place. Learning, exploring, and figuring out how you want to contribute to a better world.' },
@@ -309,7 +309,7 @@ export default function AboutPage() {
                 </motion.div>
               ))}
             </div>
-            {/* Quote — right-aligned below cards */}
+            {/* Quote – right-aligned below cards */}
             <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '32px' }}>
               <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: '400', fontStyle: 'italic', color: 'var(--text)', opacity: 0.35, margin: 0, textAlign: 'right', lineHeight: '1.25' }}>
                 it takes a village.
@@ -332,7 +332,7 @@ export default function AboutPage() {
                 We are always growing.
               </h2>
               <p style={{ fontSize: '18px', lineHeight: '1.7', maxWidth: '520px', margin: '0 auto', opacity: 0.65 }}>
-                Whether you are building a community, offering your skills, looking for a place to call home, or simply regen curious — there is a place for you in Regen Tribe.
+                Whether you are building a community, offering your skills, looking for a place to call home, or simply regen curious – there is a place for you in Regen Tribe.
               </p>
             </motion.div>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>

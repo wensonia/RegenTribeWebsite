@@ -60,7 +60,7 @@ const archetypes = [
       { step: 'Share Your Vision', desc: 'Tell us about your land project, your goals, and your community vision.' },
       { step: 'Get a Consultation', desc: 'Our agency team helps you assess your project and create a regenerative development plan.' },
       { step: 'Access Tools & Network', desc: 'Use the Alchemy Guide, connect with service providers, and tap into the Tribes Platform network.' },
-      { step: 'Grow Your Neighborhood', desc: 'From empowered to activated to fully regenerative — we support you at every phase.' },
+      { step: 'Grow Your Neighborhood', desc: 'From empowered to activated to fully regenerative – we support you at every phase.' },
     ],
     cta: { label: 'Get Agency Support', href: '/agency', external: false },
   },
@@ -74,7 +74,7 @@ const archetypes = [
     journey: [
       { step: 'Explore Communities', desc: 'Browse our database of 60+ Regenerative Neighborhoods worldwide on the Tribes Platform.' },
       { step: 'Connect with Residents', desc: 'Join community calls, visit Community Labs, and find the right fit for your lifestyle.' },
-      { step: 'Apply & Move In', desc: 'Each neighborhood has its own process — we help you navigate it.' },
+      { step: 'Apply & Move In', desc: 'Each neighborhood has its own process – we help you navigate it.' },
     ],
     cta: { label: 'Browse Neighborhoods', href: 'https://tribesplatform.app', external: true },
   },
@@ -101,7 +101,7 @@ const archetypes = [
     tagline: 'I have land or capital to invest in Regenerative Neighborhoods',
     journey: [
       { step: 'Discover Opportunities', desc: 'Review our portfolio of active and upcoming regenerative land development projects.' },
-      { step: 'Choose Your Model', desc: 'Invest through equity, revenue sharing, or direct land partnerships — multiple models available.' },
+      { step: 'Choose Your Model', desc: 'Invest through equity, revenue sharing, or direct land partnerships – multiple models available.' },
       { step: 'Partner with Us', desc: 'Work with our team and Vision Holders to bring regenerative neighborhoods to life.' },
     ],
     cta: { label: 'Learn About Contributing', href: 'https://regentribe.notion.site/Resource-holder-12abfd4bcbe8806c967ce086e42d5609', external: true },
@@ -128,8 +128,8 @@ const journeySteps = [
     emoji: '🌿',
     desc: 'Engage with the movement, share the mission, and take on focused tasks.',
     tasks: [
-      'Level 1 — engage on socials, join group calls, invite friends',
-      'Level 2 — take on specific roles aligned with your skills',
+      'Level 1 – engage on socials, join group calls, invite friends',
+      'Level 2 – take on specific roles aligned with your skills',
     ],
     perks: ['Earn Hugs points by logging hours', 'Community Lab invites', 'Network access for your needs'],
   },
@@ -367,7 +367,7 @@ function ResourceHolderForm({ arch }: { arch: typeof archetypes[number] }) {
       </div>
       {status === 'error' && (
         <p style={{ fontSize: '13px', color: 'var(--pink)', marginTop: '8px' }}>
-          Something went wrong — please try again.
+          Something went wrong – please try again.
         </p>
       )}
     </form>
@@ -456,7 +456,7 @@ export default function JoinPage() {
               maxWidth: '600px', margin: '0 auto 40px',
             }}>
               Choose the path that fits you in the Regenerative Neighborhood movement.
-              Whether you have a project or want to contribute your skills — there&apos;s a place for you.
+              Whether you have a project or want to contribute your skills – there&apos;s a place for you.
             </motion.p>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <PillBtn href="#archetypes">I have a project</PillBtn>
@@ -501,7 +501,7 @@ export default function JoinPage() {
                 fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: '400', marginBottom: '12px',
               }}>Your journey in the collective</h2>
               <p style={{ fontSize: '16px', color: 'var(--text-muted)', lineHeight: '1.6', maxWidth: '600px', marginBottom: '48px' }}>
-                Our collective comprises contributors with different levels of involvement. It&apos;s a journey — grow at your own pace.
+                Our collective comprises contributors with different levels of involvement. It&apos;s a journey – grow at your own pace.
               </p>
             </motion.div>
             <motion.div variants={fadeUp} style={{ maxWidth: '680px' }}>
@@ -527,7 +527,7 @@ export default function JoinPage() {
                 fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: '400', marginBottom: '12px',
               }}>Creating collective abundance</h2>
               <p style={{ fontSize: '16px', color: 'var(--text-muted)', lineHeight: '1.6', maxWidth: '600px', marginBottom: '48px' }}>
-                We use traditional compensation alongside community models of exchange — sharing what we have in abundance for what you have in abundance.
+                We use traditional compensation alongside community models of exchange – sharing what we have in abundance for what you have in abundance.
               </p>
             </motion.div>
             <div className="value-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px' }}>

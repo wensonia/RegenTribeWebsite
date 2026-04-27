@@ -7,7 +7,7 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   alt: string
   sizes?: string
   loading?: 'lazy' | 'eager'
-  /** Skip WebP/srcset — use raw <img> (e.g. for tiny icons) */
+  /** Skip WebP/srcset – use raw <img> (e.g. for tiny icons) */
   skipOptimization?: boolean
   /** Extra width variants that exist alongside the base -640w.webp (e.g. [1024, 1920]) */
   extraWidths?: number[]
@@ -16,7 +16,7 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
 /**
  * Resolves WebP path and responsive srcset from an original image path.
  * All images are expected to have: photo.webp and photo-640w.webp
- * Larger breakpoints (1024w, 1920w) are optional — pass them via the
+ * Larger breakpoints (1024w, 1920w) are optional – pass them via the
  * `extraWidths` prop so we never reference files that don't exist.
  */
 function getWebPPaths(src: string, extraWidths?: number[]) {

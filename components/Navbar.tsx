@@ -205,7 +205,7 @@ function MobileNavItem({ item, onClose }: { item: NavItem; onClose: () => void }
 
   return (
     <div style={{ borderBottom: '1px solid var(--border)' }}>
-      {/* Parent row — tap toggles accordion, link still goes to parent page */}
+      {/* Parent row – tap toggles accordion, link still goes to parent page */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '16px 0' }}>
         <Link href={item.href} onClick={onClose}
           style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '20px', fontWeight: '400', color: 'var(--text)', textDecoration: 'none', flexGrow: 1 }}>

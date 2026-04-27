@@ -107,9 +107,9 @@ const testimonials = [
 ]
 
 const faqs = [
-  { q: 'What is a regenerative neighborhood?', a: 'A regenerative neighborhood is a community land development with resilient systems for water, food, energy, waste management, nature & human connection — designed to have a net positive effect on people and the planet.' },
+  { q: 'What is a regenerative neighborhood?', a: 'A regenerative neighborhood is a community land development with resilient systems for water, food, energy, waste management, nature & human connection – designed to have a net positive effect on people and the planet.' },
   { q: 'Where are you building neighborhoods?', a: 'We are actively collaborating with projects in Mexico (Aldea Kuyabeh, La Reserva), Costa Rica (La Ecovilla), Germany (MOOS Space), and California (WildSeeds Ranch), with more alliance partner sites globally.' },
-  { q: 'Can I buy a home in a regenerative neighborhood?', a: 'Yes — we are developing land and real estate opportunities. Reach out to us to learn more about current openings at our partner sites and upcoming developments.' },
+  { q: 'Can I buy a home in a regenerative neighborhood?', a: 'Yes – we are developing land and real estate opportunities. Reach out to us to learn more about current openings at our partner sites and upcoming developments.' },
   { q: 'Can I join Regen Tribe?', a: 'Absolutely. We are always looking for ambassadors, collaborators, and core team members. Visit the Tribes Platform or reach out to hello@regentribe.co to find your role.' },
   { q: 'Where can I see the list of regenerative neighborhoods?', a: 'The full global database of regenerative neighborhoods is on the Tribes Platform at tribesplatform.app.' },
   { q: 'How do I start my own community project?', a: 'Start with our 11-step Alchemy Guide on the Tribes Platform. You can also reach out to the Regen Tribe Agency for direct consulting support.' },
@@ -159,7 +159,7 @@ export default function Home() {
                 marginBottom: '40px',
               }}>
                 <p style={{ fontSize: '13px', fontWeight: '400', color: 'var(--text-muted)', lineHeight: '1.6', fontStyle: 'italic' }}>
-                  regenerative neighborhood <span style={{ fontStyle: 'normal', opacity: 0.5 }}>/noun/</span> — community land development with resilient systems for water, food, shelter, energy, waste management, nature &amp; human connection.
+                  regenerative neighborhood <span style={{ fontStyle: 'normal', opacity: 0.5 }}>/noun/</span> – community land development with resilient systems for water, food, shelter, energy, waste management, nature &amp; human connection.
                 </p>
               </motion.div>
 
@@ -172,7 +172,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right: color panels — hover expands, click navigates */}
+            {/* Right: color panels – hover expands, click navigates */}
             <motion.div initial="hidden" animate="visible" variants={stagger} className="hero-panels"
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               {heroPanels.map((panel) => {
@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* ════════════════════════════════
-          OUR WHY — Challenge + Solution
+          OUR WHY – Challenge + Solution
       ════════════════════════════════ */}
       <section className="sec" style={{ padding: '120px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
@@ -231,10 +231,10 @@ export default function Home() {
                   The challenge.
                 </h2>
                 <p style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '20px' }}>
-                  We face urgent global challenges — resource scarcity, climate change, social inequality, and loneliness — demanding collective action to reshape our systems.
+                  We face urgent global challenges – resource scarcity, climate change, social inequality, and loneliness – demanding collective action to reshape our systems.
                 </p>
                 <p style={{ fontSize: '20px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', marginBottom: '40px' }}>
-                  Society&apos;s flawed development is making essential resources scarce — and the change starts in our neighborhood.
+                  Society&apos;s flawed development is making essential resources scarce – and the change starts in our neighborhood.
                 </p>
                 <TextLink href="https://tribesplatform.app" external>Read our documentation</TextLink>
               </motion.div>
@@ -260,7 +260,7 @@ export default function Home() {
                   ))}
                 </div>
                 <p style={{ fontSize: '18px', fontWeight: '300', lineHeight: '1.65', color: 'var(--text-muted)', fontFamily: 'var(--font-lora), Georgia, serif', fontStyle: 'italic' }}>
-                  We call these places <em>regenerative neighborhoods</em> — because they have a positive effect on humans, the environment, &amp; can adapt to change. Let&apos;s build more.
+                  We call these places <em>regenerative neighborhoods</em> – because they have a positive effect on humans, the environment, &amp; can adapt to change. Let&apos;s build more.
                 </p>
               </motion.div>
             </div>
@@ -431,7 +431,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/blog/q3-2023-community-lab-moos-5.jpg"
-                  alt="Regen Tribe team — Berlin, 2023"
+                  alt="Regen Tribe team – Berlin, 2023"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                 />
               </motion.div>
@@ -581,7 +581,7 @@ export default function Home() {
               fontSize: '20px', fontWeight: '300', color: 'var(--text)', opacity: 0.7,
               lineHeight: '1.65', maxWidth: '520px', marginBottom: '16px',
             }}>
-              Whether you&apos;re an individual seeking community, a visionary with land, a skilled professional, or an impact investor — there is a vital role for you within Regen Tribe.
+              Whether you&apos;re an individual seeking community, a visionary with land, a skilled professional, or an impact investor – there is a vital role for you within Regen Tribe.
             </motion.p>
             <motion.p variants={fadeUp} style={{ fontSize: '16px', fontWeight: '400', color: 'var(--text)', opacity: 0.5, marginBottom: '56px' }}>
               hello@regentribe.co
@@ -591,7 +591,7 @@ export default function Home() {
               <TextLink href="/about">More about us</TextLink>
             </motion.div>
             <motion.p variants={fadeUp} style={{ marginTop: '56px', fontSize: '13px', fontWeight: '400', letterSpacing: '0.05em', color: 'var(--text)', opacity: 0.35 }}>
-              Regen Tribe — let&apos;s re.develop the society
+              Regen Tribe – let&apos;s re.develop the society
             </motion.p>
           </motion.div>
         </div>

@@ -142,7 +142,7 @@ const features = [
   },
   {
     title: 'User Profiles',
-    description: 'Create an individual profile to share your bio, your skills, and your ideal community — while connecting with others in the network.',
+    description: 'Create an individual profile to share your bio, your skills, and your ideal community – while connecting with others in the network.',
     cta: 'Meet the Tribe',
     href: 'https://tribesplatform.app/members/',
     shape: '△',
@@ -160,7 +160,7 @@ const features = [
   },
   {
     title: 'Community Feed',
-    description: 'Follow topics, projects, and people — get updates of their journey on your feed and stay connected with the movement.',
+    description: 'Follow topics, projects, and people – get updates of their journey on your feed and stay connected with the movement.',
     cta: 'See the Feed',
     href: 'https://tribesplatform.app/',
     shape: '○',
@@ -169,7 +169,7 @@ const features = [
   },
   {
     title: 'Community Alchemy Guide',
-    description: 'A curated 11-step best practices guide to create regenerative neighborhoods — from vision to living ecosystem.',
+    description: 'A curated 11-step best practices guide to create regenerative neighborhoods – from vision to living ecosystem.',
     cta: 'Get the Guide',
     href: 'https://tribesplatform.app/alchemy/',
     shape: '△',
@@ -200,17 +200,17 @@ const extras = [
 const modulesV2 = [
   { id: '01', name: 'Community Network',     desc: 'Profile-based discovery for community builders, vision holders, and service providers. Search, swipe, and connect with people building regenerative neighborhoods worldwide.', status: 'Building', color: 'var(--green)' },
   { id: '02', name: 'Neighborhood Directory', desc: 'Explore regenerative neighborhoods on a live map. Check in as a visitor, leave a guest book entry, and find communities that match your values.', status: 'Building', color: 'var(--green)' },
-  { id: '03', name: 'Blueprint',             desc: 'The Regenerative Neighborhood Wizard — a guided, step-by-step design framework for planning your community. Built on the 5-Spiral model and Community Alchemy Guide.', status: 'Building', color: 'var(--green)' },
-  { id: '04', name: 'Resources & Tools',     desc: 'A curated, community-powered archive of regenerative resources — articles, tools, case studies, guides, and templates. Searchable, filterable, continuously growing.', status: 'Building', color: 'var(--green)' },
-  { id: '05', name: 'Movement Updates',      desc: 'A living timeline of the movement. Share updates, celebrate milestones, follow the communities and people you care about — the pulse of regenerative neighborhood life.', status: 'Building', color: 'var(--green)' },
+  { id: '03', name: 'Blueprint',             desc: 'The Regenerative Neighborhood Wizard – a guided, step-by-step design framework for planning your community. Built on the 5-Spiral model and Community Alchemy Guide.', status: 'Building', color: 'var(--green)' },
+  { id: '04', name: 'Resources & Tools',     desc: 'A curated, community-powered archive of regenerative resources – articles, tools, case studies, guides, and templates. Searchable, filterable, continuously growing.', status: 'Building', color: 'var(--green)' },
+  { id: '05', name: 'Movement Updates',      desc: 'A living timeline of the movement. Share updates, celebrate milestones, follow the communities and people you care about – the pulse of regenerative neighborhood life.', status: 'Building', color: 'var(--green)' },
   { id: '06', name: 'Join',                  desc: 'Apply to live in or collaborate with a regenerative neighborhood. Manages the full onboarding flow from initial inquiry to welcome.', status: 'Building', color: 'var(--green)' },
   { id: '07', name: 'Pacts',                 desc: 'Digital agreements and payment rails for community participation. Sign living agreements, set up recurring contributions, and manage financial commitments.', status: 'Planned', color: 'var(--blue)' },
-  { id: '08', name: 'Operations',            desc: 'Internal operations for community teams — project boards, task assignment, budget tracking, and reporting. Everything a neighborhood needs to self-organize.', status: 'Planned', color: 'var(--blue)' },
+  { id: '08', name: 'Operations',            desc: 'Internal operations for community teams – project boards, task assignment, budget tracking, and reporting. Everything a neighborhood needs to self-organize.', status: 'Planned', color: 'var(--blue)' },
   { id: '09', name: 'Community Glue',        desc: 'AI-powered pairing of people to communities, collaborators to projects, and skills to needs. The intelligence layer that puts the right people in the right places.', status: 'Building', color: 'var(--green)' },
   { id: '10', name: 'Governance',            desc: 'An AI-facilitated governance layer for community decision-making. Mediates conflicts, surfaces proposals, and guides transparent, values-aligned decisions.', status: 'Planned', color: 'var(--blue)' },
   { id: '11', name: 'Contribution Tracking', desc: 'Reputation points and badges that recognize participation across the ecosystem. Makes regenerative action visible, rewarding, and portable across communities.', status: 'Planned', color: 'var(--blue)' },
   { id: '12', name: 'AI Personal Assistant', desc: 'Your personal AI guide through the Regen Tribe ecosystem. Answers questions, surfaces opportunities, tracks your journey, and helps you navigate.', status: 'Planned', color: 'var(--pink)' },
-  { id: '13', name: 'Hive',                  desc: 'The inter-community layer — connecting neighborhoods into a living network. Share resources, knowledge, surplus, and people across the ecosystem.', status: 'Planned', color: 'var(--blue)' },
+  { id: '13', name: 'Hive',                  desc: 'The inter-community layer – connecting neighborhoods into a living network. Share resources, knowledge, surplus, and people across the ecosystem.', status: 'Planned', color: 'var(--blue)' },
 ]
 
 const audiences = [
@@ -297,7 +297,7 @@ export default function TribesPlatformPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/tribes-platform/hero-mockup.png"
-                alt="Tribes Platform — neighborhood profiles and user profiles"
+                alt="Tribes Platform – neighborhood profiles and user profiles"
                 style={{ width: '100%', maxWidth: '540px', height: 'auto', display: 'block', filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.25))' }}
               />
             </motion.div>
@@ -467,7 +467,7 @@ export default function TribesPlatformPage() {
       </section>
 
       {/* ════════════════════════════════
-          PLATFORM FEATURES — ALT (floating boxes)
+          PLATFORM FEATURES – ALT (floating boxes)
       ════════════════════════════════ */}
       <section className="sec" style={{ backgroundColor: 'var(--bg)', padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
@@ -483,7 +483,7 @@ export default function TribesPlatformPage() {
                 marginBottom: '16px',
               }}
             >
-              Explore the Platform — Alt Layout
+              Explore the Platform – Alt Layout
             </motion.p>
 
             <motion.h2
@@ -502,7 +502,7 @@ export default function TribesPlatformPage() {
             </motion.h2>
           </motion.div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '32px' }}>
             {features.map((f) => (
               <motion.a
                 key={f.title}
@@ -575,7 +575,7 @@ export default function TribesPlatformPage() {
               </motion.a>
             ))}
 
-            {/* Extras — fills the 6th grid slot, next to Alchemy Guide */}
+            {/* Extras – fills the 6th grid slot, next to Alchemy Guide */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -684,7 +684,7 @@ export default function TribesPlatformPage() {
       </section>
 
       {/* ════════════════════════════════
-          V2 TRIBES — MYCONET MODULES
+          V2 TRIBES – MYCONET MODULES
       ════════════════════════════════ */}
       <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
@@ -715,7 +715,7 @@ export default function TribesPlatformPage() {
                 maxWidth: '560px',
               }}
             >
-              v2 Tribes — MyCoNet
+              v2 Tribes – MyCoNet
             </motion.h2>
 
             <motion.p
@@ -728,7 +728,7 @@ export default function TribesPlatformPage() {
                 maxWidth: '560px',
               }}
             >
-              A full-stack modular app — 13 interconnected modules on a shared database, from global networking to AI-powered community operations.
+              A full-stack modular app – 13 interconnected modules on a shared database, from global networking to AI-powered community operations.
             </motion.p>
           </motion.div>
 
@@ -957,6 +957,9 @@ export default function TribesPlatformPage() {
             max-width: 380px !important;
             margin: 0 auto;
           }
+        }
+        @media (max-width: 720px) {
+          .features-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 540px) {
           .phone-scroll-img {

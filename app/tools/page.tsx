@@ -158,7 +158,7 @@ export default function ToolsPage() {
       </section>
 
       {/* ════════════════════
-          LEARN — The Hive
+          LEARN – The Hive
       ════════════════════ */}
       <section id="hive" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div className="wrap" style={wrap}>
@@ -192,7 +192,7 @@ export default function ToolsPage() {
                   fontSize: '18px', fontWeight: '300', lineHeight: '1.7',
                   color: 'rgba(54,54,54,0.65)', marginBottom: '40px',
                 }}>
-                  Resource library &amp; forum categorized by topics. The living, crowd-sourced knowledge base for everyone building regenerative neighborhoods — articles, guides, case studies, tools, and templates, continuously growing.
+                  Resource library &amp; forum categorized by topics. The living, crowd-sourced knowledge base for everyone building regenerative neighborhoods – articles, guides, case studies, tools, and templates, continuously growing.
                 </motion.p>
                 <motion.div variants={fadeUp}>
                   <PillBtn href="https://tribesplatform.app/hive/" external bg="var(--green)" textColor="var(--text)">
@@ -201,7 +201,7 @@ export default function ToolsPage() {
                 </motion.div>
               </div>
 
-              {/* Phone mockup — same pattern as tribes-platform page */}
+              {/* Phone mockup – same pattern as tribes-platform page */}
               <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div className="phone-card hive-phone-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block', textAlign: 'center', maxWidth: '240px' }}>
                   <div className="phone-body" style={{ borderTopColor: 'var(--green)' }}>
@@ -265,7 +265,7 @@ export default function ToolsPage() {
       </section>
 
       {/* ════════════════════
-          APPLY — Alchemy Guide + Agent Program
+          APPLY – Alchemy Guide + Agent Program
       ════════════════════ */}
       <section id="alchemy-guide" className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)', backgroundColor: '#f5f5f3' }}>
         <div className="wrap" style={wrap}>
@@ -399,7 +399,7 @@ export default function ToolsPage() {
       </section>
 
       {/* ════════════════════
-          TRACK — RNF
+          TRACK – RNF
       ════════════════════ */}
       <section id="framework" className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div className="wrap" style={wrap}>
@@ -434,7 +434,7 @@ export default function ToolsPage() {
                 fontSize: '18px', fontWeight: '300', lineHeight: '1.7',
                 color: 'rgba(54,54,54,0.65)', marginBottom: '40px',
               }}>
-                A comprehensive playbook and measurement architecture for designing, funding, building, and continuously evaluating regenerative neighborhoods. Built on 5 pillars, 5 development spirals, and gate checkpoints — with quarterly scorecards, annual holistic reviews, and templates throughout.
+                A comprehensive playbook and measurement architecture for designing, funding, building, and continuously evaluating regenerative neighborhoods. Built on 5 pillars, 5 development spirals, and gate checkpoints – with quarterly scorecards, annual holistic reviews, and templates throughout.
               </motion.p>
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
                 <PillBtn href="https://github.com/regentribes/regen-neighborhood-framework" external bg="var(--blue)" textColor="white">
@@ -527,7 +527,7 @@ export default function ToolsPage() {
                 fontSize: '18px', fontWeight: '300', lineHeight: '1.7',
                 color: 'rgba(54,54,54,0.6)', marginBottom: '40px',
               }}>
-                Open-source software tools for the regenerative neighborhood movement. Built by the collective, for the collective — from AI community agents to knowledge graphs and neighborhood planning wizards.
+                Open-source software tools for the regenerative neighborhood movement. Built by the collective, for the collective – from AI community agents to knowledge graphs and neighborhood planning wizards.
               </motion.p>
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 <PillBtn href="/tech-stack" bg="var(--text)" textColor="white">
@@ -566,7 +566,7 @@ export default function ToolsPage() {
       </section>
 
       {/* ════════════════════
-          CONNECT — CTA
+          CONNECT – CTA
       ════════════════════ */}
       <section className="sec" style={{ padding: '120px 0', borderBottom: '1px dashed rgba(54,54,54,0.18)' }}>
         <div style={{ ...wrap, maxWidth: '860px' }}>
@@ -585,7 +585,7 @@ export default function ToolsPage() {
               fontSize: '18px', fontWeight: '300', lineHeight: '1.7',
               color: 'rgba(54,54,54,0.6)', marginBottom: '48px',
             }}>
-              All tools live on the Tribes Platform — the networking and education hub for the regenerative neighborhood movement. Join to access the Hive, the Alchemy Guide, connect with neighborhood builders worldwide, and find communities to be part of.
+              All tools live on the Tribes Platform – the networking and education hub for the regenerative neighborhood movement. Join to access the Hive, the Alchemy Guide, connect with neighborhood builders worldwide, and find communities to be part of.
             </motion.p>
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <PillBtn href="https://tribesplatform.app" external bg="var(--green)" textColor="var(--text)">

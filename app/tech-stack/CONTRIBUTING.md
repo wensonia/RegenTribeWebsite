@@ -4,7 +4,7 @@ Welcome! This page lives at `regentribe.co/tech-stack` and is the public-facing 
 
 ## Scope
 
-**Everything you need to edit is inside `app/tech-stack/`** — you do not need to touch anything else in the repository.
+**Everything you need to edit is inside `app/tech-stack/`** – you do not need to touch anything else in the repository.
 
 ```
 app/tech-stack/
@@ -37,12 +37,12 @@ Find the `modules` array and update the `status` field for the relevant module.
 
 ## Design rules
 
-This page inherits the Regen Tribe design system — please keep these consistent:
+This page inherits the Regen Tribe design system – please keep these consistent:
 
-- **Fonts** — `var(--font-lora)` for headings, `var(--font-open-sans)` for body (set in root layout)
-- **Accent colors** — `var(--green)` · `var(--pink)` · `var(--yellow)` · `var(--blue)` only
-- **Animations** — use the existing `fadeUp` / `stagger` variants; do not invent new motion effects
-- **Icons** — `lucide-react` only, `ArrowRight` at 14px for links/buttons
+- **Fonts** – `var(--font-lora)` for headings, `var(--font-open-sans)` for body (set in root layout)
+- **Accent colors** – `var(--green)` · `var(--pink)` · `var(--yellow)` · `var(--blue)` only
+- **Animations** – use the existing `fadeUp` / `stagger` variants; do not invent new motion effects
+- **Icons** – `lucide-react` only, `ArrowRight` at 14px for links/buttons
 
 ## Running locally
 
@@ -58,4 +58,4 @@ npm run dev
 1. Fork the repo
 2. Create a branch: `git checkout -b update/tool-name-status`
 3. Make your changes in `app/tech-stack/`
-4. Open a pull request — tag `@regentribe` for review
+4. Open a pull request – tag `@regentribe` for review

@@ -116,13 +116,13 @@ const primaryProjects: Project[] = [
     img: '/images/agency/portfolio/community-lab-x.png',
     highlight: true,
     tagline: 'Live-in community and retreat space',
-    description: 'A Regen Tribe direct project — Community Lab X served as a living laboratory for regenerative neighbourhood design, operations, and community activation.',
+    description: 'A Regen Tribe direct project – Community Lab X served as a living laboratory for regenerative neighbourhood design, operations, and community activation.',
     services: [
       'Infrastructure and community design',
       'Operations management',
       'Volunteer programs',
       'Event programming',
-      'Sustainable systems — waste management, fruit garden, manufactured wetland',
+      'Sustainable systems – waste management, fruit garden, manufactured wetland',
       'Business model development for hospitality, events, kitchen, and community enterprises',
     ],
     website: 'https://www.regentribe.org/comlabx',
@@ -137,8 +137,8 @@ const primaryProjects: Project[] = [
     services: [
       'Community launch and operations management',
       'Volunteer program setup',
-      'Sustainable systems — organic waste, vertical garden',
-      'Managed €150k expansion — housing, solar, water systems',
+      'Sustainable systems – organic waste, vertical garden',
+      'Managed €150k expansion – housing, solar, water systems',
       'Branding, social media, and events marketing',
       'Project management',
     ],
@@ -273,7 +273,7 @@ export default function Agency() {
   return (
     <>
       {/* ════════════════════════════════
-          HERO — full-bleed dark photo
+          HERO – full-bleed dark photo
       ════════════════════════════════ */}
       <section style={{
         position: 'relative',
@@ -351,13 +351,13 @@ export default function Agency() {
       </section>
 
       {/* ════════════════════════════════
-          ACCELERATOR — 2-col, photo + content
+          ACCELERATOR – 2-col, photo + content
       ════════════════════════════════ */}
       <section style={{ borderBottom: '1px solid var(--border)', minHeight: '90vh', display: 'flex', alignItems: 'stretch', overflow: 'hidden' }}>
         <div style={{ ...wrap, display: 'flex', alignItems: 'stretch', width: '100%', padding: '0 40px' }}>
           <div className="agency-2col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center', width: '100%' }}>
 
-            {/* Left: photo — stretches to match text height */}
+            {/* Left: photo – stretches to match text height */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -420,7 +420,7 @@ export default function Agency() {
       </section>
 
       {/* ════════════════════════════════
-          HOW WE DO IT — dark, 3 cycles
+          HOW WE DO IT – dark, 3 cycles
       ════════════════════════════════ */}
       <section id="process" className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
         <div className="wrap" style={wrap}>
@@ -503,7 +503,7 @@ export default function Agency() {
                             <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: i === 0 ? 'var(--green)' : i === 1 ? 'var(--pink)' : 'var(--blue)', flexShrink: 0, marginTop: '8px' }} />
                             <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.75)', lineHeight: '1.6' }}>
                               <strong style={{ fontWeight: '600', color: 'white' }}>{b.label}</strong>
-                              {' '}— {b.detail}
+                              {' '}– {b.detail}
                             </p>
                           </div>
                         ))}
@@ -525,7 +525,7 @@ export default function Agency() {
       </section>
 
       {/* ════════════════════════════════
-          PORTFOLIO — 4-col grid
+          PORTFOLIO – 4-col grid
       ════════════════════════════════ */}
       <section id="portfolio" className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
@@ -608,7 +608,7 @@ export default function Agency() {
             ))}
           </motion.div>
 
-          {/* Secondary projects — smaller, muted */}
+          {/* Secondary projects – smaller, muted */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -640,7 +640,7 @@ export default function Agency() {
       </section>
 
       {/* ════════════════════════════════
-          COLLECTIVE — dark, photo + copy
+          COLLECTIVE – dark, photo + copy
       ════════════════════════════════ */}
       <section style={{ backgroundColor: 'var(--text)', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '100px 0' }}>
         <div style={{ ...wrap, width: '100%' }}>
@@ -674,7 +674,7 @@ export default function Agency() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/agency/fenix-farms.png"
-                  alt="Fenix Farms — agroforestry team"
+                  alt="Fenix Farms – agroforestry team"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                 />
                 {/* Caption overlay */}
@@ -710,7 +710,7 @@ export default function Agency() {
                 variants={fadeUp}
                 style={{ fontSize: '17px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.7', marginBottom: '20px' }}
               >
-                Building micro societies is a multi-angle process. It takes everything — from planning and design to building & optimizing the{' '}
+                Building micro societies is a multi-angle process. It takes everything – from planning and design to building & optimizing the{' '}
                 <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>hardware</strong>,{' '}
                 <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>software</strong> and{' '}
                 <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: '600' }}>humanware</strong>.
@@ -720,7 +720,7 @@ export default function Agency() {
                 variants={fadeUp}
                 style={{ fontSize: '17px', fontWeight: '300', color: 'rgba(255,255,255,0.55)', lineHeight: '1.7', marginBottom: '48px' }}
               >
-                Our core team offers high-level consulting on strategy, business growth, operations, and community building. For specialized projects — like permaculture, renewable energy or water systems — we partner with our curated collective of regenerative service providers, delivering tailored, top-quality solutions for your neighborhood.
+                Our core team offers high-level consulting on strategy, business growth, operations, and community building. For specialized projects – like permaculture, renewable energy or water systems – we partner with our curated collective of regenerative service providers, delivering tailored, top-quality solutions for your neighborhood.
               </motion.p>
 
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -737,7 +737,7 @@ export default function Agency() {
       </section>
 
       {/* ════════════════════════════════
-          ALCHEMISTS — logo ticker
+          ALCHEMISTS – logo ticker
       ════════════════════════════════ */}
       <div style={{ backgroundColor: 'var(--bg)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '48px 0 32px', overflow: 'hidden' }}>
         <div style={{ ...wrap, marginBottom: '32px' }}>
@@ -865,7 +865,7 @@ export default function Agency() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/agency/partner-new.png"
-            alt="Partnership — handshake and seedling"
+            alt="Partnership – handshake and seedling"
             style={{
               height: '75vh',
               width: 'auto',
@@ -874,7 +874,7 @@ export default function Agency() {
           />
         </motion.div>
 
-        {/* Left: copy — constrained to left half */}
+        {/* Left: copy – constrained to left half */}
         <div style={{ ...wrap, position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '520px' }}>
             <motion.div
@@ -1012,7 +1012,7 @@ export default function Agency() {
                   <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {selectedProject.services.map((s) => (
                       <li key={s} style={{ fontSize: '14px', color: 'var(--text)', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                        <span style={{ color: 'var(--green-deep)', fontWeight: '700', flexShrink: 0 }}>—</span>
+                        <span style={{ color: 'var(--green-deep)', fontWeight: '700', flexShrink: 0 }}>–</span>
                         {s}
                       </li>
                     ))}

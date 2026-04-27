@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { supabase } from '@/lib/supabase'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -14,15 +15,22 @@ export default function NewsletterCTA() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [interests, setInterests] = useState<string[]>([])
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const toggleInterest = (item: string) => {
     setInterests(prev => prev.includes(item) ? prev.filter(i => i !== item) : [...prev, item])
   }
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: wire to Supabase newsletter table
-    console.log('Newsletter subscribe:', { name, email, interests })
+    if (!email) return
+    setStatus('sending')
+    const { error } = await supabase.from('newsletter_signups').insert({
+      email,
+      name: name || null,
+      interests,
+    })
+    setStatus(error ? 'error' : 'sent')
   }
 
   return (
@@ -70,6 +78,17 @@ export default function NewsletterCTA() {
               Subscribe to our newsletter
             </p>
 
+            {status === 'sent' ? (
+              <div style={{ textAlign: 'center', padding: '32px 0' }}>
+                <p style={{ fontSize: '28px', marginBottom: '12px' }}>🌱</p>
+                <p style={{ fontSize: '18px', fontWeight: '600', color: 'white', marginBottom: '6px' }}>
+                  You&apos;re in.
+                </p>
+                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)' }}>
+                  Thanks for joining — we&apos;ll be in touch.
+                </p>
+              </div>
+            ) : (
             <form onSubmit={handleSubscribe}>
               <div className="newsletter-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '24px' }}>
                 {[
@@ -136,6 +155,7 @@ export default function NewsletterCTA() {
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <motion.button
                   type="submit"
+                  disabled={status === 'sending'}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ duration: 0.15 }}
@@ -152,14 +172,21 @@ export default function NewsletterCTA() {
                     fontWeight: '700',
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
-                    cursor: 'pointer',
+                    cursor: status === 'sending' ? 'wait' : 'pointer',
+                    opacity: status === 'sending' ? 0.6 : 1,
                     fontFamily: 'inherit',
                   }}
                 >
-                  Subscribe
+                  {status === 'sending' ? 'Subscribing…' : 'Subscribe'}
                 </motion.button>
               </div>
+              {status === 'error' && (
+                <p style={{ fontSize: '13px', color: 'var(--pink)', marginTop: '16px', textAlign: 'center' }}>
+                  Something went wrong – please try again.
+                </p>
+              )}
             </form>
+            )}
           </motion.div>
         </motion.div>
       </div>

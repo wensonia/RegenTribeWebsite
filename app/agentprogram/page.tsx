@@ -178,31 +178,31 @@ const statusColor: Record<string, string> = {
 
 const programs = [
   {
-    date: '2022 Feb — Apr',
+    date: '2022 Feb – Apr',
     title: 'Co.creating Regen Communities Workshop Series',
     detail: '10-week in-person & streamed workshops',
     link: { label: 'Watch on YouTube', href: 'https://youtube.com/playlist?list=PLfy4cQQeBzVYiTKek800sLnSKZZKRK9ie&si=FGkN6T82cYOn6W51' },
   },
   {
-    date: '2023 May — Jun',
+    date: '2023 May – Jun',
     title: 'Catalyzer Open Calls',
     detail: '10 weekly calls co-creating Community Alchemy Guide Intro',
     link: { label: 'View Recordings', href: 'https://drive.google.com/drive/folders/11-j_4x3h4jfwfMnb8GcazlDa4E7VjAOD' },
   },
   {
-    date: '2024 Jan — Feb',
+    date: '2024 Jan – Feb',
     title: 'Regen Tribe Agent Program Online Course',
     detail: 'First cohort of Regenerative Neighborhood Agents, 6-week online training',
     link: { label: 'Watch on YouTube', href: 'https://youtube.com/playlist?list=PLfy4cQQeBzVYJR9BviJiA19o5hMELa8-6&si=NCURvz4pVp9TS5F2' },
   },
   {
-    date: '2024 Mar — May',
+    date: '2024 Mar – May',
     title: 'Agent Program On-site Training at Community Lab X',
     detail: '10-week immersive training shadowing our Community Lab process',
     link: { label: 'View the Work', href: 'https://communitylabx.notion.site/Community-Lab-X-Wiki-87f8d94474e04ed99fa08401ab1df1d2?source=copy_link' },
   },
   {
-    date: '2024 Jun 9 — 14',
+    date: '2024 Jun 9 – 14',
     title: 'June Bloom at Wild Seeds',
     detail: 'In-person theory and practical application, 5-day immersive training',
     link: { label: 'Check Out WildSeeds', href: 'https://www.wildseedsranch.com/' },
@@ -325,7 +325,7 @@ export default function AgentProgramPage() {
                   </div>
                   {status === 'error' && (
                     <p style={{ fontSize: '13px', color: 'var(--pink)', marginTop: '4px', textAlign: 'center' }}>
-                      Something went wrong — please try again.
+                      Something went wrong – please try again.
                     </p>
                   )}
                 </form>
@@ -659,7 +659,7 @@ export default function AgentProgramPage() {
                   )}
                   {status === 'error' && (
                     <p style={{ fontSize: '12px', color: 'var(--pink)', marginTop: '6px' }}>
-                      Something went wrong — try again.
+                      Something went wrong – try again.
                     </p>
                   )}
                 </div>
@@ -806,7 +806,7 @@ export default function AgentProgramPage() {
                   </motion.button>
                   {status === 'error' && (
                     <p style={{ fontSize: '13px', color: 'var(--pink)', marginTop: '10px' }}>
-                      Something went wrong — please try again.
+                      Something went wrong – please try again.
                     </p>
                   )}
                 </form>
@@ -818,12 +818,12 @@ export default function AgentProgramPage() {
 
       <style>{`
         @media (max-width: 900px) {
-          .get-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .interests-grid { grid-template-columns: 1fr !important; }
+          .get-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .interests-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .agent-cta-card { padding: 48px 32px !important; }
-          .programs-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .agents-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .gallery-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .programs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .agents-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
           .gallery-grid > div:nth-child(n+10) { display: none !important; }
         }
         @media (max-width: 540px) {
@@ -833,9 +833,9 @@ export default function AgentProgramPage() {
           .signup-fields input { max-width: 100% !important; }
           .cta-signup-fields { flex-direction: column !important; }
           .cta-signup-fields input { max-width: 100% !important; }
-          .agents-grid { grid-template-columns: 1fr !important; }
-          .programs-grid { grid-template-columns: 1fr !important; }
-          .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .agents-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .programs-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .gallery-grid > div:nth-child(n+5) { display: none; }
         }
       `}</style>

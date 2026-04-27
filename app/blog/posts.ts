@@ -56,7 +56,7 @@ So, go apply online at [**ns.com**](https://ns.com/apply)!
 ## November
 ### Free Cities Conference, Prague
 Excited to join this annual gathering again!
-The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live—without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
+The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live–without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
 This year again we will be hosting a welcome table and community building exercises in between the talks.
 Oscar will be sharing a talk “Visualizing the future : how to develop a sovereign society through human & resource resiliency” where we share about the status quo of the regenerative Neighborhood Movement and how we shape our ecosystem to support it best.
 [Find out how to join the event.](https://tribes.regentribe.org/event/liberty-in-our-lifetime-from-vision-to-reality/)
@@ -82,7 +82,7 @@ Join for the peak point of the winter residency at [Community Lab X](http://www.
   {
     slug: 'q3-2024-mexico-to-europe',
     title: 'Q3 2024 - Mexico to Europe',
-    date: 'July 1, 2024 — September 30, 2024',
+    date: 'July 1, 2024 – September 30, 2024',
     year: '2024',
     locations: ['Mexico', 'Germany', 'Czech'],
     tldr: 'From hurricane prep at Community Lab X in Tulum to conferences in Germany and Czech Republic, Q3 2024 was packed with travels, new collaborations, and the launch of the Regenerative Neighborhoods Movement at the Free Cities Conference.',
@@ -106,7 +106,7 @@ Studying and redesigning collective living is a process we are committed to full
 And it feels so good.
 Plus, Berlin in the summer is pretty magical!
 ## **August 2024**
-August was a bit more grounded—we focused on **organizing and co-working from home**. As we moved around, we find value in balancing our time between exploring and staying put to process everything we've been learning.
+August was a bit more grounded–we focused on **organizing and co-working from home**. As we moved around, we find value in balancing our time between exploring and staying put to process everything we've been learning.
 Living with other passionate individuals help us stay motivated. 
 In the beginning of our [co.live](http://co.live) we set intentions for upcoming month and kept each other accountable, and cheered each other on with our personal goals. 
 Even though some of us work on different projects, there was a strong sense of **alignment and support** in our shared space. 
@@ -114,7 +114,7 @@ Our work is our life, and our nomadic community is a prototype of lifestyle prac
 During this month in Berlin we participated in different community initiatives, from events at [moos.space](http://moos.space) to meet ups around the topic of startup societies 
 
 ## **September 2024**
-In early September, the core team—Oscar, Sonia, and Michael—moved into a smaller apartment in **Berlin** for two weeks. This was the perfect setting to start focusing on a new branch of our project: **designing and managing co-living initiatives**. We're super excited to see where this takes us in the coming months!
+In early September, the core team–Oscar, Sonia, and Michael–moved into a smaller apartment in **Berlin** for two weeks. This was the perfect setting to start focusing on a new branch of our project: **designing and managing co-living initiatives**. We're super excited to see where this takes us in the coming months!
 
 It's been a whirlwind few months and we're feeling energized & ready to keep pushing forward with the vision of **regenerative neighborhoods**. Thanks for being part of the journey!
 
@@ -136,7 +136,7 @@ Regen Tribe Collective
   {
     slug: 'q2-2024-clx-wildseeds',
     title: 'Q2 2024 - CLX & WildSeeds : Agent Program',
-    date: 'April 1, 2024 — June 30, 2024',
+    date: 'April 1, 2024 – June 30, 2024',
     year: '2024',
     locations: ['Mexico', 'USA', 'Guatemala'],
     tldr: 'Q2 2024 saw Community Lab X come alive with a 10-week co-creation residency, the WildSeeds Agent Program, and visits to regenerative projects in Guatemala and the US.',
@@ -146,7 +146,7 @@ Regen Tribe Collective
 It's been a productive and heartwarming few months at Regen Tribe, and we're excited to share some of the highlights from the second quarter of 2024. From launching new programs to deepening community connections, here's what we've been up to.
 ## **April 2024**
 After the energy of **Regen Week**, we shifted our focus to making **Community Lab X** more welcoming for mid and long-term living. We reorganized the space to create a more functional **co-working area** and a cozy **community room** where people could gather and connect.
-April also marked the start of our **Regen Neighborhood Agent Program**—a hands-on vocational training for future regenerative neighborhood consultants. We hosted two sessions a week, sharing tools and methods for **community management** using Community Lab X as a live example. It was so inspiring to see participants really dive into the work and start applying these concepts in real time.
+April also marked the start of our **Regen Neighborhood Agent Program**–a hands-on vocational training for future regenerative neighborhood consultants. We hosted two sessions a week, sharing tools and methods for **community management** using Community Lab X as a live example. It was so inspiring to see participants really dive into the work and start applying these concepts in real time.
 We also welcomed **David, Eve, and their 4-year-old** as new long-term community members to lead the kitchen, bringing fresh energy and delicious meals to the table. And on a more adorable note, we adopted **four baby black kittens and their mom**, officially beginning our animal sanctuary at the location. It's safe to say our hearts are full!
 
 ## **May 2024**
@@ -184,7 +184,7 @@ The Regen Tribe Collective
   {
     slug: 'q1-2024-vitalia-clx',
     title: 'Q1 2024 - Vitalia Start up City & CLX kick off',
-    date: 'January 1, 2024 — March 31, 2024',
+    date: 'January 1, 2024 – March 31, 2024',
     year: '2024',
     locations: ['Honduras', 'Miami', 'Mexico'],
     tldr: 'The year kicked off at Vitalia pop-up city in Honduras, followed by the launch of the Regen Tribe Agent Program and the activation of Community Lab X in Tulum with Regen Week 2024.',
@@ -241,7 +241,7 @@ The Regen Tribe Team
   {
     slug: 'q4-2023-website-free-cities',
     title: 'Q4 2023 - Website updates & Free Cities Conference',
-    date: 'October 1, 2023 — December 31, 2023',
+    date: 'October 1, 2023 – December 31, 2023',
     year: '2023',
     locations: ['USA', 'Czech', 'Turkey'],
     tldr: 'Q4 2023 brought a major website overhaul, the Free Cities Conference in Prague, connections at Devconnect Istanbul, and preparations for the exciting year ahead.',
@@ -250,7 +250,7 @@ The Regen Tribe Team
     content: `Hello humans!
 As we wrap up 2023, we're reflecting on the whirlwind of travels, conferences, and growth that made this year so special. We've been busy connecting with new communities, organizing our projects, and preparing for some exciting opportunities in the new year. Here's a recap of our final quarter:
 ## **October 2023: Free Cities & Global Collaboration**
-After spending September in Berlin, we continued our travels and headed to **Prague** for the **Free Cities Conference 2023**. The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live—without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
+After spending September in Berlin, we continued our travels and headed to **Prague** for the **Free Cities Conference 2023**. The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live–without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
 At the conference, Regen Tribe hosted a **welcome table** and facilitated a **networking session** to help connect participants with similar goals. Nicole also took the stage as part of a panel discussion on **intentional communities**, sharing insights into how these communities can play a role in shaping the future of Free Cities.
 To find out more about Free Cities concept and events [visit their profile on Tribes.](https://tribes.regentribe.org/groups/free-cities-foundation/)
 
@@ -287,7 +287,7 @@ Regen Tribe Collective
   {
     slug: 'q3-2023-community-lab-moos',
     title: 'Q3 2023 - Community Lab 2.0 & Cohere Residency @ MOOS',
-    date: 'July 1, 2023 — September 30, 2023',
+    date: 'July 1, 2023 – September 30, 2023',
     year: '2023',
     locations: ['UK', 'Germany', 'Switzerland'],
     tldr: 'A summer of community hopping across the UK, Germany, and Switzerland, including the Enchanted Gathering, a Cohere residency at MOOS Berlin, and key organizational milestones for Regen Tribe.',
@@ -338,7 +338,7 @@ The Regen Tribe Collective 🌿✨
   {
     slug: 'q2-2023-community-lab',
     title: 'Q2 2023 - Community Lab 2.0',
-    date: 'April 1, 2023 — June 30, 2023',
+    date: 'April 1, 2023 – June 30, 2023',
     year: '2023',
     locations: ['Mexico'],
     tldr: 'The second Community Lab residency in Tulum brought 10 weeks of co-living, workshops, and community building, culminating in lessons learned and plans for the future.',
@@ -365,7 +365,7 @@ We focused on receiving feedback, understanding the current system, and discussi
 
 ### **Week 2: Organizing & Blitzing**
 This week, we honed in on creating our **community organizational structure**. After gathering feedback, we outlined roles and responsibilities, breaking them down into departments with clear checklists. It's amazing how much clarity this brought to our collective work.
-We also introduced the concept of **blitzes**—30-60 minute sprints where we come together to tackle specific tasks. This week, we blitzed everything from the kitchen floor to the cenote, the tool shed, and even some chairs. Blitzes have proven to be a fun, high-energy way to bond and get things done quickly. Highly recommend trying this in your own communities!
+We also introduced the concept of **blitzes**–30-60 minute sprints where we come together to tackle specific tasks. This week, we blitzed everything from the kitchen floor to the cenote, the tool shed, and even some chairs. Blitzes have proven to be a fun, high-energy way to bond and get things done quickly. Highly recommend trying this in your own communities!
 We wrapped up the week with a **shared meal** on Saturday night. There's nothing like cooking and eating together to deepen connections. Food really is a love language.
 
 ### **Week 3: Testing New Systems**
@@ -404,7 +404,7 @@ Regen Tribe Collective.
   {
     slug: 'q1-2023-new-members-tribes',
     title: 'Q1 2023 - New members & Tribes v1 launch',
-    date: 'January 1, 2023 — March 31, 2023',
+    date: 'January 1, 2023 – March 31, 2023',
     year: '2023',
     locations: ['Mexico', 'Costa Rica'],
     tldr: 'Q1 2023 welcomed new team members, launched the first version of the Tribes Platform, and continued building community infrastructure in Tulum and Costa Rica.',
@@ -418,7 +418,7 @@ We welcomed 2 new team members to the Regen Tribe! [Nicole Reese](https://mediu
 Michael and Oscar explored the beauty of Costa Rica and visited the intentional-sustainable communities Holos, Awake, and Florestral.
 Back in Tulum, Karla and Nicole organized a beach clean-up co-sponsored by Tulum Circula in Sian Kaan ecological reserve.
 # **February**
-February was all about internal organization and marketing material development. We onboarded 250+ regenerative neighborhoods into our database, preparing for the upcoming launch of the [Tribes](http://www.tribes.regentribe.org/) platform — a social networking platform that helps you build and find regenerative neighborhoods.
+February was all about internal organization and marketing material development. We onboarded 250+ regenerative neighborhoods into our database, preparing for the upcoming launch of the [Tribes](http://www.tribes.regentribe.org/) platform – a social networking platform that helps you build and find regenerative neighborhoods.
 
 This has been our main project for some time, and it's finally functional. Keep scrolling to read about the beta launch!
 # **March**
@@ -429,7 +429,7 @@ There we facilitated discussions about eco-architecture techniques in Mexico, we
 
 We were joined by Regen Tribe co-founder Julia Becker, who had been weaving in Europe and Brazil, and she brought with her Gaianet co-founder Alexander Keehnen. We also shared about the emerging Mexico and Yucatan biozones, which we are tracking with impact metrics.
 
-From this conference we were invited by an indigenous community leader to attend the National Mexican Ecovillage Gathering — a grassroots movement of local Mexicans that are building intentional sustainable communities all over the country. We found out we'd be in Mexico City anyways to say goodbye to our advisor as he travelled to Australia, and jumped at the chance to go and support the local regenerative neighborhood movement.
+From this conference we were invited by an indigenous community leader to attend the National Mexican Ecovillage Gathering – a grassroots movement of local Mexicans that are building intentional sustainable communities all over the country. We found out we'd be in Mexico City anyways to say goodbye to our advisor as he travelled to Australia, and jumped at the chance to go and support the local regenerative neighborhood movement.
 
 At Tribalize we also caught the eye of a long-time community leader who built and sustains the only functioning intentional community in Tulum. He invited us to step in as leadership at the community because, after a few community members moved on, the responsibilities were falling all on him. <br>So next month we're moving to the jungle to live our best community lives! <br>Stay tuned for updates on what we're up to and how to get involved!
 
@@ -453,17 +453,17 @@ The Regen Tribe Collective
   {
     slug: 'q4-2022-tulum-homecoming',
     title: 'Q4 2022 - Tulum homecoming, internal organization',
-    date: 'October 1, 2022 — December 31, 2022',
+    date: 'October 1, 2022 – December 31, 2022',
     year: '2022',
     locations: ['Mexico'],
     tldr: 'After a summer in Europe, the team returned to Tulum to settle into the new incubator house, organize internal processes, and deepen connections with the local regenerative community.',
     coverImage: '/images/blog/q4-2022-tulum-homecoming.jpg',
     notionId: '2da7a89c-6828-448e-b4c3-37633ce52703',
     content: `Hello again, Regen Tribe family!
-After an incredible summer of traveling and connecting with communities around the world, we're thrilled to be back in **Tulum, Mexico**—our project base and the heart of Regen Tribe. Here's what's been happening since we touched down!
+After an incredible summer of traveling and connecting with communities around the world, we're thrilled to be back in **Tulum, Mexico**–our project base and the heart of Regen Tribe. Here's what's been happening since we touched down!
 ## October 2022
 ### **Regen Tribe Back in Tulum: Grounding the Magic**
-**Home sweet home!** After more than three months of exploring and learning, we've returned to **Tulum** and are settling into our new **Regen Tribe Incubator house**. It feels so good to get grounded again—organizing agendas, brainstorming fresh ideas, and cleaning up our project boards. It's been a great way to reflect on the summer's adventures and channel that magic into the work ahead.
+**Home sweet home!** After more than three months of exploring and learning, we've returned to **Tulum** and are settling into our new **Regen Tribe Incubator house**. It feels so good to get grounded again–organizing agendas, brainstorming fresh ideas, and cleaning up our project boards. It's been a great way to reflect on the summer's adventures and channel that magic into the work ahead.
 We're also reconnecting with our **partner projects** in the area to check in on their progress and see how we can support their regenerative efforts. Things are really moving, and it's exciting to see these communities grow and evolve.
 Want to explore these amazing projects? Check them out on instagram :
 - [MotherTree Tulum](https://www.instagram.com/mothertreetulum/)
@@ -473,7 +473,7 @@ Want to explore these amazing projects? Check them out on instagram :
 
 ## November 2022
 ### **Tribes Platform Development Kicks Off**
-That's right—the **Regen Tribe Platform** is officially in the works! We've been hard at work strategizing, and now our **features, strategy, and timeline** are all outlined and ready to roll. The platform is designed to connect regenerative communities worldwide, offering a space for collaboration, sharing resources, and accelerating the growth of regenerative neighborhoods.
+That's right–the **Regen Tribe Platform** is officially in the works! We've been hard at work strategizing, and now our **features, strategy, and timeline** are all outlined and ready to roll. The platform is designed to connect regenerative communities worldwide, offering a space for collaboration, sharing resources, and accelerating the growth of regenerative neighborhoods.
 And the best part? We've found our WebApp developer! Meet **Rinku**, who's taking this idea and turning it into a fully functional platform. We're so pumped to be working with such a talented developer who gets the vision.
 Curious about our strategy? [Check out the Strategy Outline here](https://docs.google.com/document/d/18Zfh8sQPgiZL5mBkK-e3hA69x5gjoiwr8Vk5Yg1_xlo/edit?usp=sharing) and stay tuned for more updates as the platform comes to life!
 
@@ -519,7 +519,7 @@ Regen Tribe Collective
   {
     slug: 'q3-2022-europe-summer',
     title: 'Q3 2022 - Europe urban community summer',
-    date: 'July 1, 2022 — September 30, 2022',
+    date: 'July 1, 2022 – September 30, 2022',
     year: '2022',
     locations: ['Germany', 'UK', 'Portugal', 'Turkey'],
     tldr: 'A European summer exploring urban community models across Germany, the UK, Portugal, and Turkey, connecting with regenerative projects and building the Regen Tribe network.',
@@ -567,7 +567,7 @@ The Regen Tribe Collective
   {
     slug: 'q2-2022-cowork-days-mexico',
     title: 'Q2 2022 - Regen [Co.work](http://Co.work) Days & Mexico Neighborhood Roadtrip',
-    date: 'April 1, 2022 — June 30, 2022',
+    date: 'April 1, 2022 – June 30, 2022',
     year: '2022',
     locations: ['Mexico'],
     tldr: 'Q2 2022 featured the Regen Co.work Days series in Tulum and an epic Mexico neighborhood roadtrip visiting seven regenerative communities from Tulum to Chiapas.',
@@ -688,7 +688,7 @@ Regen Tribe Collective
   {
     slug: 'q1-2022-workshops-tulum',
     title: 'Q1 2022 - Community Co.creation Workshops & Gatherings in Tulum',
-    date: 'January 1, 2022 — March 31, 2022',
+    date: 'January 1, 2022 – March 31, 2022',
     year: '2022',
     locations: ['Mexico'],
     tldr: 'The first quarter of 2022 was all about community workshops, co-creation gatherings, and the Tribalize regenerative community summit in Tulum.',
@@ -733,7 +733,7 @@ The Regen Tribe Collective`,
   {
     slug: 'q4-2021-regen-tribe-incubation',
     title: 'Q4 2021 - Regen Tribe incubation',
-    date: 'October 1, 2021 — December 31, 2021',
+    date: 'October 1, 2021 – December 31, 2021',
     year: '2021',
     locations: ['Mexico'],
     tldr: 'The founding chapter of Regen Tribe: setting up the incubator house in Tulum, building the core team, and laying the groundwork for a regenerative community movement.',
