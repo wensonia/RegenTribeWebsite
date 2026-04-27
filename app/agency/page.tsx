@@ -298,14 +298,14 @@ export default function Agency() {
             initial="hidden"
             animate="visible"
             variants={stagger}
-            style={{ maxWidth: '620px' }}
+            style={{ maxWidth: '680px' }}
           >
             <motion.h1
               variants={fadeUp}
               style={{
-                fontSize: 'clamp(52px, 7vw, 108px)',
+                fontSize: 'clamp(44px, 4.5vw, 72px)',
                 fontWeight: '400',
-                lineHeight: '0.95',
+                lineHeight: '1.0',
                 letterSpacing: '-0.03em',
                 color: 'white',
                 marginBottom: '20px',
