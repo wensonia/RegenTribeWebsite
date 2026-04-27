@@ -55,7 +55,9 @@ export default function OptimizedImage({
   }
 
   return (
-    <picture style={{ display: 'block', width: '100%', height: '100%' }}>
+    // Apply style to <picture> so position/layout props (e.g. position:absolute)
+    // take effect on the wrapper, not just the inner <img>.
+    <picture style={{ display: 'block', ...style }}>
       <source
         type="image/webp"
         srcSet={paths.srcSet}
@@ -65,7 +67,7 @@ export default function OptimizedImage({
         src={src}
         alt={alt}
         loading={loading}
-        style={style}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', ...(style as React.CSSProperties) }}
         {...rest}
       />
     </picture>
