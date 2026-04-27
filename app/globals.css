@@ -29,6 +29,7 @@ body {
   color: var(--text);
   font-family: var(--font-open-sans), -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
 }
 
 h1, h2 {

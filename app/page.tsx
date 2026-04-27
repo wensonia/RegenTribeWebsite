@@ -599,19 +599,19 @@ export default function Home() {
 
       <style>{`
         @media (max-width: 900px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .hero-panels { display: none !important; }
-          .why-grid { grid-template-columns: 1fr !important; }
-          .rn-grid { grid-template-columns: 1fr !important; }
-          .who-grid { grid-template-columns: 1fr !important; }
-          .faq-grid { grid-template-columns: 1fr !important; }
-          .offerings-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
-          .testimonials-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .why-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .rn-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .who-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .faq-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .offerings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 24px !important; }
+          .testimonials-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
         }
         @media (max-width: 540px) {
-          .offerings-grid { grid-template-columns: 1fr !important; }
-          .projects-grid { grid-template-columns: 1fr !important; }
+          .offerings-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .projects-grid { grid-template-columns: minmax(0, 1fr) !important; }
         }
       `}</style>
     </>

@@ -135,7 +135,7 @@ export default function BlogPage() {
 
           {/* Post cards grid */}
           <motion.div variants={stagger} style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
             gap: '28px',
           }}>
             {filteredPosts.map((post) => (
