@@ -373,6 +373,7 @@ export default function AboutPage() {
         @media (max-width: 540px) {
           .archetype-grid { grid-template-columns: 1fr !important; }
           .carousel-slide { flex: 0 0 85vw; }
+          .carousel-track { animation-duration: 62.5s; }
         }
       `}</style>
     </>
