@@ -87,32 +87,32 @@ const tiers = [
   {
     name: 'Pioneer',
     price: '$50K–$100K',
-    monthly: '~$800/month ongoing',
-    desc: 'Full equity stake and voting rights. The deepest level of commitment to the neighborhood.',
+    monthly: 'Equity share',
+    desc: 'Full membership, one home site, all amenities. The founding equity tier — voting rights and the deepest commitment.',
     color: '#808aeb',
     light: true,
     shape: '△',
-    cap: '20 spots',
+    cap: 'Equity',
   },
   {
     name: 'Founder',
     price: '$150K–$250K',
-    monthly: '~$600/month ongoing',
-    desc: 'Lifetime lease with a larger home site. For those who want a permanent home in RTRN.',
+    monthly: 'Lifetime lease',
+    desc: 'Permanent home site, equity share, voting rights. For those who want a long-term home in RegenHood Zero.',
     color: '#f16ab0',
     light: true,
     shape: '○',
-    cap: '30 spots',
+    cap: 'Lifetime',
   },
   {
     name: 'Resident',
-    price: 'Month-to-month',
-    monthly: 'Furnished room · all meals',
-    desc: 'Structured 13-week onboarding for those exploring full membership or extended stays.',
+    price: '$1,500–$3,500',
+    monthly: 'Per month · all-in',
+    desc: 'Fully furnished room, meals included, full community access. The 13-week onboarding starts here.',
     color: '#ffe682',
     light: false,
     shape: '□',
-    cap: '100 spots',
+    cap: 'Monthly',
   },
 ]
 
@@ -135,36 +135,35 @@ const modules: Module[] = [
 ]
 
 const land = [
-  { label: 'Food forest',          ha: 15, color: '#6fc6a2' },
-  { label: 'Wetlands & preservation', ha: 10, color: '#808aeb' },
-  { label: 'Residential (75 home sites)', ha: 8, color: '#f16ab0' },
-  { label: 'Future expansion',     ha: 7,  color: '#d4d4d4' },
-  { label: 'Animal sanctuary',     ha: 5,  color: '#d4a14a' },
-  { label: 'Solar farm (200kW+)',  ha: 3,  color: '#ffe682' },
-  { label: 'Common buildings',     ha: 2,  color: '#363636' },
+  { label: 'Wooded conservation',  ha: 5.7, color: '#808aeb' },
+  { label: 'Working farm',         ha: 1.2, color: '#6fc6a2' },
+  { label: '36 home sites',        ha: 1.5, color: '#f16ab0' },
+  { label: 'Animal sanctuary',     ha: 0.8, color: '#d4a14a' },
+  { label: 'Common buildings',     ha: 0.6, color: '#363636' },
+  { label: 'Solar farm',           ha: 0.4, color: '#ffe682' },
 ]
 
 const phases = [
-  { num: '01', range: 'Months 1–12',  title: 'Foundation',  residents: '10–20 residents', notes: 'Land acquisition, founding team, core infrastructure.' },
-  { num: '02', range: 'Months 13–24', title: 'Growth',       residents: '30–50 residents', notes: 'Common buildings online, onboarding launches.' },
-  { num: '03', range: 'Months 25–42', title: 'Activation',   residents: '75–100 residents', notes: 'Full campus operation, art and education programs.' },
-  { num: '04', range: 'Months 43–60', title: 'Replication',  residents: '130–150 residents', notes: 'Full capacity, model ready to replicate elsewhere.' },
+  { num: '01', range: 'Year 1',     title: 'Pioneer',    residents: 'Founding team', notes: 'Vision, governance, infrastructure. First food forest plantings. Sanctuary established with starter animals.' },
+  { num: '02', range: 'Years 1–2',  title: 'Foundation', residents: '5–10 homes',    notes: 'First residents move in. 13-week onboarding launches. Vocational coop operational. Art residencies begin.' },
+  { num: '03', range: 'Years 2–3',  title: 'Growth',     residents: '20–30 residents', notes: 'Food forest production begins. Sanctuary fully operational. Community events, workshops, retreats running.' },
+  { num: '04', range: 'Year 4+',    title: 'Harvest',    residents: 'Self-sufficient', notes: 'Surplus food and goods shared beyond the community. Model ready to replicate in new locations.' },
 ]
 
 const onboarding = [
-  'Arrival & orientation',
-  'Land systems',
-  'Governance',
-  'Personal integration',
-  'Animal care',
-  'Gardening',
-  'Kitchen rotation',
-  'Economic participation',
-  'Art & creativity access',
-  'Community bonds',
-  'Skill development',
-  'Household practice',
-  'Membership activation by community vote',
+  'Arrival & Orientation',
+  'Land & Systems',
+  'Governance & Culture',
+  'Personal Space & Home',
+  'Animals & Sanctuary',
+  'Garden & Permaculture',
+  'Kitchen & Food Systems',
+  'Economy & Contribution',
+  'Art & Creative Practice',
+  'Community & Relationships',
+  'Skills & Learning',
+  'Trial Integration',
+  'Graduation & Commitment',
 ]
 
 const governanceLayers = [
@@ -178,15 +177,13 @@ const governanceLayers = [
 ]
 
 const animals = [
-  { count: '200', kind: 'Chickens' },
-  { count: '50',  kind: 'Ducks' },
-  { count: '40',  kind: 'Rabbits' },
-  { count: '30',  kind: 'Goats' },
-  { count: '10',  kind: 'Pigs' },
-  { count: '20+', kind: 'Rescue dogs & cats' },
+  { count: '🐔', kind: 'Chickens' },
+  { count: '🐐', kind: 'Goats' },
+  { count: '🦆', kind: 'Ducks' },
+  { count: '🐰', kind: 'Rabbits' },
+  { count: '🐕', kind: 'Senior dogs' },
+  { count: '🐈', kind: 'Cats' },
 ]
-
-const totalLand = land.reduce((s, l) => s + l.ha, 0)
 
 export default function RtrnPage() {
   return (
@@ -202,17 +199,15 @@ export default function RtrnPage() {
             className="rtrn-hero-grid"
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
             <motion.div variants={fadeUp}>
-              <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '24px' }}>
-                RTRN · Master Plan v1.0
-              </p>
-              <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(36px, 4.6vw, 64px)', fontWeight: '400', lineHeight: '1.08', margin: '0 0 28px', letterSpacing: '-0.01em' }}>
-                Regenerative Tribe<br />Regenerative Neighborhood.
+              <h1 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(48px, 6.5vw, 88px)', fontWeight: '400', lineHeight: '1.02', margin: '0 0 24px', letterSpacing: '-0.02em' }}>
+                RegenHood Zero
               </h1>
-              <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(20px, 2.2vw, 26px)', fontWeight: '400', fontStyle: 'italic', lineHeight: '1.35', margin: '0 0 32px', opacity: 0.85 }}>
-                A regenerative neighborhood for 150 residents and 50 retreat guests.
+              <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: '400', fontStyle: 'italic', lineHeight: '1.3', margin: '0 0 28px', opacity: 0.85 }}>
+                Regenerative Neighborhood by Regen Tribe
               </p>
-              <p style={{ fontSize: '18px', lineHeight: '1.7', margin: '0 0 36px', opacity: 0.75, maxWidth: '520px' }}>
-                A place and way that is good for you, the collective, and the planet – designed across 50–80 hectares in Mexico, Portugal, Costa Rica, Italy, or Uruguay.
+              <p style={{ fontSize: '17px', lineHeight: '1.7', margin: '0 0 36px', opacity: 0.75, maxWidth: '520px' }}>
+                <span style={{ color: 'var(--pink)', marginRight: '4px' }}>*</span>
+                Prototype for the future of living. Good for the individual, the collective, and the planet.
               </p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <PillBtn href="#apply" bg="var(--text)">Apply to join</PillBtn>
@@ -221,21 +216,21 @@ export default function RtrnPage() {
             </motion.div>
 
             <motion.div variants={fadeUp} style={{ position: 'relative' }}>
-              <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(54,54,54,0.12)', border: '1px solid var(--border)' }}>
+              <div style={{ position: 'relative' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/rtrn/master-plan.png"
+                  src="/images/regenhoodzero/master-plan.png"
                   alt="Top-down infrastructure map of the Regenerative Tribe Regenerative Neighborhood — 50 hectares of residential, food forest, animal sanctuary, solar farm, common buildings, wetlands, and retreat center."
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
                 {[
-                  { top: '7%',  left: '12%', dot: '#ffe682', text: 'Solar farm · 200 kW' },
+                  { top: '7%',  left: '12%', dot: '#ffe682', text: 'Solar farm' },
                   { top: '7%',  left: '42%', dot: '#363636', text: 'Common buildings' },
                   { top: '24%', left: '78%', dot: '#d4a14a', text: 'Animal sanctuary' },
-                  { top: '7%',  left: '96%', dot: '#7a4ab0', text: 'Retreat center', anchor: 'right' as const },
-                  { top: '52%', left: '60%', dot: '#6fc6a2', text: 'Food forest · 15 ha' },
-                  { top: '76%', left: '22%', dot: '#f16ab0', text: '75 home sites' },
-                  { top: '90%', left: '70%', dot: '#808aeb', text: 'Wetlands · 10 ha' },
+                  { top: '7%',  left: '96%', dot: '#7a4ab0', text: 'Wooded conservation', anchor: 'right' as const },
+                  { top: '52%', left: '60%', dot: '#6fc6a2', text: 'Working farm' },
+                  { top: '76%', left: '22%', dot: '#f16ab0', text: '36 homes' },
+                  { top: '90%', left: '70%', dot: '#808aeb', text: 'Food forest' },
                 ].map((l) => (
                   <div key={l.text}
                     style={{
@@ -269,7 +264,7 @@ export default function RtrnPage() {
                 fontSize: '11px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: 'var(--text)', opacity: 0.5, margin: '14px 0 0', textAlign: 'center',
               }}>
-                Master plan · concept render
+                Concept render · Tulum, Mexico
               </p>
             </motion.div>
           </motion.div>
@@ -282,8 +277,8 @@ export default function RtrnPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="Why now"
-              title={<>Four challenges, one response.</>}
-              intro="RTRN addresses four interconnected pressures of our time – through community, land, and shared infrastructure."
+              title={<>The reasons we&apos;re building this.</>}
+              intro="Housing is unaffordable. Climate dread is rising. People are lonelier than ever. And work itself is changing fast. RTRN is one answer — built around community, land, and shared infrastructure."
               kickerColor="var(--pink)"
             />
             <div className="problem-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
@@ -309,7 +304,7 @@ export default function RtrnPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="The vision"
-              title={<>One neighborhood. <em style={{ fontStyle: 'italic', opacity: 0.55 }}>Three commitments.</em></>}
+              title={<>What we&apos;re building for.</>}
             />
             <div className="vision-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
               {[
@@ -340,39 +335,71 @@ export default function RtrnPage() {
                 The village core
               </p>
               <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: '400', margin: '0 0 20px', lineHeight: '1.2' }}>
-                Where the community meets daily.
+                Where everyone shows up.
               </h2>
               <p style={{ fontSize: '17px', lineHeight: '1.7', margin: 0, opacity: 0.75 }}>
-                A communal dining hall, art studios with an outdoor sculpture garden, and a living-roof gathering pavilion around a central fire pit. Two hectares of common buildings – the heart of the daily rhythm.
+                A communal dining hall, art studios with an outdoor sculpture garden, and a living-roof gathering pavilion around a central fire pit. Morning circles. Shared meals. Weekly community meetings. The daily rhythm of the neighborhood.
               </p>
             </motion.div>
             <motion.div variants={fadeUp}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/rtrn/common-buildings.png"
-                alt="Hand-drawn perspective illustration of the village core: communal dining hall with veranda, art studio with sculpture garden, and a living-roof gathering pavilion with central fire pit."
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  borderRadius: '20px',
-                  boxShadow: '0 20px 60px rgba(54,54,54,0.12)',
-                  border: '1px solid var(--border)',
-                }}
-              />
+              <div style={{ position: 'relative' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/regenhoodzero/common-buildings.png"
+                  alt="Isometric illustration of the village core: communal dining hall, art studio with sculpture garden, and a thatched gathering pavilion with central fire pit."
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+                {[
+                  { top: '20%', left: '32%', dot: '#363636', text: 'Dining hall' },
+                  { top: '24%', left: '78%', dot: '#f16ab0', text: 'Art studio' },
+                  { top: '62%', left: '70%', dot: '#d04a4a', text: 'Gathering pavilion' },
+                  { top: '85%', left: '32%', dot: '#6fc6a2', text: 'Raised garden beds' },
+                ].map((l) => (
+                  <div key={l.text}
+                    style={{
+                      position: 'absolute',
+                      top: l.top,
+                      left: l.left,
+                      transform: 'translate(-50%, -50%)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '7px',
+                      backgroundColor: 'rgba(252, 248, 238, 0.95)',
+                      border: '1px solid rgba(54,54,54,0.15)',
+                      borderRadius: '9999px',
+                      padding: '5px 11px 5px 8px',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text)',
+                      whiteSpace: 'nowrap',
+                      backdropFilter: 'blur(2px)',
+                      WebkitBackdropFilter: 'blur(2px)',
+                    }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: l.dot, flexShrink: 0 }} />
+                    {l.text}
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* ── MEMBERSHIP TIERS ── */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/regenhoodzero/cutout-homes.png" alt=""
+          className="cutout-decor"
+          style={{ position: 'absolute', top: '40px', right: '-40px', width: '220px', height: 'auto', opacity: 0.85, pointerEvents: 'none' }}
+        />
         <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="Membership"
-              title={<>Three tiers, one community.</>}
-              intro="At full capacity – 20 Pioneers, 30 Founders, and 100 Residents – RTRN generates approximately $6.4M–$8.5M in annual revenue."
+              title={<>Three ways to belong.</>}
+              intro="36 home sites, three ways in. Whether you&apos;re investing in equity, signing on for life, or coming to live and contribute month-to-month — there&apos;s a path for you."
               kickerColor="var(--green)"
             />
             <div className="tier-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
@@ -459,8 +486,8 @@ export default function RtrnPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="The land"
-              title={<>50–80 hectares, by purpose.</>}
-              intro="Every hectare has a role. Below is the baseline distribution across the 50-hectare footprint."
+              title={<>17 acres, by purpose.</>}
+              intro="A working farm and protected wooded conservation, with homes, sanctuary, common buildings, and solar woven through it."
               kickerColor="var(--green)"
             />
             <div className="land-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
@@ -489,27 +516,27 @@ export default function RtrnPage() {
 
               <motion.div variants={fadeUp} style={{ ...card, padding: '40px' }}>
                 <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(56px, 7vw, 96px)', fontWeight: '400', lineHeight: '1', margin: '0 0 8px' }}>
-                  {totalLand}<span style={{ fontSize: '0.4em', opacity: 0.5, marginLeft: '8px' }}>ha</span>
+                  17<span style={{ fontSize: '0.4em', opacity: 0.5, marginLeft: '8px' }}>acres</span>
                 </p>
                 <p style={{ fontSize: '15px', opacity: 0.65, margin: '0 0 32px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600' }}>
-                  Baseline footprint
+                  Total footprint
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div>
-                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--green)' }}>82%</p>
-                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Self-sufficient in vegetables & fruits</p>
+                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--green)' }}>3 ac</p>
+                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Working farm + food forest</p>
                   </div>
                   <div>
-                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--pink)' }}>125%</p>
-                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Egg production vs. community need</p>
+                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--blue)' }}>14 ac</p>
+                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Wooded conservation, protected</p>
                   </div>
                   <div>
-                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--blue)' }}>5</p>
-                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Permaculture zones in food forest</p>
+                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--pink)' }}>36</p>
+                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Homes on protected land</p>
                   </div>
                   <div>
-                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--text)' }}>75</p>
-                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Home sites across residential zone</p>
+                    <p style={{ fontFamily: 'Lora, serif', fontSize: '32px', fontWeight: '500', margin: '0 0 4px', color: 'var(--text)' }}>6</p>
+                    <p style={{ fontSize: '13px', opacity: 0.7, margin: 0, lineHeight: '1.5' }}>Permaculture zones (0–5)</p>
                   </div>
                 </div>
               </motion.div>
@@ -519,13 +546,18 @@ export default function RtrnPage() {
       </section>
 
       {/* ── ANIMAL SANCTUARY & FOOD ── */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/regenhoodzero/cutout-trees.png" alt=""
+          className="cutout-decor"
+          style={{ position: 'absolute', top: '60px', right: '-30px', width: '200px', height: 'auto', opacity: 0.85, pointerEvents: 'none' }}
+        />
         <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="Living systems"
-              title={<>350+ animals. <em style={{ fontStyle: 'italic', opacity: 0.55 }}>One closed loop.</em></>}
-              intro="The sanctuary is both production and education – eggs, milk, and meat alongside therapy, teaching, and rescue. Each resident contributes ~2 hours weekly to animal care."
+              title={<>A working sanctuary.</>}
+              intro="Rescue, rehabilitation, and lifelong care. The animals feed us and we care for them — every resident rotates through coop, paddock, and pasture care."
               kickerColor="var(--pink)"
             />
             <div className="animals-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px', marginBottom: '48px' }}>
@@ -547,17 +579,17 @@ export default function RtrnPage() {
                   Food systems
                 </p>
                 <h3 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(26px, 3vw, 36px)', fontWeight: '400', margin: '0 0 16px', lineHeight: '1.2' }}>
-                  Organic, closed-loop, no synthetic inputs.
+                  Food we grow ourselves.
                 </h3>
                 <p style={{ fontSize: '16px', lineHeight: '1.7', margin: '0 0 28px', opacity: 0.75 }}>
-                  Fifteen hectares of food forest across five zones – kitchen gardens, annual vegetables, small fruits, nut & fruit trees, silvopasture. Vermicomposting and animal manure close the nutrient loop. Full production by years 4–5.
+                  A 3-acre working farm with food forest across six permaculture zones — from the kitchen garden out to the silvopasture and wild foraging. Vermicomposting and animal manure close the nutrient loop. First light harvest in Year 3, full production by Year 4–5.
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
                   {[
-                    { n: '15 ha', l: 'Food forest area', c: '#6fc6a2' },
-                    { n: '5',     l: 'Permaculture zones', c: '#f16ab0' },
-                    { n: 'Yr 4–5', l: 'Full production', c: '#ffe682' },
-                    { n: '0',     l: 'Synthetic inputs', c: '#808aeb' },
+                    { n: '3 ac', l: 'Working farm', c: '#6fc6a2' },
+                    { n: '6',     l: 'Permaculture zones (0–5)', c: '#f16ab0' },
+                    { n: 'Yr 3', l: 'First harvest', c: '#ffe682' },
+                    { n: '0',    l: 'Synthetic inputs', c: '#808aeb' },
                   ].map((s) => (
                     <div key={s.l} style={{ borderTop: `3px solid ${s.c}`, paddingTop: '12px' }}>
                       <p style={{ fontFamily: 'Lora, serif', fontSize: '24px', fontWeight: '500', margin: '0 0 4px', color: s.c }}>{s.n}</p>
@@ -566,18 +598,47 @@ export default function RtrnPage() {
                   ))}
                 </div>
               </div>
-              <div>
+              <div style={{ position: 'relative' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/rtrn/food-forest.png"
-                  alt="Hand-drawn aerial detail of the 15-hectare food forest, showing kitchen gardens, annual vegetables, small fruits, nut and fruit trees, and silvopasture across five permaculture zones."
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    display: 'block',
-                    borderRadius: '14px',
-                  }}
+                  src="/images/regenhoodzero/food-forest.png"
+                  alt="Top-down detail of the 15-hectare food forest divided into five permaculture zones: kitchen gardens, annual vegetables, small fruits, nut and fruit trees, and silvopasture."
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
+                {[
+                  { top: '78%', left: '24%', dot: '#363636', text: 'Zone 0 · Common buildings' },
+                  { top: '83%', left: '60%', dot: '#6fc6a2', text: 'Zone 1 · Kitchen garden' },
+                  { top: '50%', left: '36%', dot: '#f16ab0', text: 'Zone 2 · Fruit & berries' },
+                  { top: '40%', left: '70%', dot: '#d4a14a', text: 'Zone 3 · Silvopasture' },
+                  { top: '20%', left: '50%', dot: '#808aeb', text: 'Zone 4 · Wild foraging' },
+                  { top: '8%',  left: '70%', dot: '#7a4ab0', text: 'Zone 5 · Sanctuary' },
+                ].map((l) => (
+                  <div key={l.text}
+                    style={{
+                      position: 'absolute',
+                      top: l.top,
+                      left: l.left,
+                      transform: 'translate(-50%, -50%)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '7px',
+                      backgroundColor: 'rgba(252, 248, 238, 0.95)',
+                      border: '1px solid rgba(54,54,54,0.15)',
+                      borderRadius: '9999px',
+                      padding: '5px 11px 5px 8px',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text)',
+                      whiteSpace: 'nowrap',
+                      backdropFilter: 'blur(2px)',
+                      WebkitBackdropFilter: 'blur(2px)',
+                    }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: l.dot, flexShrink: 0, border: l.dot === '#ffe682' ? '1px solid rgba(54,54,54,0.2)' : 'none' }} />
+                    {l.text}
+                  </div>
+                ))}
               </div>
             </motion.div>
           </motion.div>
@@ -590,18 +651,23 @@ export default function RtrnPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <div className="dual-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
               {/* Energy */}
-              <motion.div variants={fadeUp} style={{ ...card, padding: '40px' }}>
+              <motion.div variants={fadeUp} style={{ ...card, padding: '40px', position: 'relative', overflow: 'hidden' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/regenhoodzero/cutout-solar.png" alt=""
+                  style={{ position: 'absolute', top: '-20px', right: '-30px', width: '180px', height: 'auto', opacity: 0.85, pointerEvents: 'none', zIndex: 0 }}
+                />
+                <div style={{ position: 'relative', zIndex: 1 }}>
                 <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--yellow-deep)', marginBottom: '16px' }}>
                   Energy infrastructure
                 </p>
                 <h3 style={{ fontFamily: 'Lora, serif', fontSize: '28px', fontWeight: '400', margin: '0 0 24px', lineHeight: '1.2' }}>
-                  200kW solar, in three phases.
+                  Solar in three phases.
                 </h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '24px' }}>
                   {[
-                    { phase: 'Phase 1', kw: '50kW',  pct: 25 },
-                    { phase: 'Phase 2', kw: '150kW', pct: 75 },
-                    { phase: 'Phase 3', kw: '200kW', pct: 100 },
+                    { phase: 'Phase 1 · Year 1',     kw: '50 kW',   pct: 10 },
+                    { phase: 'Phase 2 · Years 2–3',  kw: '200 kW',  pct: 40 },
+                    { phase: 'Phase 3 · Year 4+',    kw: '500 kW+', pct: 100 },
                   ].map((p) => (
                     <div key={p.phase}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', fontSize: '13px' }}>
@@ -615,8 +681,9 @@ export default function RtrnPage() {
                   ))}
                 </div>
                 <p style={{ fontSize: '14px', lineHeight: '1.6', margin: 0, opacity: 0.7 }}>
-                  100kWh battery storage. ~30,000 kWh monthly production against 35,500 kWh consumption. Grid export generates $15K–$22.5K annually plus carbon credits.
+                  Phase 2 generates an estimated $35K–$50K/year selling surplus to the grid, plus carbon credits and significant savings on community utility bills. Battery storage paired with solar; EV charging stations from solar; integration with food forest cold storage.
                 </p>
+                </div>
               </motion.div>
 
               {/* Work */}
@@ -625,17 +692,17 @@ export default function RtrnPage() {
                   Work & vocational economy
                 </p>
                 <h3 style={{ fontFamily: 'Lora, serif', fontSize: '28px', fontWeight: '400', margin: '0 0 24px', lineHeight: '1.2' }}>
-                  Eight departments. <em style={{ fontStyle: 'italic', opacity: 0.7 }}>89 residents.</em>
+                  How the work gets done.
                 </h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px 14px', marginBottom: '24px' }}>
-                  {['Farming', 'Energy', 'Community', 'Art', 'Education', 'Health', 'Administration', 'Hospitality'].map((d) => (
+                  {['Community Mgmt', 'Venue Mgmt', 'Space Maintenance', 'Sustainable Systems', 'Kitchen Mgmt', 'Marketing & Outreach', 'Animal Program', 'Art Program'].map((d) => (
                     <div key={d} style={{ fontSize: '14px', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.18)' }}>
                       {d}
                     </div>
                   ))}
                 </div>
                 <p style={{ fontSize: '14px', lineHeight: '1.6', margin: 0, opacity: 0.85 }}>
-                  Work-to-earn model: $400–$1,200 monthly credits for 8–24 weekly hours. Professional staff (15–20 people) earn $40K–$70K plus housing, meals, and benefits.
+                  Work-to-earn model. Professional roles (Farm Manager, Animal Program Manager, Permaculture Designer, Veterinary Tech) can be filled by residents for income + equity, or outsourced via turnkey service. The RTRN Vocational Institute teaches the skills.
                 </p>
               </motion.div>
             </div>
@@ -738,8 +805,12 @@ export default function RtrnPage() {
                 </p>
               </motion.div>
 
-              <motion.div variants={fadeUp} style={{ ...card, padding: '40px' }}>
-                <div style={{ fontSize: '32px', marginBottom: '20px', opacity: 0.5 }}>△</div>
+              <motion.div variants={fadeUp} style={{ ...card, padding: '40px', position: 'relative', overflow: 'hidden' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/regenhoodzero/cutout-pond.png" alt=""
+                  style={{ position: 'absolute', top: '-10px', right: '-30px', width: '160px', height: 'auto', opacity: 0.85, pointerEvents: 'none', zIndex: 0 }}
+                />
+                <div style={{ position: 'relative', zIndex: 1 }}>
                 <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '12px' }}>
                   Retreat center
                 </p>
@@ -761,6 +832,7 @@ export default function RtrnPage() {
                     </div>
                   ))}
                 </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -773,8 +845,8 @@ export default function RtrnPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
               kicker="Roadmap"
-              title={<>Five years, four phases.</>}
-              intro="From land acquisition to a replicable model – RTRN unfolds in deliberate phases, each building the foundation for the next."
+              title={<>How it unfolds.</>}
+              intro="From land acquisition to a model others can replicate. Five years, with each phase laying the ground for the next."
               kickerColor="var(--green)"
             />
             <div className="phase-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
@@ -821,16 +893,17 @@ export default function RtrnPage() {
         <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <SectionHeading
-              kicker="Financials"
-              title={<>The numbers, at full capacity.</>}
+              kicker="How it sustains itself"
+              title={<>The economic model.</>}
+              intro="Diversified income — agriculture, retreats, art, education, energy. Cooperative ownership, no single employer. Communal infrastructure reduces every resident's cost of living."
               kickerColor="var(--pink)"
             />
             <div className="fin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
               {[
-                { n: '$5.75M–$6.5M', l: 'Startup capital',     sub: 'Land, infrastructure, solar, retreat, contingency', c: 'var(--blue)' },
-                { n: '$2.05M',       l: 'Annual operating cost', sub: 'At full capacity (150 residents)',                  c: 'var(--text)' },
-                { n: '$6.4M–$8.5M',  l: 'Projected revenue',   sub: 'Primarily membership fees ($5.4M–$7.2M)',           c: 'var(--green)' },
-                { n: '$4.3M–$6.4M',  l: 'Net operating income', sub: 'Annually, at full capacity',                         c: 'var(--pink)' },
+                { n: '$50K–$250K', l: 'Membership tiers',  sub: 'Pioneer equity, Founder lease, Resident monthly', c: 'var(--blue)' },
+                { n: '$35K–$50K',  l: 'Solar Phase 2',     sub: 'Annual grid revenue at 200 kW',                    c: 'var(--yellow-deep)' },
+                { n: '$90K–$130K', l: 'Solar Phase 3',     sub: 'Annual grid revenue at 500 kW+',                   c: 'var(--green)' },
+                { n: '6+ streams', l: 'Income diversity',  sub: 'Agriculture, retreats, art, education, energy, carbon credits', c: 'var(--pink)' },
               ].map((f) => (
                 <motion.div key={f.l} variants={fadeUp}
                   style={{ ...card, padding: '32px 28px', borderTop: `4px solid ${f.c}` }}>
@@ -860,7 +933,7 @@ export default function RtrnPage() {
                 Application process
               </p>
               <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: '400', margin: '0 0 24px', lineHeight: '1.1', maxWidth: '720px' }}>
-                Five steps from interest to belonging.
+                Want to come live with us?
               </h2>
             </motion.div>
 
@@ -918,6 +991,9 @@ export default function RtrnPage() {
           .apply-steps { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .food-band { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
           .common-band-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+        }
+        @media (max-width: 700px) {
+          .cutout-decor { display: none !important; }
         }
         @media (max-width: 600px) {
           .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
