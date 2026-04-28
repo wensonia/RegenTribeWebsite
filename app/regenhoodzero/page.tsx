@@ -76,13 +76,6 @@ const card: React.CSSProperties = {
 
 /* ── Data ── */
 
-const problems = [
-  { stat: '70%', label: 'of millennials cannot afford homes', color: '#f16ab0' },
-  { stat: '60%', label: 'of Gen Z experience eco-guilt', color: '#6fc6a2' },
-  { stat: '1 in 4', label: 'adults report chronic loneliness', color: '#808aeb' },
-  { stat: '50%', label: 'of jobs face automation by 2030', color: '#ffe682' },
-]
-
 const tiers = [
   {
     name: 'Pioneer',
@@ -116,31 +109,13 @@ const tiers = [
   },
 ]
 
-type Module = { name: string; theme: string; color: string; textLight: boolean; group: string }
-const modules: Module[] = [
-  { name: 'Black',  theme: 'Micro-community',     color: '#1a1a1a', textLight: true,  group: 'Core' },
-  { name: 'Brown',  theme: 'Food & gastronomy',   color: '#7a4a2a', textLight: true,  group: 'Core' },
-  { name: 'Green',  theme: 'Wellness',            color: '#6fc6a2', textLight: false, group: 'Core' },
-  { name: 'Red',    theme: 'Creative forces',     color: '#d04a4a', textLight: true,  group: 'Creative' },
-  { name: 'Orange', theme: 'Makers spaces',       color: '#e07a3a', textLight: true,  group: 'Creative' },
-  { name: 'Indigo', theme: 'Content & media',     color: '#3a4ab0', textLight: true,  group: 'Creative' },
-  { name: 'Pink',   theme: 'Education',           color: '#f16ab0', textLight: true,  group: 'Creative' },
-  { name: 'Blue',   theme: 'Entrepreneurship',    color: '#808aeb', textLight: true,  group: 'Specialized' },
-  { name: 'Yellow', theme: 'Fitness',             color: '#ffe682', textLight: false, group: 'Specialized' },
-  { name: 'Violet', theme: 'Spiritual practice',  color: '#7a4ab0', textLight: true,  group: 'Specialized' },
-  { name: 'White',  theme: 'Water temple',        color: '#f4f4f4', textLight: false, group: 'Specialized' },
-  { name: 'Silver', theme: 'Deep tech',           color: '#c4c4c8', textLight: false, group: 'Specialized' },
-  { name: 'Gold',   theme: 'Cultural heritage',   color: '#d4a14a', textLight: false, group: 'Specialized' },
-  { name: 'Wood',   theme: 'Tree houses',         color: '#5a4030', textLight: true,  group: 'Specialized' },
-]
-
 const land = [
-  { label: 'Wooded conservation',  ha: 5.7, color: '#808aeb' },
-  { label: 'Working farm',         ha: 1.2, color: '#6fc6a2' },
-  { label: '36 home sites',        ha: 1.5, color: '#f16ab0' },
-  { label: 'Animal sanctuary',     ha: 0.8, color: '#d4a14a' },
-  { label: 'Common buildings',     ha: 0.6, color: '#363636' },
-  { label: 'Solar farm',           ha: 0.4, color: '#ffe682' },
+  { label: 'Wooded conservation',  weight: 5.5, color: '#808aeb' },
+  { label: 'Working farm',         weight: 1.4, color: '#6fc6a2' },
+  { label: '36 home sites',        weight: 1.6, color: '#f16ab0' },
+  { label: 'Animal sanctuary',     weight: 0.9, color: '#7a4ab0' },
+  { label: 'Common buildings',     weight: 0.7, color: '#363636' },
+  { label: 'Solar farm',           weight: 0.5, color: '#ffe682' },
 ]
 
 const phases = [
@@ -167,22 +142,44 @@ const onboarding = [
 ]
 
 const governanceLayers = [
-  'Identity & Purpose',
-  'Membership',
-  'Governance Circles',
-  'Economy & Resources',
-  'Conflict & Accountability',
-  'Operations & Coordination',
-  'Evolution',
+  { n: 0, name: 'Identity & Scope',           desc: 'Mission, vision, community constitution.' },
+  { n: 1, name: 'Membership',                 desc: 'Application process, 13-week onboarding, membership vote.' },
+  { n: 2, name: 'Governance',                 desc: 'Sociocracy circles, decision-making protocols.' },
+  { n: 3, name: 'Economy & Resources',        desc: 'Work-to-earn, tiered pricing, surplus sharing.' },
+  { n: 4, name: 'Conflict & Accountability',  desc: 'Conflict resolution process, restorative circles.' },
+  { n: 5, name: 'Operations & Coordination',  desc: 'Role clarity, SOPs, meeting rhythms.' },
+  { n: 6, name: 'Evolution',                  desc: 'Annual community retreats, strategic planning.' },
+]
+
+const governanceCircles = [
+  { name: 'Community Council', desc: 'Top governance circle — one rep from each department.' },
+  { name: 'Operations Circle', desc: 'Day-to-day operations coordination.' },
+  { name: 'Ecology Circle',    desc: 'Food forest, animals, water, energy systems.' },
+  { name: 'Social Circle',     desc: 'Community life, onboarding, events, conflict resolution.' },
+]
+
+const rnfPillars = [
+  { name: 'Ecology',    desc: 'Food forest, animal sanctuary, water systems, rewilding zones.' },
+  { name: 'Social',     desc: '13-week onboarding, RCOS governance, community rhythms, art program.' },
+  { name: 'Economy',    desc: 'Work-to-earn coop, tiered membership, vocational training.' },
+  { name: 'Hardware',   desc: 'Off-grid energy, water harvesting, natural building, communal spaces.' },
+  { name: 'Governance', desc: 'Sociocracy circles, SOPs, conflict resolution, transparent decisions.' },
+]
+
+const rhythms = [
+  { kind: 'Daily',   items: ['Morning circle (30 min)', 'Communal meals — breakfast & dinner', 'Evening wind-down'] },
+  { kind: 'Weekly',  items: ['Community meeting (2 hrs)', 'Skill share', 'Art day (half day)', 'Sanctuary care shifts'] },
+  { kind: 'Monthly', items: ['Community retreat (half day)'] },
+  { kind: 'Annual',  items: ['Burning Man trip', 'Harvest festival', 'Strategic planning retreat'] },
 ]
 
 const animals = [
-  { count: '🐔', kind: 'Chickens' },
-  { count: '🐐', kind: 'Goats' },
-  { count: '🦆', kind: 'Ducks' },
-  { count: '🐰', kind: 'Rabbits' },
-  { count: '🐕', kind: 'Senior dogs' },
-  { count: '🐈', kind: 'Cats' },
+  { count: '🐔', kind: 'Chickens',     purpose: 'Eggs · pest control · fertilizer' },
+  { count: '🐐', kind: 'Goats',        purpose: 'Milk · brush clearing · companionship' },
+  { count: '🦆', kind: 'Ducks',        purpose: 'Eggs · pest control · entertainment' },
+  { count: '🐰', kind: 'Rabbits',      purpose: 'Meat · fertilizer · therapy' },
+  { count: '🐕', kind: 'Senior dogs',  purpose: 'Companionship · emotional support' },
+  { count: '🐈', kind: 'Cats',         purpose: 'Pest control · emotional support' },
 ]
 
 export default function RtrnPage() {
@@ -220,7 +217,7 @@ export default function RtrnPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/regenhoodzero/master-plan.png"
-                  alt="Top-down infrastructure map of the Regenerative Tribe Regenerative Neighborhood — 50 hectares of residential, food forest, animal sanctuary, solar farm, common buildings, wetlands, and retreat center."
+                  alt="Top-down infrastructure map of RegenHood Zero — 17 acres in Tulum, Mexico with 36 home sites, working farm, food forest, animal sanctuary, solar farm, common buildings, and protected wooded conservation."
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
                 {[
@@ -271,55 +268,20 @@ export default function RtrnPage() {
         </div>
       </section>
 
-      {/* ── THE PROBLEM ── */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div className="wrap" style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <SectionHeading
-              kicker="Why now"
-              title={<>The reasons we&apos;re building this.</>}
-              intro="Housing is unaffordable. Climate dread is rising. People are lonelier than ever. And work itself is changing fast. RTRN is one answer — built around community, land, and shared infrastructure."
-              kickerColor="var(--pink)"
-            />
-            <div className="problem-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-              {problems.map((p) => (
-                <motion.div key={p.label} variants={fadeUp}
-                  style={{ ...card, borderTop: `4px solid ${p.color}`, padding: '36px 28px' }}>
-                  <p style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(40px, 5vw, 60px)', fontWeight: '500', margin: '0 0 12px', lineHeight: '1', color: p.color }}>
-                    {p.stat}
-                  </p>
-                  <p style={{ fontSize: '15px', lineHeight: '1.55', margin: 0, opacity: 0.8 }}>
-                    {p.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── VISION / OVERVIEW ── */}
+      {/* ── VISION QUOTE ── */}
       <section id="vision" className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <SectionHeading
-              kicker="The vision"
-              title={<>What we&apos;re building for.</>}
-            />
-            <div className="vision-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-              {[
-                { shape: '○', color: '#f16ab0', light: true,  title: 'Good for you',         body: 'Affordable housing, deep community, meaningful work, and a healthier daily rhythm.' },
-                { shape: '△', color: '#808aeb', light: true,  title: 'Good for the collective', body: 'Sociocratic governance, shared meals, mutual care, and a 13-week path to belonging.' },
-                { shape: '□', color: '#6fc6a2', light: false, title: 'Good for the planet',  body: 'Closed-loop food systems, solar power, restored wetlands, and zero synthetic inputs.' },
-              ].map((v) => (
-                <motion.div key={v.title} variants={fadeUp}
-                  style={{ backgroundColor: v.color, borderRadius: '16px', padding: '40px 32px', color: v.light ? 'white' : '#363636' }}>
-                  <div style={{ fontSize: '32px', marginBottom: '20px', opacity: 0.55 }}>{v.shape}</div>
-                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '24px', fontWeight: '500', margin: '0 0 14px' }}>{v.title}</h3>
-                  <p style={{ fontSize: '15px', lineHeight: '1.65', margin: 0, opacity: 0.9 }}>{v.body}</p>
-                </motion.div>
-              ))}
-            </div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '24px' }}>
+            <motion.p variants={fadeUp} style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--pink)', margin: 0 }}>
+              The vision
+            </motion.p>
+            <motion.h2 variants={fadeUp} style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(36px, 5.5vw, 72px)', fontWeight: '400', fontStyle: 'italic', lineHeight: '1.1', margin: 0, maxWidth: '900px' }}>
+              &ldquo;Build something worth living in.&rdquo;
+            </motion.h2>
+            <motion.p variants={fadeUp} style={{ fontSize: '18px', lineHeight: '1.7', margin: 0, opacity: 0.75, maxWidth: '640px' }}>
+              A regenerative neighborhood where people live, work, grow food, care for animals, and create art together. Built on trust, sustainability, and deep community bonds.
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -437,49 +399,6 @@ export default function RtrnPage() {
         </div>
       </section>
 
-      {/* ── 14 COLOR MODULES ── */}
-      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
-        <div className="wrap" style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <SectionHeading
-              kicker="Spatial organization"
-              title={<>Fourteen color modules.</>}
-              intro="The neighborhood is organized around thematic zones – each with its own programs, spaces, and revenue streams. Together they form one integrated whole."
-              kickerColor="var(--pink)"
-            />
-            <div className="modules-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '12px' }}>
-              {modules.map((m) => (
-                <motion.div key={m.name} variants={fadeUp}
-                  whileHover={{ y: -3 }} transition={{ duration: 0.2 }}
-                  style={{
-                    backgroundColor: m.color,
-                    color: m.textLight ? 'white' : '#363636',
-                    borderRadius: '14px',
-                    padding: '20px 16px',
-                    minHeight: '140px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    border: m.name === 'White' ? '1px solid var(--border)' : 'none',
-                  }}>
-                  <p style={{ fontSize: '10px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', margin: 0, opacity: 0.7 }}>
-                    {m.group}
-                  </p>
-                  <div>
-                    <p style={{ fontFamily: 'Lora, serif', fontSize: '20px', fontWeight: '500', margin: '0 0 4px' }}>
-                      {m.name}
-                    </p>
-                    <p style={{ fontSize: '12px', margin: 0, opacity: 0.85, lineHeight: '1.4' }}>
-                      {m.theme}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── LAND LAYOUT ── */}
       <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
@@ -492,23 +411,21 @@ export default function RtrnPage() {
             />
             <div className="land-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
               <motion.div variants={fadeUp}>
-                {/* Stacked horizontal bar */}
-                <div style={{ display: 'flex', height: '52px', borderRadius: '10px', overflow: 'hidden', marginBottom: '32px' }}>
+                {/* Stacked horizontal bar — schematic, not to scale */}
+                <div style={{ display: 'flex', height: '52px', borderRadius: '10px', overflow: 'hidden', marginBottom: '12px' }}>
                   {land.map((l) => (
-                    <div key={l.label} title={`${l.label}: ${l.ha} ha`}
-                      style={{ flex: l.ha, backgroundColor: l.color }} />
+                    <div key={l.label} title={l.label}
+                      style={{ flex: l.weight, backgroundColor: l.color }} />
                   ))}
                 </div>
+                <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.45, margin: '0 0 24px' }}>
+                  Schematic — see right for actual breakdown
+                </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {land.map((l) => (
-                    <div key={l.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <div style={{ width: '12px', height: '12px', borderRadius: '4px', backgroundColor: l.color, flexShrink: 0, border: l.color === '#ffe682' || l.color === '#d4d4d4' ? '1px solid var(--border)' : 'none' }} />
-                        <span style={{ fontSize: '15px' }}>{l.label}</span>
-                      </div>
-                      <span style={{ fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: '500', opacity: 0.75 }}>
-                        {l.ha} ha
-                      </span>
+                    <div key={l.label} style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingBottom: '10px', borderBottom: '1px solid var(--border)' }}>
+                      <div style={{ width: '12px', height: '12px', borderRadius: '4px', backgroundColor: l.color, flexShrink: 0, border: l.color === '#ffe682' ? '1px solid var(--border)' : 'none' }} />
+                      <span style={{ fontSize: '15px' }}>{l.label}</span>
                     </div>
                   ))}
                 </div>
@@ -563,11 +480,12 @@ export default function RtrnPage() {
             <div className="animals-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px', marginBottom: '48px' }}>
               {animals.map((a) => (
                 <motion.div key={a.kind} variants={fadeUp}
-                  style={{ ...card, padding: '24px 20px', textAlign: 'center' }}>
-                  <p style={{ fontFamily: 'Lora, serif', fontSize: '36px', fontWeight: '500', margin: '0 0 6px', lineHeight: '1' }}>
+                  style={{ ...card, padding: '22px 18px', textAlign: 'center' }}>
+                  <p style={{ fontSize: '36px', margin: '0 0 6px', lineHeight: '1' }}>
                     {a.count}
                   </p>
-                  <p style={{ fontSize: '13px', margin: 0, opacity: 0.7 }}>{a.kind}</p>
+                  <p style={{ fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500, margin: '0 0 6px' }}>{a.kind}</p>
+                  <p style={{ fontSize: '11px', margin: 0, opacity: 0.6, lineHeight: '1.4' }}>{a.purpose}</p>
                 </motion.div>
               ))}
             </div>
@@ -602,7 +520,7 @@ export default function RtrnPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/regenhoodzero/food-forest.png"
-                  alt="Top-down detail of the 15-hectare food forest divided into five permaculture zones: kitchen gardens, annual vegetables, small fruits, nut and fruit trees, and silvopasture."
+                  alt="Top-down detail of the food forest across six permaculture zones (0–5): common buildings, kitchen garden, fruit and berries, silvopasture, wild foraging, and the wildlife sanctuary."
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
                 {[
@@ -758,27 +676,33 @@ export default function RtrnPage() {
                   Governance
                 </p>
                 <h2 style={{ fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: '400', margin: '0 0 20px', lineHeight: '1.15' }}>
-                  RCOS – a 7-layer sociocracy.
+                  RCOS — a 7-layer sociocracy.
                 </h2>
-                <p style={{ fontSize: '17px', lineHeight: '1.65', opacity: 0.75, margin: '0 0 20px' }}>
-                  Decision-making operates across seven interconnected layers. The CLIPS health framework tracks Individual, Community, Intention, Structure, and Practice over time.
+                <p style={{ fontSize: '17px', lineHeight: '1.65', opacity: 0.75, margin: '0 0 24px' }}>
+                  Decision-making operates across seven interconnected layers, from Identity & Scope down to Evolution.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: '1.65', opacity: 0.6, margin: 0 }}>
-                  Daily morning circles · communal meals · weekly governance meetings · monthly and annual retreats.
+                <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--blue)', margin: '0 0 12px' }}>
+                  CLIPS Health Check — 5 layers
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: '1.65', opacity: 0.7, margin: 0 }}>
+                  Individual · Community · Intention · Structure · Practice — monitored constantly.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {governanceLayers.map((layer, i) => (
-                  <div key={layer} style={{
-                    display: 'flex', alignItems: 'center', gap: '20px',
+                {governanceLayers.map((layer) => (
+                  <div key={layer.n} style={{
+                    display: 'flex', alignItems: 'flex-start', gap: '20px',
                     backgroundColor: 'white', borderRadius: '12px',
-                    padding: '18px 24px', border: '1px solid var(--border)',
+                    padding: '16px 22px', border: '1px solid var(--border)',
                   }}>
-                    <span style={{ fontFamily: 'Lora, serif', fontSize: '20px', fontWeight: '500', color: 'var(--pink)', minWidth: '32px' }}>
-                      {String(i + 1).padStart(2, '0')}
+                    <span style={{ fontFamily: 'Lora, serif', fontSize: '20px', fontWeight: '500', color: 'var(--pink)', minWidth: '40px', lineHeight: '1.4' }}>
+                      L{layer.n}
                     </span>
-                    <span style={{ fontSize: '16px' }}>{layer}</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <span style={{ fontSize: '15px', fontWeight: 500 }}>{layer.name}</span>
+                      <span style={{ fontSize: '13px', opacity: 0.65 }}>{layer.desc}</span>
+                    </div>
                   </div>
                 ))}
               </motion.div>
@@ -787,53 +711,125 @@ export default function RtrnPage() {
         </div>
       </section>
 
-      {/* ── ART & RETREAT ── */}
+      {/* ── 4 GOVERNANCE CIRCLES ── */}
       <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
         <div className="wrap" style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <div className="dual-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-              <motion.div variants={fadeUp} style={{ ...card, padding: '40px', backgroundColor: 'var(--pink)', color: 'white', border: 'none' }}>
-                <div style={{ fontSize: '32px', marginBottom: '20px', opacity: 0.6 }}>○</div>
-                <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '12px', opacity: 0.85 }}>
-                  Art & cultural programs
-                </p>
-                <h3 style={{ fontFamily: 'Lora, serif', fontSize: '28px', fontWeight: '400', margin: '0 0 20px', lineHeight: '1.2' }}>
-                  Four artists in residence – rotating quarterly.
-                </h3>
-                <p style={{ fontSize: '15px', lineHeight: '1.65', margin: '0 0 20px', opacity: 0.9 }}>
-                  $1,000/month stipend, studios for painting, woodworking, metalwork, textiles, video, and photography. Annual events: Burning Man participation, Harvest Festival, Solstice celebrations, monthly skill fairs.
-                </p>
-              </motion.div>
+            <SectionHeading
+              kicker="Governance circles"
+              title={<>Four circles, working in concert.</>}
+              kickerColor="var(--green)"
+            />
+            <div className="circles-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+              {governanceCircles.map((c) => (
+                <motion.div key={c.name} variants={fadeUp}
+                  style={{ ...card, padding: '32px 28px' }}>
+                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: '500', margin: '0 0 12px', lineHeight: '1.3' }}>
+                    {c.name}
+                  </h3>
+                  <p style={{ fontSize: '14px', lineHeight: '1.6', margin: 0, opacity: 0.7 }}>
+                    {c.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-              <motion.div variants={fadeUp} style={{ ...card, padding: '40px', position: 'relative', overflow: 'hidden' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/regenhoodzero/cutout-pond.png" alt=""
-                  style={{ position: 'absolute', top: '-10px', right: '-30px', width: '160px', height: 'auto', opacity: 0.85, pointerEvents: 'none', zIndex: 0 }}
-                />
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                <p style={{ fontSize: '12px', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '12px' }}>
-                  Retreat center
-                </p>
-                <h3 style={{ fontFamily: 'Lora, serif', fontSize: '28px', fontWeight: '400', margin: '0 0 20px', lineHeight: '1.2' }}>
-                  3.5-hectare campus for 50 guests.
-                </h3>
-                <p style={{ fontSize: '15px', lineHeight: '1.65', margin: '0 0 24px', opacity: 0.75 }}>
-                  Cottages, suites, and dorm beds. Annual revenue projection $635K across yoga & wellness, corporate, artist workshops, weddings, and spiritual retreats.
-                </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
-                  {[
-                    { n: '70%', l: 'Peak (Nov–Apr)' },
-                    { n: '40%', l: 'Shoulder' },
-                    { n: '25%', l: 'Low season' },
-                  ].map((s) => (
-                    <div key={s.l} style={{ borderTop: '3px solid var(--blue)', paddingTop: '10px' }}>
-                      <p style={{ fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: '500', margin: '0 0 2px' }}>{s.n}</p>
-                      <p style={{ fontSize: '12px', margin: 0, opacity: 0.65 }}>{s.l}</p>
-                    </div>
-                  ))}
-                </div>
-                </div>
-              </motion.div>
+      {/* ── COMMUNITY RHYTHMS ── */}
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
+            <SectionHeading
+              kicker="Community rhythms"
+              title={<>The cadence of the place.</>}
+              kickerColor="var(--blue)"
+            />
+            <div className="rhythms-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+              {rhythms.map((r) => (
+                <motion.div key={r.kind} variants={fadeUp}
+                  style={{ ...card, padding: '32px 28px' }}>
+                  <p style={{ fontSize: '11px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--pink)', margin: '0 0 16px' }}>
+                    {r.kind}
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {r.items.map((it) => (
+                      <li key={it} style={{ fontSize: '14px', lineHeight: '1.5', opacity: 0.85 }}>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── RNF 5 PILLARS ── */}
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
+            <SectionHeading
+              kicker="RNF framework"
+              title={<>Five pillars, integrated.</>}
+              intro="The Regenerative Neighborhood Framework that shapes every part of RegenHood Zero."
+              kickerColor="var(--pink)"
+            />
+            <div className="pillars-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}>
+              {rnfPillars.map((p, i) => {
+                const colors = ['#6fc6a2', '#f16ab0', '#ffe682', '#808aeb', '#363636']
+                const light = [false, true, false, true, true]
+                return (
+                  <motion.div key={p.name} variants={fadeUp}
+                    style={{
+                      backgroundColor: colors[i],
+                      color: light[i] ? 'white' : '#363636',
+                      borderRadius: '16px', padding: '28px 22px',
+                      minHeight: '200px',
+                      display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                    }}>
+                    <p style={{ fontFamily: 'Lora, serif', fontSize: '24px', fontWeight: '500', margin: 0 }}>
+                      {p.name}
+                    </p>
+                    <p style={{ fontSize: '13px', lineHeight: '1.55', margin: 0, opacity: 0.9 }}>
+                      {p.desc}
+                    </p>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── ART PROGRAM ── */}
+      <section className="sec" style={{ padding: '120px 0', borderBottom: '1px solid var(--border)' }}>
+        <div className="wrap" style={wrap}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
+            <SectionHeading
+              kicker="Art program"
+              title={<>Two to four artists in residence at a time.</>}
+              intro="One- to three-month residencies. Studio space provided, meals included. Contributions to community art projects."
+              kickerColor="var(--pink)"
+            />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+              {[
+                { title: 'Burning Man integration',  body: 'Annual art build for Burning Man. Community trip as a group. Art residues incorporated into community installations.' },
+                { title: 'Weekly community art days', body: 'Workshop series in pottery, painting, textiles, woodworking. Skill shares run every week.' },
+                { title: 'Communal art installations', body: 'Permanent installations throughout the neighborhood, made together by the community.' },
+              ].map((c) => (
+                <motion.div key={c.title} variants={fadeUp}
+                  style={{ ...card, padding: '32px 28px' }}>
+                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '20px', fontWeight: '500', margin: '0 0 12px', lineHeight: '1.3' }}>
+                    {c.title}
+                  </h3>
+                  <p style={{ fontSize: '15px', lineHeight: '1.65', margin: 0, opacity: 0.75 }}>
+                    {c.body}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -974,15 +970,14 @@ export default function RtrnPage() {
       {/* ── Responsive ── */}
       <style>{`
         @media (max-width: 1100px) {
-          .modules-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
           .weeks-grid { grid-template-columns: repeat(7, minmax(0, 1fr)) !important; }
           .phase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .animals-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+          .pillars-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+          .circles-grid, .rhythms-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
         }
         @media (max-width: 900px) {
           .rtrn-hero-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 48px !important; }
-          .problem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-          .vision-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .tier-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .land-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 40px !important; }
           .dual-grid { grid-template-columns: minmax(0, 1fr) !important; }
@@ -996,13 +991,12 @@ export default function RtrnPage() {
           .cutout-decor { display: none !important; }
         }
         @media (max-width: 600px) {
-          .modules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .weeks-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
           .animals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-          .problem-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .fin-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .apply-steps { grid-template-columns: minmax(0, 1fr) !important; }
           .phase-grid { grid-template-columns: minmax(0, 1fr) !important; }
+          .pillars-grid, .circles-grid, .rhythms-grid { grid-template-columns: minmax(0, 1fr) !important; }
           .food-band { padding: 32px 24px !important; }
         }
       `}</style>
