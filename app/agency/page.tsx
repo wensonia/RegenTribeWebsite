@@ -138,7 +138,7 @@ const primaryProjects: Project[] = [
       'Community launch and operations management',
       'Volunteer program setup',
       'Sustainable systems – organic waste, vertical garden',
-      'Managed €150k expansion – housing, solar, water systems',
+      'We raised $150,000 USD in investment for regenerative resource systems',
       'Branding, social media, and events marketing',
       'Project management',
     ],
