@@ -161,10 +161,9 @@ export default function RegenHoodZeroPage() {
         borderBottom: '1px solid var(--border)',
       }}>
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" animate="visible"
-            style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '56px', alignItems: 'center' }}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '56px', alignItems: 'center' }}
             className="rh-hero-grid">
-            <div>
+            <motion.div variants={stagger} initial="hidden" animate="visible">
               <motion.h1 variants={fadeUp} style={{
                 fontFamily: 'Lora, serif', fontSize: 'clamp(48px, 7vw, 104px)', fontWeight: 400,
                 lineHeight: 1, margin: '0 0 20px', letterSpacing: '-0.03em',
@@ -205,11 +204,8 @@ export default function RegenHoodZeroPage() {
                 <PillBtn href="#join" bg="var(--text)">Live here</PillBtn>
                 <PillBtn href="#partner" bg="transparent" light outline>Partner with us</PillBtn>
               </motion.div>
-            </div>
-            <motion.div variants={fadeUp} style={{
-              borderRadius: '20px', overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(54,54,54,0.12)',
-            }}>
+            </motion.div>
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
               <OptimizedImage
                 src="/images/regenhoodzero/hero-illustration.png"
                 alt="Editorial illustration of a regenerative neighborhood — buildings with solar panels and green roofs, people in diverse activities, a food forest, water pond, and tropical plants."
@@ -219,7 +215,7 @@ export default function RegenHoodZeroPage() {
                 style={{ aspectRatio: '16 / 9' }}
               />
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -399,11 +395,7 @@ export default function RegenHoodZeroPage() {
           </motion.div>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp}
-            style={{
-              borderRadius: '20px', overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(54,54,54,0.10)',
-              marginBottom: '48px',
-            }}>
+            style={{ marginBottom: '48px' }}>
             <OptimizedImage
               src="/images/regenhoodzero/architecture-masterplan.png"
               alt="Aerial illustration of the RegenHood Zero masterplan — buildings arranged along a golden-ratio spiral, with food forest, animal sanctuary, water systems, and solar walkways."
@@ -501,11 +493,7 @@ export default function RegenHoodZeroPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', alignItems: 'center' }}
             className="rh-2col">
-            <motion.div variants={fadeUp} style={{
-              borderRadius: '20px', overflow: 'hidden',
-              boxShadow: '0 24px 60px rgba(54,54,54,0.10)',
-              order: 1,
-            }} className="rh-archetypes-img">
+            <motion.div variants={fadeUp} style={{ order: 1 }} className="rh-archetypes-img">
               <OptimizedImage
                 src="/images/regenhoodzero/archetypes.png"
                 alt="Editorial illustration of community members in a regenerative neighborhood courtyard — a founder sketching, a facilitator leading a circle, a permaculture designer, an artist painting, a researcher reading, and a person doing yoga."
