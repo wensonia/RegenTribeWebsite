@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Plus } from 'lucide-react'
+import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -155,51 +156,68 @@ export default function RegenHoodZeroPage() {
     <>
       {/* ─────────────── 1. HERO ─────────────── */}
       <section style={{
-        padding: '160px 0 120px',
+        padding: '120px 0 100px',
         background: 'linear-gradient(180deg, var(--bg) 0%, #e4e4e4 100%)',
         borderBottom: '1px solid var(--border)',
       }}>
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" animate="visible">
-            <motion.h1 variants={fadeUp} style={{
-              fontFamily: 'Lora, serif', fontSize: 'clamp(56px, 9vw, 132px)', fontWeight: 400,
-              lineHeight: 1, margin: '0 0 24px', letterSpacing: '-0.03em',
-            }}>
-              RegenHood Zero
-            </motion.h1>
-            <motion.p variants={fadeUp} style={{
-              fontFamily: 'Lora, serif', fontSize: 'clamp(22px, 2.6vw, 32px)', fontStyle: 'italic',
-              fontWeight: 400, lineHeight: 1.3, margin: '0 0 32px', opacity: 0.85, maxWidth: '720px',
-            }}>
-              A pilot for the future of living.
-            </motion.p>
-            <motion.p variants={fadeUp} style={{
-              fontSize: '18px', lineHeight: 1.7, margin: '0 0 24px', opacity: 0.78, maxWidth: '620px',
-            }}>
-              A modular regenerative neighborhood – good for the individual, the collective, and the planet.
-            </motion.p>
-            <motion.details variants={fadeUp} style={{
-              marginBottom: '40px', maxWidth: '620px',
-              border: '1px solid var(--border)', borderRadius: '10px',
-              padding: '14px 18px', backgroundColor: 'rgba(255,255,255,0.5)',
-            }}>
-              <summary style={{
-                cursor: 'pointer', listStyle: 'none',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-                opacity: 0.75,
+          <motion.div variants={stagger} initial="hidden" animate="visible"
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '56px', alignItems: 'center' }}
+            className="rh-hero-grid">
+            <div>
+              <motion.h1 variants={fadeUp} style={{
+                fontFamily: 'Lora, serif', fontSize: 'clamp(48px, 7vw, 104px)', fontWeight: 400,
+                lineHeight: 1, margin: '0 0 20px', letterSpacing: '-0.03em',
               }}>
-                <span>What is a regenerative neighborhood?</span>
-                <Plus size={16} strokeWidth={1.6} style={{ opacity: 0.5 }} />
-              </summary>
-              <div style={{ marginTop: '14px', fontSize: '14.5px', lineHeight: 1.65, opacity: 0.82 }}>
-                <em style={{ opacity: 0.6 }}>/noun/</em>{' '}
-                wellness real estate with resilient water, food, energy and economic systems, plus community lifestyle and amenities.
-              </div>
-            </motion.details>
-            <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <PillBtn href="#join" bg="var(--text)">Live here</PillBtn>
-              <PillBtn href="#partner" bg="transparent" light outline>Partner with us</PillBtn>
+                RegenHood Zero
+              </motion.h1>
+              <motion.p variants={fadeUp} style={{
+                fontFamily: 'Lora, serif', fontSize: 'clamp(20px, 2.2vw, 28px)', fontStyle: 'italic',
+                fontWeight: 400, lineHeight: 1.3, margin: '0 0 24px', opacity: 0.85,
+              }}>
+                A pilot for the future of living.
+              </motion.p>
+              <motion.p variants={fadeUp} style={{
+                fontSize: '17px', lineHeight: 1.65, margin: '0 0 24px', opacity: 0.78,
+              }}>
+                A modular regenerative neighborhood – good for the individual, the collective, and the planet.
+              </motion.p>
+              <motion.details variants={fadeUp} style={{
+                marginBottom: '32px',
+                border: '1px solid var(--border)', borderRadius: '10px',
+                padding: '14px 18px', backgroundColor: 'rgba(255,255,255,0.5)',
+              }}>
+                <summary style={{
+                  cursor: 'pointer', listStyle: 'none',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                  fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+                  opacity: 0.75,
+                }}>
+                  <span>What is a regenerative neighborhood?</span>
+                  <Plus size={16} strokeWidth={1.6} style={{ opacity: 0.5 }} />
+                </summary>
+                <div style={{ marginTop: '14px', fontSize: '14.5px', lineHeight: 1.65, opacity: 0.82 }}>
+                  <em style={{ opacity: 0.6 }}>/noun/</em>{' '}
+                  wellness real estate with resilient water, food, energy and economic systems, plus community lifestyle and amenities.
+                </div>
+              </motion.details>
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <PillBtn href="#join" bg="var(--text)">Live here</PillBtn>
+                <PillBtn href="#partner" bg="transparent" light outline>Partner with us</PillBtn>
+              </motion.div>
+            </div>
+            <motion.div variants={fadeUp} style={{
+              borderRadius: '20px', overflow: 'hidden',
+              boxShadow: '0 24px 60px rgba(54,54,54,0.12)',
+            }}>
+              <OptimizedImage
+                src="/images/regenhoodzero/hero-illustration.png"
+                alt="Editorial illustration of a regenerative neighborhood — buildings with solar panels and green roofs, people in diverse activities, a food forest, water pond, and tropical plants."
+                extraWidths={[1024]}
+                sizes="(max-width: 900px) 100vw, 55vw"
+                loading="eager"
+                style={{ aspectRatio: '16 / 9' }}
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -375,9 +393,28 @@ export default function RegenHoodZeroPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px' }}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--yellow-deep)')}>THE PLACE</motion.p>
             <motion.h2 variants={fadeUp} style={h2}>Architecture &amp; spatial design</motion.h2>
-            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '24px', marginBottom: '32px' }}>
+            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '24px', marginBottom: '40px' }}>
               The masterplan organizes shared infrastructure, resource systems, and resident space around a golden-ratio spiral – so each phase grows outward without breaking the systems already in place.
             </motion.p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp}
+            style={{
+              borderRadius: '20px', overflow: 'hidden',
+              boxShadow: '0 24px 60px rgba(54,54,54,0.10)',
+              marginBottom: '48px',
+            }}>
+            <OptimizedImage
+              src="/images/regenhoodzero/architecture-masterplan.png"
+              alt="Aerial illustration of the RegenHood Zero masterplan — buildings arranged along a golden-ratio spiral, with food forest, animal sanctuary, water systems, and solar walkways."
+              extraWidths={[1024]}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              loading="lazy"
+              style={{ aspectRatio: '16 / 9' }}
+            />
+          </motion.div>
+
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px' }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '24px' }}>
               <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.6, margin: '0 0 16px' }}>Core elements</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '15.5px', lineHeight: 1.8 }}>
@@ -461,19 +498,37 @@ export default function RegenHoodZeroPage() {
       {/* ─────────────── 10. WHO WE'RE INVITING ─────────────── */}
       <section style={{ ...sec, backgroundColor: '#f5f5f0', borderBottom: '1px solid var(--border)' }} className="sec">
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <motion.p variants={fadeUp} style={kickerStyle('var(--pink-deep)')}>ARCHETYPES</motion.p>
-            <motion.h2 variants={fadeUp} style={{ ...h2, marginBottom: '40px' }}>Who we&apos;re inviting to live with us</motion.h2>
-            <motion.ul variants={stagger} style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid var(--border)' }}>
-              {archetypes.map(a => (
-                <motion.li key={a.name} variants={fadeUp} style={{
-                  padding: '20px 0', borderBottom: '1px solid var(--border)',
-                }}>
-                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '19px', fontWeight: 500, margin: '0 0 6px' }}>{a.name}</h3>
-                  {a.desc && <p style={{ fontSize: '14.5px', lineHeight: 1.6, margin: 0, opacity: 0.78 }}>{a.desc}</p>}
-                </motion.li>
-              ))}
-            </motion.ul>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', alignItems: 'center' }}
+            className="rh-2col">
+            <motion.div variants={fadeUp} style={{
+              borderRadius: '20px', overflow: 'hidden',
+              boxShadow: '0 24px 60px rgba(54,54,54,0.10)',
+              order: 1,
+            }} className="rh-archetypes-img">
+              <OptimizedImage
+                src="/images/regenhoodzero/archetypes.png"
+                alt="Editorial illustration of community members in a regenerative neighborhood courtyard — a founder sketching, a facilitator leading a circle, a permaculture designer, an artist painting, a researcher reading, and a person doing yoga."
+                extraWidths={[1024]}
+                sizes="(max-width: 900px) 100vw, 45vw"
+                loading="lazy"
+                style={{ aspectRatio: '16 / 9' }}
+              />
+            </motion.div>
+            <div style={{ order: 2 }}>
+              <motion.p variants={fadeUp} style={kickerStyle('var(--pink-deep)')}>ARCHETYPES</motion.p>
+              <motion.h2 variants={fadeUp} style={{ ...h2, marginBottom: '32px' }}>Who we&apos;re inviting to live with us</motion.h2>
+              <motion.ul variants={stagger} style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid var(--border)' }}>
+                {archetypes.map(a => (
+                  <motion.li key={a.name} variants={fadeUp} style={{
+                    padding: '16px 0', borderBottom: '1px solid var(--border)',
+                  }}>
+                    <h3 style={{ fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500, margin: '0 0 4px' }}>{a.name}</h3>
+                    {a.desc && <p style={{ fontSize: '14px', lineHeight: 1.55, margin: 0, opacity: 0.78 }}>{a.desc}</p>}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -579,6 +634,10 @@ export default function RegenHoodZeroPage() {
       {/* ─────────────── Responsive ─────────────── */}
       <style jsx>{`
         @media (max-width: 900px) {
+          :global(.rh-hero-grid) {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
           :global(.rh-2col) {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
