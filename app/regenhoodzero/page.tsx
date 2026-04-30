@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Plus } from 'lucide-react'
+import { ArrowRight, Plus, Users, Compass } from 'lucide-react'
 import OptimizedImage from '@/components/OptimizedImage'
 
 /* ── Layout constants ── */
@@ -245,24 +245,47 @@ export default function RegenHoodZeroPage() {
                 <PillBtn href="#partner" bg="transparent" light outline>Partner with us</PillBtn>
               </motion.div>
             </motion.div>
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
+              style={{
+                position: 'relative',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
+                boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
+                border: '1px solid var(--border)',
+              }}>
               <OptimizedImage
                 src="/images/regenhoodzero/hero-illustration.png"
                 alt="Editorial illustration of a regenerative neighborhood — buildings with solar panels and green roofs, people in diverse activities, a food forest, water pond, and tropical plants."
                 extraWidths={[1024]}
                 sizes="(max-width: 900px) 100vw, 55vw"
                 loading="eager"
-                style={{ aspectRatio: '16 / 9' }}
+                style={{ aspectRatio: '16 / 10', objectFit: 'contain', padding: '16px' }}
               />
+              <div style={{
+                position: 'absolute', top: '14px', left: '16px',
+                fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: 'var(--text)', opacity: 0.42,
+                backgroundColor: 'rgba(255,255,255,0.85)',
+                padding: '6px 10px', borderRadius: '6px',
+              }}>Concept · v0.1</div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ─────────────── 2. FIVE YEARS OF RESEARCH ─────────────── */}
-      <section style={{ ...sec, borderBottom: '1px solid var(--border)' }} className="sec">
+      <section style={{ ...sec, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }} className="sec">
+        {/* Decorative shapes */}
+        <div aria-hidden style={{ position: 'absolute', top: '60px', right: '-40px', width: '180px', height: '180px', borderRadius: '50%', backgroundColor: 'var(--blue)', opacity: 0.08, pointerEvents: 'none' }} />
+        <div aria-hidden style={{ position: 'absolute', bottom: '80px', right: '120px', width: '60px', height: '60px', borderRadius: '50%', border: '2px solid var(--green)', opacity: 0.35, pointerEvents: 'none' }} />
+        <svg aria-hidden style={{ position: 'absolute', top: '180px', right: '220px', opacity: 0.25, pointerEvents: 'none' }}
+          width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <polygon points="22,4 40,38 4,38" stroke="var(--pink)" strokeWidth="2" fill="none" />
+        </svg>
+
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px' }}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px', position: 'relative' }}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--blue)')}>OUR JOURNEY</motion.p>
             <motion.h2 variants={fadeUp} style={h2}>Five years of research</motion.h2>
             <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '24px' }}>
@@ -277,37 +300,81 @@ export default function RegenHoodZeroPage() {
                 Read more about Regen Tribe <ArrowRight size={14} />
               </a>
             </motion.div>
+          </motion.div>
 
-            {/* Collapsible "What we kept asking" */}
-            <motion.details variants={fadeUp} style={{
-              marginTop: '48px',
+          {/* Stats row */}
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
+            className="rh-stats-row"
+            style={{
+              marginTop: '56px',
+              display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px',
+              position: 'relative',
+            }}>
+            {[
+              { value: '5', unit: 'years', label: 'of immersive field research', color: 'var(--blue)' },
+              { value: '20+', unit: 'communities', label: 'visited and documented', color: 'var(--green)' },
+              { value: '4', unit: 'continents', label: 'across LATAM, N. America, Europe, Asia', color: 'var(--pink)' },
+              { value: '∞', unit: 'conversations', label: 'with founders, residents, builders', color: 'var(--yellow-deep)' },
+            ].map(s => (
+              <motion.div key={s.unit} variants={fadeUp} style={{
+                backgroundColor: 'white',
+                border: '1px solid var(--border)',
+                borderRadius: '14px',
+                padding: '24px 22px',
+              }}>
+                <div style={{
+                  fontFamily: 'Lora, serif', fontSize: '44px', fontWeight: 400,
+                  lineHeight: 1, color: s.color, letterSpacing: '-0.02em',
+                  marginBottom: '6px',
+                }}>{s.value}</div>
+                <div style={{
+                  fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+                  opacity: 0.6, marginBottom: '10px',
+                }}>{s.unit}</div>
+                <div style={{ fontSize: '13.5px', lineHeight: 1.5, opacity: 0.75 }}>{s.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Collapsible "What we kept asking" */}
+          <motion.details
+            initial="hidden" whileInView="visible" viewport={vp} variants={fadeUp}
+            style={{
+              marginTop: '32px', maxWidth: '780px',
               border: '1px solid var(--border)', borderRadius: '12px',
               padding: '20px 24px',
               backgroundColor: 'white',
             }}>
-              <summary style={{
-                cursor: 'pointer', listStyle: 'none',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-              }}>
-                <span>What we kept asking</span>
-                <Plus size={18} strokeWidth={1.6} style={{ opacity: 0.5 }} />
-              </summary>
-              <ul style={{ margin: '20px 0 0', paddingLeft: '20px', fontSize: '15px', lineHeight: 1.75, opacity: 0.82 }}>
-                <li style={{ marginBottom: '6px' }}>What governance structures survive their first conflict?</li>
-                <li style={{ marginBottom: '6px' }}>Which infrastructure systems are still working five years in?</li>
-                <li style={{ marginBottom: '6px' }}>Which economic models keep the lights on without depending on outside capital forever?</li>
-                <li>What turns a group of aligned people into a community that lasts?</li>
-              </ul>
-            </motion.details>
-          </motion.div>
+            <summary style={{
+              cursor: 'pointer', listStyle: 'none',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+              fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
+            }}>
+              <span>What we kept asking</span>
+              <Plus size={18} strokeWidth={1.6} style={{ opacity: 0.5 }} />
+            </summary>
+            <ul style={{ margin: '20px 0 0', paddingLeft: '20px', fontSize: '15px', lineHeight: 1.75, opacity: 0.82 }}>
+              <li style={{ marginBottom: '6px' }}>What governance structures survive their first conflict?</li>
+              <li style={{ marginBottom: '6px' }}>Which infrastructure systems are still working five years in?</li>
+              <li style={{ marginBottom: '6px' }}>Which economic models keep the lights on without depending on outside capital forever?</li>
+              <li>What turns a group of aligned people into a community that lasts?</li>
+            </ul>
+          </motion.details>
         </div>
       </section>
 
       {/* ─────────────── 3. WHAT REGENHOOD ZERO IS ─────────────── */}
-      <section id="framework" style={{ ...sec, backgroundColor: 'var(--text)', color: 'white' }} className="sec">
+      <section id="framework" style={{ ...sec, backgroundColor: 'var(--text)', color: 'white', position: 'relative', overflow: 'hidden' }} className="sec">
+        {/* Decorative shapes */}
+        <div aria-hidden style={{ position: 'absolute', top: '80px', right: '60px', width: '120px', height: '120px', borderRadius: '50%', border: '1.5px solid rgba(255,255,255,0.1)', pointerEvents: 'none' }} />
+        <div aria-hidden style={{ position: 'absolute', top: '140px', right: '120px', width: '60px', height: '60px', borderRadius: '50%', backgroundColor: 'var(--yellow)', opacity: 0.12, pointerEvents: 'none' }} />
+        <svg aria-hidden style={{ position: 'absolute', bottom: '120px', left: '40px', opacity: 0.12, pointerEvents: 'none' }}
+          width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <rect x="10" y="10" width="60" height="60" stroke="white" strokeWidth="1.5" />
+        </svg>
+
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '880px' }}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '880px', position: 'relative' }}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--green)')}>THE PROJECT</motion.p>
             <motion.h2 variants={fadeUp} style={{ ...h2, color: 'white' }}>What RegenHood Zero is</motion.h2>
             <motion.blockquote variants={fadeUp} style={{
@@ -321,6 +388,47 @@ export default function RegenHoodZeroPage() {
             <motion.p variants={fadeUp} style={{ fontSize: '18px', lineHeight: 1.7, margin: 0, opacity: 0.85, maxWidth: '780px' }}>
               RegenHood Zero is a regenerative neighborhood, designed end-to-end on the framework we&apos;ve spent five years developing. Integrated across ecology, hardware, human systems, economy, and technology – and intentionally replicable, so what we build here can take root in many more places after.
             </motion.p>
+          </motion.div>
+
+          {/* Five pillars constellation – preview of section 6 */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={vp}
+            variants={stagger}
+            style={{
+              marginTop: '64px',
+              paddingTop: '40px',
+              borderTop: '1px solid rgba(255,255,255,0.08)',
+            }}>
+            <motion.p variants={fadeUp} style={{
+              fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.5)', margin: '0 0 24px',
+            }}>The five integrated pillars</motion.p>
+            <motion.div variants={stagger} className="rh-pillars-row" style={{
+              display: 'flex', gap: '20px', flexWrap: 'wrap',
+            }}>
+              {pillars.map((p, i) => (
+                <motion.div key={p.name} variants={fadeUp} style={{
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '12px 20px',
+                  borderRadius: '9999px',
+                  backgroundColor: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                }}>
+                  <span style={{
+                    width: '12px', height: '12px', borderRadius: '50%',
+                    backgroundColor: p.color, flexShrink: 0,
+                  }} />
+                  <span style={{
+                    fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em',
+                    color: 'rgba(255,255,255,0.45)',
+                  }}>0{i + 1}</span>
+                  <span style={{
+                    fontFamily: 'Lora, serif', fontSize: '16px', fontWeight: 500,
+                    color: 'white',
+                  }}>{p.name}</span>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -436,74 +544,43 @@ export default function RegenHoodZeroPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--green)')}>THE FRAMEWORK</motion.p>
             <motion.h2 variants={fadeUp} style={h2}>Five pillars for design</motion.h2>
-            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '20px', marginBottom: '12px' }}>
+            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '20px', marginBottom: '40px' }}>
               We design all five from day one – they only work as a whole. Each pillar runs across every niche.
-            </motion.p>
-            <motion.p variants={fadeUp} style={{
-              fontSize: '13px', lineHeight: 1.5, margin: '0 0 40px', opacity: 0.5, fontStyle: 'italic',
-            }}>
-              Hover a card to reveal what each pillar covers.
             </motion.p>
 
             <motion.div variants={stagger}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px' }}
               className="rh-pillar-grid">
-              {pillars.map(p => (
+              {pillars.map((p, i) => (
                 <motion.div key={p.name} variants={fadeUp}
-                  className="rh-flip"
-                  style={{ perspective: '1200px', aspectRatio: '3 / 4' }}>
-                  <div className="rh-flip-inner" style={{
-                    position: 'relative', width: '100%', height: '100%',
-                    transformStyle: 'preserve-3d', transition: 'transform 0.65s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                  className="rh-pillar-card"
+                  style={{
+                    backgroundColor: 'white',
+                    border: '1px solid var(--border)',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    display: 'flex', flexDirection: 'row', alignItems: 'stretch',
                   }}>
-                    {/* Front */}
-                    <div style={{
-                      position: 'absolute', inset: 0,
-                      backgroundColor: p.color,
-                      borderRadius: '14px',
-                      display: 'flex', flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      padding: '24px',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden',
-                    }}>
+                  <div style={{
+                    width: '6px',
+                    backgroundColor: p.color,
+                    flexShrink: 0,
+                  }} />
+                  <div style={{ padding: '16px 16px 18px', flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '6px' }}>
                       <span style={{
-                        fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em',
-                        textTransform: 'uppercase', opacity: 0.6, color: 'var(--text)',
-                      }}>0{pillars.indexOf(p) + 1}</span>
-                      <span style={{
-                        fontFamily: 'Lora, serif', fontSize: 'clamp(20px, 2vw, 28px)',
-                        fontWeight: 500, lineHeight: 1.15, color: 'var(--text)',
-                      }}>{p.name}</span>
+                        fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em',
+                        textTransform: 'uppercase', color: 'var(--text)', opacity: 0.4,
+                      }}>0{i + 1}</span>
+                      <h3 style={{
+                        fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500,
+                        margin: 0, lineHeight: 1.15, color: 'var(--text)',
+                      }}>{p.name}</h3>
                     </div>
-                    {/* Back */}
-                    <div style={{
-                      position: 'absolute', inset: 0,
-                      backgroundColor: 'var(--text)',
-                      color: 'white',
-                      borderRadius: '14px',
-                      padding: '24px',
-                      display: 'flex', flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      transform: 'rotateY(180deg)',
-                      WebkitBackfaceVisibility: 'hidden',
-                      backfaceVisibility: 'hidden',
-                    }}>
-                      <span style={{
-                        width: '12px', height: '12px', borderRadius: '50%',
-                        backgroundColor: p.color, display: 'inline-block',
-                      }} />
-                      <div>
-                        <p style={{
-                          fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500,
-                          margin: '0 0 8px', lineHeight: 1.2, color: p.color,
-                        }}>{p.name}</p>
-                        <p style={{
-                          fontSize: '13.5px', lineHeight: 1.55, margin: 0,
-                          color: 'rgba(255,255,255,0.85)',
-                        }}>{p.desc}</p>
-                      </div>
-                    </div>
+                    <p style={{
+                      fontSize: '12.5px', lineHeight: 1.5, margin: 0,
+                      color: 'var(--text)', opacity: 0.72,
+                    }}>{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -524,15 +601,38 @@ export default function RegenHoodZeroPage() {
           </motion.div>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp}
-            style={{ marginBottom: '48px' }}>
+            style={{
+              marginBottom: '48px',
+              position: 'relative',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
+              boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
+              border: '1px solid var(--border)',
+            }}>
             <OptimizedImage
               src="/images/regenhoodzero/architecture-masterplan.png"
               alt="Aerial illustration of the RegenHood Zero masterplan — buildings arranged along a golden-ratio spiral, with food forest, animal sanctuary, water systems, and solar walkways."
               extraWidths={[1024]}
               sizes="(max-width: 1280px) 100vw, 1280px"
               loading="lazy"
-              style={{ aspectRatio: '16 / 9' }}
+              style={{ aspectRatio: '16 / 9', objectFit: 'contain', padding: '24px' }}
             />
+            <div style={{
+              position: 'absolute', top: '14px', left: '16px',
+              fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+              color: 'var(--text)', opacity: 0.42,
+              backgroundColor: 'rgba(255,255,255,0.85)',
+              padding: '6px 10px', borderRadius: '6px',
+            }}>Masterplan · concept</div>
+            <div style={{
+              padding: '14px 20px',
+              borderTop: '1px solid var(--border)',
+              fontSize: '12.5px', lineHeight: 1.5, opacity: 0.62, fontStyle: 'italic',
+              backgroundColor: 'rgba(255,255,255,0.6)',
+            }}>
+              Golden-ratio spiral — central commons, residential rings, food forest, and animal sanctuary.
+            </div>
           </motion.div>
 
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
@@ -627,19 +727,58 @@ export default function RegenHoodZeroPage() {
       </section>
 
       {/* ─────────────── 8. TWO WAYS TO PARTNER WITH US ─────────────── */}
-      <section id="partner" style={{ ...sec, backgroundColor: 'var(--green)' }} className="sec">
+      <section id="partner" style={{ ...sec, backgroundColor: 'var(--green)', position: 'relative', overflow: 'hidden' }} className="sec">
+        {/* Decorative shapes */}
+        <div aria-hidden style={{ position: 'absolute', top: '60px', left: '-60px', width: '200px', height: '200px', borderRadius: '50%', backgroundColor: 'white', opacity: 0.18, pointerEvents: 'none' }} />
+        <svg aria-hidden style={{ position: 'absolute', top: '120px', right: '80px', opacity: 0.18, pointerEvents: 'none' }}
+          width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <polygon points="32,6 58,54 6,54" stroke="var(--text)" strokeWidth="1.5" fill="none" />
+        </svg>
+        <div aria-hidden style={{ position: 'absolute', bottom: '60px', right: '40px', width: '40px', height: '40px', border: '1.5px solid var(--text)', opacity: 0.2, pointerEvents: 'none' }} />
+
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ position: 'relative' }}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--text)', 0.7)}>PARTNERSHIPS</motion.p>
-            <motion.h2 variants={fadeUp} style={{ ...h2, marginBottom: '48px' }}>Two ways to partner with us</motion.h2>
+            <motion.h2 variants={fadeUp} style={{ ...h2, marginBottom: '20px' }}>Two ways to partner with us</motion.h2>
+            <motion.p variants={fadeUp} style={{ ...bodyP, marginBottom: '48px', opacity: 0.78 }}>
+              We&apos;re looking for one founding partnership for the pilot. Two profiles fit – the rest builds from there.
+            </motion.p>
             <motion.div variants={stagger} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }} className="rh-2col">
-              <motion.div variants={fadeUp} style={{ ...card, padding: '36px' }}>
+              <motion.div variants={fadeUp} style={{ ...card, padding: '36px', position: 'relative' }}>
+                <div style={{
+                  position: 'absolute', top: '-18px', left: '32px',
+                  width: '52px', height: '52px', borderRadius: '50%',
+                  backgroundColor: 'var(--text)', color: 'white',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 6px 18px rgba(54,54,54,0.15)',
+                }}>
+                  <Users size={22} strokeWidth={1.6} />
+                </div>
+                <span style={{
+                  display: 'inline-block', marginTop: '14px', marginBottom: '12px',
+                  fontSize: '10.5px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+                  color: 'var(--green-deep, #3d8a66)', opacity: 0.9,
+                }}>Option 01 · Existing community</span>
                 <h3 style={{ fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: 500, margin: '0 0 14px', lineHeight: 1.25 }}>You have an existing eco-village or community.</h3>
                 <p style={{ fontSize: '15px', lineHeight: 1.65, margin: 0, opacity: 0.82 }}>
                   We want to partner with a land project that already has some physical and human infrastructure and could use our support to grow.
                 </p>
               </motion.div>
-              <motion.div variants={fadeUp} style={{ ...card, padding: '36px' }}>
+              <motion.div variants={fadeUp} style={{ ...card, padding: '36px', position: 'relative' }}>
+                <div style={{
+                  position: 'absolute', top: '-18px', left: '32px',
+                  width: '52px', height: '52px', borderRadius: '50%',
+                  backgroundColor: 'var(--text)', color: 'white',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 6px 18px rgba(54,54,54,0.15)',
+                }}>
+                  <Compass size={22} strokeWidth={1.6} />
+                </div>
+                <span style={{
+                  display: 'inline-block', marginTop: '14px', marginBottom: '12px',
+                  fontSize: '10.5px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+                  color: 'var(--green-deep, #3d8a66)', opacity: 0.9,
+                }}>Option 02 · Land + direction</span>
                 <h3 style={{ fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: 500, margin: '0 0 14px', lineHeight: 1.25 }}>You have land and seek development &amp; creative direction.</h3>
                 <p style={{ fontSize: '15px', lineHeight: 1.65, margin: 0, opacity: 0.82 }}>
                   We bring the framework, the design, and the operating playbook. You bring the place. We build it together.
@@ -684,15 +823,30 @@ export default function RegenHoodZeroPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '56px', alignItems: 'center' }}
             className="rh-2col">
-            <motion.div variants={fadeUp} style={{ order: 1 }} className="rh-archetypes-img">
+            <motion.div variants={fadeUp} style={{
+              order: 1,
+              position: 'relative',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
+              boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
+              border: '1px solid var(--border)',
+            }} className="rh-archetypes-img">
               <OptimizedImage
                 src="/images/regenhoodzero/archetypes.png"
                 alt="Editorial illustration of community members in a regenerative neighborhood courtyard — a founder sketching, a facilitator leading a circle, a permaculture designer, an artist painting, a researcher reading, and a person doing yoga."
                 extraWidths={[1024]}
                 sizes="(max-width: 900px) 100vw, 45vw"
                 loading="lazy"
-                style={{ aspectRatio: '16 / 9' }}
+                style={{ aspectRatio: '16 / 10', objectFit: 'contain', padding: '20px' }}
               />
+              <div style={{
+                position: 'absolute', top: '14px', left: '16px',
+                fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
+                color: 'var(--text)', opacity: 0.42,
+                backgroundColor: 'rgba(255,255,255,0.85)',
+                padding: '6px 10px', borderRadius: '6px',
+              }}>People · concept</div>
             </motion.div>
             <div style={{ order: 2 }}>
               <motion.p variants={fadeUp} style={kickerStyle('var(--pink-deep)')}>ARCHETYPES</motion.p>
@@ -827,20 +981,25 @@ export default function RegenHoodZeroPage() {
         </div>
       </section>
 
-      {/* ─────────────── Responsive + flip cards ─────────────── */}
+      {/* ─────────────── Responsive ─────────────── */}
       <style jsx global>{`
-        /* Pillar flip cards */
-        .rh-flip:hover .rh-flip-inner,
-        .rh-flip:focus-within .rh-flip-inner {
-          transform: rotateY(180deg);
+        /* Pillar cards — subtle hover lift */
+        .rh-pillar-card {
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        .rh-flip { cursor: pointer; }
+        .rh-pillar-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 30px rgba(54,54,54,0.10);
+        }
+
+        /* Decorative shapes */
+        .rh-shape { display: inline-block; vertical-align: middle; }
 
         @media (max-width: 1100px) {
-          .rh-pillar-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-          }
           .rh-elements-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .rh-stats-row {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }
@@ -857,16 +1016,8 @@ export default function RegenHoodZeroPage() {
             grid-template-columns: 1fr !important;
             gap: 6px !important;
           }
-          .rh-pillar-row {
-            grid-template-columns: 16px 1fr !important;
-            gap: 12px !important;
-            row-gap: 6px !important;
-          }
-          .rh-pillar-row > span:nth-child(3) {
-            grid-column: 1 / -1 !important;
-          }
           .rh-pillar-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: 1fr !important;
           }
           .rh-phase-row {
             grid-template-columns: 1fr !important;
@@ -881,17 +1032,20 @@ export default function RegenHoodZeroPage() {
           .rh-phase-content {
             padding-left: 0 !important;
           }
-        }
           .rh-resource-systems {
             grid-template-columns: 1fr !important;
             gap: 20px !important;
           }
+          .rh-pillars-row {
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+          }
         }
         @media (max-width: 560px) {
-          .rh-pillar-grid {
+          .rh-elements-grid {
             grid-template-columns: 1fr !important;
           }
-          .rh-elements-grid {
+          .rh-stats-row {
             grid-template-columns: 1fr !important;
           }
         }
