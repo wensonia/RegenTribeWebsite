@@ -72,10 +72,50 @@ const card: React.CSSProperties = {
 /* ── Data ── */
 
 const phases = [
-  { num: '01', title: 'Incubator',              desc: 'One building, 10–20 founding members. Co.living + co.working + lounge/cafe and a maker space.' },
-  { num: '02', title: 'Co-housing & retreats',  desc: 'Footprint expands into a multi-building cluster. Retreats, residencies, and memberships launch. Hospitality revenue starts funding operations.' },
-  { num: '03', title: 'Long-term community',    desc: 'Permanent resident lots alongside communal infrastructure. Color/flower niches anchor talent density, with a central blend area. Governance and internal economy mature into stable, community-run systems.' },
-  { num: '04', title: 'Network',                desc: 'Sister neighborhoods across bioregions. Shared infrastructure, members, and economy. The blueprint replicates where conditions and partners align.' },
+  {
+    num: '01',
+    title: 'incubator.',
+    desc: 'One building, 10–20 founding members. Co.living + co.working + lounge/cafe and a maker space.',
+    bullets: [
+      { label: 'Footprint', detail: 'a single multi-purpose building' },
+      { label: 'People', detail: '10–20 founding members live in residence' },
+      { label: 'Spaces', detail: 'co.living, co.working, lounge/cafe, maker space' },
+    ],
+    color: 'var(--green)',
+  },
+  {
+    num: '02',
+    title: 'co-housing & retreats.',
+    desc: 'Footprint expands into a multi-building cluster. Retreats, residencies, and memberships launch.',
+    bullets: [
+      { label: 'Cluster', detail: 'multi-building campus around shared infrastructure' },
+      { label: 'Programs', detail: 'retreats, residencies, and memberships launch' },
+      { label: 'Economy', detail: 'hospitality revenue starts funding operations' },
+    ],
+    color: 'var(--pink)',
+  },
+  {
+    num: '03',
+    title: 'long-term community.',
+    desc: 'Permanent resident lots alongside communal infrastructure. Color/flower niches anchor talent density.',
+    bullets: [
+      { label: 'Land', detail: 'permanent resident lots alongside communal infrastructure' },
+      { label: 'Niches', detail: 'color/flower niches anchor talent density, with a central blend area' },
+      { label: 'Systems', detail: 'governance and internal economy mature into stable, community-run systems' },
+    ],
+    color: 'var(--blue)',
+  },
+  {
+    num: '04',
+    title: 'network.',
+    desc: 'Sister neighborhoods across bioregions. Shared infrastructure, members, and economy.',
+    bullets: [
+      { label: 'Bioregions', detail: 'sister neighborhoods across bioregions' },
+      { label: 'Shared layer', detail: 'infrastructure, members, and economy connect the network' },
+      { label: 'Replication', detail: 'the blueprint replicates where conditions and partners align' },
+    ],
+    color: 'var(--yellow-deep)',
+  },
 ]
 
 const niches = [
@@ -331,22 +371,61 @@ export default function RegenHoodZeroPage() {
       </section>
 
       {/* ─────────────── 5. PHASES OF DEVELOPMENT ─────────────── */}
-      <section style={{ ...sec, borderBottom: '1px solid var(--border)' }} className="sec">
+      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
-            <motion.p variants={fadeUp} style={kickerStyle('var(--blue)')}>MODULAR DESIGN</motion.p>
-            <motion.h2 variants={fadeUp} style={{ ...h2, marginBottom: '48px' }}>Phases of development</motion.h2>
-            <motion.div variants={stagger} style={{
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px',
-            }}>
-              {phases.map(p => (
-                <motion.div key={p.num} variants={fadeUp} style={{ ...card, padding: '28px' }}>
-                  <div style={{ fontFamily: 'Lora, serif', fontSize: '40px', fontWeight: 400, color: 'var(--blue)', lineHeight: 1, marginBottom: '12px' }}>{p.num}</div>
-                  <h3 style={{ fontFamily: 'Lora, serif', fontSize: '20px', fontWeight: 500, margin: '0 0 10px', lineHeight: 1.25 }}>{p.title}</h3>
-                  <p style={{ fontSize: '14.5px', lineHeight: 1.6, margin: 0, opacity: 0.78 }}>{p.desc}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+              <motion.p variants={fadeUp} style={{
+                fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.4)', marginBottom: '16px',
+              }}>MODULAR DESIGN</motion.p>
+              <motion.h2 variants={fadeUp} style={{
+                fontFamily: 'Lora, serif', fontSize: 'clamp(36px, 4.5vw, 56px)',
+                fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.025em',
+                color: 'white', margin: '0 0 72px',
+              }}>Phases of development</motion.h2>
+
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                {phases.map(p => (
+                  <motion.div key={p.num} variants={fadeUp} className="rh-phase-row"
+                    style={{
+                      display: 'grid', gridTemplateColumns: '1fr 1px 2fr', gap: 0,
+                      padding: '56px 0', borderBottom: '1px solid rgba(255,255,255,0.1)',
+                    }}>
+                    <div className="rh-phase-label" style={{ paddingRight: '56px', display: 'flex', flexDirection: 'column' }}>
+                      <p style={{
+                        fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
+                        color: 'rgba(255,255,255,0.2)', marginBottom: '12px',
+                      }}>phase {p.num}</p>
+                      <p style={{
+                        fontFamily: 'Lora, serif', fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 400,
+                        color: p.color, lineHeight: 1.1, margin: 0,
+                      }}>{p.title}</p>
+                    </div>
+                    <div style={{ width: '1px', backgroundColor: 'rgba(255,255,255,0.12)', alignSelf: 'stretch' }} />
+                    <div className="rh-phase-content" style={{ paddingLeft: '56px' }}>
+                      <p style={{
+                        fontSize: '17px', fontWeight: 300, color: 'rgba(255,255,255,0.55)',
+                        lineHeight: 1.7, margin: '0 0 32px',
+                      }}>{p.desc}</p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                        {p.bullets.map(b => (
+                          <div key={b.label} style={{ display: 'flex', gap: '12px', alignItems: 'baseline' }}>
+                            <span style={{
+                              width: '5px', height: '5px', borderRadius: '50%',
+                              backgroundColor: p.color, flexShrink: 0, marginTop: '8px',
+                            }} />
+                            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, margin: 0 }}>
+                              <strong style={{ fontWeight: 600, color: 'white' }}>{b.label}</strong> – {b.detail}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -357,28 +436,78 @@ export default function RegenHoodZeroPage() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--green)')}>THE FRAMEWORK</motion.p>
             <motion.h2 variants={fadeUp} style={h2}>Five pillars for design</motion.h2>
-            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '20px', marginBottom: '40px' }}>
+            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '20px', marginBottom: '12px' }}>
               We design all five from day one – they only work as a whole. Each pillar runs across every niche.
             </motion.p>
-
-            <motion.ul variants={stagger} style={{
-              listStyle: 'none', padding: 0, margin: 0,
-              borderTop: '1px solid var(--border)',
+            <motion.p variants={fadeUp} style={{
+              fontSize: '13px', lineHeight: 1.5, margin: '0 0 40px', opacity: 0.5, fontStyle: 'italic',
             }}>
+              Hover a card to reveal what each pillar covers.
+            </motion.p>
+
+            <motion.div variants={stagger}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}
+              className="rh-pillar-grid">
               {pillars.map(p => (
-                <motion.li key={p.name} variants={fadeUp} style={{
-                  display: 'grid', gridTemplateColumns: '24px 220px 1fr', gap: '24px', alignItems: 'center',
-                  padding: '24px 0', borderBottom: '1px solid var(--border)',
-                }} className="rh-pillar-row">
-                  <span style={{
-                    width: '14px', height: '14px', borderRadius: '50%',
-                    backgroundColor: p.color, display: 'inline-block',
-                  }} />
-                  <span style={{ fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: 500 }}>{p.name}</span>
-                  <span style={{ fontSize: '15.5px', lineHeight: 1.5, opacity: 0.78 }}>{p.desc}</span>
-                </motion.li>
+                <motion.div key={p.name} variants={fadeUp}
+                  className="rh-flip"
+                  style={{ perspective: '1200px', aspectRatio: '3 / 4' }}>
+                  <div className="rh-flip-inner" style={{
+                    position: 'relative', width: '100%', height: '100%',
+                    transformStyle: 'preserve-3d', transition: 'transform 0.65s cubic-bezier(0.25, 0.1, 0.25, 1)',
+                  }}>
+                    {/* Front */}
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      backgroundColor: p.color,
+                      borderRadius: '14px',
+                      display: 'flex', flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      padding: '24px',
+                      WebkitBackfaceVisibility: 'hidden',
+                      backfaceVisibility: 'hidden',
+                    }}>
+                      <span style={{
+                        fontSize: '11px', fontWeight: 600, letterSpacing: '0.14em',
+                        textTransform: 'uppercase', opacity: 0.6, color: 'var(--text)',
+                      }}>0{pillars.indexOf(p) + 1}</span>
+                      <span style={{
+                        fontFamily: 'Lora, serif', fontSize: 'clamp(20px, 2vw, 28px)',
+                        fontWeight: 500, lineHeight: 1.15, color: 'var(--text)',
+                      }}>{p.name}</span>
+                    </div>
+                    {/* Back */}
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      backgroundColor: 'var(--text)',
+                      color: 'white',
+                      borderRadius: '14px',
+                      padding: '24px',
+                      display: 'flex', flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      transform: 'rotateY(180deg)',
+                      WebkitBackfaceVisibility: 'hidden',
+                      backfaceVisibility: 'hidden',
+                    }}>
+                      <span style={{
+                        width: '12px', height: '12px', borderRadius: '50%',
+                        backgroundColor: p.color, display: 'inline-block',
+                      }} />
+                      <div>
+                        <p style={{
+                          fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500,
+                          margin: '0 0 8px', lineHeight: 1.2, color: p.color,
+                        }}>{p.name}</p>
+                        <p style={{
+                          fontSize: '13.5px', lineHeight: 1.55, margin: 0,
+                          color: 'rgba(255,255,255,0.85)',
+                        }}>{p.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </motion.ul>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -406,28 +535,90 @@ export default function RegenHoodZeroPage() {
             />
           </motion.div>
 
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px' }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '24px' }}>
-              <p style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.6, margin: '0 0 16px' }}>Core elements</p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '15.5px', lineHeight: 1.8 }}>
-                <li>Common areas</li>
-                <li>Commercial area</li>
-                <li>Short-term rental / retreat space</li>
-                <li>Permanent community area</li>
-                <li>Animal sanctuary</li>
-                <li style={{ marginTop: '8px' }}>
-                  <span style={{ fontWeight: 500 }}>Resource systems</span>
-                  <ul style={{ listStyle: 'none', padding: '4px 0 0 20px', margin: 0, fontSize: '15px', opacity: 0.85 }}>
-                    <li>– Food forest</li>
-                    <li>– Water systems</li>
-                    <li>– Passive solar design and solar panel walkways</li>
-                  </ul>
-                </li>
-                <li style={{ marginTop: '8px' }}>Golden ratio spiral</li>
-              </ul>
-            </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.p variants={fadeUp} style={{
-              fontSize: '14px', lineHeight: 1.6, opacity: 0.55, fontStyle: 'italic', marginTop: '28px',
+              fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+              opacity: 0.5, margin: '0 0 24px',
+            }}>Core elements</motion.p>
+
+            <motion.div variants={stagger} className="rh-elements-grid" style={{
+              display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px',
+            }}>
+              {[
+                { name: 'Common areas',                 num: '01', color: '#ee9c5b' },
+                { name: 'Commercial area',              num: '02', color: '#e76b5e' },
+                { name: 'Short-term rental & retreat',  num: '03', color: '#f16ab0' },
+                { name: 'Permanent community',          num: '04', color: '#a87bd0' },
+                { name: 'Animal sanctuary',             num: '05', color: '#b8895c' },
+                { name: 'Golden ratio spiral',          num: '06', color: '#d4a64a' },
+              ].map(el => (
+                <motion.div key={el.name} variants={fadeUp} style={{
+                  backgroundColor: 'white',
+                  border: '1px solid var(--border)',
+                  borderRadius: '14px',
+                  padding: '20px 22px',
+                  display: 'flex', alignItems: 'flex-start', gap: '14px',
+                }}>
+                  <span style={{
+                    width: '10px', height: '10px', borderRadius: '50%',
+                    backgroundColor: el.color, flexShrink: 0, marginTop: '8px',
+                  }} />
+                  <div>
+                    <p style={{
+                      fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase',
+                      opacity: 0.45, margin: '0 0 4px',
+                    }}>{el.num}</p>
+                    <p style={{
+                      fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500,
+                      margin: 0, lineHeight: 1.25,
+                    }}>{el.name}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Resource systems – special row with sub-items */}
+            <motion.div variants={fadeUp} style={{
+              backgroundColor: 'var(--text)', color: 'white',
+              borderRadius: '14px', padding: '28px 32px',
+              display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '32px', alignItems: 'center',
+            }} className="rh-resource-systems">
+              <div>
+                <p style={{
+                  fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+                  opacity: 0.4, margin: '0 0 8px',
+                }}>Resource systems</p>
+                <p style={{
+                  fontFamily: 'Lora, serif', fontSize: '22px', fontWeight: 500,
+                  margin: 0, lineHeight: 1.2,
+                }}>The regenerative backbone</p>
+              </div>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                {[
+                  { label: 'Food forest',     color: '#6fc6a2' },
+                  { label: 'Water systems',   color: '#808aeb' },
+                  { label: 'Passive solar + solar walkways', color: '#ffe682' },
+                ].map(s => (
+                  <span key={s.label} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '8px',
+                    padding: '8px 14px', borderRadius: '9999px',
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    fontSize: '13px', color: 'rgba(255,255,255,0.92)',
+                  }}>
+                    <span style={{
+                      width: '8px', height: '8px', borderRadius: '50%',
+                      backgroundColor: s.color,
+                    }} />
+                    {s.label}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.p variants={fadeUp} style={{
+              fontSize: '14px', lineHeight: 1.6, opacity: 0.55, fontStyle: 'italic',
+              marginTop: '32px', maxWidth: '780px',
             }}>
               Site plan, building elevations, and interior renderings to be added next.
             </motion.p>
@@ -524,12 +715,29 @@ export default function RegenHoodZeroPage() {
       {/* ─────────────── 11. THE TEAM ─────────────── */}
       <section style={{ ...sec, borderBottom: '1px solid var(--border)' }} className="sec">
         <div style={wrap}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp} style={{ maxWidth: '780px' }}>
-            <motion.p variants={fadeUp} style={kickerStyle('var(--blue-deep)')}>THE TEAM</motion.p>
-            <motion.h2 variants={fadeUp} style={h2}>Our team</motion.h2>
-            <motion.p variants={fadeUp} style={{ ...bodyP, marginTop: '24px' }}>
-              RegenHood Zero is being built by <strong>Oscar and Sonia</strong>, co-founders of Regen Tribe. The wider operating team grows in step with the project – most roles are filled by residents through the work-to-earn system.
-            </motion.p>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '64px', alignItems: 'center' }}
+            className="rh-2col">
+            <motion.div variants={fadeUp}>
+              <p style={kickerStyle('var(--blue-deep)')}>THE TEAM</p>
+              <h2 style={h2}>Our team</h2>
+              <p style={{ ...bodyP, marginTop: '24px' }}>
+                RegenHood Zero is being built by <strong>Oscar and Sonia</strong>, co-founders of Regen Tribe. The wider operating team grows in step with the project – most roles are filled by residents through the work-to-earn system.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeUp} style={{
+              borderRadius: '20px', overflow: 'hidden',
+              boxShadow: '0 24px 60px rgba(54,54,54,0.15)',
+            }}>
+              <OptimizedImage
+                src="/images/blog/q1-2023-new-members-tribes-1.jpg"
+                alt="The Regen Tribe team — six members in front of tropical foliage in Tulum, 2023."
+                extraWidths={[1024]}
+                sizes="(max-width: 900px) 100vw, 55vw"
+                loading="lazy"
+                style={{ aspectRatio: '4 / 3' }}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -619,28 +827,72 @@ export default function RegenHoodZeroPage() {
         </div>
       </section>
 
-      {/* ─────────────── Responsive ─────────────── */}
-      <style jsx>{`
+      {/* ─────────────── Responsive + flip cards ─────────────── */}
+      <style jsx global>{`
+        /* Pillar flip cards */
+        .rh-flip:hover .rh-flip-inner,
+        .rh-flip:focus-within .rh-flip-inner {
+          transform: rotateY(180deg);
+        }
+        .rh-flip { cursor: pointer; }
+
+        @media (max-width: 1100px) {
+          .rh-pillar-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+          .rh-elements-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
         @media (max-width: 900px) {
-          :global(.rh-hero-grid) {
+          .rh-hero-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
           }
-          :global(.rh-2col) {
+          .rh-2col {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
-          :global(.rh-2col-tight) {
+          .rh-2col-tight {
             grid-template-columns: 1fr !important;
             gap: 6px !important;
           }
-          :global(.rh-pillar-row) {
+          .rh-pillar-row {
             grid-template-columns: 16px 1fr !important;
             gap: 12px !important;
             row-gap: 6px !important;
           }
-          :global(.rh-pillar-row > span:nth-child(3)) {
+          .rh-pillar-row > span:nth-child(3) {
             grid-column: 1 / -1 !important;
+          }
+          .rh-pillar-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .rh-phase-row {
+            grid-template-columns: 1fr !important;
+          }
+          .rh-phase-row > div:nth-child(2) {
+            display: none !important;
+          }
+          .rh-phase-label {
+            padding-right: 0 !important;
+            margin-bottom: 24px !important;
+          }
+          .rh-phase-content {
+            padding-left: 0 !important;
+          }
+        }
+          .rh-resource-systems {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+        }
+        @media (max-width: 560px) {
+          .rh-pillar-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .rh-elements-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
