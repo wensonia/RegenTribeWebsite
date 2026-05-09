@@ -131,7 +131,7 @@ const tools = [
     contributors: 'collective',
     github:   'https://github.com/regentribes/regen-neighborhood-framework',
     repo:     'regen-neighborhood-framework',
-    demoLink:  'https://rn-wizard.vercel.app/',
+    demoLink:  'https://framework-wizard.vercel.app/',
     demoLabel: 'Test v1',
   },
   {

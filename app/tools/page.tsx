@@ -440,7 +440,7 @@ export default function ToolsPage() {
                 <PillBtn href="https://github.com/regentribes/regen-neighborhood-framework" external bg="var(--blue)" textColor="white">
                   View the Framework
                 </PillBtn>
-                <TextLink href="https://rn-wizard.vercel.app/" external>
+                <TextLink href="https://framework-wizard.vercel.app/" external>
                   Test the Wizard
                 </TextLink>
               </motion.div>
