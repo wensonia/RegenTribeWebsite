@@ -170,10 +170,10 @@ export default function RootLayout({
                   heading: 'Frameworks',
                   links: [
                     { label: 'Regenerative Neighborhood Framework', href: '/rnf/' },
-                    { label: 'The Journey', href: '/rnf/journey' },
-                    { label: 'Community Alchemy', href: '/rnf/frameworks/alchemy' },
-                    { label: 'CLIPS Health Check', href: '/rnf/frameworks/clips' },
-                    { label: 'RCOS Governance', href: '/rnf/frameworks/rcos' },
+                    { label: 'The Journey', href: '/rnf/journey/' },
+                    { label: 'Community Alchemy', href: '/rnf/frameworks/alchemy/' },
+                    { label: 'CLIPS Health Check', href: '/rnf/frameworks/clips/' },
+                    { label: 'RCOS Governance', href: '/rnf/frameworks/rcos/' },
                   ],
                 },
               ].map((col) => (
