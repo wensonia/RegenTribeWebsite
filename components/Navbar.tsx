@@ -37,6 +37,7 @@ const navLinks: NavItem[] = [
     dot: 'var(--yellow-deep)',
     sub: [
       { label: 'The Hive', href: '/tools#hive' },
+      { label: 'Residential Community Software', href: '/tools/residential-community-software' },
       { label: 'Community Alchemy Guide', href: '/tools#alchemy-guide' },
       { label: 'Agent Program', href: '/agentprogram' },
       { label: 'Regen Tech Stack', href: '/tech-stack' },
