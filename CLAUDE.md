@@ -52,6 +52,10 @@ from Next.js (the site is a static export, so there are no API routes).
   `send-signup-email` → Resend.
 - Function lives at `supabase/functions/send-signup-email/index.ts`.
 - Trigger lives in `supabase/migrations/*_signup_email_notifications.sql`.
+- Mail is sent from the verified subdomain `send.regentribe.co` (Resend
+  workspace `regen.tribe`). The apex `regentribe.co` is NOT verified for
+  Resend — its MX points at SiteGround for the real inboxes, so never change
+  the from-address to an @regentribe.co address.
 - The Resend API key is a Supabase function secret. NEVER put it in `.env.local`,
   and never prefix it with `NEXT_PUBLIC_`.
 - The trigger swallows its own errors on purpose: a failed send must never lose

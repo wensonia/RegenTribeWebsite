@@ -99,8 +99,9 @@ bundle, and the website itself sends no email directly.
 The trigger swallows its own errors, so **a failed email never loses a
 signup** — the row is always written.
 
-**Accounts needed:** a Resend account with `regentribe.co` verified as a
-sending domain, plus Supabase access to set function secrets. A collaborator
+**Accounts needed:** the `regen.tribe` Resend workspace (sending domain
+`send.regentribe.co`, verified via Cloudflare Domain Connect), plus Supabase
+access to set function secrets. A collaborator
 only needs these if they are changing how email works; editing pages does not
 require them.
 
@@ -112,7 +113,7 @@ new environment):
 supabase secrets set \
   RESEND_API_KEY=re_xxx \
   SIGNUP_WEBHOOK_SECRET=<random-hex> \
-  RESEND_FROM='Regen Tribe <hello@regentribe.co>' \
+  RESEND_FROM='Regen Tribe <hello@send.regentribe.co>' \
   RESEND_TEAM_EMAIL=grow@regentribe.co
 
 # 2. Deploy the function

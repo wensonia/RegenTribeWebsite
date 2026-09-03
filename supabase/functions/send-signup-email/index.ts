@@ -12,7 +12,7 @@ const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
 const WEBHOOK_SECRET = Deno.env.get('SIGNUP_WEBHOOK_SECRET')
-const FROM_ADDRESS = Deno.env.get('RESEND_FROM') ?? 'Regen Tribe <hello@regentribe.co>'
+const FROM_ADDRESS = Deno.env.get('RESEND_FROM') ?? 'Regen Tribe <hello@send.regentribe.co>'
 const TEAM_ADDRESS = Deno.env.get('RESEND_TEAM_EMAIL') ?? 'grow@regentribe.co'
 
 type SignupRecord = {
