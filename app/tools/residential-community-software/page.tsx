@@ -21,16 +21,16 @@ const vp = { once: true, margin: '-80px' as const }
 /* ── The live demo everything points at ── */
 const DEMO = 'https://myconet.correa-oscar11.workers.dev/'
 
-/* ── Modules ── */
+/* ── Modules — index strip, anchors into the sections below ── */
 const modules = [
-  { id: 'M00', glyph: '⊞', label: 'See the community at a glance', dot: 'var(--blue)' },
-  { id: 'M01', glyph: '○', label: 'Meet neighbors & invite others', dot: 'var(--pink)' },
-  { id: 'M04', glyph: '□', label: 'Read the whole plan', dot: 'var(--yellow-deep)' },
-  { id: 'M05', glyph: '△', label: 'Join by signing the values', dot: 'var(--green)' },
-  { id: 'M06', glyph: '◇', label: 'Agree on how you collaborate', dot: 'var(--blue)' },
-  { id: 'M07', glyph: '⚙', label: 'Track every promise', dot: 'var(--pink)' },
-  { id: 'M08', glyph: '✦', label: 'Get rewarded for showing up', dot: 'var(--yellow-deep)' },
-  { id: 'M09', glyph: '☉', label: 'Decide together', dot: 'var(--green)' },
+  { id: 'M00', glyph: '⊞', label: 'See the community at a glance', dot: 'var(--blue)', href: '#dashboard' },
+  { id: 'M01', glyph: '○', label: 'Meet neighbors & invite others', dot: 'var(--pink)', href: '#members' },
+  { id: 'M04', glyph: '□', label: 'Read the whole plan', dot: 'var(--yellow-deep)', href: '#blueprint' },
+  { id: 'M05', glyph: '△', label: 'Join by signing the values', dot: 'var(--green)', href: '#values' },
+  { id: 'M06', glyph: '◇', label: 'Agree on how you collaborate', dot: 'var(--blue)', href: '#agreements' },
+  { id: 'M07', glyph: '⚙', label: 'Track every promise', dot: 'var(--pink)', href: '#operations' },
+  { id: 'M08', glyph: '✦', label: 'Get rewarded for showing up', dot: 'var(--yellow-deep)', href: '#contributions' },
+  { id: 'M09', glyph: '☉', label: 'Decide together', dot: 'var(--green)', href: '#governance' },
 ]
 
 /* ── Screenshot sections ── */
@@ -48,14 +48,24 @@ type Shot = {
 
 const shots: Shot[] = [
   {
-    id: 'governance',
-    eyebrow: 'Module 09 · Governance',
-    title: 'Decide together.',
-    line: 'Four layers run at once. Three of four approve — work begins.',
-    bullets: ['Consent', 'Democracy', 'Meritocracy', 'AI facilitation'],
-    img: '/images/myconet/myconet-governance.png',
-    alt: 'MyCoNet governance screen — an active proposal evaluated in parallel across four layers: consent voting, democratic tally, an expert approval, and an AI facilitation summary.',
+    id: 'dashboard',
+    eyebrow: 'Module 00 · Dashboard',
+    title: 'Your community, at a glance.',
+    line: 'Who is here, what is being built, what needs attention — updating live.',
+    bullets: ['Members', 'Active projects', 'Deliverables'],
+    img: '/images/myconet/myconet-dashboard.png',
+    alt: 'MyCoNet dashboard — member, project and deliverable counts, a Blueprint readiness score, and a list of recent deliverables.',
     extraWidths: [1024],
+    accent: 'var(--blue)',
+  },
+  {
+    id: 'members',
+    eyebrow: 'Module 01 · Community Network',
+    title: 'Meet the people gathering around this idea.',
+    line: 'Real profiles, not posts.',
+    bullets: ['What you bring', 'AI match score', 'Travel plans'],
+    img: '/images/myconet/myconet-members.png',
+    alt: 'MyCoNet members screen — resident profiles sorted by match score, each showing a short bio and location.',
     accent: 'var(--pink)',
   },
   {
@@ -89,6 +99,16 @@ const shots: Shot[] = [
     accent: 'var(--blue)',
   },
   {
+    id: 'operations',
+    eyebrow: 'Module 07 · Operations',
+    title: 'See every promise. Watch every deliverable.',
+    line: 'No surprises at the next meeting.',
+    bullets: ['Live status', 'Timeline updates', 'Drift detection'],
+    img: '/images/myconet/myconet-operations.png',
+    alt: 'MyCoNet operations screen — counts of active projects, deliverables and completed work above a dated list of the latest deliverables.',
+    accent: 'var(--pink)',
+  },
+  {
     id: 'contributions',
     eyebrow: 'Module 08 · Contributions',
     title: 'Log your effort. Get rewarded.',
@@ -97,6 +117,17 @@ const shots: Shot[] = [
     img: '/images/myconet/myconet-contributions.png',
     alt: 'MyCoNet contributions screen — a member points total for the sprint, an earned badge, and a log of recent community contributions.',
     accent: 'var(--blue)',
+  },
+  {
+    id: 'governance',
+    eyebrow: 'Module 09 · Governance',
+    title: 'Decide together.',
+    line: 'Four layers run at once. Three of four approve — work begins.',
+    bullets: ['Consent', 'Democracy', 'Meritocracy', 'AI facilitation'],
+    img: '/images/myconet/myconet-governance.png',
+    alt: 'MyCoNet governance screen — an active proposal evaluated in parallel across four layers: consent voting, democratic tally, an expert approval, and an AI facilitation summary.',
+    extraWidths: [1024],
+    accent: 'var(--green)',
   },
 ]
 
@@ -210,10 +241,13 @@ export default function ResidentialCommunitySoftwarePage() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1px', backgroundColor: 'var(--border)' }}
           >
             {modules.map((m) => (
-              <motion.div
+              <motion.a
                 key={m.id}
+                href={m.href}
                 variants={fadeUp}
-                style={{ backgroundColor: '#f5f5f3', padding: '28px 24px 30px' }}
+                whileHover={{ y: -1 }}
+                transition={{ duration: 0.15 }}
+                style={{ backgroundColor: '#f5f5f3', padding: '28px 24px 30px', textDecoration: 'none', color: 'var(--text)', display: 'block' }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '9px', marginBottom: '16px' }}>
                   <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: m.dot }} />
@@ -221,7 +255,7 @@ export default function ResidentialCommunitySoftwarePage() {
                 </div>
                 <div style={{ fontSize: '22px', marginBottom: '10px', color: 'var(--text)' }}>{m.glyph}</div>
                 <p style={{ fontSize: '15px', lineHeight: 1.45 }}>{m.label}</p>
-              </motion.div>
+              </motion.a>
             ))}
           </motion.div>
         </div>
@@ -237,6 +271,7 @@ export default function ResidentialCommunitySoftwarePage() {
             padding: '104px 0',
             borderBottom: '1px dashed var(--border-dashed)',
             backgroundColor: i % 2 === 1 ? '#f5f5f3' : 'var(--bg)',
+            scrollMarginTop: '72px', // sticky navbar height
           }}
         >
           <div className="wrap" style={wrap}>
