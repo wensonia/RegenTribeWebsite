@@ -2,7 +2,10 @@
 
 ## Obsidian sync rule
 **Always update the matching Obsidian write-up after making any changes to a page.**
-- Obsidian vault: `/Users/soniawendorff/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsid-mycolive/Regen Tribe/RT website/`
+- Obsidian vault (per-machine, resolves under your own home directory):
+  `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/obsid-mycolive/Regen Tribe/RT website/`
+- If your vault lives elsewhere, set `REGENTRIBE_OBSIDIAN_DIR` to its path. The
+  `.claude/hooks/obsidian-sync.sh` hook reads that variable and stays silent when no vault is found.
 - Each page has a corresponding `.md` file there (e.g. `EDU TOOLS regentribe.co page.md`, `AGENCY regentribe.co subpage outline.md`, etc.)
 - When content, copy, structure, or links change on a page → update the relevant Obsidian file to reflect what was built
 - When a new page is created → create a new `.md` file in that folder documenting its structure
@@ -40,6 +43,21 @@ The website is the **marketing hub** — introduce the mission, explain the ecos
 - Deployed to Cloudflare Pages via `npm run build`
 - Build output directory: `out`
 - Supabase for backend (env vars: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY)
+
+## Email notifications
+Signup emails are sent server-side via Resend — never from the browser, and never
+from Next.js (the site is a static export, so there are no API routes).
+
+- Flow: form insert → Postgres `after insert` trigger → Supabase Edge Function
+  `send-signup-email` → Resend.
+- Function lives at `supabase/functions/send-signup-email/index.ts`.
+- Trigger lives in `supabase/migrations/*_signup_email_notifications.sql`.
+- The Resend API key is a Supabase function secret. NEVER put it in `.env.local`,
+  and never prefix it with `NEXT_PUBLIC_`.
+- The trigger swallows its own errors on purpose: a failed send must never lose
+  a signup row.
+- Changing email copy means editing the Edge Function and redeploying it with
+  `supabase functions deploy send-signup-email`.
 
 ## Design system
 - **Background:** `#ededed`

@@ -45,3 +45,7 @@ next-env.d.ts
 /rnf-site/node_modules/
 /rnf-site/dist/
 /rnf-site/.astro/
+
+# supabase local state
+/supabase/.temp/
+/supabase/.branches/

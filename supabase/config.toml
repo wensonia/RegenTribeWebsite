@@ -1,0 +1,5 @@
+project_id = "regentribewebsite"
+
+[functions.send-signup-email]
+# Called by a Postgres trigger with a shared secret, not an end-user JWT.
+verify_jwt = false
