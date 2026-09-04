@@ -21,6 +21,9 @@ type SignupRecord = {
   name?: string | null
   interests?: string[] | null
   created_at?: string
+  source?: string | null
+  page_path?: string | null
+  archetype?: string | null
 }
 
 type TriggerPayload = {
@@ -30,7 +33,8 @@ type TriggerPayload = {
 
 const SOURCE_LABELS: Record<string, string> = {
   newsletter_signups: 'Newsletter',
-  resource_holder_signups: 'Resource holder / Agent Program',
+  resource_holder_signups: 'JOIN page',
+  agent_program_signups: 'Agent Program',
 }
 
 function escapeHtml(value: string): string {
@@ -90,6 +94,8 @@ function welcomeEmail(record: SignupRecord) {
 function teamNotification(record: SignupRecord, table: string) {
   const source = SOURCE_LABELS[table] ?? table
   const interests = record.interests?.length ? record.interests.join(', ') : '—'
+  const page = record.page_path ?? '—'
+  const archetype = record.archetype ?? '—'
 
   return {
     from: FROM_ADDRESS,
@@ -100,14 +106,20 @@ function teamNotification(record: SignupRecord, table: string) {
       `New signup via ${source}\n\n` +
       `Email:     ${record.email}\n` +
       `Name:      ${record.name ?? '—'}\n` +
+      `Archetype: ${archetype}\n` +
       `Interests: ${interests}\n` +
+      `Page:      ${page}\n` +
+      `Form:      ${record.source ?? '—'}\n` +
       `Time:      ${record.created_at ?? new Date().toISOString()}`,
     html:
       `<p><strong>New signup via ${escapeHtml(source)}</strong></p>` +
       `<ul>` +
       `<li>Email: ${escapeHtml(record.email ?? '')}</li>` +
       `<li>Name: ${escapeHtml(record.name ?? '—')}</li>` +
+      `<li>Archetype: ${escapeHtml(archetype)}</li>` +
       `<li>Interests: ${escapeHtml(interests)}</li>` +
+      `<li>Page: ${escapeHtml(page)}</li>` +
+      `<li>Form: ${escapeHtml(record.source ?? '—')}</li>` +
       `<li>Time: ${escapeHtml(record.created_at ?? new Date().toISOString())}</li>` +
       `</ul>`,
   }

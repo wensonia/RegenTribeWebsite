@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Plus, Users, Compass } from 'lucide-react'
 import OptimizedImage from '@/components/OptimizedImage'
+import { supabase } from '@/lib/supabase'
 
 /* ── Layout constants ── */
 const W = '1280px'
@@ -136,11 +137,31 @@ const niches = [
 ]
 
 const pillars = [
-  { name: 'Ecology',       color: 'var(--green)',  desc: 'Climate, biodiversity, ecosystem restoration, land stewardship.' },
-  { name: 'Hardware',      color: 'var(--blue)',   desc: 'Architecture and resilient systems for water, food, energy, waste, air.' },
-  { name: 'Human Systems', color: 'var(--pink)',   desc: 'Governance, operations, education, events, and care services.' },
-  { name: 'Economy',       color: 'var(--yellow)', desc: 'Local currencies, investment models, ownership, regenerative trade.' },
-  { name: 'Technology',    color: '#a87bd0',       desc: 'Digital infrastructure, AI, governance apps, IoT, blockchain.' },
+  {
+    name: 'Ecology', color: 'var(--green)',
+    desc: 'Climate, biodiversity, ecosystem restoration, land stewardship.',
+    back: 'Permaculture zones, native species, soil regeneration, water cycling, and habitat for pollinators and wildlife.',
+  },
+  {
+    name: 'Hardware', color: 'var(--blue)',
+    desc: 'Architecture and resilient systems for water, food, energy, waste, air.',
+    back: 'Passive-solar design, rainwater harvest, greywater loops, food forest, solar walkways, composting, biochar.',
+  },
+  {
+    name: 'Human Systems', color: 'var(--pink)',
+    desc: 'Governance, operations, education, events, and care services.',
+    back: 'Sociocratic governance, conflict resolution, residency programs, retreats, childcare, eldercare, and rituals.',
+  },
+  {
+    name: 'Economy', color: 'var(--yellow)',
+    desc: 'Local currencies, investment models, ownership, regenerative trade.',
+    back: 'Land trust ownership, work-to-earn credits, member equity, local exchange, and bioregional trade routes.',
+  },
+  {
+    name: 'Technology', color: '#a87bd0',
+    desc: 'Digital infrastructure, AI, governance apps, IoT, blockchain.',
+    back: 'Tribes Platform, on-chain governance, IoT sensors for resource systems, AI co-pilots for ops and care.',
+  },
 ]
 
 const landCriteria = [
@@ -180,15 +201,27 @@ export default function RegenHoodZeroPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
 
   const toggleArchetype = (a: string) => {
     setSelected(prev => prev.includes(a) ? prev.filter(x => x !== a) : [...prev, a])
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: wire to Supabase / form handler
-    console.log('Signup submitted:', { name, email, archetypes: selected })
+    if (!email) return
+    setError(false)
+    const { error: insertError } = await supabase.from('newsletter_signups').insert({
+      email,
+      name: name || null,
+      interests: selected,
+      source: 'regenhoodzero-form',
+      page_path: typeof window !== 'undefined' ? window.location.pathname : null,
+    })
+    if (insertError) {
+      setError(true)
+      return
+    }
     setSubmitted(true)
   }
 
@@ -246,29 +279,21 @@ export default function RegenHoodZeroPage() {
               </motion.div>
             </motion.div>
             <motion.div variants={fadeUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}
-              style={{
-                position: 'relative',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
-                boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
-                border: '1px solid var(--border)',
-              }}>
+              style={{ position: 'relative' }}>
               <OptimizedImage
-                src="/images/regenhoodzero/hero-illustration.png"
-                alt="Editorial illustration of a regenerative neighborhood — buildings with solar panels and green roofs, people in diverse activities, a food forest, water pond, and tropical plants."
+                src="/images/regenhoodzero/master-plan.png"
+                alt="Top-down infrastructure map of the Regen Tribe Regenerative Neighborhood — residential cluster, food forest, animal sanctuary, solar farm, common buildings, wetlands, and retreat center, in a dithered halftone illustration style."
                 extraWidths={[1024]}
                 sizes="(max-width: 900px) 100vw, 55vw"
                 loading="eager"
-                style={{ aspectRatio: '16 / 10', objectFit: 'contain', padding: '16px' }}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
-              <div style={{
-                position: 'absolute', top: '14px', left: '16px',
-                fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
-                color: 'var(--text)', opacity: 0.42,
-                backgroundColor: 'rgba(255,255,255,0.85)',
-                padding: '6px 10px', borderRadius: '6px',
-              }}>Concept · v0.1</div>
+              <p style={{
+                fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'var(--text)', opacity: 0.5, margin: '14px 0 0', textAlign: 'center',
+              }}>
+                Concept render · Tulum, Mexico
+              </p>
             </motion.div>
           </div>
         </div>
@@ -434,7 +459,12 @@ export default function RegenHoodZeroPage() {
       </section>
 
       {/* ─────────────── 4. NICHES ─────────────── */}
-      <section style={{ ...sec, backgroundColor: '#f5f5f0', borderBottom: '1px solid var(--border)' }} className="sec">
+      <section style={{ ...sec, backgroundColor: '#f5f5f0', borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }} className="sec">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/regenhoodzero/cutout-trees.png" alt=""
+          className="cutout-decor"
+          style={{ top: '40px', right: '-40px', width: '200px', height: 'auto' }}
+        />
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--pink)')}>THE NICHES</motion.p>
@@ -479,7 +509,12 @@ export default function RegenHoodZeroPage() {
       </section>
 
       {/* ─────────────── 5. PHASES OF DEVELOPMENT ─────────────── */}
-      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0' }}>
+      <section className="sec" style={{ backgroundColor: 'var(--text)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/regenhoodzero/cutout-solar.png" alt=""
+          className="cutout-decor"
+          style={{ top: '60px', right: '-30px', width: '200px', height: 'auto', opacity: 0.55 }}
+        />
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <div style={{ maxWidth: '880px', margin: '0 auto' }}>
@@ -539,7 +574,12 @@ export default function RegenHoodZeroPage() {
       </section>
 
       {/* ─────────────── 6. FIVE PILLARS FOR DESIGN ─────────────── */}
-      <section style={{ ...sec, borderBottom: '1px solid var(--border)' }} className="sec">
+      <section style={{ ...sec, borderBottom: '1px solid var(--border)', position: 'relative', overflow: 'hidden' }} className="sec">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/regenhoodzero/cutout-pond.png" alt=""
+          className="cutout-decor"
+          style={{ top: '60px', left: '-40px', width: '180px', height: 'auto' }}
+        />
         <div style={wrap}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
             <motion.p variants={fadeUp} style={kickerStyle('var(--green)')}>THE FRAMEWORK</motion.p>
@@ -549,38 +589,62 @@ export default function RegenHoodZeroPage() {
             </motion.p>
 
             <motion.div variants={stagger}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '12px' }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '14px' }}
               className="rh-pillar-grid">
               {pillars.map((p, i) => (
-                <motion.div key={p.name} variants={fadeUp}
-                  className="rh-pillar-card"
-                  style={{
-                    backgroundColor: 'white',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    display: 'flex', flexDirection: 'row', alignItems: 'stretch',
-                  }}>
-                  <div style={{
-                    width: '6px',
-                    backgroundColor: p.color,
-                    flexShrink: 0,
-                  }} />
-                  <div style={{ padding: '16px 16px 18px', flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '6px' }}>
-                      <span style={{
-                        fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em',
-                        textTransform: 'uppercase', color: 'var(--text)', opacity: 0.4,
-                      }}>0{i + 1}</span>
-                      <h3 style={{
-                        fontFamily: 'Lora, serif', fontSize: '17px', fontWeight: 500,
-                        margin: 0, lineHeight: 1.15, color: 'var(--text)',
-                      }}>{p.name}</h3>
+                <motion.div key={p.name} variants={fadeUp} className="rh-flip-card">
+                  <div className="rh-flip-card-inner">
+                    {/* FRONT */}
+                    <div className="rh-flip-card-face rh-flip-card-front" style={{
+                      backgroundColor: 'white',
+                      border: '1px solid var(--border)',
+                      borderRadius: '14px',
+                      overflow: 'hidden',
+                      display: 'flex', flexDirection: 'column',
+                    }}>
+                      <div style={{ height: '8px', backgroundColor: p.color }} />
+                      <div style={{ padding: '20px 20px 22px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <span style={{
+                          fontSize: '10.5px', fontWeight: 600, letterSpacing: '0.14em',
+                          textTransform: 'uppercase', color: 'var(--text)', opacity: 0.45,
+                          display: 'block', marginBottom: '10px',
+                        }}>0{i + 1}</span>
+                        <h3 style={{
+                          fontFamily: 'Lora, serif', fontSize: '19px', fontWeight: 500,
+                          margin: '0 0 10px', lineHeight: 1.2, color: 'var(--text)',
+                        }}>{p.name}</h3>
+                        <p style={{
+                          fontSize: '13px', lineHeight: 1.55, margin: 0,
+                          color: 'var(--text)', opacity: 0.72,
+                        }}>{p.desc}</p>
+                        <span style={{
+                          marginTop: 'auto', paddingTop: '14px',
+                          fontSize: '10px', fontWeight: 600, letterSpacing: '0.12em',
+                          textTransform: 'uppercase', color: p.color, opacity: 0.85,
+                        }}>Hover →</span>
+                      </div>
                     </div>
-                    <p style={{
-                      fontSize: '12.5px', lineHeight: 1.5, margin: 0,
-                      color: 'var(--text)', opacity: 0.72,
-                    }}>{p.desc}</p>
+                    {/* BACK */}
+                    <div className="rh-flip-card-face rh-flip-card-back" style={{
+                      backgroundColor: p.color,
+                      border: '1px solid var(--border)',
+                      borderRadius: '14px',
+                      overflow: 'hidden',
+                      padding: '22px 20px',
+                      display: 'flex', flexDirection: 'column',
+                      color: p.name === 'Economy' ? 'var(--text)' : 'white',
+                    }}>
+                      <span style={{
+                        fontSize: '10.5px', fontWeight: 700, letterSpacing: '0.14em',
+                        textTransform: 'uppercase', opacity: 0.7,
+                        marginBottom: '10px',
+                      }}>0{i + 1} · {p.name}</span>
+                      <p style={{
+                        fontFamily: 'Lora, serif',
+                        fontSize: '15px', fontWeight: 400, lineHeight: 1.45, margin: 0,
+                        opacity: 0.95,
+                      }}>{p.back}</p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -601,38 +665,21 @@ export default function RegenHoodZeroPage() {
           </motion.div>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={vp}
-            style={{
-              marginBottom: '48px',
-              position: 'relative',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
-              boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
-              border: '1px solid var(--border)',
-            }}>
+            style={{ marginBottom: '48px', position: 'relative' }}>
             <OptimizedImage
-              src="/images/regenhoodzero/architecture-masterplan.png"
-              alt="Aerial illustration of the RegenHood Zero masterplan — buildings arranged along a golden-ratio spiral, with food forest, animal sanctuary, water systems, and solar walkways."
+              src="/images/regenhoodzero/master-plan.png"
+              alt="Top-down infrastructure map of the Regen Tribe Regenerative Neighborhood — residential cluster, food forest, animal sanctuary, solar farm, common buildings, wetlands, and retreat center, in a dithered halftone illustration style."
               extraWidths={[1024]}
               sizes="(max-width: 1280px) 100vw, 1280px"
               loading="lazy"
-              style={{ aspectRatio: '16 / 9', objectFit: 'contain', padding: '24px' }}
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '20px' }}
             />
-            <div style={{
-              position: 'absolute', top: '14px', left: '16px',
-              fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: 'var(--text)', opacity: 0.42,
-              backgroundColor: 'rgba(255,255,255,0.85)',
-              padding: '6px 10px', borderRadius: '6px',
-            }}>Masterplan · concept</div>
-            <div style={{
-              padding: '14px 20px',
-              borderTop: '1px solid var(--border)',
+            <p style={{
               fontSize: '12.5px', lineHeight: 1.5, opacity: 0.62, fontStyle: 'italic',
-              backgroundColor: 'rgba(255,255,255,0.6)',
+              marginTop: '14px', textAlign: 'center',
             }}>
-              Golden-ratio spiral — central commons, residential rings, food forest, and animal sanctuary.
-            </div>
+              Top-down infrastructure map — central commons, residential rings, food forest, and animal sanctuary.
+            </p>
           </motion.div>
 
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={vp}>
@@ -826,27 +873,37 @@ export default function RegenHoodZeroPage() {
             <motion.div variants={fadeUp} style={{
               order: 1,
               position: 'relative',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              background: 'linear-gradient(135deg, #fdfbf6 0%, #f6f1e7 100%)',
-              boxShadow: '0 20px 50px rgba(54,54,54,0.12)',
-              border: '1px solid var(--border)',
+              minHeight: '380px',
             }} className="rh-archetypes-img">
-              <OptimizedImage
-                src="/images/regenhoodzero/archetypes.png"
-                alt="Editorial illustration of community members in a regenerative neighborhood courtyard — a founder sketching, a facilitator leading a circle, a permaculture designer, an artist painting, a researcher reading, and a person doing yoga."
-                extraWidths={[1024]}
-                sizes="(max-width: 900px) 100vw, 45vw"
-                loading="lazy"
-                style={{ aspectRatio: '16 / 10', objectFit: 'contain', padding: '20px' }}
+              {/* Cutout collage — homes, trees, pond, solar */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/regenhoodzero/cutout-homes.png" alt=""
+                style={{
+                  position: 'absolute', top: '0', left: '0',
+                  width: '62%', height: 'auto', zIndex: 2,
+                }}
               />
-              <div style={{
-                position: 'absolute', top: '14px', left: '16px',
-                fontSize: '10px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
-                color: 'var(--text)', opacity: 0.42,
-                backgroundColor: 'rgba(255,255,255,0.85)',
-                padding: '6px 10px', borderRadius: '6px',
-              }}>People · concept</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/regenhoodzero/cutout-trees.png" alt=""
+                style={{
+                  position: 'absolute', top: '20px', right: '0',
+                  width: '46%', height: 'auto', zIndex: 1,
+                }}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/regenhoodzero/cutout-solar.png" alt=""
+                style={{
+                  position: 'absolute', bottom: '0', left: '6%',
+                  width: '40%', height: 'auto', zIndex: 3,
+                }}
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/regenhoodzero/cutout-pond.png" alt=""
+                style={{
+                  position: 'absolute', bottom: '10px', right: '4%',
+                  width: '46%', height: 'auto', zIndex: 2,
+                }}
+              />
             </motion.div>
             <div style={{ order: 2 }}>
               <motion.p variants={fadeUp} style={kickerStyle('var(--pink-deep)')}>ARCHETYPES</motion.p>
@@ -974,6 +1031,12 @@ export default function RegenHoodZeroPage() {
                   }}>
                     Apply to join <ArrowRight size={14} strokeWidth={2} />
                   </button>
+                  {error && (
+                    <p style={{ marginTop: '14px', fontSize: '14px', color: '#b0004a' }}>
+                      Something went wrong saving your details. Please try again, or email{' '}
+                      <a href="mailto:hello@regentribe.co" style={{ color: 'inherit' }}>hello@regentribe.co</a>.
+                    </p>
+                  )}
                 </>
               )}
             </motion.form>
@@ -983,13 +1046,41 @@ export default function RegenHoodZeroPage() {
 
       {/* ─────────────── Responsive ─────────────── */}
       <style jsx global>{`
-        /* Pillar cards — subtle hover lift */
-        .rh-pillar-card {
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        /* Flip cards — pillar section */
+        .rh-flip-card {
+          perspective: 1200px;
+          height: 220px;
         }
-        .rh-pillar-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 14px 30px rgba(54,54,54,0.10);
+        .rh-flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+          transform-style: preserve-3d;
+        }
+        .rh-flip-card:hover .rh-flip-card-inner,
+        .rh-flip-card:focus-within .rh-flip-card-inner {
+          transform: rotateY(180deg);
+        }
+        .rh-flip-card-face {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          box-shadow: 0 4px 14px rgba(54,54,54,0.05);
+        }
+        .rh-flip-card-back {
+          transform: rotateY(180deg);
+        }
+
+        /* Decorative cutouts (semi-transparent floating illustrations) */
+        .cutout-decor {
+          position: absolute;
+          pointer-events: none;
+          opacity: 0.85;
+          z-index: 0;
         }
 
         /* Decorative shapes */
@@ -1004,6 +1095,7 @@ export default function RegenHoodZeroPage() {
           }
         }
         @media (max-width: 900px) {
+          .cutout-decor { display: none !important; }
           .rh-hero-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
@@ -1017,7 +1109,10 @@ export default function RegenHoodZeroPage() {
             gap: 6px !important;
           }
           .rh-pillar-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .rh-flip-card {
+            height: 200px !important;
           }
           .rh-phase-row {
             grid-template-columns: 1fr !important;
@@ -1042,6 +1137,9 @@ export default function RegenHoodZeroPage() {
           }
         }
         @media (max-width: 560px) {
+          .rh-pillar-grid {
+            grid-template-columns: 1fr !important;
+          }
           .rh-elements-grid {
             grid-template-columns: 1fr !important;
           }

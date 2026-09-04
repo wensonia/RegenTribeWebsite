@@ -289,6 +289,9 @@ function ResourceHolderForm({ arch }: { arch: typeof archetypes[number] }) {
     const { error } = await supabase.from('resource_holder_signups').insert({
       email,
       interests: selected,
+      source: 'join-archetype-form',
+      archetype: arch.title,
+      page_path: typeof window !== 'undefined' ? window.location.pathname : null,
     })
     setStatus(error ? 'error' : 'sent')
   }

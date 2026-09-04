@@ -222,6 +222,8 @@ export default function AgentProgramPage() {
     const { error } = await supabase.from('agent_program_signups').insert({
       email,
       name: name || null,
+      source: 'agent-program-form',
+      page_path: typeof window !== 'undefined' ? window.location.pathname : null,
     })
     setStatus(error ? 'error' : 'sent')
   }

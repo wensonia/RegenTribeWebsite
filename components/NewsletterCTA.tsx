@@ -29,6 +29,8 @@ export default function NewsletterCTA() {
       email,
       name: name || null,
       interests,
+      source: 'newsletter-cta',
+      page_path: typeof window !== 'undefined' ? window.location.pathname : null,
     })
     setStatus(error ? 'error' : 'sent')
   }
