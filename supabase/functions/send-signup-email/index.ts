@@ -8,6 +8,8 @@
 // never reaches the browser. Set the required secrets with:
 //   supabase secrets set RESEND_API_KEY=... SIGNUP_WEBHOOK_SECRET=...
 
+import { welcomeEmailFor } from './templates.ts'
+
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
@@ -67,27 +69,15 @@ async function sendEmail(payload: Record<string, unknown>): Promise<void> {
   }
 }
 
-function welcomeEmail(record: SignupRecord) {
-  const greeting = record.name ? `Hi ${escapeHtml(record.name)},` : 'Hi,'
-
+function welcomeEmail(record: SignupRecord, table: string) {
+  const t = welcomeEmailFor(record, table)
   return {
     from: FROM_ADDRESS,
     to: record.email,
-    subject: 'Welcome to Regen Tribe',
+    subject: t.subject,
     reply_to: TEAM_ADDRESS,
-    text:
-      `${record.name ? `Hi ${record.name},` : 'Hi,'}\n\n` +
-      `Thanks for joining the Regen Tribe mailing list. We are building a global ` +
-      `movement of regenerative neighborhoods, and we are glad you are here.\n\n` +
-      `We will be in touch with what we are learning and building.\n\n` +
-      `— The Regen Tribe team\nhttps://regentribe.co`,
-    html:
-      `<p>${greeting}</p>` +
-      `<p>Thanks for joining the Regen Tribe mailing list. We are building a global ` +
-      `movement of regenerative neighborhoods, and we are glad you are here.</p>` +
-      `<p>We will be in touch with what we are learning and building.</p>` +
-      `<p>— The Regen Tribe team<br>` +
-      `<a href="https://regentribe.co">regentribe.co</a></p>`,
+    text: t.text,
+    html: t.html,
   }
 }
 
@@ -159,7 +149,7 @@ Deno.serve(async (req: Request) => {
   // Settled independently: a failed welcome must not suppress the team
   // notification, and vice versa.
   const results = await Promise.allSettled([
-    sendEmail(welcomeEmail(record)),
+    sendEmail(welcomeEmail(record, table)),
     sendEmail(teamNotification(record, table)),
   ])
 
