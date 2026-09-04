@@ -21,6 +21,7 @@ const SITE = 'https://regentribe.co'
 const PLATFORM = 'https://tribesplatform.app'
 const SUBSTACK = 'https://regentribe.substack.com'
 const INSTAGRAM = 'https://www.instagram.com/regen.tribe'
+const LOGO = 'https://regentribe.co/images/logos/logo-black-text.png'
 
 const TEXT = '#363636'
 const BG = '#ededed'
@@ -41,6 +42,8 @@ function layout(opts: { heading: string; body: string; accent: string }): string
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:14px;padding:40px 36px;font-family:'Open Sans',Helvetica,Arial,sans-serif;color:${TEXT};">
   <tr><td>
+    <img src="${LOGO}" width="52" height="52" alt="Regen Tribe"
+         style="display:block;width:52px;height:52px;margin-bottom:22px;border:0;" />
     <div style="height:4px;width:56px;background:${opts.accent};border-radius:2px;margin-bottom:28px;"></div>
     <h1 style="margin:0 0 20px;font-family:Lora,Georgia,serif;font-weight:400;font-size:28px;line-height:1.25;color:${TEXT};">${opts.heading}</h1>
     ${opts.body}
@@ -208,6 +211,17 @@ function variantFor(record: SignupRecord, table: string): Variant {
     text: 'Thanks for joining. Regen Tribe is a Regenerative Neighborhood Accelerator — we help people create, develop and join intentional communities built around regenerative systems.\n\n' +
       `Tribes Platform: ${PLATFORM}\nThe Agency: ${SITE}/agency\nSubstack: ${SUBSTACK}`,
   }
+}
+
+export function notificationLayout(heading: string, rows: Array<[string, string]>, note: string) {
+  const table = `<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin:0 0 8px;">` +
+    rows.map(([k, v]) =>
+      `<tr>` +
+      `<td style="padding:9px 0;border-bottom:1px solid #ededed;font-size:13px;color:#6d6d6d;width:110px;vertical-align:top;">${esc(k)}</td>` +
+      `<td style="padding:9px 0;border-bottom:1px solid #ededed;font-size:14px;color:${TEXT};">${v}</td>` +
+      `</tr>`).join('') +
+    `</table>`
+  return layout({ heading, accent: GREEN, body: table + `<p style="margin:18px 0 0;font-size:13px;line-height:1.6;color:#6d6d6d;">${note}</p>` })
 }
 
 export function welcomeEmailFor(record: SignupRecord, table: string) {

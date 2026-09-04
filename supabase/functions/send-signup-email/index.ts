@@ -8,7 +8,7 @@
 // never reaches the browser. Set the required secrets with:
 //   supabase secrets set RESEND_API_KEY=... SIGNUP_WEBHOOK_SECRET=...
 
-import { welcomeEmailFor } from './templates.ts'
+import { welcomeEmailFor, notificationLayout } from './templates.ts'
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 
@@ -86,32 +86,37 @@ function teamNotification(record: SignupRecord, table: string) {
   const interests = record.interests?.length ? record.interests.join(', ') : '—'
   const page = record.page_path ?? '—'
   const archetype = record.archetype ?? '—'
+  const email = record.email ?? ''
+
+  const rows: Array<[string, string]> = [
+    ['Email', `<a href="mailto:${escapeHtml(email)}" style="color:#363636;">${escapeHtml(email)}</a>`],
+    ['Name', escapeHtml(record.name ?? '—')],
+    ['Archetype', escapeHtml(archetype)],
+    ['Interests', escapeHtml(interests)],
+    ['Came from', `${escapeHtml(page)} &nbsp;·&nbsp; ${escapeHtml(record.source ?? '—')}`],
+    ['Time', escapeHtml(record.created_at ?? new Date().toISOString())],
+  ]
 
   return {
     from: FROM_ADDRESS,
     to: TEAM_ADDRESS,
-    subject: `New signup: ${record.email} (${source})`,
-    reply_to: record.email,
+    subject: `New signup — ${email} (${source})`,
+    // Replying goes straight to the person who signed up.
+    reply_to: email,
     text:
       `New signup via ${source}\n\n` +
-      `Email:     ${record.email}\n` +
-      `Name:      ${record.name ?? '—'}\n` +
-      `Archetype: ${archetype}\n` +
-      `Interests: ${interests}\n` +
-      `Page:      ${page}\n` +
-      `Form:      ${record.source ?? '—'}\n` +
-      `Time:      ${record.created_at ?? new Date().toISOString()}`,
-    html:
-      `<p><strong>New signup via ${escapeHtml(source)}</strong></p>` +
-      `<ul>` +
-      `<li>Email: ${escapeHtml(record.email ?? '')}</li>` +
-      `<li>Name: ${escapeHtml(record.name ?? '—')}</li>` +
-      `<li>Archetype: ${escapeHtml(archetype)}</li>` +
-      `<li>Interests: ${escapeHtml(interests)}</li>` +
-      `<li>Page: ${escapeHtml(page)}</li>` +
-      `<li>Form: ${escapeHtml(record.source ?? '—')}</li>` +
-      `<li>Time: ${escapeHtml(record.created_at ?? new Date().toISOString())}</li>` +
-      `</ul>`,
+      `Email:      ${email}\n` +
+      `Name:       ${record.name ?? '—'}\n` +
+      `Archetype:  ${archetype}\n` +
+      `Interests:  ${interests}\n` +
+      `Came from:  ${page} (${record.source ?? '—'})\n` +
+      `Time:       ${record.created_at ?? new Date().toISOString()}\n\n` +
+      `Reply to this email to answer them directly.`,
+    html: notificationLayout(
+      `New signup via ${escapeHtml(source)}`,
+      rows,
+      'Replying to this email goes straight to them.',
+    ),
   }
 }
 
