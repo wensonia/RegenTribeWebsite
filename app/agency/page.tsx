@@ -920,7 +920,7 @@ export default function Agency() {
                 <p style={{ fontSize: '16px', fontWeight: '400', color: 'var(--text)', marginBottom: '20px' }}>
                   Are you looking for partners & neighbors?
                 </p>
-                <PillBtn href="mailto:grow@regentribe.co" external>
+                <PillBtn href="mailto:hello@regentribe.co" external>
                   Get in Touch
                 </PillBtn>
               </motion.div>
