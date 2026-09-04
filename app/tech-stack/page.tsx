@@ -146,8 +146,6 @@ const tools = [
     contributors: 'collective',
     github:   'https://github.com/regentribes/regen-knowledge-graph',
     repo:     'regen-knowledge-graph',
-    demoLink:  'https://graph.regentribe.org/graph-chain-stories.html',
-    demoLabel: 'Play around',
   },
   {
     dot:      'var(--green)',

@@ -46,7 +46,7 @@ Check out what's on the horizon.
 ## September 2024
 On **September 15th**, we fly to **Singapore** to dive into a bunch of meet ups and conferences. We're talking **longevity, network states, and blockchain tech**, all areas we're really excited about exploring further.
 We kick things off on September 16th with the **DeSci & Bio/Acc Summit** at **Token 2049 Singapore**, hosted by VitaDAO. 
-Then, on September 22nd, we attend the annual [**Network State Conference**](https://tribes.regentribe.org/event/network-state-conference-singapore-sept-22-2024-sept-22/), to dive deeper into how digital governance could play a role in shaping regenerative neighborhoods.
+Then, on September 22nd, we attend the annual [**Network State Conference**](https://tribesplatform.app), to dive deeper into how digital governance could play a role in shaping regenerative neighborhoods.
 Catch us in Singapore!
 ## October 2024
 ### Network School! 
@@ -59,22 +59,22 @@ Excited to join this annual gathering again!
 The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live–without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
 This year again we will be hosting a welcome table and community building exercises in between the talks.
 Oscar will be sharing a talk “Visualizing the future : how to develop a sovereign society through human & resource resiliency” where we share about the status quo of the regenerative Neighborhood Movement and how we shape our ecosystem to support it best.
-[Find out how to join the event.](https://tribes.regentribe.org/event/liberty-in-our-lifetime-from-vision-to-reality/)
+[Find out how to join the event.](https://tribesplatform.app)
 ### Winter Residency at Community Lab X
 In November we are kicking off the high season in Tulum on a high note!
 Different co.creators come together to lead the space for 5 months and share community magic with the world.
 Gabriela & Arie from Yura Institute will be taking management roles and host various community retreats and events. Expect music circles, farmers markets, yoga classes and many more.
 Karim (Dr. Love) will be leading a Magic of Love Ashram as well as a series of retreats focused on spirituality, mindfulness and community connection.
-Track [www.regentribe.org/comlabx](http://www.regentribe.org/comlabx) to find out how to get involved!
+Track [regentribe.org/comlabx](http://www.regentribe.org/comlabx) to find out how to get involved!
 ## December 2024
 Somewhere in Asia / Europe - open for interesting collaborations and initiatives! 
-Message us [grow@regentribe.org](mailto:grow@regentribe.org) 
+Message us [hello@regentribe.co](mailto:hello@regentribe.co) 
 ## **2025**
 ### Community Lab X
 Join for the peak point of the winter residency at [Community Lab X](http://www.regentribe.org/comlabx).
 ---
 > **Do you have interesting events, residencies or projects you think we should visit?**
-> Let us know at [www.tribes.regentribe.org](http://www.tribes.regentribe.org) by sharing a post about it!`,
+> Let us know at [Tribes Platform](https://tribesplatform.app) by sharing a post about it!`,
     images: [
       { src: '/images/blog/2024-future-timeline-1.jpg', alt: 'Post by Balaji announcing Network School 2024' },
     ],
@@ -96,7 +96,7 @@ As the first tropical storm hit Tulum exceptionally early, we got the chance to 
 Prep included making sure all the infrastructure is ready to deal with rain and heavy winds - lots of roofing work, furniture rearrangements and establishing proper protocols in case of emergencies.
 One pillar of our community is animal sanctuary - before we left we neutered our adopted kittens as they finished 4 months. That meant lots of warm care and snuggles.
 Best life.
-Check out more information about what's happening at this Prototype Regenerative Neighborhood at [www.regentribe.org/comlabx](http://www.regentribe.org/comlabx) 
+Check out more information about what's happening at this Prototype Regenerative Neighborhood at [regentribe.org/comlabx](http://www.regentribe.org/comlabx) 
 
 After closing the season in Tulum we left to Europe for a birthday celebration of our advisor, Michael, in **Prague**. We spent two weeks living together, exploring the city and kicking off our **nomadic summer** in a beautiful way.
 
@@ -123,8 +123,8 @@ Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q3-2024-mexico-to-europe-1.jpg', alt: 'Edith preparing a tarp for the jungle cabin roof' },
       { src: '/images/blog/q3-2024-mexico-to-europe-2.jpg', alt: 'Our rescue kittens resting post procedure' },
@@ -162,7 +162,7 @@ Be sure to check out **Community Lab X Instagram** for photos and updates on all
 June started with some bittersweet goodbyes as several of our **Agents** moved on to their next adventures. With a smaller team, we embraced the opportunity for more intimate collaboration.
 In the second week of June, **Sonia and Oscar** traveled to **WildSeeds Ranch** in Dulzura, California, to host a 5-day **Agent Program intensive workshop** as part of the **June Bloom** event. This gathering brought together regenerative changemakers and showcased WildSeeds Ranch as a hub for scalable and replicable regenerative community models.
 During the workshop, we shared our **10-step Community Alchemy journey** and dove deep into WildSeeds' **project mind map, organizational chart, community culture canvas, and community agreements**. It was a beautiful exchange of ideas and best practices, and we left feeling incredibly inspired by the people and work happening at WildSeeds.
-If you want to learn more about this amazing project, check out [**WildSeeds Ranch**](https://tribes.regentribe.org/groups/wildseeds-incubation-station/)[ on Tribes](https://tribes.regentribe.org/groups/wildseeds-incubation-station/)!
+If you want to learn more about this amazing project, check out [**WildSeeds Ranch**](https://tribesplatform.app)[ on Tribes](https://tribesplatform.app)!
 
 ---
 It's been a season of growth, learning, and community, and we're so grateful for everyone who has been part of the journey. Thanks for staying connected with us, and we can't wait to see where the next few months take us!
@@ -172,8 +172,8 @@ The Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q2-2024-clx-wildseeds-1.jpg', alt: 'Shared dinners at Community Lab X' },
       { src: '/images/blog/q2-2024-clx-wildseeds-2.jpg', alt: 'Our rescue mama feeding her 4 kittens' },
@@ -202,14 +202,14 @@ Vitalia's mission is bold -- making death optional by incubating cutting-edge bi
 
 We also connected with the visionaries behind Prospera, working together to seed a collaboration plan, which includes building out a community house for future residents.
 
-[Check out what Prospera is about (Tribes Platform profile)](https://tribes.regentribe.org/groups/prospera/)
+[Check out what Prospera is about (Tribes Platform profile)](https://tribesplatform.app)
 
 ### Regen Tribe Agent Program launch
 In parallel, on January 6th, we launched the first edition of our Regen Tribe Agent Program, a vocational training program for regenerative neighborhood consultants.
 The 6-week course, based on our 10-step Community Alchemy Guide, introduced future Agents to the theory of creating regenerative neighborhoods.
 At the end of February, 6 Agents successfully completed the course and earned the title Agent-In-Training, qualifying them for on-site training in one of our regenerative neighborhoods.
 
-[Check out more info about the Regen Tribe Agent Program here](http://www.regentribe.org/agentprogram)
+[Check out more info about the Regen Tribe Agent Program here](https://regentribe.co/agentprogram)
 
 ## March: Launch of Community Lab X in Tulum
 March was HUGE for us!
@@ -235,8 +235,8 @@ The Regen Tribe Team
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visit our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes](https://tribesplatform.app)
+> - [Visit our Website](https://regentribe.co)`,
   },
   {
     slug: 'q4-2023-website-free-cities',
@@ -252,13 +252,13 @@ As we wrap up 2023, we're reflecting on the whirlwind of travels, conferences, a
 ## **October 2023: Free Cities & Global Collaboration**
 After spending September in Berlin, we continued our travels and headed to **Prague** for the **Free Cities Conference 2023**. The concept of [**Free Cities**](https://free-cities.org/) is all about creating autonomous, self-governing communities where people can choose how they want to live–without the constraints of traditional political systems. The conference brought together changemakers and innovators with a shared vision of creating these freedom-focused cities around the world.
 At the conference, Regen Tribe hosted a **welcome table** and facilitated a **networking session** to help connect participants with similar goals. Nicole also took the stage as part of a panel discussion on **intentional communities**, sharing insights into how these communities can play a role in shaping the future of Free Cities.
-To find out more about Free Cities concept and events [visit their profile on Tribes.](https://tribes.regentribe.org/groups/free-cities-foundation/)
+To find out more about Free Cities concept and events [visit their profile on Tribes.](https://tribesplatform.app)
 
 After Prague, our core team traveled to **Istanbul** to attend the **D:pact Conference**, which focuses on decentralized systems, blockchain technologies, and their potential for creating impactful, sustainable change. We met a ton of inspiring projects and individuals who we'll be collaborating with in the future. Stay tuned for exciting partnerships ahead!
 
 ## **November 2023: Grounding & Organizing in Istanbul**
 November was a time for us to **ground and organize** after a busy few months of travel and inspiration. We stayed in Istanbul, focused on finalizing all our **one-pagers** and refining our **marketing strategy**.
-One of our main projects this month was making updates to the [**Tribes Platform**](http://www.tribes.regentribe.org), ensuring it's ready to serve regenerative neighborhoods and people creating them. 
+One of our main projects this month was making updates to the [**Tribes Platform**](https://tribesplatform.app), ensuring it's ready to serve regenerative neighborhoods and people creating them. 
 With our ideas taking shape, it was a productive month of bringing everything into focus before we go our separate ways for December.
 
 ## **December 2023: Family Time & Digital Work**
@@ -275,8 +275,8 @@ Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q4-2023-website-free-cities-1.jpg', alt: 'Free Cities Conference 2023' },
       { src: '/images/blog/q4-2023-website-free-cities-2.jpg', alt: 'd:pact conference, Istanbul' },
@@ -305,14 +305,14 @@ Then we joined the [Cohere Network ](http://www.cohere.network/)for 10 weeks i
 Regen Tribe was invited to Cohere's conscious coliving residency to collaborate deeply with the Cohere team. Together we explored polyorganizational techniques and radical collaboration between our teams to set up projects we can work on together.
 At the same time, Julia was hosting a monthlong colive called Illuminae in Ibiza with Gaianet's Alexander Keehnen.
 
-The Cohere residency was full of incredible people – a couple turning a castle in Poland into a community, developers building [frameworks for network states/coordi-nations](http://tribes.regentribe.org/groups/coordinations-network-states/), and [members of a DAO](https://www.vitadao.com/) working on biotech longevity projects, to name a few.
+The Cohere residency was full of incredible people – a couple turning a castle in Poland into a community, developers building [frameworks for network states/coordi-nations](https://tribesplatform.app), and [members of a DAO](https://www.vitadao.com/) working on biotech longevity projects, to name a few.
 While we were at MOOS they launched “Halle für Alle”, a series of [free community dinners](https://www.instagram.com/p/CveiFFtqtZz/) that they had funded via a government grant that fed as many as 200 people at a time. We came in full support with hosting, coordinating logistics, and amassing a team of volunteers to leave at MOOS.
 
 Regen Tribe is focused on building regenerative neighborhoods. We've hosted a colorful range of community settings – from jungle ecovillages to urban incubator houses – and we appreciate the inspired connections and convenience of urban coliving. Our ambitions are to build as many sustainable and intentional community land projects as possible, so we nomad to communities to observe them and capture best practices while we build a global network.
 At MOOS, one of our goals was to study their inner workings. We had several meetings with Jacob Huhn, the community manager, and Charlie Fisher from [Dark Matter Labs](https://darkmatterlabs.org/) and [Traditional Dream Factory](https://www.traditionaldreamfactory.com/), who is a steward of the space and is currently launching the [Free House Project](https://untitled.community/free-house-a-model-for-affordable-zero-carbon-homes-by-dark-matter-labs-se-nature-human/) there.
 We mapped our experiences and observations of the community during our stay in this mind map.
 
-To close the residency, we designed an escape room immersive experience set in a solar punk future called Solarium, which we plan to host again during [Regen Week 2024](https://tribes.regentribe.org/event/regen-week-2024/).
+To close the residency, we designed an escape room immersive experience set in a solar punk future called Solarium, which we plan to host again during [Regen Week 2024](https://tribesplatform.app).
 ## **September**
 Then we stayed an extra month at MOOS for Regens Unite, to help support and co-facilitate a wholesome event for building bridges between different fields of regeneration. During that time we met some awesome people from [Funding the Commons](https://fundingthecommons.io/), [Moneyless Society](https://moneylesssociety.com/), and [Conscious Coliving](https://consciouscoliving.com/).
 When September was over, we packed our bags and headed off to Istanbul to buy enough time outside the Schengen area to be able to participate in the [Free Cities conference ](https://free-cities.org/)in Prague.
@@ -325,8 +325,8 @@ The Regen Tribe Collective 🌿✨
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q3-2023-community-lab-moos-1.jpg', alt: 'Enchanted gathering 2023' },
       { src: '/images/blog/q3-2023-community-lab-moos-2.jpg', alt: 'Cohere residency at MOOS Berlin' },
@@ -391,8 +391,8 @@ Regen Tribe Collective.
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q2-2023-community-lab-1.jpg', alt: 'Traveling through Valle de Bravo' },
       { src: '/images/blog/q2-2023-community-lab-2.jpg', alt: 'Sonia exploring Fenix Farm rooftop garden' },
@@ -418,13 +418,13 @@ We welcomed 2 new team members to the Regen Tribe! [Nicole Reese](https://mediu
 Michael and Oscar explored the beauty of Costa Rica and visited the intentional-sustainable communities Holos, Awake, and Florestral.
 Back in Tulum, Karla and Nicole organized a beach clean-up co-sponsored by Tulum Circula in Sian Kaan ecological reserve.
 # **February**
-February was all about internal organization and marketing material development. We onboarded 250+ regenerative neighborhoods into our database, preparing for the upcoming launch of the [Tribes](http://www.tribes.regentribe.org/) platform – a social networking platform that helps you build and find regenerative neighborhoods.
+February was all about internal organization and marketing material development. We onboarded 250+ regenerative neighborhoods into our database, preparing for the upcoming launch of the [Tribes](https://tribesplatform.app) platform – a social networking platform that helps you build and find regenerative neighborhoods.
 
 This has been our main project for some time, and it's finally functional. Keep scrolling to read about the beta launch!
 # **March**
 March to April we were busy with conferences. The kick-off started with Jungle Club early March, where we hosted a co.live experience at Paledora Eco-Campus near Tulum.
 End of March, we presented at Tribalize, a Regenerative Community Summit hosted at Paledora.
-At the conference, we were proud to launch [Tribes](http://www.tribes.regentribe.org/) beta and start onboarding communities, organizations, and individuals to create their profiles.
+At the conference, we were proud to launch [Tribes](https://tribesplatform.app) beta and start onboarding communities, organizations, and individuals to create their profiles.
 There we facilitated discussions about eco-architecture techniques in Mexico, were featured on a panel about Culture Cohesion, and lead a two-hour workshop sharing our [Community Culture Canvas](https://miro.com/app/board/uXjVMYZEnTk=/?share_link_id=252638841501) tool.
 
 We were joined by Regen Tribe co-founder Julia Becker, who had been weaving in Europe and Brazil, and she brought with her Gaianet co-founder Alexander Keehnen. We also shared about the emerging Mexico and Yucatan biozones, which we are tracking with impact metrics.
@@ -441,8 +441,8 @@ The Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q1-2023-new-members-tribes-1.jpg', alt: 'The Regen Tribe core team at our incubator house in Tulum' },
       { src: '/images/blog/q1-2023-new-members-tribes-2.jpg', alt: 'Nicole presenting the community culture canvas' },
@@ -507,8 +507,8 @@ Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q4-2022-tulum-homecoming-1.jpg', alt: 'Connecting with local regenerative service providers' },
       { src: '/images/blog/q4-2022-tulum-homecoming-2.jpg', alt: 'Our rescue boy Ether getting adopted' },
@@ -556,8 +556,8 @@ The Regen Tribe Collective
 
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q3-2022-europe-summer-1.jpg', alt: 'Team biking through Amsterdam during July celebrations' },
       { src: '/images/blog/q3-2022-europe-summer-2.jpg', alt: 'Regen Tribe team exploring Berlin at Brandenburg Gate' },
@@ -654,7 +654,7 @@ Explore Hedonia World:
 
 ### Eco Fair at *Ekumal* (April, 17)
 EKUMAL summoned the community for the Eco Fair. It was a beautiful and intentional day around ecology and community, filled with an eco market, music, art, workshops, movements, ceremonies, dance, and all that magic the jungle has to offer. It was a special day for us as The New Activist / Regen Tribe too, as our regenerative community journey had started with Ekumal and the Sacred Eco Feria:
-In 2020 we connected with the Eco Hotel Villa Villa Duendes in the jungle of Akumal (MX) as they were constructing with recycled plastic and we were focusing on our first vertical: the plastic challenge at this time ([www.plastic.thenewactivist.org](http://www.plastic.thenewactivist.org/)). We soon partnered to turn the expanding space into an Eco-Incubator - regenerative community and holistic event space. It was our first Community Co.Creation and a beautiful, challenging, and inspiring experience that helped us understand the importance of regenerative communities for both the ecosystem and humanity. We then moved on to take this mission global and empower regenerative commuinity co.creation all across the world - by creating a community of community creators that empowers each other and allows for exponential growth. Regen Tribe ([www.regentribe.org](http://www.regentribe.org/)) was born.
+In 2020 we connected with the Eco Hotel Villa Villa Duendes in the jungle of Akumal (MX) as they were constructing with recycled plastic and we were focusing on our first vertical: the plastic challenge at this time ([www.plastic.thenewactivist.org](http://www.plastic.thenewactivist.org/)). We soon partnered to turn the expanding space into an Eco-Incubator - regenerative community and holistic event space. It was our first Community Co.Creation and a beautiful, challenging, and inspiring experience that helped us understand the importance of regenerative communities for both the ecosystem and humanity. We then moved on to take this mission global and empower regenerative commuinity co.creation all across the world - by creating a community of community creators that empowers each other and allows for exponential growth. Regen Tribe ([www.regentribe.org](https://regentribe.co)) was born.
 We had kicked off the community journey at Ekumal with The Sacred Eco Feria 1 ( [The Sacred Ecoferia at Ekumal](https://www.youtube.com/watch?v=R8N3-wPe-T8) ) - so it was a great pleasure and honor to come back to Ekumal for the Eco Fair - see the finished construction, be inspired by the great production the Ekumal team has put together,  and enjoy a beautiful community day in the jungle.. Here are a few impressions we collected for you:
 [(After Movie)  ECO FAIR - AKUMAL](https://www.youtube.com/watch?v=QXn68NT8ktc&t=22s) - [instagram.com/p/Cc6AuCQuYcD/](https://www.instagram.com/p/Cc6AuCQuYcD/)
 You want to experience the magic of this space yourself? Connect with EKUMAL to stay over or host your retreat: [www.ecokumal.org](http://www.ecokumal.org/) and [instagram.com/eco.kumal/](https://www.instagram.com/eco.kumal/)
@@ -678,8 +678,8 @@ Hugs,
 Regen Tribe Collective
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q2-2022-cowork-days-mexico-1.jpg', alt: 'Regen Co.work Days at Paledora campus in Tulum' },
       { src: '/images/blog/q2-2022-cowork-days-mexico-2.jpg', alt: 'Mexico regenerative neighborhood roadtrip community visit' },
@@ -771,8 +771,8 @@ With love,
 The Regen Tribe Team
 > For more details about what we're up to make sure to follow our socials!
 > - [Follow the journey on Instagram](https://www.instagram.com/regen.tribe/)
-> - [Check out our project updates on Tribes ](https://tribes.regentribe.org/groups/rnm-ambassadors/)
-> - [Visir our Website](http://www.regentribe.org)`,
+> - [Check out our project updates on Tribes ](https://tribesplatform.app)
+> - [Visir our Website](https://regentribe.co)`,
     images: [
       { src: '/images/blog/q4-2021-regen-tribe-incubation-1.jpg', alt: 'Regen Tribe founding team at the incubator house in Tulum' },
       { src: '/images/blog/q4-2021-regen-tribe-incubation-2.jpg', alt: 'Team members at Paledora coworking campus' },
